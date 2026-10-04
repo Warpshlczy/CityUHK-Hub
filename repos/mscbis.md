@@ -6,6 +6,12 @@ major: "BIS"
 enrollmentYear: 2026
 repoUrl: "https://github.com/AvalonC/MScBIS"
 homepageUrl: ''
+tags:
+  - msc-bis
+  - guide
+  - site
+  - information
+  - vue
 summary: "BIS Navigator 是面向香港城市大学 MSc Business Information Systems 学生的中文信息与经验导航"
 featured: false
 status: active
