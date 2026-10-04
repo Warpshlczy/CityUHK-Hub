@@ -59,7 +59,7 @@ function renderBlock(capturedAt) {
   const src = path.relative(process.cwd(), OUT_PATH).split(path.sep).join('/');
   return [
     START,
-    `<img src="${src}" alt="CityU(HK) Hub 首页截图 / homepage screenshot" width="920" />`,
+    `<img src="${src}" alt="CityUHK Hub 首页截图 / homepage screenshot" width="920" />`,
     '',
     `<sub>截图时间 / 截圖時間 / captured at: ${capturedAt} (UTC+8) · 截图者 / 截圖者 / by: @${CAPTURED_BY}</sub>`,
     '',

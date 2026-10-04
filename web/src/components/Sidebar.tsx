@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FolderTree, Tags, Trophy } from 'lucide-react';
-import type { AuthorItem, CountItem } from '../types';
+import { categoryLabel, useI18n } from '../i18n';
+import type { AuthorItem, CategoryLabels, CountItem } from '../types';
 import { slugify } from '../utils/slugify';
 import { TagChips } from './TagChips';
 
@@ -15,6 +16,8 @@ interface SidebarProps {
   onSelectCategory: (name: string) => void;
   onToggleTag: (name: string) => void;
   onSelectAuthor: (name: string) => void;
+  /** 分类显示名按语言取用；不传时退回 canonical 原文 */
+  categoryLabels?: CategoryLabels;
 }
 
 const CATEGORY_HEADING_ID = slugify('sidebar-categories');
@@ -35,13 +38,19 @@ export function Sidebar({
   onSelectCategory,
   onToggleTag,
   onSelectAuthor,
+  categoryLabels,
 }: SidebarProps) {
+  const { t, lang } = useI18n();
   /** 作者榜默认只露前 8 位，展开后在面板内滚动浏览全部 */
   const [showAllAuthors, setShowAllAuthors] = useState(false);
   const visibleAuthors = showAllAuthors ? authors : authors.slice(0, 8);
 
+  /** TAGS 默认只露前 60 个，展开后浏览全部 */
+  const [showAllTags, setShowAllTags] = useState(false);
+  const visibleTags = showAllTags ? tags : tags.slice(0, 60);
+
   return (
-    <nav aria-label="筛选面板" className="space-y-5">
+    <nav aria-label={t('sidebar.label')} className="space-y-5">
       <section aria-labelledby={CATEGORY_HEADING_ID} className="panel-brutal p-3">
         <h3 id={CATEGORY_HEADING_ID} className={HEADING_CLASS}>
           <span className="size-3 shrink-0 bg-brand" />
@@ -56,7 +65,7 @@ export function Sidebar({
               aria-pressed={activeCategory === ''}
               className="row-brutal"
             >
-              <span>全部</span>
+              <span>{t('sidebar.all')}</span>
               <span className="text-[11px] tabular-nums opacity-70">[{total}]</span>
             </button>
           </li>
@@ -68,7 +77,7 @@ export function Sidebar({
                 aria-pressed={activeCategory === category.name}
                 className="row-brutal"
               >
-                <span className="truncate">{category.name}</span>
+                <span className="truncate">{categoryLabel(category.name, lang, categoryLabels)}</span>
                 <span className="text-[11px] tabular-nums opacity-70">[{category.count}]</span>
               </button>
             </li>
@@ -84,13 +93,23 @@ export function Sidebar({
         </h3>
         <div className="mt-3">
           <TagChips
-            items={tags.map((tag) => tag.name)}
+            items={visibleTags.map((tag) => tag.name)}
             selected={selectedTags}
             onToggle={onToggleTag}
             counts={tags}
             size="sm"
           />
         </div>
+        {tags.length > 60 && (
+          <button
+            type="button"
+            onClick={() => setShowAllTags((value) => !value)}
+            aria-expanded={showAllTags}
+            className="mono mt-2 w-full border-2 border-line px-2 py-1.5 text-[11px] text-muted transition-colors hover:border-brand hover:text-brand"
+          >
+            {showAllTags ? t('sidebar.collapseTags') : t('sidebar.expandTags', { count: tags.length - 60 })}
+          </button>
+        )}
       </section>
 
       <section aria-labelledby={AUTHOR_HEADING_ID} className="panel-brutal p-3">
@@ -117,7 +136,7 @@ export function Sidebar({
                   {author.avatar ? (
                     <img
                       src={author.avatar}
-                      alt={`${author.name} 的头像`}
+                      alt={t('sidebar.avatarAlt', { name: author.name })}
                       loading="lazy"
                       width={20}
                       height={20}
@@ -149,7 +168,7 @@ export function Sidebar({
             aria-expanded={showAllAuthors}
             className="mono mt-2 w-full border-2 border-line px-2 py-1.5 text-[11px] text-muted transition-colors hover:border-brand hover:text-brand"
           >
-            {showAllAuthors ? '收起作者榜 ↑' : `展开全部 ${authors.length} 位作者 ↓`}
+            {showAllAuthors ? t('sidebar.collapseAuthors') : t('sidebar.expandAuthors', { count: authors.length })}
           </button>
         )}
       </section>

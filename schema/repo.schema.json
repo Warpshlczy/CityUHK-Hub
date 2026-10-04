@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://cityu-hub.example/schema/repo.schema.json",
-  "title": "CityU-Hub repository metadata",
+  "title": "CityUHK Hub repository metadata",
   "type": "object",
   "additionalProperties": false,
   "required": ["title", "author", "authorName", "major", "enrollmentYear", "repoUrl"],

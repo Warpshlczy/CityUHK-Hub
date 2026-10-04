@@ -4,6 +4,7 @@ import { Clock, Star } from 'lucide-react';
 import type { ProjectStats } from '../api/stats';
 import { trackProjectEvent } from '../api/stats';
 import type { Project } from '../types';
+import { useI18n, localizeProject } from '../i18n';
 import { avatarUrl } from '../utils/avatar';
 import { formatNumber, formatRelativeTime } from '../utils/formatNumber';
 import { computeHeat } from '../utils/heat';
@@ -27,6 +28,8 @@ export const ProjectCard = memo(function ProjectCard({
   stats,
 }: ProjectCardProps) {
   const navigate = useNavigate();
+  const { lang, t } = useI18n();
+  const text = localizeProject(project, lang);
   const detailUrl = `/project/${project.id}`;
   const delay = Math.min(index * 40, 400);
   const avatar = avatarUrl(project.authorAvatar, project.repo);
@@ -42,7 +45,7 @@ export const ProjectCard = memo(function ProjectCard({
         {avatar ? (
           <img
             src={avatar}
-            alt={`${project.author} 的头像`}
+            alt={t('sidebar.avatarAlt', { name: project.author })}
             loading="lazy"
             width={24}
             height={24}
@@ -65,7 +68,7 @@ export const ProjectCard = memo(function ProjectCard({
             const meta = [
               realName,
               project.major,
-              project.enrollmentYear ? `${project.enrollmentYear} 级` : '',
+              project.enrollmentYear ? t('card.yearLevel', { year: project.enrollmentYear }) : '',
             ].filter(Boolean);
             if (meta.length === 0) return null;
             return (
@@ -87,17 +90,17 @@ export const ProjectCard = memo(function ProjectCard({
 
       <h3 className="mt-3 text-lg font-black tracking-tight text-ink transition-colors group-hover:text-brand">
         <Link to={detailUrl} onClick={(event) => event.stopPropagation()} className="focus-visible:outline-none">
-          {project.name}
+          {text.name}
         </Link>
       </h3>
 
       {/* 简介：仓库 About（最多两行）+ 项目介绍摘要（最多三行）；两者都没有时整块留空 */}
       <div className="mt-2 min-h-[6.75rem] space-y-1.5">
-        {project.about && (
-          <p className="line-clamp-2 text-[13px] leading-5 text-ink">{project.about}</p>
+        {text.about && (
+          <p className="line-clamp-2 text-[13px] leading-5 text-ink">{text.about}</p>
         )}
-        {project.description && (
-          <p className="line-clamp-3 text-[12px] leading-5 text-muted">{project.description}</p>
+        {text.description && (
+          <p className="line-clamp-3 text-[12px] leading-5 text-muted">{text.description}</p>
         )}
       </div>
 
@@ -119,7 +122,7 @@ export const ProjectCard = memo(function ProjectCard({
         </span>
         <span className="flex items-center gap-1">
           <Clock className="size-3.5" />
-          {formatRelativeTime(project.updatedAt)}
+          {formatRelativeTime(project.updatedAt, t)}
         </span>
         <a
           href={project.githubUrl}
@@ -129,8 +132,8 @@ export const ProjectCard = memo(function ProjectCard({
             event.stopPropagation();
             trackProjectEvent('click', project.id);
           }}
-          aria-label={`去 GitHub 为 ${project.name} 点 Star`}
-          title="去 GitHub 点 Star 支持作者"
+          aria-label={t('card.starAria', { name: text.name })}
+          title={t('card.starTitle')}
           className="ml-auto flex items-center gap-1.5 border-2 border-line px-2 py-1 transition-colors hover:border-brand hover:text-brand"
         >
           <GitHubIcon className="size-3.5" />

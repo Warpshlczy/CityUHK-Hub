@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useI18n } from '../i18n';
 
 const CELL = 4;
 const PET_W = 20;
@@ -296,6 +297,7 @@ return <rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill={fill} />;
 }
 /** 像素猫咪：在组件空隙里走动，会追光标，也会凑到卡片/按钮旁伸爪戳一下 */
 export function PixelPet() {
+const { t } = useI18n();
 const rootRef = useRef<HTMLDivElement>(null);
 const faceRef = useRef<HTMLDivElement>(null);
 const frameRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -677,7 +679,7 @@ return (
 <div ref={faceRef} className="pet-face">
 <div
 className={`pet-body ${poseClass}`}
-title="像素猫咪：点一下试试"
+title={t('pet.title')}
 onClick={() => clickRef.current()}
 >
 {CAT_FRAMES.map((map, index) => (

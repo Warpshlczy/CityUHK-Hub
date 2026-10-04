@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { HelpCircle, Search, X } from 'lucide-react';
+import { useI18n } from '../i18n';
 import { parseQuery, removeQualifier, toQualifierChips } from '../utils/searchParser';
 
 interface SearchBarProps {
@@ -12,19 +13,16 @@ const DEBOUNCE_MS = 300;
 
 /** 点问号后展开的规则，前缀与 searchParser 支持的一致 */
 const RULES = [
-  { syntax: 'author:alice', label: '按作者' },
-  { syntax: 'tag:NLP', label: '按标签' },
-  { syntax: 'lang:Python', label: '按语言' },
-  { syntax: 'category:机器学习', label: '按分类' },
+  { syntax: 'author:alice', labelKey: 'search.rule.author' },
+  { syntax: 'tag:NLP', labelKey: 'search.rule.tag' },
+  { syntax: 'lang:Python', labelKey: 'search.rule.lang' },
+  { syntax: 'category:机器学习', labelKey: 'search.rule.category' },
 ];
 
-const TIPS = [
-  '空格分隔多个条件，同时生效：author:alice lang:Python',
-  '同一个条件可叠加：tag:NLP tag:情感分析',
-  '不带冒号的词按全文模糊匹配：author:alice 情感',
-];
+const TIP_KEYS = ['search.tip.combine', 'search.tip.stack', 'search.tip.free'];
 
 export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
+  const { t } = useI18n();
   const [text, setText] = useState(value);
   const [helpOpen, setHelpOpen] = useState(false);
   const committed = useRef(value);
@@ -86,8 +84,8 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
               else commit('');
             }
           }}
-          placeholder={placeholder ?? '搜索项目…'}
-          aria-label="搜索项目"
+          placeholder={placeholder ?? t('search.placeholder')}
+          aria-label={t('search.label')}
           className={`input-brutal h-11 w-full pl-9 text-sm ${text.length > 0 ? 'pr-[4.5rem]' : 'pr-11'}`}
         />
 
@@ -95,7 +93,7 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
           <button
             type="button"
             onClick={() => commit('')}
-            aria-label="清空搜索"
+            aria-label={t('search.clear')}
             className="absolute top-1/2 right-10 grid size-7 -translate-y-1/2 place-items-center border-2 border-line text-muted transition-colors hover:border-brand hover:text-brand"
           >
             <X className="size-3.5" />
@@ -105,9 +103,9 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
         <button
           type="button"
           onClick={() => setHelpOpen((prev) => !prev)}
-          aria-label="搜索规则"
+          aria-label={t('search.rules')}
           aria-expanded={helpOpen}
-          title="搜索规则"
+          title={t('search.rules')}
           className={`absolute top-1/2 right-1.5 grid size-7 -translate-y-1/2 place-items-center border-2 transition-colors ${
             helpOpen ? 'border-brand text-brand' : 'border-line text-muted hover:border-brand hover:text-brand'
           }`}
@@ -117,18 +115,18 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
 
         {helpOpen && (
           <div className="panel-brutal absolute top-full right-0 z-50 mt-2 w-[min(23rem,calc(100vw-2rem))] p-3 shadow-[6px_6px_0_var(--c-shadow)]">
-            <p className="pixel text-[9px] text-muted">搜索规则</p>
+            <p className="pixel text-[9px] text-muted">{t('search.rules')}</p>
             <dl className="mono mt-2 grid gap-1.5 text-[11px]">
               {RULES.map((rule) => (
                 <div key={rule.syntax} className="flex items-baseline gap-2">
                   <dt className="text-brand">{rule.syntax}</dt>
-                  <dd className="text-muted">{rule.label}</dd>
+                  <dd className="text-muted">{t(rule.labelKey)}</dd>
                 </div>
               ))}
             </dl>
             <ul className="mono mt-2 grid gap-1 border-t-2 border-line pt-2 text-[11px] leading-5 text-muted">
-              {TIPS.map((tip) => (
-                <li key={tip}>· {tip}</li>
+              {TIP_KEYS.map((key) => (
+                <li key={key}>· {t(key)}</li>
               ))}
             </ul>
           </div>
@@ -142,7 +140,7 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
               key={`${chip.key}:${chip.value}`}
               type="button"
               onClick={() => commit(removeQualifier(text, chip.key, chip.value))}
-              title="移除该条件"
+              title={t('search.removeQualifier')}
               className="chip-brutal is-active px-2 py-0.5 text-[11px]"
             >
               <span className="font-bold">
@@ -152,7 +150,7 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
             </button>
           ))}
           {freeText && (
-            <span className="mono text-[11px] text-muted">关键词 ▸ {freeText}</span>
+            <span className="mono text-[11px] text-muted">{t('search.keyword', { value: freeText })}</span>
           )}
         </div>
       )}

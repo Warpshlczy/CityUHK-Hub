@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { useI18n, localizeProject, type Lang } from '../i18n';
 import type { Project, SortKey } from '../types';
 import { parseQuery, type Qualifiers } from '../utils/searchParser';
 
@@ -36,32 +37,64 @@ function matchesQualifiers(project: Project, qualifiers: Qualifiers): boolean {
   );
 }
 
-function termScore(project: Project, term: string): number {
-  const name = lower(project.name);
-  if (name === term) return WEIGHT.exactName;
-  if (name.includes(term)) return WEIGHT.name;
+/** 搜索要同时命中原文与当前语言的译文，所以先按项目摊平出一个可比对的词组 */
+interface Haystack {
+  names: string[];
+  tags: string[];
+  authors: string[];
+  descriptions: string[];
+  other: string[];
+}
 
-  if (project.tags.some((tag) => lower(tag) === term)) return WEIGHT.exactTag;
-  if (project.tags.some((tag) => lower(tag).includes(term))) return WEIGHT.tag;
+function buildHaystack(project: Project, lang: Lang): Haystack {
+  const text = localizeProject(project, lang);
+  return {
+    names: [project.name, text.name],
+    tags: project.tags,
+    authors: [project.author, project.authorName ?? ''],
+    descriptions: [
+      project.description,
+      text.description,
+      project.about,
+      text.about,
+      project.major ?? '',
+      text.major,
+    ],
+    other: [project.category, text.category, project.language, project.repo],
+  };
+}
 
-  if (`${lower(project.author)} ${lower(project.authorName)}`.includes(term)) return WEIGHT.author;
-  if (lower(project.description).includes(term)) return WEIGHT.description;
+const anyEquals = (values: string[], term: string) =>
+  values.some((value) => lower(value) === term);
+const anyIncludes = (values: string[], term: string) =>
+  values.some((value) => lower(value).includes(term));
 
-  if (
-    lower(project.category).includes(term) ||
-    lower(project.language).includes(term) ||
-    lower(project.repo).includes(term)
-  ) {
-    return WEIGHT.other;
-  }
+function termScore(hay: Haystack, term: string): number {
+  if (anyEquals(hay.names, term)) return WEIGHT.exactName;
+  if (anyIncludes(hay.names, term)) return WEIGHT.name;
+
+  if (anyEquals(hay.tags, term)) return WEIGHT.exactTag;
+  if (anyIncludes(hay.tags, term)) return WEIGHT.tag;
+
+  if (anyIncludes(hay.authors, term)) return WEIGHT.author;
+  if (anyIncludes(hay.descriptions, term)) return WEIGHT.description;
+  if (anyIncludes(hay.other, term)) return WEIGHT.other;
 
   return WEIGHT.none;
 }
+
+/** 名称排序按当前语言的拼音/字母序，不要固定用简中 */
+const COLLATOR_LOCALE: Record<Lang, string> = {
+  en: 'en',
+  'zh-CN': 'zh-Hans-CN',
+  'zh-TW': 'zh-Hant-TW',
+};
 
 function compareBy(
   sort: SortKey,
   a: Project,
   b: Project,
+  lang: Lang,
   heatScores?: Map<string, number>,
 ): number {
   switch (sort) {
@@ -71,7 +104,7 @@ function compareBy(
     case 'stars':
       return b.stars - a.stars;
     case 'name':
-      return a.name.localeCompare(b.name, 'zh-Hans-CN');
+      return a.name.localeCompare(b.name, COLLATOR_LOCALE[lang]);
     case 'updated':
     default:
       return b.updatedAt.localeCompare(a.updatedAt);
@@ -84,6 +117,8 @@ export function useSearch(
   sort: SortKey = 'updated',
   heatScores?: Map<string, number>,
 ): Project[] {
+  const { lang } = useI18n();
+
   return useMemo(() => {
     const { qualifiers, terms } = parseQuery(query);
 
@@ -92,10 +127,11 @@ export function useSearch(
     for (const project of projects) {
       if (!matchesQualifiers(project, qualifiers)) continue;
 
+      const hay = buildHaystack(project, lang);
       let score = 0;
       let matchedAll = true;
       for (const term of terms) {
-        const weight = termScore(project, term);
+        const weight = termScore(hay, term);
         if (weight === WEIGHT.none) {
           matchedAll = false;
           break;
@@ -107,8 +143,8 @@ export function useSearch(
       scored.push({ project, score });
     }
 
-    scored.sort((a, b) => b.score - a.score || compareBy(sort, a.project, b.project, heatScores));
+    scored.sort((a, b) => b.score - a.score || compareBy(sort, a.project, b.project, lang, heatScores));
 
     return scored.map((item) => item.project);
-  }, [projects, query, sort, heatScores]);
+  }, [projects, query, sort, lang, heatScores]);
 }

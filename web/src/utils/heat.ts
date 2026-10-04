@@ -27,20 +27,21 @@ export interface HeatResult {
   // 否则 28 个 star 会显示成 26，看着像统计错了。raw 为 null 表示这一维还没有数据。
   parts: Array<{
     key: keyof HeatDimensions;
-    label: string;
+    /** 维度名的词条 key，实际文案由组件层 t() 取 */
+    labelKey: string;
     ratio: number;
     points: number;
     raw: number | null;
   }>;
 }
 
-const LABELS: Record<keyof HeatDimensions, string> = {
-  stars: 'Star 总数',
-  growth: '近 7 天涨星',
-  views: '站内浏览',
-  clicks: '跳转 GitHub',
-  forks: 'Fork 数',
-  freshness: '最近更新',
+const LABEL_KEYS: Record<keyof HeatDimensions, string> = {
+  stars: 'heat.stars',
+  growth: 'heat.growth',
+  views: 'heat.views',
+  clicks: 'heat.clicks',
+  forks: 'heat.forks',
+  freshness: 'heat.freshness',
 };
 
 // 取对数，避免大仓库一家独大
@@ -87,7 +88,7 @@ export function computeHeat(input: HeatInput, now = Date.now()): HeatResult {
 
   const parts = (Object.keys(WEIGHTS) as Array<keyof HeatDimensions>).map((key) => ({
     key,
-    label: LABELS[key],
+    labelKey: LABEL_KEYS[key],
     ratio: dimensions[key],
     points: dimensions[key] * WEIGHTS[key],
     raw: rawValues[key],
@@ -99,8 +100,9 @@ export function computeHeat(input: HeatInput, now = Date.now()): HeatResult {
   return { score, level, parts };
 }
 
-export const HEAT_LABELS: Record<1 | 2 | 3, string> = {
-  1: '起步中',
-  2: '有点热度',
-  3: '当下最热',
+/** 热度分级的词条 key */
+export const HEAT_LEVEL_KEYS: Record<1 | 2 | 3, string> = {
+  1: 'heat.level.1',
+  2: 'heat.level.2',
+  3: 'heat.level.3',
 };

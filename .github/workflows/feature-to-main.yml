@@ -123,11 +123,11 @@ jobs:
                 if (id) {
                   badge = [
                     '',
-                    '💡 顺手做一件事：把下面这行贴到你的仓库 README，标注它已被 CityU(HK) Hub 收录 ——',
+                    '💡 顺手做一件事：把下面这行贴到你的仓库 README，标注它已被 CityUHK Hub 收录 ——',
                     '既是一枚徽章，也能给项目带来一条外链和更多访问。',
                     '',
                     '```',
-                    `[![CityU(HK) Hub](https://cityu-hub.bond/badge/${id}.svg)](https://cityu-hub.bond/project/${id})`,
+                    `[![CityUHK Hub](https://cityu-hub.bond/badge/${id}.svg)](https://cityu-hub.bond/project/${id})`,
                     '```',
                     '',
                     `项目页：https://cityu-hub.bond/project/${id}（页底也能一键复制这段）`,
@@ -139,7 +139,7 @@ jobs:
             }
 
             const body = [
-              '感谢同学的支持！你的项目已经成功被收录，可以进入网站查看，再次感谢您对CityU(HK) Hub的贡献🎉',
+              '感谢同学的支持！你的项目已经成功被收录，可以进入网站查看，再次感谢您对CityUHK Hub的贡献🎉',
               '',
               '站点：https://cityu-hub.bond',
               badge,

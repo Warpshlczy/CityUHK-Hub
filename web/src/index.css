@@ -61,11 +61,29 @@ html {
 
 body {
   margin: 0;
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* 首要语言是英语：正文默认走拉丁字体栈 */
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--c-canvas);
   color: var(--c-ink);
   -webkit-font-smoothing: antialiased;
+}
+
+/* 中文界面把正文换成中文字体栈；简繁分开指定，避免繁体字被简体字形顶掉 */
+html[lang='zh-CN'] body {
+  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html[lang='zh-TW'] body {
+  font-family: "Noto Sans TC", "PingFang TC", "Hiragino Sans CNS", "Microsoft JhengHei",
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 汉字方块字，行高比拉丁字母留得多一点才不挤 */
+html[lang='zh-CN'] body,
+html[lang='zh-TW'] body {
+  line-height: 1.7;
 }
 
 body::before {

@@ -21,7 +21,7 @@ const dataDir = path.resolve(process.env.DATA_DIR ?? path.join(webDir, 'public',
 const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://cityu-hub.bond';
 /** 部署在子路径时才需要改（默认部署在域名根路径） */
 const BASE_PATH = (process.env.BASE_PATH ?? '/').replace(/\/+$/, '');
-const SITE_NAME = 'CityU(HK) Hub';
+const SITE_NAME = 'CityUHK Hub';
 
 const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
@@ -149,6 +149,22 @@ async function readJson(file) {
   }
 }
 
+/**
+ * 站点首要语言是英语，静态页只预渲染英文一份；项目文案优先取构建期翻译的
+ * i18n.en / readmeHtmlByLang.en，翻译缺失时回退原文，保证爬虫一定读得到内容。
+ */
+function pickEn(detail) {
+  const en = detail.i18n?.en;
+  return {
+    name: en?.name || detail.name,
+    description: en?.description || detail.description,
+    about: en?.about || detail.about,
+    major: en?.major || detail.major,
+    category: en?.category || detail.category,
+    readmeHtml: detail.readmeHtmlByLang?.en || detail.readmeHtml,
+  };
+}
+
 const shell = await fs.readFile(path.join(distDir, 'index.html'), 'utf8');
 const list = await readJson(path.join(dataDir, 'projects.json'));
 if (!list) {
@@ -161,17 +177,17 @@ const urls = [];
 
 {
   let html = upsertHead(shell, {
-    title: `${SITE_NAME} · 城大开源自助导航`,
-    description: `香港城市大学（CityUHK）学生开源项目导航：已收录 ${projects.length} 个项目，支持按作者、专业、标签、语言与分类检索，一键直达 GitHub 仓库。`,
+    title: `${SITE_NAME} · CityU Open-Source Hub`,
+    description: `A navigation site for open-source projects built by students of City University of Hong Kong (CityUHK): ${projects.length} projects listed, filterable by author, major, tag, language and category, with one-click links to the GitHub repositories.`,
     canonical: `${SITE_ORIGIN}/`,
   });
   html = injectJsonLd(html, {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_NAME,
-    alternateName: '城大开源自助导航',
+    alternateName: 'CityU Open-Source Hub',
     url: `${SITE_ORIGIN}/`,
-    inLanguage: 'zh-CN',
+    inLanguage: 'en',
     potentialAction: {
       '@type': 'SearchAction',
       target: `${SITE_ORIGIN}/?q={search_term_string}`,
@@ -181,15 +197,16 @@ const urls = [];
 
   const items = projects
     .slice(0, 30)
-    .map(
-      (project) =>
-        `<li><a href="${BASE_PATH}/project/${encodeURIComponent(project.id)}">${escapeHtml(project.name)}</a> — ${escapeHtml(clamp(project.about || project.description || '', 90))}</li>`,
-    )
+    .map((project) => {
+      const en = pickEn(project);
+      const summary = clamp(en.about || en.description || '', 90);
+      return `<li><a href="${BASE_PATH}/project/${encodeURIComponent(project.id)}">${escapeHtml(en.name)}</a> — ${escapeHtml(summary)}</li>`;
+    })
     .join('\n      ');
   html = injectCrawlBody(
     html,
-    `<h1>${escapeHtml(SITE_NAME)} · 城大开源自助导航</h1>
-      <p>香港城市大学学生开源项目导航站，已收录 ${projects.length} 个项目。</p>
+    `<h1>${escapeHtml(SITE_NAME)} · CityU Open-Source Hub</h1>
+      <p>A navigation site for open-source projects built by students of City University of Hong Kong: ${projects.length} projects listed.</p>
       <ul>
       ${items}
       </ul>`,
@@ -202,12 +219,14 @@ const urls = [];
 for (const project of projects) {
   const detail =
     (await readJson(path.join(dataDir, 'projects', `${project.id}.json`))) ?? project;
-  const about = (detail.about ?? '').trim();
-  const description = clamp(about || detail.description || `${project.name} —— 城大开源项目`, 150);
+  const en = pickEn(detail);
+  const name = en.name ?? project.name;
+  const about = (en.about ?? '').trim();
+  const description = clamp(about || en.description || `${name} — an open-source project at CityUHK`, 150);
   const url = `${SITE_ORIGIN}/project/${encodeURIComponent(project.id)}`;
 
   let html = upsertHead(shell, {
-    title: `${project.name} · ${SITE_NAME}`,
+    title: `${name} · ${SITE_NAME}`,
     description,
     canonical: url,
     type: 'article',
@@ -215,7 +234,7 @@ for (const project of projects) {
   html = injectJsonLd(html, {
     '@context': 'https://schema.org',
     '@type': 'SoftwareSourceCode',
-    name: detail.name ?? project.name,
+    name,
     description,
     codeRepository: detail.githubUrl,
     url,
@@ -226,26 +245,26 @@ for (const project of projects) {
   });
 
   const metaLine = [
-    detail.authorName && detail.authorName !== detail.author ? `${detail.author}（${detail.authorName}）` : detail.author,
-    detail.major,
-    detail.enrollmentYear ? `${detail.enrollmentYear} 级` : '',
-    detail.category,
+    detail.authorName && detail.authorName !== detail.author ? `${detail.author} (${detail.authorName})` : detail.author,
+    en.major,
+    detail.enrollmentYear ? `Intake ${detail.enrollmentYear}` : '',
+    en.category,
   ]
     .filter(Boolean)
     .join(' · ');
 
   const body = [
     `<article>`,
-    `  <h1>${escapeHtml(detail.name ?? project.name)}</h1>`,
+    `  <h1>${escapeHtml(name)}</h1>`,
     `  <p>${escapeHtml(metaLine)}</p>`,
-    `  <p>仓库：<a href="${escapeHtml(detail.githubUrl)}">${escapeHtml(detail.repo)}</a></p>`,
+    `  <p>Repository: <a href="${escapeHtml(detail.githubUrl)}">${escapeHtml(detail.repo)}</a></p>`,
     about ? `  <p>${escapeHtml(about)}</p>` : '',
-    detail.description ? `  <p>${escapeHtml(detail.description)}</p>` : '',
+    en.description ? `  <p>${escapeHtml(en.description)}</p>` : '',
     (detail.tags ?? []).length
       ? `  <ul>${(detail.tags ?? []).map((tag) => `<li>${escapeHtml(tag)}</li>`).join('')}</ul>`
       : '',
-    `  <h2>项目介绍</h2>`,
-    `  <p>${escapeHtml(htmlToText(detail.readmeHtml))}</p>`,
+    `  <h2>Project overview</h2>`,
+    `  <p>${escapeHtml(htmlToText(en.readmeHtml))}</p>`,
     `</article>`,
   ]
     .filter(Boolean)

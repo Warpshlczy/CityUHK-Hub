@@ -6,6 +6,10 @@ import { test } from 'node:test';
 import { buildIndex } from '../src/build-index.mjs';
 import { shiftDate } from '../src/lib/starHistory.js';
 
+// 测试一律不联网：翻译走离线路径，并指向临时缓存（不读仓库里已提交的真实缓存）
+process.env.TRANSLATION_OFFLINE = '1';
+process.env.TRANSLATION_CACHE_PATH = path.join(os.tmpdir(), `cityu-hub-test-cache-${process.pid}.json`);
+
 test('buildIndex 把项目 Markdown 构建成前端直接可读的静态 JSON', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'cityu-hub-build-'));
   const inputDir = path.join(root, 'repos');
@@ -62,6 +66,15 @@ test('buildIndex 把项目 Markdown 构建成前端直接可读的静态 JSON', 
     assert.match(project.description, /示例项目/);
     assert.match(project.readmeHtml, /README 驱动/);
     assert.match(project.readmeHtml, /<h2>Features<\/h2>/);
+    // 三语字段：zh-CN 恒为原文；离线无缓存时 en/zh-TW 回退原文而非报错
+    assert.equal(project.i18n['zh-CN'].name, 'Demo Project');
+    assert.equal(project.i18n.en.name, 'Demo Project');
+    assert.equal(project.i18n['zh-TW'].major, 'Computer Science');
+    // category 复用 categoryLabels，zh-CN 恒为 canonical 原文
+    assert.equal(project.i18n['zh-CN'].category, 'web');
+    assert.equal(project.i18n.en.category, 'web');
+    assert.equal(project.readmeHtmlByLang['zh-CN'], project.readmeHtml);
+    assert.match(project.readmeHtmlByLang.en, /README 驱动/);
     assert.deepEqual(result.aggregates.tags, [
       { name: 'react', count: 1 },
       { name: 'showcase', count: 1 },
@@ -72,14 +85,17 @@ test('buildIndex 把项目 Markdown 构建成前端直接可读的静态 JSON', 
     assert.equal(list.projects.length, 1);
     assert.deepEqual(list.authors, [{ name: 'demo-owner', count: 1 }]);
     assert.deepEqual(list.categories, [{ name: 'web', count: 1 }]);
+    assert.equal(list.categoryLabels['zh-CN'].web, 'web');
     // 列表保持轻量：正文 HTML 与内部字段只出现在详情文件里
     assert.equal(list.projects[0].readmeHtml, undefined);
+    assert.equal(list.projects[0].readmeHtmlByLang, undefined);
     assert.equal(list.projects[0].status, undefined);
 
     const detail = JSON.parse(
       await fs.readFile(path.join(outputDir, 'projects', 'demo-project.json'), 'utf8'),
     );
     assert.match(detail.readmeHtml, /README 驱动/);
+    assert.match(detail.readmeHtmlByLang['zh-TW'], /README 驱动/);
   } finally {
     await fs.rm(root, { recursive: true, force: true });
   }

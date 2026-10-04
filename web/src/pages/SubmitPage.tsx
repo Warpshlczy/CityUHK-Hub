@@ -4,6 +4,7 @@ import { ArrowLeft, Check, ExternalLink, GitFork, Lock, RefreshCw, Send } from '
 import { checkUserFork, type ForkCheckStatus } from '../api/github';
 import { Header } from '../components/Header';
 import { REPO_NAME, REPO_OWNER, REPO_URL } from '../constants/repo';
+import { useI18n, type TFunction } from '../i18n';
 import { setRouteMeta } from '../utils/seo';
 import {
   SUBMIT_BRANCH,
@@ -88,40 +89,40 @@ function TextArea({ label, value, onChange, placeholder, rows = 4 }: TextAreaPro
   );
 }
 
-/** 校验失败的错误统一显示在表单顶部 */
-function validateDraft(draft: ProjectDraft) {
+/** 校验失败的错误统一显示在表单顶部；文案按当前语言取，调用方传入 t */
+function validateDraft(draft: ProjectDraft, t: TFunction) {
   const errors: string[] = [];
   const required: Array<[keyof ProjectDraft, string]> = [
-    ['title', '项目名称'],
-    ['author', 'GitHub 用户名'],
-    ['authorName', '真实姓名'],
-    ['major', '专业'],
-    ['enrollmentYear', '入学年份'],
-    ['repoUrl', '仓库地址'],
+    ['title', 'form.field.title'],
+    ['author', 'form.field.author'],
+    ['authorName', 'form.field.authorName'],
+    ['major', 'form.field.major'],
+    ['enrollmentYear', 'form.field.year'],
+    ['repoUrl', 'form.field.repoUrl'],
   ];
-  for (const [key, label] of required) {
-    if (!draft[key].trim()) errors.push(`请填写${label}`);
+  for (const [key, labelKey] of required) {
+    if (!draft[key].trim()) errors.push(t('validate.required', { label: t(labelKey) }));
   }
 
   const year = Number(draft.enrollmentYear);
   if (draft.enrollmentYear.trim() && (!Number.isInteger(year) || year < 2000 || year > 2100)) {
-    errors.push('入学年份必须是 2000–2100 之间的整数');
+    errors.push(t('validate.year'));
   }
 
   const repoUrl = draft.repoUrl.trim();
   if (repoUrl && !/^https:\/\/github\.com\/[^/\s]+\/[^/\s]+/.test(repoUrl)) {
-    errors.push('仓库地址必须是 https://github.com/owner/repo 形式');
+    errors.push(t('validate.repoUrl'));
   }
 
   const tags = parseDraftTags(draft.tags);
-  if (tags.length > 12) errors.push('标签最多 12 个');
-  if (tags.some((tag) => tag.length > 16)) errors.push('单个标签最长 16 个字符');
+  if (tags.length > 12) errors.push(t('validate.tagsMax'));
+  if (tags.some((tag) => tag.length > 16)) errors.push(t('validate.tagLength'));
 
-  if (draft.title.trim().length > 200) errors.push('项目名称最长 200 个字符');
-  if (draft.authorName.trim().length > 120) errors.push('真实姓名最长 120 个字符');
-  if (draft.major.trim().length > 120) errors.push('专业最长 120 个字符');
-  if (draft.summary.trim().length > 600) errors.push('摘要最长 600 个字符');
-  if (draft.category.trim().length > 80) errors.push('分类最长 80 个字符');
+  if (draft.title.trim().length > 200) errors.push(t('validate.titleMax'));
+  if (draft.authorName.trim().length > 120) errors.push(t('validate.authorNameMax'));
+  if (draft.major.trim().length > 120) errors.push(t('validate.majorMax'));
+  if (draft.summary.trim().length > 600) errors.push(t('validate.summaryMax'));
+  if (draft.category.trim().length > 80) errors.push(t('validate.categoryMax'));
 
   return errors;
 }
@@ -145,20 +146,22 @@ interface StepProps {
 
 /** 步骤一：填写 GitHub 用户名并确认已 fork，通过后才允许进入表单 */
 function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
+  const { t } = useI18n();
   const [forkState, setForkState] = useState<ForkCheckStatus | 'idle' | 'checking'>('idle');
-  const [hint, setHint] = useState('');
+  // 只存词条 key，渲染期再取文案，切换语言时提示也跟着变
+  const [hintKey, setHintKey] = useState('');
 
   const check = async () => {
     const user = username.trim();
     if (!user) {
-      setHint('请先填写你的 GitHub 用户名');
+      setHintKey('fork.hint.empty');
       return;
     }
     if (!/^[a-zA-Z\d](?:[a-zA-Z\d]|-(?=[a-zA-Z\d])){0,38}$/.test(user)) {
-      setHint('GitHub 用户名格式不正确');
+      setHintKey('fork.hint.invalid');
       return;
     }
-    setHint('');
+    setHintKey('');
     setForkState('checking');
     const status = await checkUserFork(user);
     setForkState(status);
@@ -172,10 +175,11 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
           <div className="flex items-start gap-2">
             <GitFork className="mt-0.5 size-4 shrink-0 text-accent" />
             <div className="flex flex-col gap-1.5">
-              <h3 className="pixel text-[10px] text-ink">第一步：先 Fork 本站仓库并切到 feature 分支</h3>
+              <h3 className="pixel text-[10px] text-ink">{t('fork.title')}</h3>
               <p className="mono text-[11px] text-muted">
-                提交前需要你自己的 fork，提交会发生在它上面的 <span className="text-brand">feature</span> 分支。
-                按下面 3 步完成后再回来验证。
+                {t('fork.desc.a')}
+                <span className="text-brand">feature</span>
+                {t('fork.desc.b')}
               </p>
             </div>
           </div>
@@ -184,7 +188,7 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
             <li className="flex gap-2">
               <span className="size-4 shrink-0 border-2 border-ink text-center text-[9px] leading-4">1</span>
               <span>
-                Fork 本站仓库：
+                {t('fork.step1')}
                 <a
                   href={REPO_URL}
                   target="_blank"
@@ -198,16 +202,16 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
             <li className="flex gap-2">
               <span className="size-4 shrink-0 border-2 border-ink text-center text-[9px] leading-4">2</span>
               <span>
-                在 fork 里切到 <span className="text-brand">feature</span> 分支。本地执行{' '}
+                {t('fork.step2.a')}
+                <span className="text-brand">feature</span>
+                {t('fork.step2.b')}
                 <code className="border border-ink bg-surface px-1">git fetch upstream feature</code>
-                ，或直接在 fork 网页上查看 feature 分支，确保它与本站一致。
+                {t('fork.step2.c')}
               </span>
             </li>
             <li className="flex gap-2">
               <span className="size-4 shrink-0 border-2 border-ink text-center text-[9px] leading-4">3</span>
-              <span>
-                填好下面的 GitHub 用户名，点「确认已 fork」。验证通过会锁定用户名，然后进入表单填写。
-              </span>
+              <span>{t('fork.step3')}</span>
             </li>
           </ol>
 
@@ -215,20 +219,24 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
             <figure className="border-2 border-line bg-surface p-2">
               <img
                 src={FORK_IMAGE_1}
-                alt="在 GitHub 页面点击 Fork 按钮，fork 本站仓库"
+                alt={t('fork.img1Alt')}
                 loading="lazy"
                 className="w-full border border-line object-cover"
               />
-              <figcaption className="mono mt-2 text-center text-[10px] text-muted">① Fork 本站仓库</figcaption>
+              <figcaption className="mono mt-2 text-center text-[10px] text-muted">
+                {t('fork.img1Caption')}
+              </figcaption>
             </figure>
             <figure className="border-2 border-line bg-surface p-2">
               <img
                 src={FORK_IMAGE_2}
-                alt="把 fork 切换到 feature 分支"
+                alt={t('fork.img2Alt')}
                 loading="lazy"
                 className="w-full border border-line object-cover"
               />
-              <figcaption className="mono mt-2 text-center text-[10px] text-muted">② 切到 feature 分支</figcaption>
+              <figcaption className="mono mt-2 text-center text-[10px] text-muted">
+                {t('fork.img2Caption')}
+              </figcaption>
             </figure>
           </div>
         </div>
@@ -236,7 +244,8 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
         <div className="flex flex-col gap-3 border-[3px] border-line bg-surface p-4 sm:flex-row sm:items-center">
           <label className="flex flex-1 flex-col gap-1.5">
             <span className="pixel text-[9px] text-muted">
-              GitHub 用户名<span className="ml-1 text-brand">*</span>
+              {t('fork.username')}
+              <span className="ml-1 text-brand">*</span>
             </span>
             <input
               type="text"
@@ -256,28 +265,30 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
           >
             {forkState === 'checking' ? (
               <>
-                <RefreshCw className="size-4 animate-spin" /> 验证中…
+                <RefreshCw className="size-4 animate-spin" /> {t('fork.checking')}
               </>
             ) : (
               <>
-                <Check className="size-4" /> 确认已 fork
+                <Check className="size-4" /> {t('fork.confirm')}
               </>
             )}
           </button>
         </div>
 
-        {hint && (
-          <p className="mono border-l-[3px] border-brand bg-surface px-3 py-2 text-[11px] text-brand">{hint}</p>
+        {hintKey && (
+          <p className="mono border-l-[3px] border-brand bg-surface px-3 py-2 text-[11px] text-brand">
+            {t(hintKey)}
+          </p>
         )}
 
         {forkState === 'no-fork' && (
           <div className="border-[3px] border-accent bg-surface p-4">
             <p className="mono text-[11px] text-ink">
-              @{username.trim()} 还没有 fork 本站仓库。请先完成上面的第 1、2 步，再回来点「确认已 fork」重新验证。
+              {t('fork.noFork', { user: username.trim() })}
             </p>
             <div className="mt-3 flex flex-wrap gap-3">
               <button type="button" onClick={check} className="btn-brutal btn-brutal-primary">
-                我已 Fork，重新验证
+                {t('fork.recheck')}
               </button>
               <a
                 href={REPO_URL}
@@ -285,7 +296,7 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
                 rel="noopener noreferrer"
                 className="btn-brutal btn-brutal-secondary"
               >
-                Fork 本站仓库
+                {t('fork.forkRepo')}
               </a>
             </div>
           </div>
@@ -293,10 +304,10 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
 
         {forkState === 'error' && (
           <div className="border-[3px] border-accent bg-surface p-4">
-            <p className="mono text-[11px] text-ink">暂时无法确认是否已 fork（接口可能限流或不可用）。</p>
+            <p className="mono text-[11px] text-ink">{t('fork.error')}</p>
             <div className="mt-3 flex flex-wrap gap-3">
               <button type="button" onClick={check} className="btn-brutal btn-brutal-primary">
-                重新验证
+                {t('fork.retry')}
               </button>
               <a
                 href={REPO_URL}
@@ -304,7 +315,7 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
                 rel="noopener noreferrer"
                 className="btn-brutal btn-brutal-secondary"
               >
-                Fork 本站仓库
+                {t('fork.forkRepo')}
               </a>
             </div>
           </div>
@@ -316,6 +327,7 @@ function ForkGate({ username, onUsernameChange, onConfirm }: StepProps) {
 
 /** 步骤二：完整表单。用户名已在上一步验证并锁定，提交直接生成 fork 分支上的新建文件链接 */
 function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRestart: () => void }) {
+  const { t } = useI18n();
   const [draft, setDraft] = useState<ProjectDraft>({ ...EMPTY_DRAFT, author: confirmedUser });
   const [errors, setErrors] = useState<string[]>([]);
   const [done, setDone] = useState<{ url: string; fileName: string; compareUrl: string } | null>(null);
@@ -324,7 +336,7 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
     setDraft((prev) => ({ ...prev, [key]: value }));
 
   const generate = () => {
-    const found = validateDraft(draft);
+    const found = validateDraft(draft, t);
     setErrors(found);
     if (found.length > 0) return;
 
@@ -332,7 +344,7 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
     const content = buildProjectMarkdown(draft);
     const url = buildForkNewFileUrl(confirmedUser, fileName, content);
     if (isUrlTooLong(url)) {
-      setErrors(['内容太长，无法一次性带到 fork，请精简项目介绍后再提交']);
+      setErrors([t('form.tooLong')]);
       return;
     }
     // 提交后回到本站与 fork 的 feature 分支之间 compare，即可开 PR
@@ -345,17 +357,21 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
     return (
       <div className="space-y-4">
         <p className="mono border-l-[3px] border-brand bg-surface px-3 py-2 text-[12px] text-ink">
-          已打开你 fork 的 <span className="text-brand">feature</span> 分支新建文件，内容已预填。按下面 3 步操作，
-          就能把你的项目提交成回本站的 Pull Request。
+          {t('form.done.lead.a')}
+          <span className="text-brand">feature</span>
+          {t('form.done.lead.b')}
         </p>
 
         <div className="border-[3px] border-line bg-surface p-4">
-          <h3 className="pixel text-[10px] text-ink">① 在你的 fork 里提交</h3>
+          <h3 className="pixel text-[10px] text-ink">{t('form.step1.title')}</h3>
           <p className="mono mt-1.5 text-[11px] text-muted">
-            在刚打开的页面里看看内容（新文件 <code className="border border-ink bg-surface px-1">{done.fileName}</code>
-            ），滚动到底部，写一句提交说明（如新增项目 xxx），点
-            <span className="text-ink"> Commit changes</span>。这会提交到你自己的
-            <span className="text-brand"> {SUBMIT_BRANCH}</span> 分支。
+            {t('form.step1.a')}
+            <code className="border border-ink bg-surface px-1">{done.fileName}</code>
+            {t('form.step1.b')}
+            <span className="text-ink"> Commit changes</span>
+            {t('form.step1.c')}
+            <span className="text-brand"> {SUBMIT_BRANCH}</span>
+            {t('form.step1.d')}
           </p>
           <a
             href={done.url}
@@ -363,17 +379,20 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
             rel="noopener noreferrer"
             className="btn-brutal btn-brutal-rainbow mt-3"
           >
-            <ExternalLink className="size-4" /> 打开新建文件页
+            <ExternalLink className="size-4" /> {t('form.openFile')}
           </a>
         </div>
 
         <div className="border-[3px] border-line bg-surface p-4">
-          <h3 className="pixel text-[10px] text-ink">② Compare（对比分支）</h3>
+          <h3 className="pixel text-[10px] text-ink">{t('form.step2.title')}</h3>
           <p className="mono mt-1.5 text-[11px] text-muted">
-            回到你的 fork 首页，GitHub 会在顶部提示「This branch is N commits ahead of CityUHK-Hub:feature」，点
-            <span className="text-ink"> Compare &amp; pull request</span>；或直接点下面的对比入口，保持 base =
-            本站 <span className="text-brand">feature</span>、compare = 你的 fork
-            <span className="text-accent"> {SUBMIT_BRANCH}</span>。
+            {t('form.step2.a')} CityUHK-Hub:feature{t('form.step2.b')}
+            <span className="text-ink"> Compare &amp; pull request</span>
+            {t('form.step2.c')}
+            <span className="text-brand">feature</span>
+            {t('form.step2.d')}
+            <span className="text-accent"> {SUBMIT_BRANCH}</span>
+            {t('form.step2.e')}
           </p>
           <a
             href={done.compareUrl}
@@ -381,18 +400,21 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
             rel="noopener noreferrer"
             className="btn-brutal btn-brutal-primary mt-3"
           >
-            <GitFork className="size-4" /> 打开 Compare 页面
+            <GitFork className="size-4" /> {t('form.openCompare')}
           </a>
         </div>
 
         <div className="border-[3px] border-line bg-surface p-4">
-          <h3 className="pixel text-[10px] text-ink">③ 提交 Pull Request</h3>
+          <h3 className="pixel text-[10px] text-ink">{t('form.step3.title')}</h3>
           <p className="mono mt-1.5 text-[11px] text-muted">
-            对比页面确认无误后，填上标题与说明，点 <span className="text-ink"> Create pull request</span>。
-            维护者 review 并合并到 <span className="text-brand">feature</span> 后，网站会自动收录你的项目（顺带会拿到徽章）。
+            {t('form.step3.desc.a')}
+            <span className="text-ink"> Create pull request</span>
+            {t('form.step3.desc.b')}
+            <span className="text-brand">feature</span>
+            {t('form.step3.desc.c')}
           </p>
           <button type="button" onClick={() => window.open(done.compareUrl, '_blank', 'noopener,noreferrer')} className="btn-brutal btn-brutal-secondary mt-3">
-            已在 Compare 页面
+            {t('form.doneInCompare')}
           </button>
         </div>
 
@@ -406,10 +428,10 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
             }}
             className="btn-brutal btn-brutal-primary"
           >
-            再提交一个
+            {t('form.submitAnother')}
           </button>
           <button type="button" onClick={onRestart} className="btn-brutal btn-brutal-secondary">
-            重新验证 fork
+            {t('form.restart')}
           </button>
         </div>
       </div>
@@ -421,14 +443,14 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
       <div className="flex flex-wrap items-center gap-2 border-[3px] border-brand bg-surface px-3 py-2">
         <Lock className="size-4 shrink-0 text-brand" />
         <span className="mono text-[11px] text-muted">
-          已确认 <span className="text-ink">@{confirmedUser}</span> 已 fork 本站，用户名已锁定不可修改。
+          {t('form.locked', { user: confirmedUser })}
         </span>
         <button
           type="button"
           onClick={onRestart}
           className="mono ml-auto text-[10px] text-accent underline underline-offset-2"
         >
-          更换用户名
+          {t('form.changeUser')}
         </button>
       </div>
 
@@ -443,12 +465,12 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
       )}
 
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <Field label="项目名称" required value={draft.title} onChange={patch('title')} placeholder="My Project" />
-        <Field label="GitHub 用户名" required value={draft.author} onChange={() => {}} disabled hint={`锁定为 @${confirmedUser}，更换请点上方「更换用户名」`} />
-        <Field label="真实姓名" required value={draft.authorName} onChange={patch('authorName')} placeholder="你的姓名" />
-        <Field label="专业" required value={draft.major} onChange={patch('major')} placeholder="Computer Science" />
+        <Field label={t('form.field.title')} required value={draft.title} onChange={patch('title')} placeholder={t('form.field.namePlaceholder')} />
+        <Field label={t('form.field.author')} required value={draft.author} onChange={() => {}} disabled hint={t('form.lockHint', { user: confirmedUser })} />
+        <Field label={t('form.field.authorName')} required value={draft.authorName} onChange={patch('authorName')} placeholder={t('form.field.authorNamePlaceholder')} />
+        <Field label={t('form.field.major')} required value={draft.major} onChange={patch('major')} placeholder={t('form.field.majorPlaceholder')} />
         <Field
-          label="入学年份"
+          label={t('form.field.year')}
           required
           type="number"
           value={draft.enrollmentYear}
@@ -456,54 +478,54 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
           placeholder="2024"
         />
         <Field
-          label="仓库地址"
+          label={t('form.field.repoUrl')}
           required
           value={draft.repoUrl}
           onChange={patch('repoUrl')}
           placeholder="https://github.com/owner/repo"
         />
-        <Field label="Demo 地址" value={draft.homepageUrl} onChange={patch('homepageUrl')} placeholder="没有就留空" />
-        <Field label="分类" value={draft.category} onChange={patch('category')} placeholder="学习辅助 / 效率工具 …" />
+        <Field label={t('form.field.demo')} value={draft.homepageUrl} onChange={patch('homepageUrl')} placeholder={t('form.field.demoPlaceholder')} />
+        <Field label={t('form.field.category')} value={draft.category} onChange={patch('category')} placeholder={t('form.field.categoryPlaceholder')} />
         <Field
-          label="标签"
+          label={t('form.field.tags')}
           value={draft.tags}
           onChange={patch('tags')}
           placeholder="python, cli"
-          hint="逗号分隔，最多 12 个，每个最长 16 字符"
+          hint={t('form.field.tagsHint')}
         />
         <Field
-          label="摘要"
+          label={t('form.field.summary')}
           value={draft.summary}
           onChange={patch('summary')}
-          placeholder="一句话说明这个项目"
-          hint="最长 600 字，会显示在卡片上"
+          placeholder={t('form.field.summaryPlaceholder')}
+          hint={t('form.field.summaryHint')}
         />
       </div>
 
       <div className="mt-3 space-y-3">
         <TextArea
-          label="项目介绍"
+          label={t('form.field.intro')}
           value={draft.intro}
           onChange={patch('intro')}
-          placeholder="它解决什么问题、适合谁使用"
+          placeholder={t('form.field.introPlaceholder')}
         />
         <TextArea
-          label="Features（每行一条，可留空）"
+          label={t('form.field.features')}
           value={draft.features}
           onChange={patch('features')}
           rows={3}
-          placeholder={'功能一\n功能二'}
+          placeholder={t('form.field.featuresPlaceholder')}
         />
       </div>
 
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <button type="button" onClick={generate} className="btn-brutal btn-brutal-primary">
-          <Send className="size-4" /> 生成提交链接
+          <Send className="size-4" /> {t('form.generate')}
         </button>
         <button type="button" onClick={onRestart} className="btn-brutal btn-brutal-secondary">
-          上一步
+          {t('form.prev')}
         </button>
-        <span className="mono text-[10px] text-muted">带 * 为必填，提交前请确认仓库是公开的</span>
+        <span className="mono text-[10px] text-muted">{t('form.requiredNote')}</span>
       </div>
     </div>
   );
@@ -512,16 +534,17 @@ function SubmitForm({ confirmedUser, onRestart }: { confirmedUser: string; onRes
 /** 独立的提交页面：先引导 fork 并验证用户名，通过后再填表 */
 export function SubmitPage() {
   const navigate = useNavigate();
+  const { t } = useI18n();
   const [username, setUsername] = useState('');
   const [confirmedUser, setConfirmedUser] = useState<string | null>(null);
 
   useEffect(() => {
     setRouteMeta({
-      title: '提交项目 · CityU(HK) Hub',
-      description: '提交你的开源项目到 CityU(HK) Hub：先 fork 本站仓库并切到 feature 分支，验证后填写表单。',
+      title: t('submitPage.meta.title'),
+      description: t('submitPage.meta.description'),
       path: window.location.pathname,
     });
-  }, []);
+  }, [t]);
 
   return (
     <div className="relative z-10 flex min-h-screen flex-col">
@@ -533,23 +556,23 @@ export function SubmitPage() {
           onClick={() => navigate('/')}
           className="mono mb-4 inline-flex items-center gap-1.5 text-[11px] text-muted hover:text-ink"
         >
-          <ArrowLeft className="size-3.5" /> 返回首页
+          <ArrowLeft className="size-3.5" /> {t('submitPage.back')}
         </button>
 
         <div className="panel-brutal p-5 sm:p-6">
           <div className="flex items-center gap-2">
             <span className="size-3 shrink-0 bg-brand" />
-            <h2 className="pixel text-[10px] text-ink">我也要提交项目</h2>
+            <h2 className="pixel text-[10px] text-ink">{t('submitPage.heading')}</h2>
           </div>
 
           {/* 步骤指示器 */}
           <ol className="mono mt-3 flex items-center gap-2 text-[10px] text-muted">
             <li className={confirmedUser ? 'text-ink' : 'text-brand'}>
-              {confirmedUser ? '✓' : '1'} fork 验证
+              {confirmedUser ? '✓' : '1'} {t('submitPage.step.fork')}
             </li>
             <span className="h-[2px] w-6 bg-line" aria-hidden />
             <li className={confirmedUser ? 'text-brand' : 'text-smoke/50'}>
-              {confirmedUser ? '2' : ''} 填写表单
+              {confirmedUser ? '2' : ''} {t('submitPage.step.form')}
             </li>
           </ol>
 

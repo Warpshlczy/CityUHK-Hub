@@ -4,6 +4,7 @@ import { trackVisit } from './api/stats';
 import { PixelPet } from './components/PixelPet';
 import { TargetCursor } from './components/TargetCursor';
 import { WelcomeDialog } from './components/WelcomeDialog';
+import { I18nProvider } from './i18n';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
@@ -43,19 +44,22 @@ export default function App() {
   return (
     // 每个项目要有独立真实 URL 才利于爬虫分别收录；深链接刷新由 Vercel rewrite 兜底（见 vercel.json）
     <BrowserRouter>
-      <ScrollToTop />
-      <SiteAnalytics />
-      <LegacyHashRedirect />
-      <TargetCursor targetSelector="a, button, .cursor-target" />
-      <PixelPet />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/project/:id" element={<ProjectDetailPage />} />
-        <Route path="/submit" element={<SubmitPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-      {/* 放在路由之外：直接落在详情页分享链接时也要能弹出来 */}
-      <WelcomeDialog />
+      {/* Provider 用 useUrlState(?lang=)，必须在 Router 内层 */}
+      <I18nProvider>
+        <ScrollToTop />
+        <SiteAnalytics />
+        <LegacyHashRedirect />
+        <TargetCursor targetSelector="a, button, .cursor-target" />
+        <PixelPet />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/project/:id" element={<ProjectDetailPage />} />
+          <Route path="/submit" element={<SubmitPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        {/* 放在路由之外：直接落在详情页分享链接时也要能弹出来 */}
+        <WelcomeDialog />
+      </I18nProvider>
     </BrowserRouter>
   );
 }

@@ -7,6 +7,7 @@ import { createGithubClient, parseRepoUrl } from './lib/github.js';
 import { analyzeReadme, extractIntroduction, fillProjectContent, guessTagsFromReadme } from './lib/markdown.js';
 import { slugify } from './lib/slug.js';
 import { computeStarsGained7d, readStarHistory, starHistoryPath } from './lib/starHistory.js';
+import { createTranslator } from './lib/translate.js';
 import { loadConfig } from './config.js';
 import { parseFrontmatterDocument } from './lib/frontmatter.js';
 
@@ -148,10 +149,36 @@ async function buildProject(meta, content, fileName, github, useOffline, fileDat
     addedAt: resolveAddedAt(id),
     status: meta.status,
     readmeHtml: renderReadmeHtml(enrichedContent),
+    /** 仅供 buildIndex 生成多语正文用，写盘前会剔除 */
+    readmeMarkdown: enrichedContent,
   };
 }
 
-export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, useOffline = offline, githubClient } = {}) {
+const I18N_LANGS = ['en', 'zh-CN', 'zh-TW'];
+const I18N_KEYS = ['name', 'description', 'about', 'major'];
+
+/** 逐一对应 project 上的原名；zh-CN 由 translate 直接复制原文，不浪费配额 */
+async function buildI18n(translator, project) {
+  const i18n = {};
+  for (const lang of I18N_LANGS) {
+    i18n[lang] = {};
+    for (const key of I18N_KEYS) i18n[lang][key] = await translator.translate(project[key], lang);
+  }
+  return i18n;
+}
+
+/** 分类显示名映射：key 用原始分类名（canonical），空分类不进表 */
+async function buildCategoryLabels(translator, projects) {
+  const names = [...new Set(projects.map((project) => project.category).filter((name) => name && name.trim()))];
+  const labels = {};
+  for (const lang of I18N_LANGS) {
+    labels[lang] = {};
+    for (const name of names) labels[lang][name] = await translator.translate(name, lang);
+  }
+  return labels;
+}
+
+export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, useOffline = offline, githubClient, translateClient } = {}) {
   const entries = await fs.readdir(inputDir, { withFileTypes: true });
   const files = entries
     .filter((entry) => entry.isFile() && entry.name.endsWith('.md') && entry.name !== '_template.md')
@@ -168,6 +195,10 @@ export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, 
     }
     github = createGithubClient(config);
   }
+  // 离线构建（dev/CI）只读缓存不出网；TRANSLATION_OFFLINE=1 供测试强制禁网
+  const translator =
+    translateClient ??
+    (await createTranslator({ offline: useOffline || process.env.TRANSLATION_OFFLINE === '1' }));
   const projects = [];
   const ids = new Map();
   const repoUrls = new Map();
@@ -199,25 +230,41 @@ export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, 
     if (repoUrls.has(repoKey)) throw new Error(`${fileName}: repoUrl 与 ${repoUrls.get(repoKey)} 重复`);
     ids.set(project.id, fileName);
     repoUrls.set(repoKey, fileName);
+    // 三语内容：短字段 + 正文 HTML（zh-CN 用原文渲染，等于现有 readmeHtml）
+    project.i18n = await buildI18n(translator, project);
+    project.readmeHtmlByLang = {
+      en: renderReadmeHtml(await translator.translateMarkdown(project.readmeMarkdown, 'en')),
+      'zh-CN': project.readmeHtml,
+      'zh-TW': renderReadmeHtml(await translator.translateMarkdown(project.readmeMarkdown, 'zh-TW')),
+    };
     projects.push(project);
   }
 
   // status: hidden 的文档不参与展示，也不进任何聚合
   const visible = projects.filter((project) => project.status !== 'hidden');
   const aggregates = aggregateProjects(visible);
+  const categoryLabels = await buildCategoryLabels(translator, visible);
+  // i18n.category 直接复用 categoryLabels 的结果，不再单独打一次翻译接口
+  for (const project of visible) {
+    for (const lang of I18N_LANGS) {
+      project.i18n[lang].category = categoryLabels[lang][project.category] ?? project.category;
+    }
+  }
+  await translator.flush(); // 在线模式把新增译文写回缓存；离线模式无改动
 
   await fs.rm(outputPath, { recursive: true, force: true });
-  // 列表文件保持轻量，正文 HTML 只放在 projects/<id>.json
+  // 列表文件保持轻量：正文 HTML 与内部字段只放在 projects/<id>.json
   await writeJson(path.join(outputPath, 'projects.json'), {
     generatedAt: new Date().toISOString(),
     total: visible.length,
-    projects: visible.map(({ readmeHtml, status, ...project }) => project),
+    projects: visible.map(({ readmeHtml, readmeHtmlByLang, readmeMarkdown, status, ...project }) => project),
     tags: aggregates.tags,
     authors: aggregates.authors,
     categories: aggregates.categories,
+    categoryLabels,
   });
 
-  for (const { readmeHtml, status, ...project } of visible) {
+  for (const { readmeHtml, readmeMarkdown, status, ...project } of visible) {
     await writeJson(path.join(outputPath, 'projects', `${project.id}.json`), { ...project, readmeHtml });
   }
 

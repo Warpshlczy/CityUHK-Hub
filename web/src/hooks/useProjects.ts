@@ -1,7 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
 import { enrichProjectsWithGithub } from '../api/github';
-import { fetchProjectById, fetchProjects } from '../api/projects';
+import { DataLoadError, fetchProjectById, fetchProjects } from '../api/projects';
+import { useI18n, type TFunction } from '../i18n';
 import type { Project, ProjectsResponse } from '../types';
+
+/** 错误只存结构化信息，成句放在渲染期，切换语言时文案跟着变 */
+type LoadFailure = { status: number; url: string } | 'unknown' | 'missing-id' | null;
+
+function toFailure(err: unknown): LoadFailure {
+  return err instanceof DataLoadError ? { status: err.status, url: err.url } : 'unknown';
+}
+
+function failureMessage(failure: LoadFailure, t: TFunction): string | null {
+  if (failure === null) return null;
+  if (failure === 'unknown') return t('data.loadError');
+  if (failure === 'missing-id') return t('data.missingId');
+  return t('data.loadErrorWithStatus', { status: failure.status, url: failure.url });
+}
 
 interface ProjectsState {
   data: ProjectsResponse | null;
@@ -12,16 +27,17 @@ interface ProjectsState {
 
 /** 首页：列表 + 聚合 */
 export function useProjects(): ProjectsState {
+  const { t } = useI18n();
   const [data, setData] = useState<ProjectsResponse | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [failure, setFailure] = useState<LoadFailure>(null);
   const [nonce, setNonce] = useState(0);
 
   useEffect(() => {
     let alive = true;
     const controller = new AbortController();
     setLoading(true);
-    setError(null);
+    setFailure(null);
 
     const run = async () => {
       try {
@@ -37,7 +53,7 @@ export function useProjects(): ProjectsState {
         }
       } catch (err: unknown) {
         if (!alive) return;
-        setError(err instanceof Error ? err.message : '数据加载失败');
+        setFailure(toFailure(err));
         setLoading(false);
       }
     };
@@ -51,7 +67,7 @@ export function useProjects(): ProjectsState {
 
   const reload = useCallback(() => setNonce((n) => n + 1), []);
 
-  return { data, loading, error, reload };
+  return { data, loading, error: failureMessage(failure, t), reload };
 }
 
 interface ProjectState {
@@ -62,14 +78,15 @@ interface ProjectState {
 
 /** 详情页：单个项目（含 readmeHtml） */
 export function useProject(id: string | undefined): ProjectState {
+  const { t } = useI18n();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [failure, setFailure] = useState<LoadFailure>(null);
 
   useEffect(() => {
     if (!id) {
       setProject(null);
-      setError('缺少项目 id');
+      setFailure('missing-id');
       setLoading(false);
       return;
     }
@@ -77,7 +94,7 @@ export function useProject(id: string | undefined): ProjectState {
     let alive = true;
     const controller = new AbortController();
     setLoading(true);
-    setError(null);
+    setFailure(null);
 
     const run = async () => {
       try {
@@ -91,7 +108,7 @@ export function useProject(id: string | undefined): ProjectState {
       } catch (err: unknown) {
         if (!alive) return;
         setProject(null);
-        setError(err instanceof Error ? err.message : '数据加载失败');
+        setFailure(toFailure(err));
         setLoading(false);
       }
     };
@@ -103,5 +120,5 @@ export function useProject(id: string | undefined): ProjectState {
     };
   }, [id]);
 
-  return { project, loading, error };
+  return { project, loading, error: failureMessage(failure, t) };
 }

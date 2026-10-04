@@ -14,6 +14,7 @@ import { REPO_URL } from '../constants/repo';
 import { useProjects } from '../hooks/useProjects';
 import { useSearch } from '../hooks/useSearch';
 import { useUrlState } from '../hooks/useUrlState';
+import { categoryLabel, localizeProject, useI18n } from '../i18n';
 import type { AuthorItem, SortKey } from '../types';
 import { avatarUrl } from '../utils/avatar';
 import { formatDateTime } from '../utils/formatNumber';
@@ -21,11 +22,11 @@ import { computeHeat } from '../utils/heat';
 import { parseQuery } from '../utils/searchParser';
 import { setRouteMeta } from '../utils/seo';
 
-const SORT_OPTIONS: Array<{ value: SortKey; label: string }> = [
-  { value: 'heat', label: '热度最高' },
-  { value: 'updated', label: '最近更新' },
-  { value: 'stars', label: 'Star 最多' },
-  { value: 'name', label: '名称排序' },
+const SORT_OPTIONS: Array<{ value: SortKey; labelKey: string }> = [
+  { value: 'heat', labelKey: 'home.sort.heat' },
+  { value: 'updated', labelKey: 'home.sort.updated' },
+  { value: 'stars', labelKey: 'home.sort.stars' },
+  { value: 'name', labelKey: 'home.sort.name' },
 ];
 
 function toSortKey(value: string): SortKey {
@@ -34,6 +35,7 @@ function toSortKey(value: string): SortKey {
 
 export function HomePage() {
   const { data, loading, error, reload } = useProjects();
+  const { lang, t } = useI18n();
 
   const [query, setQuery, patchParams] = useUrlState('q');
   const [tagsParam, setTagsParam] = useUrlState('tags');
@@ -154,11 +156,11 @@ export function HomePage() {
   useEffect(() => {
     const total = data?.total ?? 0;
     setRouteMeta({
-      title: 'CityU(HK) Hub · 城大开源自助导航',
-      description: `香港城市大学（CityUHK）学生开源项目导航：已收录 ${total} 个项目，支持按作者、专业、标签、语言与分类检索，一键直达 GitHub 仓库。`,
+      title: t('home.meta.title'),
+      description: t('home.meta.description', { total }),
       path: '/',
     });
-  }, [data?.total]);
+  }, [data?.total, t, lang]);
 
   useEffect(() => {
     if (!drawerOpen) return;
@@ -178,6 +180,7 @@ export function HomePage() {
       activeCategory={category}
       selectedTags={selectedTags}
       activeAuthor={activeAuthor}
+      categoryLabels={data?.categoryLabels}
       onSelectCategory={selectCategory}
       onToggleTag={toggleTag}
       onSelectAuthor={selectAuthor}
@@ -185,12 +188,11 @@ export function HomePage() {
   );
 
   const marqueeText = [
-    'CITYUHK HUB // 城大开源自助导航',
-    `${data?.total ?? 0} PROJECTS`,
-    `${data?.authors.length ?? 0} CONTRIBUTORS`,
-    `${data?.categories.length ?? 0} CATEGORIES`,
-    'CityU(HK) Hub 正式上线，欢迎提交项目',
-    'CityU(HK) Hub is officially launched. Welcome to submit your projects.',
+    t('home.marquee.slogan'),
+    t('home.marquee.projects', { count: data?.total ?? 0 }),
+    t('home.marquee.contributors', { count: data?.authors.length ?? 0 }),
+    t('home.marquee.categories', { count: data?.categories.length ?? 0 }),
+    t('home.marquee.launch'),
   ].join('   ✦   ');
 
   return (
@@ -213,7 +215,7 @@ export function HomePage() {
         <div className="mx-auto max-w-7xl space-y-3 px-4 py-3 sm:px-6">
           <div className="edge-fade no-scrollbar flex gap-2 overflow-x-auto">
             <CategoryTab
-              label="ALL"
+              label={t('home.categoryAll')}
               count={data?.total ?? 0}
               active={category === ''}
               onClick={() => selectCategory('')}
@@ -221,7 +223,7 @@ export function HomePage() {
             {(data?.categories ?? []).map((item) => (
               <CategoryTab
                 key={item.name}
-                label={item.name}
+                label={categoryLabel(item.name, lang, data?.categoryLabels)}
                 count={item.count}
                 active={category === item.name}
                 onClick={() => selectCategory(item.name)}
@@ -235,6 +237,7 @@ export function HomePage() {
               selected={selectedTags}
               onToggle={toggleTag}
               counts={data?.tags ?? []}
+              max={60}
               size="sm"
               nowrap
             />
@@ -245,19 +248,19 @@ export function HomePage() {
       <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
         {/* 共享边框数据条 */}
         <div className="grid grid-cols-2 gap-[3px] border-[3px] border-line bg-line sm:grid-cols-5">
-          <StatCell label="PROJECTS" value={data?.total ?? 0} />
-          <StatCell label="CATEGORIES" value={data?.categories.length ?? 0} />
-          <StatCell label="TAGS" value={data?.tags.length ?? 0} />
-          <StatCell label="AUTHORS" value={data?.authors.length ?? 0} />
+          <StatCell label={t('home.stat.projects')} value={data?.total ?? 0} />
+          <StatCell label={t('home.stat.categories')} value={data?.categories.length ?? 0} />
+          <StatCell label={t('home.stat.tags')} value={data?.tags.length ?? 0} />
+          <StatCell label={t('home.stat.authors')} value={data?.authors.length ?? 0} />
           {/* 独立访客数：要配了 Upstash 才有值，拿不到时给 0 */}
-          <StatCell label="VISITS" value={stats?.uv ?? 0} />
+          <StatCell label={t('home.stat.visits')} value={stats?.uv ?? 0} />
         </div>
 
         {newest.length > 0 && (
           <section className="panel-brutal mt-6 p-4">
             <h2 className="pixel flex items-center gap-2 text-[9px] text-muted">
               <span className="size-3 shrink-0 bg-accent" />
-              本周新增 · {newest.length}
+              {t('home.newThisWeek', { count: newest.length })}
             </h2>
             <ul className="mt-3 flex flex-wrap gap-2">
               {newest.map((project) => (
@@ -266,7 +269,9 @@ export function HomePage() {
                     to={`/project/${project.id}`}
                     className="chip-brutal flex items-center gap-2 px-2.5 py-1.5"
                   >
-                    <span className="mono text-[11px] text-ink">{project.name}</span>
+                    <span className="mono text-[11px] text-ink">
+                      {localizeProject(project, lang, data?.categoryLabels).name}
+                    </span>
                     <span className="mono text-[10px] text-muted">@{project.author}</span>
                   </Link>
                 </li>
@@ -282,9 +287,9 @@ export function HomePage() {
 
           <section className="min-w-0 flex-1">
             <div className="mb-5 flex flex-wrap items-center gap-3 border-[3px] border-line bg-surface px-3 py-2">
-              <span className="pixel text-[9px] text-brand">RESULT</span>
+              <span className="pixel text-[9px] text-brand">{t('home.result.label')}</span>
               <span className="mono text-[13px] text-muted">
-                共 <span className="font-bold text-ink">{results.length}</span> 个项目
+                {t('home.result.count', { count: results.length })}
               </span>
 
               {hasFilter && (
@@ -293,12 +298,12 @@ export function HomePage() {
                   onClick={resetAll}
                   className="chip-brutal px-2 py-0.5 text-[11px]"
                 >
-                  清除筛选
+                  {t('home.clearFilters')}
                 </button>
               )}
 
               <label className="ml-auto flex items-center gap-2">
-                <span className="pixel text-[9px] text-muted">SORT</span>
+                <span className="pixel text-[9px] text-muted">{t('home.sort.label')}</span>
                 <select
                   value={sort}
                   onChange={(event) => setSortParam(event.target.value)}
@@ -306,7 +311,7 @@ export function HomePage() {
                 >
                   {SORT_OPTIONS.map((option) => (
                     <option key={option.value} value={option.value}>
-                      {option.label}
+                      {t(option.labelKey)}
                     </option>
                   ))}
                 </select>
@@ -320,15 +325,15 @@ export function HomePage() {
                 </span>
                 <p className="mono text-[13px] text-ink">{error}</p>
                 <button type="button" onClick={reload} className="btn-brutal btn-brutal-primary">
-                  重新加载
+                  {t('home.reload')}
                 </button>
               </div>
             ) : !loading && (data?.total ?? 0) === 0 ? (
               // 解析成功但一条数据都没有：repos/ 下还没有可用的提交
               <EmptyState
-                title="还没有项目数据"
-                description="repos/ 目录下没有可展示的项目文档。请按 repos/_template.md 的格式新增一份 Markdown，再重新构建。"
-                actionLabel="重新加载"
+                title={t('home.empty.title')}
+                description={t('home.empty.description')}
+                actionLabel={t('home.reload')}
                 onAction={reload}
               />
             ) : (
@@ -354,22 +359,24 @@ export function HomePage() {
             href={REPO_URL}
             target="_blank"
             rel="noreferrer noopener"
-            aria-label="本站 GitHub 仓库（欢迎 Star）"
-            title="本站 GitHub 仓库，欢迎 Star 支持"
+            aria-label={t('home.repo.aria')}
+            title={t('home.repo.title')}
             className="chip-brutal flex items-center gap-2 px-2.5 py-1"
           >
             <GitHubIcon className="size-3.5" />
             <span className="mono text-[11px]">Warpshlczy/CityUHK-Hub</span>
             <span className="pixel text-[8px] text-brand">★ STAR</span>
           </a>
-          <span className="mono text-[11px] text-muted">{data?.total ?? 0} PROJECTS</span>
           <span className="mono text-[11px] text-muted">
-            {data?.authors.length ?? 0} CONTRIBUTORS
+            {t('home.marquee.projects', { count: data?.total ?? 0 })}
           </span>
           <span className="mono text-[11px] text-muted">
-            GENERATED {data ? formatDateTime(data.generatedAt) : '—'}
+            {t('home.marquee.contributors', { count: data?.authors.length ?? 0 })}
           </span>
-          <span className="mono ml-auto text-[11px] text-muted">香港城市大学开源项目导航</span>
+          <span className="mono text-[11px] text-muted">
+            {t('home.generated', { time: data ? formatDateTime(data.generatedAt, lang) : '—' })}
+          </span>
+          <span className="mono ml-auto text-[11px] text-muted">{t('home.footer.tagline')}</span>
         </div>
       </footer>
 
@@ -382,11 +389,11 @@ export function HomePage() {
           />
           <div className="absolute inset-y-0 left-0 w-72 max-w-[82%] overflow-y-auto border-r-[3px] border-line bg-canvas p-4">
             <div className="mb-4 flex items-center justify-between">
-              <span className="pixel text-[9px] text-ink">FILTER</span>
+              <span className="pixel text-[9px] text-ink">{t('home.filter')}</span>
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                aria-label="关闭筛选面板"
+                aria-label={t('home.closeFilters')}
                 className="btn-brutal btn-brutal-secondary !p-0 size-9"
               >
                 <X className="size-4" />

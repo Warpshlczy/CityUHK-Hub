@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN" class="dark">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/jpeg" href="%BASE_URL%logo.png" />
@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="CityU(HK) Hub —— 香港城市大学全校开源项目导航站，支持按作者、标签、语言、分类快速检索。"
+      content="CityUHK Hub — a navigation site for open-source projects by City University of Hong Kong students. Filter by author, tag, language and category, then jump straight to GitHub."
     />
-    <title>CityU(HK) Hub · 城大开源自助导航</title>
+    <title>CityUHK Hub · CityU Open-Source Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +17,9 @@
       rel="stylesheet"
     />
     <script>
-      // 首屏前确定主题，避免闪烁：URL ?theme= > localStorage > 默认暗色
+      // 首屏前确定主题与语言，避免闪烁：
+      // theme: URL ?theme= > localStorage > 默认暗色
+      // lang:  URL ?lang= > localStorage > 默认英语
       (function () {
         try {
           var hashQuery = window.location.hash.indexOf('?') >= 0
@@ -26,6 +28,10 @@
           var params = new URLSearchParams(hashQuery || window.location.search);
           var theme = params.get('theme') || window.localStorage.getItem('cityu-hub-theme') || 'dark';
           document.documentElement.classList.toggle('dark', theme !== 'light');
+
+          var lang = params.get('lang') || window.localStorage.getItem('cityu-hub-lang') || 'en';
+          if (lang !== 'en' && lang !== 'zh-CN' && lang !== 'zh-TW') lang = 'en';
+          document.documentElement.lang = lang;
         } catch (error) {
           document.documentElement.classList.add('dark');
         }

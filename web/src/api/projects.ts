@@ -10,10 +10,23 @@ const DATA_BASE = `${import.meta.env.BASE_URL}data`;
 let listCache: ProjectsResponse | null = null;
 const detailCache = new Map<string, Project>();
 
+/** 只带上状态码与 URL，成句交给组件层按当前语言处理，数据层不依赖 i18n */
+export class DataLoadError extends Error {
+  readonly status: number;
+  readonly url: string;
+
+  constructor(status: number, url: string) {
+    super(`data ${status} ${url}`);
+    this.name = 'DataLoadError';
+    this.status = status;
+    this.url = url;
+  }
+}
+
 async function loadJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`数据加载失败（${res.status}）：${url}`);
+    throw new DataLoadError(res.status, url);
   }
   return (await res.json()) as T;
 }

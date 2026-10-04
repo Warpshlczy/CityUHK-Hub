@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'lucide-react';
+import { useI18n } from '../i18n';
+import { LanguageToggle } from './LanguageToggle';
 import { SubmitProject } from './SubmitProject';
 import { ThemeToggle } from './ThemeToggle';
 import { UsefulLinks } from './UsefulLinks';
@@ -13,6 +15,8 @@ interface HeaderProps {
 }
 
 export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
+  const { t } = useI18n();
+
   return (
     <header className="sticky top-0 z-40 border-b-[3px] border-line bg-canvas">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-3 gap-y-2.5 px-4 py-2.5 sm:gap-x-4 sm:gap-y-3 sm:px-6 sm:py-3">
@@ -21,7 +25,7 @@ export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
           <button
             type="button"
             onClick={onOpenSidebar}
-            aria-label="打开筛选面板"
+            aria-label={t('header.openFilters')}
             className="btn-brutal btn-brutal-secondary !p-0 size-11 lg:hidden!"
           >
             <Menu className="size-5" />
@@ -32,7 +36,7 @@ export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
           {/* 原图 882×557，靠 w-auto 保持比例不裁切 */}
           <img
             src={cityuLogo}
-            alt="CityU(HK) Hub 标志"
+            alt={t('header.logoAlt')}
             width={120}
             height={72}
             className="glow-pulse h-11 w-auto sm:h-18"
@@ -42,7 +46,7 @@ export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
               CITYUHK&nbsp;HUB
             </span>
             <span className="mono text-[11px] font-bold text-muted sm:text-[14px]">
-              城大开源自助导航
+              {t('header.tagline')}
             </span>
           </span>
         </Link>
@@ -61,6 +65,7 @@ export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
             <SubmitProject />
             <UsefulLinks />
             <ThemeToggle />
+            <LanguageToggle />
           </div>
         </div>
       </div>

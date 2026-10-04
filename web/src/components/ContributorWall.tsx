@@ -1,17 +1,19 @@
+import { useI18n } from '../i18n';
 import type { AuthorItem } from '../types';
 
 /** 站内贡献者墙，点头像直达作者 GitHub 主页。 */
 export function ContributorWall({ authors }: { authors: AuthorItem[] }) {
+  const { t } = useI18n();
   if (authors.length === 0) return null;
 
   return (
     <section className="panel-brutal p-5">
       <h2 className="pixel flex items-center gap-2 text-[9px] text-muted">
         <span className="size-3 shrink-0 bg-brand" />
-        贡献者 · {authors.length}
+        {t('contributors.title', { count: authors.length })}
       </h2>
       <p className="mono mt-2 text-[11px] text-muted">
-        这些同学的仓库已被收录，点击头像去他们的 GitHub 主页看看。
+        {t('contributors.description')}
       </p>
 
       <ul className="mt-4 flex flex-wrap gap-2.5">
@@ -23,7 +25,7 @@ export function ContributorWall({ authors }: { authors: AuthorItem[] }) {
                 href={`https://github.com/${encodeURIComponent(githubUser)}`}
                 target="_blank"
                 rel="noreferrer noopener"
-                title={`@${githubUser} 的 GitHub 主页`}
+                title={t('contributors.profile', { name: githubUser })}
                 className="flex items-center gap-2 border-2 border-line px-2 py-1.5 transition-colors hover:border-brand hover:text-brand"
               >
                 {author.avatar ? (

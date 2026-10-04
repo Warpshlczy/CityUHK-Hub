@@ -7,9 +7,9 @@
 
 <br />
 
-<img src="web/public/cityu.jpg" alt="CityU(HK) Hub logo" width="280" />
+<img src="web/public/cityu.jpg" alt="CityUHK Hub logo" width="280" />
 
-# CityU(HK) Hub
+# CityUHK Hub
 
 **香港城市大學學生項目和開源自助檢索平台 · 香港城大开源自助导航 · Discover what CityUHK students are building**
 
@@ -20,7 +20,7 @@
 <div align="center">
 
 <!-- screenshot:start -->
-<img src="web/public/screenshot.png" alt="CityU(HK) Hub 首页截图 / homepage screenshot" width="920" />
+<img src="web/public/screenshot.png" alt="CityUHK Hub 首页截图 / homepage screenshot" width="920" />
 
 <sub>截图时间 / 截圖時間 / captured at: 2026-10-04 14:51 (UTC+8) · 截图者 / 截圖者 / by: @github-actions[bot]</sub>
 
@@ -50,7 +50,7 @@
 
 ### 這是什麼
 
-CityU(HK) Hub 是一個面向**香港城市大學（CityUHK）學生開源項目**的展示與檢索網站。同學們把自己寫的小工具、課程項目、研究程式碼提交進來，其他人在同一個頁面就能按**分類 / 標籤 / 語言 / 作者**篩選，搜尋並直接跳到 GitHub 儲存庫。
+CityUHK Hub 是一個面向**香港城市大學（CityUHK）學生開源項目**的展示與檢索網站。同學們把自己寫的小工具、課程項目、研究程式碼提交進來，其他人在同一個頁面就能按**分類 / 標籤 / 語言 / 作者**篩選，搜尋並直接跳到 GitHub 儲存庫。
 
 網站解決的三個問題：
 
@@ -181,7 +181,7 @@ npm test             # 解析器與 /api 函式測試
 
 ### 成為貢獻者
 
-**非常歡迎你參與 CityU(HK) Hub！** 無論你是想把自己的項目放上來、修一個前端小 bug、補一段文件，還是只提一個想法，都是這個項目需要的貢獻。
+**非常歡迎你參與 CityUHK Hub！** 無論你是想把自己的項目放上來、修一個前端小 bug、補一段文件，還是只提一個想法，都是這個項目需要的貢獻。
 
 #### 方式一：提交你的項目（最主要）
 
@@ -223,11 +223,11 @@ npm run build   # 型別檢查 + 打包必須通過
 
 ### 授權條款
 
-本項目基於 [MIT License](LICENSE) 開源，版權歸 **CityU(HK) Hub contributors** 所有。
+本項目基於 [MIT License](LICENSE) 開源，版權歸 **CityUHK Hub contributors** 所有。
 
 你可以自由使用、複製、修改、合併、發佈、分發、再授權及/或銷售本軟體的副本，只需在副本或實質性部分中保留上述版權聲明與授權聲明。本軟體按「原樣」提供，不附帶任何形式的明示或默示擔保。
 
-這意味著：**你提交到 `repos/` 的項目條目仍然歸你所有**，MIT 只覆蓋 CityU(HK) Hub 自身的網站與解析器程式碼。
+這意味著：**你提交到 `repos/` 的項目條目仍然歸你所有**，MIT 只覆蓋 CityUHK Hub 自身的網站與解析器程式碼。
 
 ### 聯絡我們
 
@@ -241,7 +241,7 @@ npm run build   # 型別檢查 + 打包必須通過
 
 ### 这是什么
 
-CityU(HK) Hub 是一个面向**香港城市大学（CityUHK）学生开源项目**的展示与检索网站。同学们把自己写的小工具、课程项目、科研代码提交进来，其他人在一个页面里就能按**分类 / 标签 / 语言 / 作者**筛选，搜索并直接跳到 GitHub 仓库。
+CityUHK Hub 是一个面向**香港城市大学（CityUHK）学生开源项目**的展示与检索网站。同学们把自己写的小工具、课程项目、科研代码提交进来，其他人在一个页面里就能按**分类 / 标签 / 语言 / 作者**筛选，搜索并直接跳到 GitHub 仓库。
 
 我们建站的初衷：
 
@@ -371,7 +371,7 @@ npm test             # 解析器与 /api 函数测试
 
 ### 成为贡献者
 
-**非常欢迎你参与 CityU(HK) Hub！** 无论你是想把自己的项目放上来、修一个前端小 bug、补一段文档，还是只提一个想法，都是这个项目需要的贡献。
+**非常欢迎你参与 CityUHK Hub！** 无论你是想把自己的项目放上来、修一个前端小 bug、补一段文档，还是只提一个想法，都是这个项目需要的贡献。
 
 #### 方式一：提交你的项目（最主要）
 
@@ -413,11 +413,11 @@ npm run build   # 类型检查 + 打包必须通过
 
 ### 许可证
 
-本项目基于 [MIT License](LICENSE) 开源，版权归 **CityU(HK) Hub contributors** 所有。
+本项目基于 [MIT License](LICENSE) 开源，版权归 **CityUHK Hub contributors** 所有。
 
 你可以自由使用、复制、修改、合并、发布、分发、再授权及/或销售本软件的副本，只需在副本或实质性部分中保留上述版权声明与许可声明。本软件按「原样」提供，不附带任何形式的明示或默示担保。
 
-这意味着：**你提交到 `repos/` 的项目条目仍然归你所有**，MIT 只覆盖 CityU(HK) Hub 自身的站点与解析器代码。
+这意味着：**你提交到 `repos/` 的项目条目仍然归你所有**，MIT 只覆盖 CityUHK Hub 自身的站点与解析器代码。
 
 ### 联系我们
 
@@ -431,7 +431,7 @@ npm run build   # 类型检查 + 打包必须通过
 
 ### What is this
 
-CityU(HK) Hub is a showcase and search site for **open-source projects built by students of City University of Hong Kong (CityUHK)**. Students submit their tools, course projects and research code; everyone else can filter by **category / tag / language / author**, search, and jump straight to the GitHub repository from a single page.
+CityUHK Hub is a showcase and search site for **open-source projects built by students of City University of Hong Kong (CityUHK)**. Students submit their tools, course projects and research code; everyone else can filter by **category / tag / language / author**, search, and jump straight to the GitHub repository from a single page.
 
 The three problems it solves:
 
@@ -562,7 +562,7 @@ site change PR ────────► dev ─────┘
 
 ### Become a contributor
 
-**You are very welcome to contribute to CityU(HK) Hub!** Adding your own project, fixing a small front-end bug, improving docs or just sharing an idea — all of it moves this project forward.
+**You are very welcome to contribute to CityUHK Hub!** Adding your own project, fixing a small front-end bug, improving docs or just sharing an idea — all of it moves this project forward.
 
 #### Option 1: Submit your project (the main path)
 
@@ -604,11 +604,11 @@ Should anyone fail to follow the open-source rules and contracts recognised acro
 
 ### License
 
-Released under the [MIT License](LICENSE), copyright © **CityU(HK) Hub contributors**.
+Released under the [MIT License](LICENSE), copyright © **CityUHK Hub contributors**.
 
 You are free to use, copy, modify, merge, publish, distribute, sublicense and/or sell copies of the software, as long as the copyright and permission notices are kept in all copies or substantial portions. The software is provided "as is", without warranty of any kind, express or implied.
 
-In practice: **the project entries you submit under `repos/` remain yours** — MIT covers the CityU(HK) Hub site and parser code only.
+In practice: **the project entries you submit under `repos/` remain yours** — MIT covers the CityUHK Hub site and parser code only.
 
 ### Contact
 

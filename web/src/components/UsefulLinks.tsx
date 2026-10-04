@@ -1,37 +1,27 @@
 import { useEffect, useState } from 'react';
 import { ExternalLink, Link2, X } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 interface UsefulLink {
-  name: string;
+  nameKey: string;
   url: string;
-  description: string;
+  descKey: string;
 }
 
 const USEFUL_LINKS: UsefulLink[] = [
+  { nameKey: 'links.aims.name', url: 'https://banweb.cityu.edu.hk/', descKey: 'links.aims.desc' },
+  { nameKey: 'links.canvas.name', url: 'https://canvas.cityu.edu.hk/', descKey: 'links.canvas.desc' },
+  { nameKey: 'links.website.name', url: 'https://www.cityu.edu.hk/', descKey: 'links.website.desc' },
   {
-    name: 'CityUHK AIMS',
-    url: 'https://banweb.cityu.edu.hk/',
-    description: '选课、成绩与学籍系统',
-  },
-  {
-    name: 'CityUHK Canvas',
-    url: 'https://canvas.cityu.edu.hk/',
-    description: '课程资料、作业与测验',
-  },
-  {
-    name: 'CityUHK 官网',
-    url: 'https://www.cityu.edu.hk/',
-    description: '香港城市大学官方网站',
-  },
-  {
-    name: 'CityUHK Portal',
+    nameKey: 'links.portal.name',
     url: 'https://www.cityu.edu.hk/portal/dashboard',
-    description: '校内服务与设施入口',
+    descKey: 'links.portal.desc',
   },
 ];
 
 /** 顶栏按钮 + 右侧抽屉：城大常用站点导航 */
 export function UsefulLinks() {
+  const { t } = useI18n();
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
 
@@ -56,7 +46,7 @@ export function UsefulLinks() {
           onClick={() => setOpen(true)}
           onFocus={() => setHovered(true)}
           onBlur={() => setHovered(false)}
-          aria-label="CityUHK Useful Links"
+          aria-label={t('links.button')}
           aria-expanded={open}
           className="chip-brutal flex h-11 items-center gap-2 px-3 text-[9px]"
         >
@@ -70,7 +60,7 @@ export function UsefulLinks() {
             hovered ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          CityUHK Useful Links
+          {t('links.subtitle')}
         </span>
       </div>
 
@@ -86,14 +76,14 @@ export function UsefulLinks() {
               <div>
                 <h2 className="pixel flex items-center gap-2 text-[10px] text-ink">
                   <span className="size-3 shrink-0 bg-brand" />
-                  USEFUL LINKS
+                  {t('links.heading')}
                 </h2>
-                <p className="mono mt-2 text-[11px] text-muted">CityUHK Useful Links</p>
+                <p className="mono mt-2 text-[11px] text-muted">{t('links.subtitle')}</p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="关闭链接面板"
+                aria-label={t('links.close')}
                 className="btn-brutal btn-brutal-secondary !p-0 size-9"
               >
                 <X className="size-4" />
@@ -102,7 +92,7 @@ export function UsefulLinks() {
 
             <ul className="mt-5 space-y-2">
               {USEFUL_LINKS.map((link) => (
-                <li key={link.name}>
+                <li key={link.nameKey}>
                   <a
                     href={link.url}
                     target="_blank"
@@ -110,9 +100,9 @@ export function UsefulLinks() {
                     className="flex w-full items-center justify-between gap-3 border-2 border-line bg-surface px-3 py-2.5 transition-colors hover:border-brand hover:text-brand hover:shadow-[0_0_16px_var(--glow-brand)]"
                   >
                     <span className="flex min-w-0 flex-col gap-1">
-                      <span className="pixel text-[10px] text-ink">{link.name}</span>
+                      <span className="pixel text-[10px] text-ink">{t(link.nameKey)}</span>
                       <span className="mono truncate text-[11px] text-muted">
-                        {link.description}
+                        {t(link.descKey)}
                       </span>
                     </span>
                     <ExternalLink className="size-3.5 shrink-0 text-muted" />
