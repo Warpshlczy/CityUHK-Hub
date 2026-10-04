@@ -67,7 +67,7 @@ export const ProjectCard = memo(function ProjectCard({
                 : '';
             const meta = [
               realName,
-              project.major,
+              text.major,
               project.enrollmentYear ? t('card.yearLevel', { year: project.enrollmentYear }) : '',
             ].filter(Boolean);
             if (meta.length === 0) return null;
@@ -88,7 +88,7 @@ export const ProjectCard = memo(function ProjectCard({
         </span>
       </div>
 
-      <h3 className="mt-3 text-lg font-black tracking-tight text-ink transition-colors group-hover:text-brand">
+      <h3 className="mt-3 line-clamp-3 text-lg font-black tracking-tight text-ink transition-colors group-hover:text-brand">
         <Link to={detailUrl} onClick={(event) => event.stopPropagation()} className="focus-visible:outline-none">
           {text.name}
         </Link>
