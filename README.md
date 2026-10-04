@@ -22,7 +22,7 @@
 <!-- screenshot:start -->
 <img src="web/public/screenshot.png" alt="CityUHK Hub 首页截图 / homepage screenshot" width="920" />
 
-<sub>截图时间 / 截圖時間 / captured at: 2026-10-04 20:30 (UTC+8) · 截图者 / 截圖者 / by: @github-actions[bot]</sub>
+<sub>截图时间 / 截圖時間 / captured at: 2026-10-04 20:48 (UTC+8) · 截图者 / 截圖者 / by: @github-actions[bot]</sub>
 
 **站点一览 · Homepage at a glance**
 <!-- screenshot:end -->
