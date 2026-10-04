@@ -100,7 +100,7 @@ export function categoryLabel(
   lang: Lang,
   labels?: CategoryLabels,
 ): string {
-  return labels?.[name]?.[lang] ?? name;
+  return labels?.[lang]?.[name] ?? name;
 }
 
 /** 项目条目按当前语言摊平后的文本 */

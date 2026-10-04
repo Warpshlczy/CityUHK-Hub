@@ -21,8 +21,8 @@ export type LocalizedTextByLang = Record<Lang, LocalizedText>;
 /** 详情页 README：三份渲染好的 HTML */
 export type ReadmeHtmlByLang = Record<Lang, string>;
 
-/** 分类名是中文自由文本，用 canonical 原文做 key，映射到三语显示名 */
-export type CategoryLabels = Record<string, Record<Lang, string>>;
+/** 分类名是中文自由文本；按语言分组，再以 canonical 原文为 key 映射到该语言的显示名 */
+export type CategoryLabels = Record<Lang, Record<string, string>>;
 
 export interface Project {
   id: string;
