@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-04T07:41:11.896Z",
-  "total": 13,
+  "generatedAt": "2026-10-04T07:45:01.589Z",
+  "total": 14,
   "projects": [
     {
       "id": "yongzeyang-cscse-certification-review-cityu-ec-to-cs",
@@ -614,6 +614,61 @@
       }
     },
     {
+      "id": "avalonc-mscbis",
+      "name": "BIS Navigator（城大 MScBIS 学习与选课指南）",
+      "author": "DavidYang0429",
+      "authorName": "杨欣睿",
+      "major": "BIS",
+      "enrollmentYear": 2026,
+      "authorAvatar": "",
+      "repo": "AvalonC/MScBIS",
+      "about": "",
+      "description": "面向香港城市大学 MSc Business Information Systems 学生的中文指南，汇集 MIS/FIT 专业方向、课程资料、选课经验、校园系统和学习资源，由学生与社区共同维护。",
+      "tags": [
+        "mscbis",
+        "cityuhk",
+        "course-guide",
+        "study-resources",
+        "vuepress",
+        "vue"
+      ],
+      "category": "学习辅助",
+      "githubUrl": "https://github.com/AvalonC/MScBIS",
+      "demoUrl": "https://avalonc.github.io/MScBIS/",
+      "hasRelease": false,
+      "stars": 0,
+      "starsGained7d": null,
+      "forks": 0,
+      "language": "",
+      "license": "",
+      "createdAt": "2026-10-04",
+      "updatedAt": "2026-10-04",
+      "addedAt": "2026-10-04",
+      "i18n": {
+        "en": {
+          "name": "BIS Navigator (Cityu MScBIS Learning and Course Selection Guide)",
+          "description": "A Chinese guide for MSc Business Information Systems students of City University of Hong Kong, gathering MIS/FIT professional directions, course materials, course selection experiences, campus systems and learning resources, jointly maintained by students and the community.",
+          "about": "",
+          "major": "BIS",
+          "category": "Learning assistance"
+        },
+        "zh-CN": {
+          "name": "BIS Navigator（城大 MScBIS 学习与选课指南）",
+          "description": "面向香港城市大学 MSc Business Information Systems 学生的中文指南，汇集 MIS/FIT 专业方向、课程资料、选课经验、校园系统和学习资源，由学生与社区共同维护。",
+          "about": "",
+          "major": "BIS",
+          "category": "学习辅助"
+        },
+        "zh-TW": {
+          "name": "BIS Navigator（城大MScBIS 學習與選課指南）",
+          "description": "香港城市大學MSc Business Information Systems 學生的中文指南，匯集MIS/FIT 專業方向、課程資料、選課經驗、校園系統和學習資源，由學生與社區共同維護。",
+          "about": "",
+          "major": "BIS",
+          "category": "學習輔助"
+        }
+      }
+    },
+    {
       "id": "quentin040507-multi-llm-router",
       "name": "三模型路由系统",
       "author": "Quentin040507",
@@ -736,6 +791,10 @@
       "count": 4
     },
     {
+      "name": "cityuhk",
+      "count": 3
+    },
+    {
       "name": "llm",
       "count": 3
     },
@@ -757,10 +816,6 @@
     },
     {
       "name": "canvas",
-      "count": 2
-    },
-    {
-      "name": "cityuhk",
       "count": 2
     },
     {
@@ -848,6 +903,10 @@
       "count": 1
     },
     {
+      "name": "course-guide",
+      "count": 1
+    },
+    {
       "name": "cs5489",
       "count": 1
     },
@@ -928,6 +987,10 @@
       "count": 1
     },
     {
+      "name": "mscbis",
+      "count": 1
+    },
+    {
       "name": "obsidian",
       "count": 1
     },
@@ -976,6 +1039,10 @@
       "count": 1
     },
     {
+      "name": "study-resources",
+      "count": 1
+    },
+    {
       "name": "study-tools",
       "count": 1
     },
@@ -994,6 +1061,14 @@
     {
       "name": "ui-redesign",
       "count": 1
+    },
+    {
+      "name": "vue",
+      "count": 1
+    },
+    {
+      "name": "vuepress",
+      "count": 1
     }
   ],
   "authors": [
@@ -1007,6 +1082,10 @@
     },
     {
       "name": "CHANG Xuben",
+      "count": 1
+    },
+    {
+      "name": "DavidYang0429",
       "count": 1
     },
     {
@@ -1049,7 +1128,7 @@
   "categories": [
     {
       "name": "学习辅助",
-      "count": 10
+      "count": 11
     },
     {
       "name": "科研工具",

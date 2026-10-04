@@ -65,6 +65,10 @@
   "1f34dd7d2fe9837158aae6f8100f42e9afa4a04c": {
     "zh-TW": "應用社會科學"
   },
+  "1f458b765da35c8544b480f0fa0654a873ad6d8f": {
+    "en": "Schedule planning and instructions for using the CityU Schedule Planner.",
+    "zh-TW": "課表規劃和CityU Schedule Planner 使用說明。"
+  },
   "219be7e955999cca6a9ba9d230239506c48bc76b": {
     "zh-TW": "涵蓋BSC CS課程中的幾乎所有課程，分為主要核心課程、主要選修課程、大學要求課程和普通教育課程"
   },
@@ -92,6 +96,10 @@
     "en": ": Cross-course sorted by urgency, red-label reminder not submitted",
     "zh-TW": "：跨課程依緊急度排序，未提交紅標提醒"
   },
+  "2dfab3bc58002c4fe505b8dc8c96756726fc32f2": {
+    "en": "Common learning resources, as well as course supplements and community discussions based on GitHub Discussions.",
+    "zh-TW": "常用學習資源，以及基於GitHub Discussions 的課程補充與社群討論。"
+  },
   "36531f6ae562a7faf5511257079be711fc439381": {
     "en": "Project Background and Positioning\n\nThere are obvious shortcomings in the ability of a single large model: some are good at code and mathematical reasoning, but writing Chinese copywriting is rigid; some Chinese writing is fluent, but they are prone to errors in logic and calculations.In daily use, users often have to judge for themselves which model to ask this question, switch back and forth between different platforms, and cannot directly compare or synthesize the answers of multiple models.This is what this project is trying to solve: do a \"multi-model collaboration\" routing and orchestration prototype, use one portal to use the advantages of multiple models at the same time -",
     "zh-TW": "專案背景與定位\n\n單一大模型有明顯的能力短板：有的擅長程式碼和數學推理，但寫中文文案偏生硬；有的中文寫作流暢，卻容易在邏輯、計算上出錯。在日常使用中，使用者往往要自己判斷「這個問題該問哪個模型」，在不同平台之間來回切換，還無法直接對比或綜合多個模型的回答。這個專案想解決的就是這件事：做一個「多模型協作」的路由與編排原型，用一個入口同時用到多個模型的長處——"
@@ -108,7 +116,8 @@
     "zh-TW": "：5 套期中試題（含答案）和2 套期末試題（只有題目）"
   },
   "3d3ec58fd0c258a9b2a32ff958ab51f26485b876": {
-    "en": "10 Tutorials"
+    "en": "10 Tutorials",
+    "zh-TW": "10 次Tutorial"
   },
   "3ddf0652ddd49fcebf5ec25d8849059790f0c04d": {
     "en": "Key Note",
@@ -163,6 +172,10 @@
     "en": "Each review retains the link of the original post for easy review of the original text",
     "zh-TW": "每條評價保留原帖鏈接，方便回看原文"
   },
+  "53bfca256adebe3d8ada3a5ac004264d198af837": {
+    "en": "Share the index of elective and cross-disciplinary courses, retain the classification of history courses and the description of applicable academic years.",
+    "zh-TW": "共享選修與跨分流課程索引，保留歷史課程歸類和適用學年說明。"
+  },
   "560165a6d758681cb4777b547502a1b52994be28": {
     "en": "Permissions",
     "zh-TW": "權限"
@@ -198,6 +211,10 @@
   "5ea7b46abc89e5d4d1bfc25f378bbc231192f118": {
     "en": "Intensive Exam Preparation: Question Bank Selection, Answer Scrambling, Error Notebook, and Rolling Review Plan",
     "zh-TW": "備考衝刺：題庫抽題、答案打亂、錯誤題本、滾動複習計劃"
+  },
+  "5edea30846bce0241086ad198c7c10562db67ed8": {
+    "en": "Introduction to MIS and FIT professional directions, as well as the pool of required and elective courses for the 2026/27 training program.",
+    "zh-TW": "MIS 與FIT 專業方向介紹，以及2026/27 培養方案必修與選修課程池。"
   },
   "5eee5bfaa505c1c334974be8f43f89cfa5dd6171": {
     "zh-TW": "CityU-CS"
@@ -296,6 +313,10 @@
     "en": "Bilingual comparison",
     "zh-TW": "雙語對照"
   },
+  "7f841cf7ac3287d03fcf7594f9cb731afa3c6eb6": {
+    "en": "BIS Navigator is a Chinese Information and experience navigation for students of the MSc Business Information Systems program at City University of Hong Kong. It helps freshmen and current students understand professional directions, consult course materials, plan course selection, and find common campus and learning resources.\n\nThe project was created by Wang Guanzhang (Steve) and jointly built by students and the community. In the 2026/27 academic year, DavidYang0429 (Yang Xinrui) was responsible for the verification of course materials and daily maintenance. This site is built with Markdown and VuePress. Online reading is provided through GitHub Pages. Students are also welcome to supplement course experiences, feedback outdated information and invalid links.\n\nThis website is an unofficial guide maintained by students and the community and does not represent the official position of the school. The course pool of the training program does not equal the actual courses offered in the current period. The course offerings, teachers, quotas, assessments and school policies should be subject to the official information of the current period. The evaluations from previous students are for reference only.",
+    "zh-TW": "BIS Navigator 是香港城市大學MSc Business Information Systems 學生的中文資訊與經驗導航，幫助新生和在學同學了解專業方向、查閱課程資料、規劃選課並找到常用校園與學習資源。計畫由汪冠彰（Steve）創作並由學生與社區共同建設，2026/27 學年由DavidYang0429（楊欣睿）負責課程資料核驗與日常維護。本站採用Markdown 與VuePress 構建，透過GitHub Pages 提供線上閱讀，也歡迎同學補充課程經驗、回饋過期資訊和失效連結。本站為學生與社區維護的非官方指南，不代表學校官方立場。培養方案課程池不等於當期實際開課，課程開設、教師、名額、考核與學校政策請以當期官方資訊為準；歷屆學生評鑑僅供經驗參考。"
+  },
   "84d1979eea2e73a32e2915e511919071f36dc3e8": {
     "en": "Intelligent routing: automatically determine the problem area, choose the best model, fail to automatically demote",
     "zh-TW": "智慧路由：自動判斷問題領域，選最擅長模型，失敗自動降級"
@@ -325,7 +346,8 @@
     "zh-TW": "香港城市大學BSc CS 課程筆記與專案摘要。為未來的學生提供全面的資源，包括課程筆記、複習總結、練習問題和專案範例，幫助他們更好地理解課程內容並為考試做好準備。作者專業GPA 4.17/4.3（年級排名1/190），希望透過分享自己的學習經驗和資源，幫助更多的同學取得優異成績。"
   },
   "89a52576b773d33d9cc23d26403cc96749e728a0": {
-    "en": "AI tools"
+    "en": "AI tools",
+    "zh-TW": "AI 工具"
   },
   "8a9ca26ef54e027134417a186abf687faa5faf6a": {
     "en": ": Compare the courses taken with the computer science and technology graduate training program of Nanjing University, China University of Science and Technology, and Chinese Academy of Sciences University, and attach the PDF of the training program",
@@ -440,6 +462,10 @@
   "ad5d20c229010b5be00471f60d21c1b36e546a4e": {
     "en": "All course data is stored on the user's own machine without going through any third party.",
     "zh-TW": "所有課程資料都存在使用者自己的機器上，不經過任何第三方。"
+  },
+  "ad825e41129c6150e6bd39d4e53ed7ff44ddfe66": {
+    "en": "Course materials, evaluations of previous courses, learning experiences and course selection processes.",
+    "zh-TW": "課程資料、歷屆課程評鑑、學習經驗與選課流程。"
   },
   "ada79aeefef98229764a5eca2e6b0284c9a461c6": {
     "en": "Provide detailed notes, review summaries, practice exercises and project examples for each course",
@@ -560,6 +586,14 @@
     "en": "Search for the ordering entrance by restaurant or window. Supports search, category filtering, collection and custom sorting within the browser.",
     "zh-TW": "依餐廳或視窗尋找點餐入口；支援搜尋、分類篩選、收藏和瀏覽器內自訂排序。"
   },
+  "dd3559c0cbe1453bf6c99942bc76cc1cc956ab26": {
+    "en": "BIS Navigator (Cityu MScBIS Learning and Course Selection Guide)",
+    "zh-TW": "BIS Navigator（城大MScBIS 學習與選課指南）"
+  },
+  "e249712beaadbd68fb63a498fede41f02a945163": {
+    "en": "A Chinese guide for MSc Business Information Systems students of City University of Hong Kong, gathering MIS/FIT professional directions, course materials, course selection experiences, campus systems and learning resources, jointly maintained by students and the community.",
+    "zh-TW": "香港城市大學MSc Business Information Systems 學生的中文指南，匯集MIS/FIT 專業方向、課程資料、選課經驗、校園系統和學習資源，由學生與社區共同維護。"
+  },
   "e3b2ae7b5de3d00bd9c71b726a16401f01cdc95a": {
     "en": ": 23 Fall's assessment composition (Tutorial 10%, two Assignment 10%, group project 30%, interim 10%, end of period 30%), team project and end of period must get more than 30% to pass",
     "zh-TW": "：23 Fall 的考核組成（Tutorial 10%、兩次Assignment 各10%、小組專案30%、期中10%、期末30%），小組專案和期末都要拿到30% 以上才能通過"
@@ -590,6 +624,10 @@
   "ebd8d0bc4f8b6d1dd6955150331846a2d01a761e": {
     "en": "CSRankings includes mentors based on top computer science conferences, so the data for visual arts, NLP, machine learning, systems, and security is relatively comprehensive. However, the data for biochemistry, environment, materials science, and humanities and social sciences are not available for the time being",
     "zh-TW": "：CSRankings 依電腦頂會收錄導師，所以視覺、NLP、機器學習、系統、安全這些方向資料比較全，生化環材和人文社科暫時沒有"
+  },
+  "ec5ae2928bc2d6ad3a659e2355020dd22b67a7c0": {
+    "en": "Canvas, CityU Portal, and on-campus information technology service guides.",
+    "zh-TW": "Canvas、CityU Portal 與校內資訊科技服務指南。"
   },
   "ec90d5b66640c69ffcd1fc4710d243ef03dc64ee": {
     "en": "How can we get large models to help draft course comparisons, polish personal statements and emails, and at the same time remind us that manual verification is necessary",
@@ -642,6 +680,9 @@
   "f9f88476949c165ac37d92f96c7b77385247227e": {
     "en": "Fill in the OpenAI-compatible endpoint (local Ollama, or cloud services such as Bailian, DeepSeek, and Zhipu). If not filled in, it will return to RapidFuzz offline keyword matching",
     "zh-TW": "：填入OpenAI 相容端點即可（本地Ollama，或百煉、DeepSeek、智譜這些雲端服務），不填就退回RapidFuzz 離線關鍵字匹配"
+  },
+  "fa71037e72741c947ad2c5595b03b577b1ef3a22": {
+    "zh-TW": "BIS"
   },
   "fbbf3e0b5962681a459c986a46e71776ce8e4a92": {
     "zh-TW": "CityU-CS-Msc-Notes"
