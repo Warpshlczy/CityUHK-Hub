@@ -101,6 +101,48 @@ test('buildIndex 把项目 Markdown 构建成前端直接可读的静态 JSON', 
   }
 });
 
+test('buildIndex 按 front matter 的 language 决定源语言槽位', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'cityu-hub-lang-'));
+  const inputDir = path.join(root, 'repos');
+  const outputDir = path.join(root, 'output');
+  await fs.mkdir(inputDir);
+  // 英文母语仓库：en 槽位应是原文，另两语在离线无缓存时回退原文
+  await fs.writeFile(
+    path.join(inputDir, 'english.md'),
+    [
+      '---',
+      'id: english-project',
+      'title: English Project',
+      'author: demo-owner',
+      'authorName: Demo Owner',
+      'major: Computer Science',
+      'enrollmentYear: 2024',
+      'repoUrl: https://github.com/demo-owner/english-project',
+      'category: web',
+      'language: en',
+      '---',
+      '',
+      '# English Project',
+      '',
+      'A short introduction written in English for the demo project.',
+    ].join('\n'),
+    'utf8',
+  );
+
+  try {
+    const result = await buildIndex({ inputDir, outputPath: outputDir, useOffline: true });
+    const project = result.projects[0];
+    assert.equal(project.i18n.en.major, 'Computer Science');
+    assert.equal(project.i18n.en.name, 'English Project');
+    assert.match(project.i18n.en.description, /written in English/);
+    // 源语言槽位的正文 HTML 直接复用原文渲染结果
+    assert.equal(project.readmeHtmlByLang.en, project.readmeHtml);
+    assert.match(project.readmeHtml, /written in English/);
+  } finally {
+    await fs.rm(root, { recursive: true, force: true });
+  }
+});
+
 test('buildIndex 不补齐 Features：留空或不写都不展示，也不使用仓库简介', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'cityu-hub-features-'));
   const inputDir = path.join(root, 'repos');

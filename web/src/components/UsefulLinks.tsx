@@ -19,7 +19,7 @@ const USEFUL_LINKS: UsefulLink[] = [
   },
 ];
 
-/** 顶栏按钮 + 右侧抽屉：城大常用站点导航 */
+/** 顶栏按钮 + 右侧抽屉：香港城大常用站点导航 */
 export function UsefulLinks() {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);

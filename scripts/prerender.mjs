@@ -177,7 +177,7 @@ const urls = [];
 
 {
   let html = upsertHead(shell, {
-    title: `${SITE_NAME} · CityU Open-Source Hub`,
+    title: `${SITE_NAME} · CityUHK Open-Source Hub`,
     description: `A navigation site for open-source projects built by students of City University of Hong Kong (CityUHK): ${projects.length} projects listed, filterable by author, major, tag, language and category, with one-click links to the GitHub repositories.`,
     canonical: `${SITE_ORIGIN}/`,
   });
@@ -185,7 +185,7 @@ const urls = [];
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: SITE_NAME,
-    alternateName: 'CityU Open-Source Hub',
+    alternateName: 'CityUHK Open-Source Hub',
     url: `${SITE_ORIGIN}/`,
     inLanguage: 'en',
     potentialAction: {
@@ -205,7 +205,7 @@ const urls = [];
     .join('\n      ');
   html = injectCrawlBody(
     html,
-    `<h1>${escapeHtml(SITE_NAME)} · CityU Open-Source Hub</h1>
+    `<h1>${escapeHtml(SITE_NAME)} · CityUHK Open-Source Hub</h1>
       <p>A navigation site for open-source projects built by students of City University of Hong Kong: ${projects.length} projects listed.</p>
       <ul>
       ${items}

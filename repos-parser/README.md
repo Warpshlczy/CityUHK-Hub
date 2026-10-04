@@ -1,4 +1,4 @@
-# CityU-Hub 仓库文档解析器
+# CityUHK Hub 仓库文档解析器
 
 把作者提交的 `repos/*.md` 解析成前端**直接可读**的静态 JSON，输出到 `web/public/data/`。
 这里没有 HTTP 接口，也没有中间数据层——解析产物就是站点数据。

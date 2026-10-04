@@ -97,8 +97,8 @@ async function buildProject(meta, content, fileName, github, useOffline, fileDat
     }
   }
 
-  const featuresHeading = content.match(/^\s{0,3}##\s+Features\s*#*\s*$/im);
-  const intro = featuresHeading ? content.slice(0, featuresHeading.index) : content;
+  // 与 markdown.js 共用同一套「## 功能/特点/Features」判定，避免中英标题两套规则不一致
+  const intro = extractIntroduction(content);
   let fetchedReadme = '';
   if (!intro.trim() && !useOffline) {
     try {
@@ -157,23 +157,29 @@ async function buildProject(meta, content, fileName, github, useOffline, fileDat
 const I18N_LANGS = ['en', 'zh-CN', 'zh-TW'];
 const I18N_KEYS = ['name', 'description', 'about', 'major'];
 
-/** 逐一对应 project 上的原名；zh-CN 由 translate 直接复制原文，不浪费配额 */
-async function buildI18n(translator, project) {
+/**
+ * 逐一对应 project 上的原名。sourceLang 槽位直接复制原文（translate 内部短路），不浪费配额，
+ * 其余两语从 sourceLang 翻译过来。
+ */
+async function buildI18n(translator, project, sourceLang) {
   const i18n = {};
   for (const lang of I18N_LANGS) {
     i18n[lang] = {};
-    for (const key of I18N_KEYS) i18n[lang][key] = await translator.translate(project[key], lang);
+    for (const key of I18N_KEYS) i18n[lang][key] = await translator.translate(project[key], lang, sourceLang);
   }
   return i18n;
 }
 
-/** 分类显示名映射：key 用原始分类名（canonical），空分类不进表 */
+/**
+ * 分类显示名映射：key 用原始分类名（canonical），空分类不进表。
+ * 分类名统一以简中撰写（md 里就是中文），源语言固定 zh-CN，与单个仓库的 language 无关。
+ */
 async function buildCategoryLabels(translator, projects) {
   const names = [...new Set(projects.map((project) => project.category).filter((name) => name && name.trim()))];
   const labels = {};
   for (const lang of I18N_LANGS) {
     labels[lang] = {};
-    for (const name of names) labels[lang][name] = await translator.translate(name, lang);
+    for (const name of names) labels[lang][name] = await translator.translate(name, lang, 'zh-CN');
   }
   return labels;
 }
@@ -230,13 +236,17 @@ export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, 
     if (repoUrls.has(repoKey)) throw new Error(`${fileName}: repoUrl 与 ${repoUrls.get(repoKey)} 重复`);
     ids.set(project.id, fileName);
     repoUrls.set(repoKey, fileName);
-    // 三语内容：短字段 + 正文 HTML（zh-CN 用原文渲染，等于现有 readmeHtml）
-    project.i18n = await buildI18n(translator, project);
-    project.readmeHtmlByLang = {
-      en: renderReadmeHtml(await translator.translateMarkdown(project.readmeMarkdown, 'en')),
-      'zh-CN': project.readmeHtml,
-      'zh-TW': renderReadmeHtml(await translator.translateMarkdown(project.readmeMarkdown, 'zh-TW')),
-    };
+    // 三语内容：短字段 + 正文 HTML。源语言槽位用原文渲染（等于现有 readmeHtml），另两语再翻。
+    const sourceLang = meta.language;
+    project.i18n = await buildI18n(translator, project, sourceLang);
+    const readmeHtmlByLang = {};
+    for (const lang of I18N_LANGS) {
+      readmeHtmlByLang[lang] =
+        lang === sourceLang
+          ? project.readmeHtml
+          : renderReadmeHtml(await translator.translateMarkdown(project.readmeMarkdown, lang, sourceLang));
+    }
+    project.readmeHtmlByLang = readmeHtmlByLang;
     projects.push(project);
   }
 

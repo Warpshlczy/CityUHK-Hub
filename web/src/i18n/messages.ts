@@ -14,9 +14,9 @@ export type MessageEntry = Record<Lang, string>;
 export const MESSAGES: Record<string, MessageEntry> = {
   // ── 顶栏 / 通用 ────────────────────────────────────────────────
   'header.tagline': {
-    en: 'CityU Open-Source Hub',
-    'zh-CN': '城大开源自助导航',
-    'zh-TW': '城大開源自助導航',
+    en: 'CityUHK Open-Source Hub',
+    'zh-CN': '香港城大开源自助导航',
+    'zh-TW': '香港城大開源自助導航',
   },
   'header.logoAlt': {
     en: 'CityUHK Hub logo',
@@ -53,8 +53,8 @@ export const MESSAGES: Record<string, MessageEntry> = {
   // ── 常用链接抽屉 ──────────────────────────────────────────────
   'links.button': {
     en: 'CityUHK Useful Links',
-    'zh-CN': '城大常用站点',
-    'zh-TW': '城大常用站點',
+    'zh-CN': '香港城大常用站点',
+    'zh-TW': '香港城大常用站點',
   },
   'links.heading': { en: 'USEFUL LINKS', 'zh-CN': 'USEFUL LINKS', 'zh-TW': 'USEFUL LINKS' },
   'links.subtitle': {
@@ -179,9 +179,9 @@ export const MESSAGES: Record<string, MessageEntry> = {
 
   // ── 首页 ──────────────────────────────────────────────────────
   'home.meta.title': {
-    en: 'CityUHK Hub · CityU Open-Source Hub',
-    'zh-CN': 'CityUHK Hub · 城大开源自助导航',
-    'zh-TW': 'CityUHK Hub · 城大開源自助導航',
+    en: 'CityUHK Hub · CityUHK Open-Source Hub',
+    'zh-CN': 'CityUHK Hub · 香港城大开源自助导航',
+    'zh-TW': 'CityUHK Hub · 香港城大開源自助導航',
   },
   'home.meta.description': {
     en: 'A navigation site for open-source projects by City University of Hong Kong (CityUHK) students: {total} projects listed, filter by author, major, tag, language and category, and jump straight to the GitHub repository.',
@@ -194,9 +194,9 @@ export const MESSAGES: Record<string, MessageEntry> = {
   'home.sort.name': { en: 'Name', 'zh-CN': '名称排序', 'zh-TW': '名稱排序' },
   'home.sort.label': { en: 'SORT', 'zh-CN': 'SORT', 'zh-TW': 'SORT' },
   'home.marquee.slogan': {
-    en: 'CITYUHK HUB // CityU Open-Source Hub',
-    'zh-CN': 'CITYUHK HUB // 城大开源自助导航',
-    'zh-TW': 'CITYUHK HUB // 城大開源自助導航',
+    en: 'CITYUHK HUB // CityUHK Open-Source Hub',
+    'zh-CN': 'CITYUHK HUB // 香港城大开源自助导航',
+    'zh-TW': 'CITYUHK HUB // 香港城大開源自助導航',
   },
   'home.marquee.projects': { en: '{count} PROJECTS', 'zh-CN': '{count} 个项目', 'zh-TW': '{count} 個專案' },
   'home.marquee.contributors': {
@@ -255,7 +255,7 @@ export const MESSAGES: Record<string, MessageEntry> = {
   },
   'home.generated': { en: 'GENERATED {time}', 'zh-CN': '生成于 {time}', 'zh-TW': '產生於 {time}' },
   'home.footer.tagline': {
-    en: 'CityU Open-Source Project Navigator',
+    en: 'CityUHK Open-Source Project Navigator',
     'zh-CN': '香港城市大学开源项目导航',
     'zh-TW': '香港城市大學開源專案導航',
   },
@@ -282,9 +282,9 @@ export const MESSAGES: Record<string, MessageEntry> = {
     'zh-TW': '{name} · CityUHK Hub',
   },
   'detail.meta.fallback': {
-    en: '{name} — a CityU open-source project by {author}',
-    'zh-CN': '{name} —— 城大开源项目，作者 {author}',
-    'zh-TW': '{name} —— 城大開源專案，作者 {author}',
+    en: '{name} — a CityUHK open-source project by {author}',
+    'zh-CN': '{name} —— 香港城大开源项目，作者 {author}',
+    'zh-TW': '{name} —— 香港城大開源專案，作者 {author}',
   },
   'detail.back': { en: 'BACK', 'zh-CN': '返回', 'zh-TW': '返回' },
   'detail.notFound.title': {
@@ -378,9 +378,9 @@ export const MESSAGES: Record<string, MessageEntry> = {
     'zh-TW': 'CityUHK Hub 歡迎你 🎉',
   },
   'welcome.lead.a': {
-    en: 'We want this to become CityU\u2019s ',
-    'zh-CN': '我们想把它做成城大',
-    'zh-TW': '我們想把它做成城大',
+    en: 'We want this to become CityUHK\u2019s ',
+    'zh-CN': '我们想把它做成香港城大',
+    'zh-TW': '我們想把它做成香港城大',
   },
   'welcome.lead.b': {
     en: 'most complete open-source resource hub',

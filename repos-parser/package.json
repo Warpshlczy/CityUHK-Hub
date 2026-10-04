@@ -2,7 +2,7 @@
   "name": "cityu-hub-repos-parser",
   "version": "1.0.0",
   "private": true,
-  "description": "CityU-Hub 仓库文档解析器：repos/*.md → web/public/data/*.json",
+  "description": "CityUHK Hub 仓库文档解析器：repos/*.md → web/public/data/*.json",
   "type": "module",
   "engines": {
     "node": ">=20.6.0"
@@ -14,7 +14,7 @@
     "test": "node --test"
   },
   "keywords": [
-    "cityu",
+    "cityuhk",
     "hub",
     "readme",
     "showcase"

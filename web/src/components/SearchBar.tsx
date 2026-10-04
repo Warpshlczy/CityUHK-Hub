@@ -7,21 +7,25 @@ interface SearchBarProps {
   value: string;
   onChange: (next: string) => void;
   placeholder?: string;
+  /** category: 的示例值，用当前语言下的真实分类名；缺省时只展示前缀 */
+  categoryExample?: string;
 }
 
 const DEBOUNCE_MS = 300;
+
+/** 带空格的分类名要加引号，searchParser 支持 category:"多词分类" 这种写法 */
+const quoteIfNeeded = (value: string) => (/\s/.test(value) ? `"${value}"` : value);
 
 /** 点问号后展开的规则，前缀与 searchParser 支持的一致 */
 const RULES = [
   { syntax: 'author:alice', labelKey: 'search.rule.author' },
   { syntax: 'tag:NLP', labelKey: 'search.rule.tag' },
   { syntax: 'lang:Python', labelKey: 'search.rule.lang' },
-  { syntax: 'category:机器学习', labelKey: 'search.rule.category' },
 ];
 
 const TIP_KEYS = ['search.tip.combine', 'search.tip.stack', 'search.tip.free'];
 
-export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
+export function SearchBar({ value, onChange, placeholder, categoryExample }: SearchBarProps) {
   const { t } = useI18n();
   const [text, setText] = useState(value);
   const [helpOpen, setHelpOpen] = useState(false);
@@ -61,6 +65,15 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
 
   const qualifierChips = toQualifierChips(text);
   const { freeText } = parseQuery(text);
+
+  // 分类示例跟随当前语言（值来自真实的本地化分类名）
+  const rules = [
+    ...RULES,
+    {
+      syntax: `category:${categoryExample ? quoteIfNeeded(categoryExample) : ''}`,
+      labelKey: 'search.rule.category',
+    },
+  ];
 
   return (
     <div ref={rootRef} className="w-full">
@@ -117,7 +130,7 @@ export function SearchBar({ value, onChange, placeholder }: SearchBarProps) {
           <div className="panel-brutal absolute top-full right-0 z-50 mt-2 w-[min(23rem,calc(100vw-2rem))] p-3 shadow-[6px_6px_0_var(--c-shadow)]">
             <p className="pixel text-[9px] text-muted">{t('search.rules')}</p>
             <dl className="mono mt-2 grid gap-1.5 text-[11px]">
-              {RULES.map((rule) => (
+              {rules.map((rule) => (
                 <div key={rule.syntax} className="flex items-baseline gap-2">
                   <dt className="text-brand">{rule.syntax}</dt>
                   <dd className="text-muted">{t(rule.labelKey)}</dd>

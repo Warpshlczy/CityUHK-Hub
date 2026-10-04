@@ -4,7 +4,7 @@ import {
   useContext,
   useEffect,
   useMemo,
-  useRef,
+  useState,
   type ReactNode,
 } from 'react';
 import { useUrlState } from '../hooks/useUrlState';
@@ -47,11 +47,14 @@ function readStoredLang(): Lang {
 export function I18nProvider({ children }: { children: ReactNode }) {
   // URL ?lang= 优先，其次 localStorage，最后英语；与 theme 的取值顺序一致
   const [langParam, setLangParam] = useUrlState('lang');
-  const stored = useRef(readStoredLang()).current;
+  // 必须用 state 保存已选语言：点项目卡片导航会丢掉 ?lang=，若只在挂载时读一次
+  // localStorage，langParam 变空后会回退到旧值，语言就被弹回去了。
+  const [stored, setStored] = useState<Lang>(readStoredLang);
   const lang: Lang = isLang(langParam) ? langParam : stored;
 
   useEffect(() => {
     document.documentElement.lang = lang;
+    setStored(lang); // 与 localStorage 保持同步（同值时 React 会跳过重渲染）
     try {
       window.localStorage.setItem(LANG_STORAGE_KEY, lang);
     } catch {
@@ -59,7 +62,13 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     }
   }, [lang]);
 
-  const setLang = useCallback((next: Lang) => setLangParam(next), [setLangParam]);
+  const setLang = useCallback(
+    (next: Lang) => {
+      setStored(next);
+      setLangParam(next);
+    },
+    [setLangParam],
+  );
 
   const t = useCallback<TFunction>(
     (key, vars) => {

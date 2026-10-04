@@ -30,7 +30,17 @@ function matchesQualifiers(project: Project, qualifiers: Qualifiers): boolean {
   if (languages.length > 0 && !languages.includes(lower(project.language))) return false;
 
   const categories = qualifiers.category.map((value) => value.toLowerCase());
-  if (categories.length > 0 && !categories.includes(lower(project.category))) return false;
+  if (categories.length > 0) {
+    // 分类名在三种语言下都可能被输入，canonical 与三语本地化名都算命中（任意一种匹配即可）
+    const labels = project.i18n;
+    const candidates = [
+      project.category,
+      labels?.en?.category,
+      labels?.['zh-CN']?.category,
+      labels?.['zh-TW']?.category,
+    ].map((value) => lower(value));
+    if (!categories.some((value) => candidates.includes(value))) return false;
+  }
 
   return qualifiers.tag.every((tag) =>
     project.tags.some((item) => item.toLowerCase() === tag.toLowerCase()),

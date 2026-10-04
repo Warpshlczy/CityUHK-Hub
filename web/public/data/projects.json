@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-10-04T07:45:01.589Z",
+  "generatedAt": "2026-10-04T11:51:31.260Z",
   "total": 14,
   "projects": [
     {
       "id": "yongzeyang-cscse-certification-review-cityu-ec-to-cs",
-      "name": "留服认证专业复核攻略（城大 MScEC → 计算机科学与技术）",
+      "name": "留服认证专业复核攻略（香港城大 MScEC → 计算机科学与技术）",
       "author": "YongzeYang",
       "authorName": "Yongze Yang",
-      "major": "Electronic Commerce",
+      "major": "电子商务",
       "enrollmentYear": 2023,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/56685999?v=4",
       "repo": "YongzeYang/CSCSE-Certification-Review-CityU-EC-to-CS",
-      "about": "",
+      "about": "留服认证复核添加一级学科保姆级攻略！本项目分享了作者在教育部留学服务中心（留服中心）学历学位认证完成后，成功进行专业领域复核，将香港城市大学“电子商贸(MSc Electronic Commerce)”理学硕士复核为“计算机科学与技术（电子商贸）”理学硕士的完整经验、申请材料模板与方法论。旨在帮助有相似需求的同学（尤其是港城大MScEC项目的学弟学妹，及其他境外院校希望添加一级学科的同学）顺利完成专业复核。",
       "description": "留服认证专业复核的保姆级攻略。作者毕业于香港城市大学理学硕士（电子商贸）项目，拿到教育部留学服务中心的初次认证结果后申请专业领域复核，把认证专业从“电子商贸”改成了“计算机科学与技术（电子商贸）”。仓库整理了这次复核的完整流程、全套申请材料模板和准备思路。",
       "tags": [
         "cscse",
@@ -28,33 +28,33 @@
       "githubUrl": "https://github.com/YongzeYang/CSCSE-Certification-Review-CityU-EC-to-CS",
       "demoUrl": null,
       "hasRelease": false,
-      "stars": 0,
+      "stars": 74,
       "starsGained7d": null,
-      "forks": 0,
+      "forks": 4,
       "language": "",
-      "license": "",
-      "createdAt": "2026-09-29",
-      "updatedAt": "2026-09-29",
+      "license": "NOASSERTION",
+      "createdAt": "2025-06-05",
+      "updatedAt": "2025-06-05T11:21:48Z",
       "addedAt": "2026-09-29",
       "i18n": {
         "en": {
-          "name": "Guide for Professional Review of the China Academic Degrees and Graduate Education Development Center Accreditation (CitYU MScEC → Computer Science and Technology)",
+          "name": "Guide for Professional Review of the China Academic Degrees and Graduate Education Development Center's Certification (City University of Hong Kong MScEC → Computer Science and Technology)",
           "description": "A nanny-level guide for professional review of the China Academic Degrees and Graduate Education Development Center Certification. The author graduated from the Master of Science (E-commerce) program at City University of Hong Kong. After obtaining the initial certification result from the Ministry of Education's China Academic Degrees and Graduate Education Development Center, he applied for a professional field review and changed the certified major from \"E-commerce\" to \"Computer Science and Technology (E-commerce)\". The warehouse has sorted out the complete process of this review, the full set of application material templates and the preparation ideas.",
-          "about": "",
-          "major": "Electronic Commerce",
+          "about": "A Nanny-level guide for adding first-level disciplines to the review of the China Academic Degrees and Graduate Education Development Center's certification! This project shares that the author successfully conducted a professional field review after completing the academic degree certification by the Ministry of Education's China Academic Degrees and Graduate Education Development Center (CSDC). The complete experience, application material template and methodology for re-evaluating the Master of Science in Electronic Commerce (MSc) of City University of Hong Kong to the Master of Science in Computer Science and Technology (E-commerce). It aims to assist students with similar needs (especially the younger students of the MScEC program at City University of Hong Kong and those from other overseas institutions who wish to add a first-level discipline) to successfully complete the professional review.",
+          "major": "E-commerce",
           "category": "Learning assistance"
         },
         "zh-CN": {
-          "name": "留服认证专业复核攻略（城大 MScEC → 计算机科学与技术）",
+          "name": "留服认证专业复核攻略（香港城大 MScEC → 计算机科学与技术）",
           "description": "留服认证专业复核的保姆级攻略。作者毕业于香港城市大学理学硕士（电子商贸）项目，拿到教育部留学服务中心的初次认证结果后申请专业领域复核，把认证专业从“电子商贸”改成了“计算机科学与技术（电子商贸）”。仓库整理了这次复核的完整流程、全套申请材料模板和准备思路。",
-          "about": "",
-          "major": "Electronic Commerce",
+          "about": "留服认证复核添加一级学科保姆级攻略！本项目分享了作者在教育部留学服务中心（留服中心）学历学位认证完成后，成功进行专业领域复核，将香港城市大学“电子商贸(MSc Electronic Commerce)”理学硕士复核为“计算机科学与技术（电子商贸）”理学硕士的完整经验、申请材料模板与方法论。旨在帮助有相似需求的同学（尤其是港城大MScEC项目的学弟学妹，及其他境外院校希望添加一级学科的同学）顺利完成专业复核。",
+          "major": "电子商务",
           "category": "学习辅助"
         },
         "zh-TW": {
-          "name": "留服認證專業複審攻略（城大MScEC → 電腦科學與技術）",
+          "name": "留服認證專業複審攻略（香港城大 MScEC → 電腦科學與技術）",
           "description": "留服認證專業複審的保母級攻略。作者畢業於香港城市大學理學碩士（電子商貿）項目，拿到教育部留學服務中心的初次認證結果後申請專業領域複核，把認證專業從「電子商貿」改成了「電腦科學與技術（電子商貿）」。倉庫整理了這次覆核的完整流程、全套申請資料範本和準備想法。",
-          "about": "",
+          "about": "留服認證複審添加一級學科保母級攻略！本計畫分享了作者在教育部留學服務中心（留服中心）學歷學位認證完成後，成功進行專業領域複核，將香港城市大學“電子商貿(MSc Electronic Commerce)”理學碩士複核為“計算機科學與技術（電子貿易）”理學碩士的完整經驗、申請材料模板與方法論。旨在幫助有類似需求的同學（尤其是港城大MScEC項目的學弟學妹，及其他境外院校希望增加一級學科的同學）順利完成專業複查。",
           "major": "電子商務",
           "category": "學習輔助"
         }
@@ -62,14 +62,14 @@
     },
     {
       "id": "famalhaut04-canvas-weekly-hub",
-      "name": "Canvas Weekly Hub（城大 Canvas 课程助手）",
+      "name": "Canvas Weekly Hub（香港城大 Canvas 课程助手）",
       "author": "Famalhaut04",
       "authorName": "Fomal",
-      "major": "Cybersecurity",
+      "major": "网络安全",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/118148765?v=4",
       "repo": "Famalhaut04/canvas-weekly-hub",
-      "about": "",
+      "about": "为香港城市大学学生打造的 Canvas 课程周报与本地学习看板：定时抓取作业/资料/公告，生成中文周报。算法公开、数据私有。For CityU students.",
       "description": "为香港城市大学学生打造的全自动 Canvas 课程动态助手：定时抓取全部课程的作业、截止时间、提交状态、新上传课件与公告，汇总为一个属于你自己的课程看板网站，并提供日历订阅与微信每日提醒。",
       "tags": [
         "canvas",
@@ -77,39 +77,45 @@
         "kanban",
         "automation",
         "calendar",
-        "github-pages"
+        "github-pages",
+        "canvas-lms",
+        "cityu",
+        "hong-kong",
+        "python",
+        "study",
+        "javascript"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/Famalhaut04/canvas-weekly-hub",
       "demoUrl": "https://famalhaut04.github.io/canvas-weekly-hub/web/",
-      "hasRelease": false,
-      "stars": 0,
-      "starsGained7d": null,
+      "hasRelease": true,
+      "stars": 15,
+      "starsGained7d": 6,
       "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-09-24",
-      "updatedAt": "2026-09-24",
+      "language": "JavaScript",
+      "license": "MIT",
+      "createdAt": "2026-09-17",
+      "updatedAt": "2026-10-02T12:51:43Z",
       "addedAt": "2026-09-23",
       "i18n": {
         "en": {
-          "name": "Canvas Weekly Hub (Cityu Canvas Course Assistant)",
+          "name": "Canvas Weekly Hub (City University of Hong Kong Canvas Course Assistant)",
           "description": "A fully automatic Canvas course dynamic assistant designed for students of City University of Hong Kong: Regularly capture all course assignments, deadlines, submission statuses, newly uploaded courseware and announcements, summarize them into your own course board website, and provide calendar subscriptions and daily wechat reminders.",
-          "about": "",
-          "major": "Cybersecurity",
+          "about": "Canvas course Weekly Report and local learning Dashboard designed for students of City University of Hong Kong: Regularly capture assignments/materials/announcements and generate Chinese weekly reports. The algorithm is public while the data is private. For CityU students.",
+          "major": "Cyber security",
           "category": "Learning assistance"
         },
         "zh-CN": {
-          "name": "Canvas Weekly Hub（城大 Canvas 课程助手）",
+          "name": "Canvas Weekly Hub（香港城大 Canvas 课程助手）",
           "description": "为香港城市大学学生打造的全自动 Canvas 课程动态助手：定时抓取全部课程的作业、截止时间、提交状态、新上传课件与公告，汇总为一个属于你自己的课程看板网站，并提供日历订阅与微信每日提醒。",
-          "about": "",
-          "major": "Cybersecurity",
+          "about": "为香港城市大学学生打造的 Canvas 课程周报与本地学习看板：定时抓取作业/资料/公告，生成中文周报。算法公开、数据私有。For CityU students.",
+          "major": "网络安全",
           "category": "学习辅助"
         },
         "zh-TW": {
-          "name": "Canvas Weekly Hub（城大Canvas 課程助理）",
+          "name": "Canvas Weekly Hub（香港城大 Canvas 課程助理）",
           "description": "為香港城市大學學生打造的全自動Canvas 課程動態助理：定時抓取全部課程的作業、截止時間、提交狀態、新上傳課件與公告，匯總為一個屬於你自己的課程看板網站，並提供日曆訂閱與微信每日提醒。",
-          "about": "",
+          "about": "為香港城市大學學生打造的Canvas 課程週報與本地學習看板：定時抓取作業/資料/公告，產生中文週報。演算法公開、資料私有。 For CityU students.",
           "major": "網路安全",
           "category": "學習輔助"
         }
@@ -122,44 +128,45 @@
       "authorName": "Brandon",
       "major": "Computer Science",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/78681968?v=4",
       "repo": "inscripoem/cityu-beamer",
-      "about": "",
+      "about": "Beamer template for CIty University of Hong Kong (Unofficial)",
       "description": "A reusable Beamer theme based on the January 2025 City University of Hong Kong PowerPoint template. This is a community adaptation, not an officially endorsed university template.",
       "tags": [
-        "slides"
+        "slides",
+        "tex"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/inscripoem/cityu-beamer",
       "demoUrl": null,
       "hasRelease": false,
-      "stars": 0,
-      "starsGained7d": null,
-      "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-09-24",
-      "updatedAt": "2026-09-24",
+      "stars": 29,
+      "starsGained7d": 0,
+      "forks": 3,
+      "language": "TeX",
+      "license": "MIT",
+      "createdAt": "2026-09-09",
+      "updatedAt": "2026-09-12T05:28:18Z",
       "addedAt": "2026-09-23",
       "i18n": {
         "en": {
           "name": "cityu-beamer",
           "description": "A reusable Beamer theme based on the January 2025 City University of Hong Kong PowerPoint template. This is a community adaptation, not an officially endorsed university template.",
-          "about": "",
+          "about": "Beamer template for CIty University of Hong Kong (Unofficial)",
           "major": "Computer Science",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "cityu-beamer",
-          "description": "A reusable Beamer theme based on the January 2025 City University of Hong Kong PowerPoint template. This is a community adaptation, not an officially endorsed university template.",
-          "about": "",
-          "major": "Computer Science",
+          "description": "基于2025年1月香港城市大学PowerPoint模板的可重复使用Beamer主题。这是社区改编，不是官方认可的大学模板。",
+          "about": "香港城市大学Beamer模板（非官方）",
+          "major": "计算机科学",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "cityu-beamer",
           "description": "以2025年1月香港城市大學PowerPoint範本為基礎的可重複使用Beamer佈景主題。這是社區改編，不是官方認可的大學範本。",
-          "about": "",
+          "about": "香港城市大學的Beamer模板（非官方）",
           "major": "電腦科學",
           "category": "學習輔助"
         }
@@ -170,48 +177,53 @@
       "name": "CityU-CS-Guide",
       "author": "B1ad3",
       "authorName": "null1024-ws",
-      "major": "Computer Science",
+      "major": "计算机科学",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/79917102?v=4",
       "repo": "null1024-ws/CityU-CS-Guide",
-      "about": "",
-      "description": "香港城市大学 MSc CS 选课参考。汇总小红书帖子与评论区里的课程评价，按课号整理难度、给分、作业量、回放与考勤，并标出来源之间的一致程度，方便对照官方课纲选课。",
+      "about": "Course guide for MSc Computer Science at CityU HK ",
+      "description": "香港城市大学计算机科学硕士选课参考。汇总小红书帖子与评论区里的课程评价，按课号整理难度、给分、作业量、回放与考勤，并标出来源之间的一致程度，方便对照官方课纲选课。",
       "tags": [
         "msc-cs",
         "course",
-        "review"
+        "review",
+        "cityucs",
+        "cityuhk",
+        "cityuniversityofhongkong",
+        "course-selection",
+        "python"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/null1024-ws/CityU-CS-Guide",
       "demoUrl": "https://null1024-ws.github.io/CityU-CS-Guide/",
       "hasRelease": false,
-      "stars": 0,
-      "starsGained7d": null,
-      "forks": 0,
-      "language": "",
+      "stars": 19,
+      "starsGained7d": 0,
+      "forks": 3,
+      "language": "Python",
       "license": "",
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-22",
+      "createdAt": "2026-07-24",
+      "updatedAt": "2026-09-25T05:19:27Z",
       "addedAt": "2026-09-23",
       "i18n": {
         "en": {
           "name": "CityU-CS-Guide",
-          "description": "Reference for course selection of MSc CS at City University of Hong Kong. Summarize the course evaluations in the posts and comment sections of Xiaohongshu, organize them by course number in terms of difficulty, grading, homework volume, replay and attendance, and mark the consistency between the sources to facilitate course selection in accordance with the official curriculum guidelines.",
-          "about": "",
+          "description": "Reference for the selection of courses for the Master of Computer Science at City University of Hong Kong. Summarize the course evaluation in the Xiaohongshu post and comment area, organize the difficulty, grading, assignment amount, playback and attendance according to the course number, and mark the degree of consistency between the sources, so as to facilitate the selection of courses against the official curriculum.",
+          "about": "Course guide for MSc Computer Science at CityU HK ",
           "major": "Computer Science",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "CityU-CS-Guide",
-          "description": "香港城市大学 MSc CS 选课参考。汇总小红书帖子与评论区里的课程评价，按课号整理难度、给分、作业量、回放与考勤，并标出来源之间的一致程度，方便对照官方课纲选课。",
-          "about": "",
-          "major": "Computer Science",
+          "description": "香港城市大学计算机科学硕士选课参考。汇总小红书帖子与评论区里的课程评价，按课号整理难度、给分、作业量、回放与考勤，并标出来源之间的一致程度，方便对照官方课纲选课。",
+          "about": "Course guide for MSc Computer Science at CityU HK ",
+          "major": "计算机科学",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "CityU-CS-Guide",
-          "description": "香港城市大學MSc CS 選課參考。總結小紅書貼文與留言區的課程評價，依課號整理難度、給分、作業量、回放與考勤，並標出來源之間的一致程度，方便對照官方課綱選課。",
-          "about": "",
+          "description": "香港城市大學計算機科學碩士選課參考。總結小紅書貼文與留言區的課程評價，依課號整理難度、給分、作業量、回放與考勤，並標出來源之間的一致程度，方便對照官方課綱選課。",
+          "about": "香港城市大學電腦科學碩士課程指南",
           "major": "電腦科學",
           "category": "學習輔助"
         }
@@ -222,49 +234,57 @@
       "name": "CityU-CS-Msc-Notes",
       "author": "lavine888",
       "authorName": "LavineX",
-      "major": "Computer Science",
+      "major": "计算机科学",
       "enrollmentYear": 2025,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/187631406?v=4",
       "repo": "lavine888/CityU-CS-Notes",
-      "about": "",
-      "description": "香港城市大学 MSc 计算机相关课程的笔记与资料仓库。按实际修课记录建立课程目录，汇集作者整理的学习内容和课程社群分享的资料，供同学按课号查找和参考。",
+      "about": "Course notes & materials based on my CityU MSc CS journey. Includes study notes from 10 courses and resources shared by peers. Hope it helps fellow students — Star & PRs welcome. 基于香港城市大学 MSc CS 修课经历整理的课程笔记与资料。收录 10 门课程的学习沉淀，以及课程社群中同学们分享的资料。希望能帮到同样在学的同学，欢迎 Star 与 PR。",
+      "description": "香港城市大学硕士计算机相关课程的笔记与资料仓库。按实际修课记录建立课程目录，汇集作者整理的学习内容和课程社群分享的资料，供同学按课号查找和参考。",
       "tags": [
         "msc-cs",
         "notes",
         "course",
-        "study-materials"
+        "study-materials",
+        "cityu",
+        "cityu-cs",
+        "computer-science",
+        "education",
+        "exam-prep",
+        "hongkong",
+        "lecture-notes",
+        "msc-computer-science"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/lavine888/CityU-CS-Notes",
       "demoUrl": null,
       "hasRelease": false,
-      "stars": 0,
+      "stars": 14,
       "starsGained7d": null,
-      "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-09-29",
-      "updatedAt": "2026-09-29",
+      "forks": 1,
+      "language": "Jupyter Notebook",
+      "license": "MIT",
+      "createdAt": "2026-08-15",
+      "updatedAt": "2026-09-23T12:03:01Z",
       "addedAt": "2026-09-29",
       "i18n": {
         "en": {
           "name": "CityU-CS-Msc-Notes",
-          "description": "Notes and materials repository for MSc computer-related courses at City University of Hong Kong. Establish a course catalogue based on the actual course attendance records, collecting the learning content organized by the author and the materials shared in the course community for students to search and refer to by course number.",
-          "about": "",
+          "description": "Notes and materials repository for master's computer-related courses at City University of Hong Kong. Establish a course catalogue based on the actual course attendance records, collecting the learning content organized by the author and the materials shared in the course community for students to search and refer to by course number.",
+          "about": "Course notes & materials based on my CityU MSc CS journey. Includes study notes from 10 courses and resources shared by peers. Hope it helps fellow students — Star & PRs welcome. Course notes and materials based on the study experience of MSc CS at City University of Hong Kong. It includes the learning accumulation of 10 courses and the materials shared by students in the course communities. I hope this can help fellow students who are also studying. Welcome to Star and PR.",
           "major": "Computer Science",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "CityU-CS-Msc-Notes",
-          "description": "香港城市大学 MSc 计算机相关课程的笔记与资料仓库。按实际修课记录建立课程目录，汇集作者整理的学习内容和课程社群分享的资料，供同学按课号查找和参考。",
-          "about": "",
-          "major": "Computer Science",
+          "description": "香港城市大学硕士计算机相关课程的笔记与资料仓库。按实际修课记录建立课程目录，汇集作者整理的学习内容和课程社群分享的资料，供同学按课号查找和参考。",
+          "about": "Course notes & materials based on my CityU MSc CS journey. Includes study notes from 10 courses and resources shared by peers. Hope it helps fellow students — Star & PRs welcome. 基于香港城市大学 MSc CS 修课经历整理的课程笔记与资料。收录 10 门课程的学习沉淀，以及课程社群中同学们分享的资料。希望能帮到同样在学的同学，欢迎 Star 与 PR。",
+          "major": "计算机科学",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "CityU-CS-Msc-Notes",
-          "description": "香港城市大學MSc 電腦相關課程的筆記與資料倉儲。依實際修課記錄建立課程目錄，匯集作者整理的學習內容和課程社群分享的資料，供同學按課號尋找和參考。",
-          "about": "",
+          "description": "香港城市大學碩士電腦相關課程的筆記與資料倉儲。依實際修課記錄建立課程目錄，匯集作者整理的學習內容和課程社群分享的資料，供同學按課號尋找和參考。",
+          "about": "Course notes & materials based on my CityU MSc CS journey. Includes study notes from 10 courses and resources shared by peers. Hope it helps fellow students — Star & PRs welcome. 基於香港城市大學MSc CS 修課經驗整理的筆記。收錄10 門課程的學習沉澱，以及課程社群中同學們分享的資料。希望能幫到同樣在學的同學，歡迎Star 與PR。",
           "major": "電腦科學",
           "category": "學習輔助"
         }
@@ -275,50 +295,57 @@
       "name": "CityU-CS",
       "author": "mojimoon",
       "authorName": "Fan Wang",
-      "major": "Computer Science",
+      "major": "计算机科学",
       "enrollmentYear": 2022,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/109803649?v=4",
       "repo": "mojimoon/CityU-CS",
-      "about": "",
-      "description": "香港城市大学 BSc CS 课程笔记与项目汇总。为未来的学生提供全面的资源，包括课程笔记、复习总结、练习题和项目示例，帮助他们更好地理解课程内容并为考试做好准备。作者专业 GPA 4.17/4.3（年级排名 1/190），希望通过分享自己的学习经验和资源，帮助更多的同学取得优异成绩。",
+      "about": "The notes and code for BSc Computer Science at City University of Hong Kong",
+      "description": "香港城市大学计算机科学本科课程笔记与项目汇总。为未来的学生提供全面的资源，包括课程笔记、复习总结、练习题和项目示例，帮助他们更好地理解课程内容并为考试做好准备。作者专业 GPA 4.17/4.3（年级排名 1/190），希望通过分享自己的学习经验和资源，帮助更多的同学取得优异成绩。",
       "tags": [
         "bsc-cs",
         "notes",
         "course",
         "review",
-        "go"
+        "cityu",
+        "cityuhk",
+        "computer-science",
+        "cs",
+        "cs1302",
+        "cs2115",
+        "cs2204",
+        "cs2310"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/mojimoon/CityU-CS",
       "demoUrl": "https://www.mojimoon.top/CityU-CS/",
       "hasRelease": false,
-      "stars": 0,
+      "stars": 91,
       "starsGained7d": null,
-      "forks": 0,
-      "language": "",
+      "forks": 5,
+      "language": "Python",
       "license": "",
-      "createdAt": "2026-09-29",
-      "updatedAt": "2026-09-29",
+      "createdAt": "2023-12-16",
+      "updatedAt": "2026-09-28T20:18:08Z",
       "addedAt": "2026-09-29",
       "i18n": {
         "en": {
           "name": "CityU-CS",
-          "description": "Notes and Project Summary of the BSc CS Course at City University of Hong Kong. Provide comprehensive resources for future students, including course notes, review summaries, practice questions and project examples, to help them better understand the course content and prepare for exams. The author's professional GPA is 4.17/4.3 (ranked 1/190 in the grade). He hopes to help more students achieve excellent grades by sharing his own learning experiences and resources.",
-          "about": "",
+          "description": "Notes and Project Summary of Undergraduate Computer Science Courses at City University of Hong Kong. Provide comprehensive resources for future students, including course notes, review summaries, practice questions and project examples, to help them better understand the course content and prepare for exams. The author's professional GPA is 4.17/4.3 (ranked 1/190 in the grade). He hopes to help more students achieve excellent grades by sharing his own learning experiences and resources.",
+          "about": "The notes and code for BSc Computer Science at City University of Hong Kong",
           "major": "Computer Science",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "CityU-CS",
-          "description": "香港城市大学 BSc CS 课程笔记与项目汇总。为未来的学生提供全面的资源，包括课程笔记、复习总结、练习题和项目示例，帮助他们更好地理解课程内容并为考试做好准备。作者专业 GPA 4.17/4.3（年级排名 1/190），希望通过分享自己的学习经验和资源，帮助更多的同学取得优异成绩。",
-          "about": "",
-          "major": "Computer Science",
+          "description": "香港城市大学计算机科学本科课程笔记与项目汇总。为未来的学生提供全面的资源，包括课程笔记、复习总结、练习题和项目示例，帮助他们更好地理解课程内容并为考试做好准备。作者专业 GPA 4.17/4.3（年级排名 1/190），希望通过分享自己的学习经验和资源，帮助更多的同学取得优异成绩。",
+          "about": "The notes and code for BSc Computer Science at City University of Hong Kong",
+          "major": "计算机科学",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "CityU-CS",
-          "description": "香港城市大學BSc CS 課程筆記與專案摘要。為未來的學生提供全面的資源，包括課程筆記、複習總結、練習問題和專案範例，幫助他們更好地理解課程內容並為考試做好準備。作者專業GPA 4.17/4.3（年級排名1/190），希望透過分享自己的學習經驗和資源，幫助更多的同學取得優異成績。",
-          "about": "",
+          "description": "香港城市大學電腦科學本科課程筆記與專案摘要。為未來的學生提供全面的資源，包括課程筆記、複習總結、練習問題和專案範例，幫助他們更好地理解課程內容並為考試做好準備。作者專業GPA 4.17/4.3（年級排名1/190），希望透過分享自己的學習經驗和資源，幫助更多的同學取得優異成績。",
+          "about": "香港城市大學電腦科學學士備註及代碼",
           "major": "電腦科學",
           "category": "學習輔助"
         }
@@ -329,12 +356,12 @@
       "name": "CS5489 机器学习：算法与应用（23 Fall 课程资料）",
       "author": "YongzeYang",
       "authorName": "Yongze Yang",
-      "major": "Electronic Commerce",
+      "major": "电子商务",
       "enrollmentYear": 2023,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/56685999?v=4",
       "repo": "YongzeYang/CityU-CS5489-Machine-Learning-Algorithms-and-Applications-23fall",
-      "about": "",
-      "description": "香港城市大学计算机系研究生课程 CS5489 Machine Learning: Algorithms and Applications 的学习资料合集。作者在 2023 年秋季学期修读这门课，仓库里放的是自己（和组员）完成的 Tutorial、Assignment、小组项目的代码与报告，另外整理了往年的期中、期末试卷，方便复习。这些都是作者自己的作业，不是标准答案。",
+      "about": "[23 fall] CityU CS5489 Machine Learning courseworks, including tutorials, assignments, project and past exam papers.",
+      "description": "香港城市大学计算机系研究生课程 CS5489 Machine Learning: Algorithms and Applications 的学习资料合集。作者在 2023 年秋季学期修读这门课，仓库里放的是自己（和组员）完成的辅导课、作业、小组项目的代码与报告，另外整理了往年的期中、期末试卷，方便复习。这些都是作者自己的作业，不是标准答案。",
       "tags": [
         "cs5489",
         "machine-learning",
@@ -344,6 +371,7 @@
         "python",
         "past-papers",
         "23fall",
+        "jupyter notebook",
         "go",
         "machine learning",
         "llm"
@@ -352,33 +380,33 @@
       "githubUrl": "https://github.com/YongzeYang/CityU-CS5489-Machine-Learning-Algorithms-and-Applications-23fall",
       "demoUrl": null,
       "hasRelease": false,
-      "stars": 0,
+      "stars": 57,
       "starsGained7d": null,
-      "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-09-29",
-      "updatedAt": "2026-09-29",
+      "forks": 3,
+      "language": "Jupyter Notebook",
+      "license": "GPL-3.0",
+      "createdAt": "2024-01-26",
+      "updatedAt": "2025-09-22T06:18:06Z",
       "addedAt": "2026-09-29",
       "i18n": {
         "en": {
           "name": "CS5489 Machine Learning: Algorithms and Applications (2023 Fall Course Materials)",
-          "description": "A collection of Learning materials for the postgraduate course CS5489 Machine Learning: Algorithms and Applications of the Department of Computer Science, City University of Hong Kong. The author took this course in the autumn semester of 2023. The warehouse contains the tutorials, assignments, codes and reports of group projects completed by himself (and his group members), as well as the mid-term and final exam papers from previous years, which is convenient for review. These are all the author's own assignments and not standard answers.",
-          "about": "",
-          "major": "Electronic Commerce",
+          "description": "A collection of Learning materials for the postgraduate course CS5489 Machine Learning: Algorithms and Applications of the Department of Computer Science, City University of Hong Kong. The author took this course in the autumn semester of 2023. The warehouse contains the tutorial classes, assignments, codes and reports of group projects completed by himself (and his group members), as well as the mid-term and final exam papers from previous years, which are convenient for review. These are all the author's own assignments and not standard answers.",
+          "about": "[23 fall] CityU CS5489 Machine Learning courseworks, including tutorials, assignments, project and past exam papers.",
+          "major": "E-commerce",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "CS5489 机器学习：算法与应用（23 Fall 课程资料）",
-          "description": "香港城市大学计算机系研究生课程 CS5489 Machine Learning: Algorithms and Applications 的学习资料合集。作者在 2023 年秋季学期修读这门课，仓库里放的是自己（和组员）完成的 Tutorial、Assignment、小组项目的代码与报告，另外整理了往年的期中、期末试卷，方便复习。这些都是作者自己的作业，不是标准答案。",
-          "about": "",
-          "major": "Electronic Commerce",
+          "description": "香港城市大学计算机系研究生课程 CS5489 Machine Learning: Algorithms and Applications 的学习资料合集。作者在 2023 年秋季学期修读这门课，仓库里放的是自己（和组员）完成的辅导课、作业、小组项目的代码与报告，另外整理了往年的期中、期末试卷，方便复习。这些都是作者自己的作业，不是标准答案。",
+          "about": "[23 fall] CityU CS5489 Machine Learning courseworks, including tutorials, assignments, project and past exam papers.",
+          "major": "电子商务",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "CS5489 機器學習：演算法與應用（23 Fall 課程資料）",
-          "description": "香港城市大學電腦系研究生課程CS5489 Machine Learning: Algorithms and Applications 的學習資料集。作者在2023 年秋季學期修讀這門課，倉庫裡放的是自己（和組員）完成的Tutorial、Assignment、小組專案的代碼與報告，另外整理了往年的期中、期末考卷，方便複習。這些都是作者自己的作業，不是標準答案。",
-          "about": "",
+          "description": "香港城市大學電腦系研究生課程CS5489 Machine Learning: Algorithms and Applications 的學習資料集。作者在2023 年秋季學期修讀這門課，倉庫裡放的是自己（和組員）完成的輔導課、作業、小組專案的代碼與報告，另外整理了往年的期中、期末考卷，方便複習。這些都是作者自己的作業，不是標準答案。",
+          "about": "[23 FALL] CityU CS5489機器學習課程，包括教學課程、作業、專案和過去的測驗論文。",
           "major": "電子商務",
           "category": "學習輔助"
         }
@@ -386,68 +414,69 @@
     },
     {
       "id": "royniu06-qrcode4food",
-      "name": "QRcode4food — 城大周边点餐导航",
+      "name": "QRcode4food — 香港城大周边点餐导航",
       "author": "RoyNiu06",
       "authorName": "NIU ZIRU",
-      "major": "Data Science",
+      "major": "数据科学",
       "enrollmentYear": 2024,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/212842150?v=4",
       "repo": "RoyNiu06/QRcode4food",
-      "about": "",
+      "about": "A mobile-first neighborhood restaurant ordering directory, powered by Cloudflare Workers.",
       "description": "QRcode4food 是面向香港城市大学及周边餐厅的手机点餐入口目录。打开网页即可查找餐厅及其不同窗口的二维码，点击对应入口跳转到商家的点餐网页，无需在本站注册或登录。",
       "tags": [
         "cityuhk",
         "food",
         "qrcode",
-        "canteen"
+        "canteen",
+        "typescript"
       ],
       "category": "生活工具",
       "githubUrl": "https://github.com/RoyNiu06/QRcode4food",
       "demoUrl": "https://qrcode.royilab.com/",
       "hasRelease": false,
-      "stars": 0,
-      "starsGained7d": null,
+      "stars": 4,
+      "starsGained7d": 0,
       "forks": 0,
-      "language": "",
+      "language": "TypeScript",
       "license": "",
-      "createdAt": "2026-09-24",
-      "updatedAt": "2026-09-24",
+      "createdAt": "2026-09-22",
+      "updatedAt": "2026-10-04T07:27:34Z",
       "addedAt": "2026-09-27",
       "i18n": {
         "en": {
-          "name": "QRcode4food - Navigation for Ordering Food around City University",
+          "name": "QRcode4food - Navigation for Ordering Food around City University of Hong Kong",
           "description": "QRcode4food is a mobile ordering entry directory for restaurants at City University of Hong Kong and its surrounding areas. You can search for the QR codes of the restaurant and its different Windows by opening the web page. Clicking on the corresponding entry will redirect you to the merchant's ordering web page. There is no need to register or log in on this site.",
-          "about": "",
+          "about": "A mobile-first neighborhood restaurant ordering directory, powered by Cloudflare Workers.",
           "major": "Data Science",
           "category": "Life tools"
         },
         "zh-CN": {
-          "name": "QRcode4food — 城大周边点餐导航",
+          "name": "QRcode4food — 香港城大周边点餐导航",
           "description": "QRcode4food 是面向香港城市大学及周边餐厅的手机点餐入口目录。打开网页即可查找餐厅及其不同窗口的二维码，点击对应入口跳转到商家的点餐网页，无需在本站注册或登录。",
-          "about": "",
-          "major": "Data Science",
+          "about": "A mobile-first neighborhood restaurant ordering directory, powered by Cloudflare Workers.",
+          "major": "数据科学",
           "category": "生活工具"
         },
         "zh-TW": {
-          "name": "QRcode4food — 城大周邊點餐導航",
+          "name": "QRcode4food — 香港城大周邊點餐導航",
           "description": "QRcode4food 是香港城市大學及週邊餐廳的手機點餐入口目錄。開啟網頁即可尋找餐廳及其不同視窗的二維碼，點選對應入口跳到商家的點餐網頁，無需在本站註冊或登入。",
-          "about": "",
-          "major": "資料科學",
+          "about": "由Cloudflare Workers提供支援的行動優先社區餐廳訂購目錄。",
+          "major": "數據科學",
           "category": "生活工具"
         }
       }
     },
     {
       "id": "lensforget-aims-plus-plus",
-      "name": "AIMS++（城大 AIMS 非官方美化与双语插件）",
+      "name": "AIMS++（香港城大 AIMS 非官方美化与双语插件）",
       "author": "LENSFORGET",
       "authorName": "LyesLou",
-      "major": "Venture Creation",
+      "major": "创业学",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/96647716?v=4",
       "repo": "LENSFORGET/aims-plus-plus",
-      "about": "",
-      "description": "AIMS++ 是一个非官方的第三方浏览器插件（Edge / Chrome），为香港城市大学的 AIMS 换上简洁、现代的新设计，并可以用英文、繁体、简体或双语对照浏览各个页面。所有改动只在你自己的浏览器里进行，不发送任何数据、不代你操作；本项目并非由城大制作、维护或认可，译文仅供参考，一切以 AIMS 上的英文原文为准。",
+      "about": "Edge/Chrome extension that gives CityU AIMS a clean, modern design in English, 繁體 or 简体, or bilingual. Runs locally and sends nothing.",
+      "description": "AIMS++ 是一个非官方的第三方浏览器插件（Edge / Chrome），为香港城市大学的 AIMS 换上简洁、现代的新设计，并可以用英文、繁体、简体或双语对照浏览各个页面。所有改动只在你自己的浏览器里进行，不发送任何数据、不代你操作；本项目并非由香港城大制作、维护或认可，译文仅供参考，一切以 AIMS 上的英文原文为准。",
       "tags": [
         "cityuhk",
         "aims",
@@ -456,40 +485,44 @@
         "bilingual",
         "translation",
         "ui-redesign",
-        "dark-mode"
+        "dark-mode",
+        "browser-extension",
+        "cityu",
+        "hong-kong",
+        "manifest-v3"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/LENSFORGET/aims-plus-plus",
       "demoUrl": "https://lensforget.github.io/aims-plus-plus/",
-      "hasRelease": false,
-      "stars": 0,
+      "hasRelease": true,
+      "stars": 1,
       "starsGained7d": null,
       "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-10-02",
-      "updatedAt": "2026-10-02",
+      "language": "JavaScript",
+      "license": "MIT",
+      "createdAt": "2026-10-01",
+      "updatedAt": "2026-10-01T14:11:16Z",
       "addedAt": "2026-10-04",
       "i18n": {
         "en": {
-          "name": "Aims + + (CityU aims Unofficial Landscaping & Bilingual Plugin)",
-          "description": "Aims + + is an unofficial third party browser plugin (Edge/Chrome) that gives aims at City University of Hong Kong a clean, modern new design and allows you to browse the pages in English, Traditional, Simplified or Bilingual. All changes are made only in your own browser, do not send any data, do not operate on your behalf; this project is not produced, maintained or approved by CityU, the translation is for reference only, everything is subject to the original English text on aims.",
-          "about": "",
-          "major": "Venture Creation",
+          "name": "AIMS++ (City University of Hong Kong AIMS Unofficial beautification and bilingual Plugin)",
+          "description": "AIMS++ is an unofficial third-party browser plug-in (Edge / Chrome) that gives City University of Hong Kong's AIMS a simple and modern new design, and can browse various pages in English, Traditional Chinese, Simplified Chinese or bilingual. All changes are only made in your own browser, no data is sent, and no operations are performed on your behalf. This project is not produced, maintained or endorsed by City University of Hong Kong. The translation is for reference only. The original English text on AIMS shall prevail.",
+          "about": "Edge/Chrome extension that gives CityU aims a clean, modern design in English, Traditional or Simplified, or bilingual. Runs locally and sends nothing.",
+          "major": "Entrepreneurship Studies",
           "category": "Learning assistance"
         },
         "zh-CN": {
-          "name": "AIMS++（城大 AIMS 非官方美化与双语插件）",
-          "description": "AIMS++ 是一个非官方的第三方浏览器插件（Edge / Chrome），为香港城市大学的 AIMS 换上简洁、现代的新设计，并可以用英文、繁体、简体或双语对照浏览各个页面。所有改动只在你自己的浏览器里进行，不发送任何数据、不代你操作；本项目并非由城大制作、维护或认可，译文仅供参考，一切以 AIMS 上的英文原文为准。",
-          "about": "",
-          "major": "Venture Creation",
+          "name": "AIMS++（香港城大 AIMS 非官方美化与双语插件）",
+          "description": "AIMS++ 是一个非官方的第三方浏览器插件（Edge / Chrome），为香港城市大学的 AIMS 换上简洁、现代的新设计，并可以用英文、繁体、简体或双语对照浏览各个页面。所有改动只在你自己的浏览器里进行，不发送任何数据、不代你操作；本项目并非由香港城大制作、维护或认可，译文仅供参考，一切以 AIMS 上的英文原文为准。",
+          "about": "Edge/Chrome extension that gives CityU AIMS a clean, modern design in English, 繁體 or 简体, or bilingual. Runs locally and sends nothing.",
+          "major": "创业学",
           "category": "学习辅助"
         },
         "zh-TW": {
-          "name": "AIMS++（城大AIMS 非官方美化與雙語外掛）",
-          "description": "AIMS++ 是一個非官方的第三方瀏覽器外掛程式（Edge / Chrome），為香港城市大學的AIMS 換上簡潔、現代的新設計，並可以用英文、繁體、簡體或雙語對照瀏覽各個頁面。所有改動只在你自己的瀏覽器裡進行，不發送任何數據、不代你操作；本項目並非由城大製作、維護或認可，譯文僅供參考，一切以AIMS 上的英文原文為準。",
-          "about": "",
-          "major": "創業",
+          "name": "AIMS++（香港城大 AIMS 非官方美化與雙語插件）",
+          "description": "AIMS++ 是一個非官方的第三方瀏覽器外掛程式（Edge / Chrome），為香港城市大學的 AIMS 取代簡潔、現代的新設計，並可以用英文、繁體、簡體或雙語對照瀏覽各個頁面。所有改動只在你自己的瀏覽器裡進行，不發送任何數據、不代你操作；本項目並非由香港城大製​​作、維護或認可，譯文僅供參考，一切以 AIMS 上的英文原文為準。",
+          "about": "Edge/Chrome extension that gives CityU AIMS a clean, modern design in English, 繁體or 簡體, or bilingual. Runs locally and sends nothing.",
+          "major": "創業學",
           "category": "學習輔助"
         }
       }
@@ -499,12 +532,12 @@
       "name": "extend-slides",
       "author": "lowen",
       "authorName": "李乐雨",
-      "major": "Computer Science",
+      "major": "计算机科学",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/146166781?v=4",
       "repo": "L01nki1/extend-slides",
-      "about": "",
-      "description": "一个帮助同学将教授【过于简略的课件】转换为【可系统地、全方位地学习的知识手册】的skill，同时为了尽最大可能还原课堂内容，此skill并不会重构知识结构，而会保留原有的课件脉络，只增添智能讲解。为了适配不同的学科，这里有四个模式可使用，分别对应计算证明类/例题导向类/应用类/理论推理类的课程。",
+      "about": "把课程课件/讲义/录音转写扩展成可独立复习的中文讲解文档，解决平时学习/期末复习难题",
+      "description": "一个帮助同学将教授【过于简略的课件】转换为【可系统地、全方位地学习的知识手册】的技能，同时为了尽最大可能还原课堂内容，此技能并不会重构知识结构，而会保留原有的课件脉络，只增添智能讲解。为了适配不同的学科，这里有四个模式可使用，分别对应计算证明类/例题导向类/应用类/理论推理类的课程。",
       "tags": [
         "skills",
         "agent-skills",
@@ -516,39 +549,40 @@
         "copilot-skill",
         "claude-skill",
         "obsidian",
-        "python"
+        "python",
+        "chinese"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/L01nki1/extend-slides",
       "demoUrl": null,
       "hasRelease": false,
-      "stars": 0,
-      "starsGained7d": null,
-      "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-09-22",
-      "updatedAt": "2026-09-22",
+      "stars": 10,
+      "starsGained7d": 1,
+      "forks": 1,
+      "language": "Python",
+      "license": "MIT",
+      "createdAt": "2026-09-18",
+      "updatedAt": "2026-09-29T17:07:37Z",
       "addedAt": "2026-09-23",
       "i18n": {
         "en": {
           "name": "extend-slides",
-          "description": "A skill that helps students transform overly simplistic courseware into a knowledge manual that can be systematically and comprehensively learned. At the same time, in order to restore the classroom content as much as possible, this skill does not reconstruct the knowledge structure but retains the original courseware context, only adding intelligent explanations. To adapt to different disciplines, there are four modes available here, corresponding respectively to courses of computational proof type, example problem-oriented type, application type and theoretical reasoning type.",
-          "about": "",
+          "description": "A skill that helps students convert professors' oversimplified courseware into knowledge manuals that can be systematically and comprehensively learned. At the same time, in order to restore the content of the classroom as much as possible, this skill will not reconstruct the knowledge structure, but will retain the original courseware context and only add intelligent explanations. In order to adapt to different disciplines, there are four models that can be used, corresponding to the courses of the computational proof class/example-oriented class/application class/theoretical reasoning class.",
+          "about": "Expand the transcriptions of course courseware, lecture notes, and audio recordings into independently review Chinese explanatory documents to solve the problems of regular study and final review",
           "major": "Computer Science",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "extend-slides",
-          "description": "一个帮助同学将教授【过于简略的课件】转换为【可系统地、全方位地学习的知识手册】的skill，同时为了尽最大可能还原课堂内容，此skill并不会重构知识结构，而会保留原有的课件脉络，只增添智能讲解。为了适配不同的学科，这里有四个模式可使用，分别对应计算证明类/例题导向类/应用类/理论推理类的课程。",
-          "about": "",
-          "major": "Computer Science",
+          "description": "一个帮助同学将教授【过于简略的课件】转换为【可系统地、全方位地学习的知识手册】的技能，同时为了尽最大可能还原课堂内容，此技能并不会重构知识结构，而会保留原有的课件脉络，只增添智能讲解。为了适配不同的学科，这里有四个模式可使用，分别对应计算证明类/例题导向类/应用类/理论推理类的课程。",
+          "about": "把课程课件/讲义/录音转写扩展成可独立复习的中文讲解文档，解决平时学习/期末复习难题",
+          "major": "计算机科学",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "extend-slides",
-          "description": "一個幫助同學將教授【過於簡略的課件】轉換為【可係統地、全方位地學習的知識手冊】的skill，同時為了盡最大可能還原課堂內容，此skill並不會重構知識結構，而會保留原有的課件脈絡，只增添智能講解。為了適應不同的學科，這裡有四個模式可使用，分別對應計算證明類/例題導向類/應用類/理論推理類的課程。",
-          "about": "",
+          "description": "一個幫助同學將教授【過於簡略的課件】轉換為【可系統地、全方位地學習的知識手冊】的技能，同時為了盡最大可能還原課堂內容，此技能並不會重構知識結構，而會保留原有的課件脈絡，只增添智能講解。為了適應不同的學科，這裡有四個模式可使用，分別對應計算證明類/例題導向類/應用類/理論推理類的課程。",
+          "about": "把課程課件/講義/錄音轉寫擴展成可獨立複習的中文講解文檔，解決平時學習/期末複習難題",
           "major": "電腦科學",
           "category": "學習輔助"
         }
@@ -559,12 +593,12 @@
       "name": "MentorMatch · 导师匹配助手",
       "author": "Warpshlczy",
       "authorName": "Mokie·正一",
-      "major": "Computer Science",
+      "major": "计算机科学",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/119655279?v=4",
       "repo": "Warpshlczy/mentors-auto-match",
-      "about": "",
-      "description": "🏹 保研申博？一键迅速拿捏目标导师 MentorMatch 是给同学选导师用的桌面应用：把简历或 research plan 丢进去，选硕士还是博士，它会从 CSRankings 捞一批候选导师逐个算匹配度，最后按分数排好，告诉你该先给谁发邮件。",
+      "about": "上传简历 / RP，一键匹配全球导师",
+      "description": "🏹 保研申博？一键迅速拿捏目标导师 MentorMatch 是给同学选导师用的桌面应用：把简历或研究计划丢进去，选硕士还是博士，它会从 CSRankings 捞一批候选导师逐个算匹配度，最后按分数排好，告诉你该先给谁发邮件。",
       "tags": [
         "msc-cs",
         "mentors",
@@ -580,34 +614,34 @@
       "category": "科研工具",
       "githubUrl": "https://github.com/Warpshlczy/mentors-auto-match",
       "demoUrl": null,
-      "hasRelease": false,
-      "stars": 0,
+      "hasRelease": true,
+      "stars": 2,
       "starsGained7d": null,
       "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-10-02",
-      "updatedAt": "2026-10-02",
+      "language": "Python",
+      "license": "NOASSERTION",
+      "createdAt": "2026-09-27",
+      "updatedAt": "2026-09-27T18:48:12Z",
       "addedAt": "2026-09-27",
       "i18n": {
         "en": {
           "name": "MentorMatch · Mentor Matching Assistant",
-          "description": "🏹 applying for a doctoral program? MentorMatch is a desktop application for students to select their mentors. Just throw your resume or research plan in and choose whether it's a master's or doctoral degree. It will pick a batch of candidate mentors from CSRankings, calculate the matching degree one by one, and finally rank them by score, telling you who to email first.",
-          "about": "",
+          "description": "🏹 applying for a doctoral program? MentorMatch is a desktop application for students to select their mentors. Just input your resume or research plan, and choose whether it's a master's or doctoral student. It will pick a batch of candidate mentors from CSRankings, calculate the matching degree one by one, and finally rank them by score, telling you who to email first.",
+          "about": "Upload your resume/RP and get a one-click match with a global mentor",
           "major": "Computer Science",
           "category": "Scientific research tools"
         },
         "zh-CN": {
           "name": "MentorMatch · 导师匹配助手",
-          "description": "🏹 保研申博？一键迅速拿捏目标导师 MentorMatch 是给同学选导师用的桌面应用：把简历或 research plan 丢进去，选硕士还是博士，它会从 CSRankings 捞一批候选导师逐个算匹配度，最后按分数排好，告诉你该先给谁发邮件。",
-          "about": "",
-          "major": "Computer Science",
+          "description": "🏹 保研申博？一键迅速拿捏目标导师 MentorMatch 是给同学选导师用的桌面应用：把简历或研究计划丢进去，选硕士还是博士，它会从 CSRankings 捞一批候选导师逐个算匹配度，最后按分数排好，告诉你该先给谁发邮件。",
+          "about": "上传简历 / RP，一键匹配全球导师",
+          "major": "计算机科学",
           "category": "科研工具"
         },
         "zh-TW": {
           "name": "MentorMatch · 導師配對助手",
-          "description": "🏹 保研申博？一鍵迅速拿捏目標導師MentorMatch 是給同學選導師用的桌面應用：把簡歷或research plan 丟進去，選碩士還是博士，它會從CSRankings 撈一批候選導師逐個算匹配度，最後按分數排好，告訴你該先給誰發郵件。",
-          "about": "",
+          "description": "🏹 保研申博？一鍵迅速拿捏目標導師 MentorMatch 是給同學選導師用的桌面應用：把簡歷或研究計劃丟進去，選碩士還是博士，它會從 CSRankings 撈一批候選導師逐個算匹配度，最後按分數排好，告訴你該先給誰發郵件。",
+          "about": "上傳履歷/ RP，一鍵匹配全球導師",
           "major": "電腦科學",
           "category": "科學研究工具"
         }
@@ -615,15 +649,15 @@
     },
     {
       "id": "avalonc-mscbis",
-      "name": "BIS Navigator（城大 MScBIS 学习与选课指南）",
+      "name": "BIS Navigator（香港城大 MScBIS 学习与选课指南）",
       "author": "DavidYang0429",
       "authorName": "杨欣睿",
-      "major": "BIS",
+      "major": "商业信息系统",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/57788292?v=4",
       "repo": "AvalonC/MScBIS",
       "about": "",
-      "description": "面向香港城市大学 MSc Business Information Systems 学生的中文指南，汇集 MIS/FIT 专业方向、课程资料、选课经验、校园系统和学习资源，由学生与社区共同维护。",
+      "description": "面向香港城市大学商业信息系统硕士学生的中文指南，汇集管理信息系统与金融科技专业方向、课程资料、选课经验、校园系统和学习资源，由学生与社区共同维护。",
       "tags": [
         "mscbis",
         "cityuhk",
@@ -636,34 +670,34 @@
       "githubUrl": "https://github.com/AvalonC/MScBIS",
       "demoUrl": "https://avalonc.github.io/MScBIS/",
       "hasRelease": false,
-      "stars": 0,
+      "stars": 5,
       "starsGained7d": null,
-      "forks": 0,
-      "language": "",
+      "forks": 2,
+      "language": "Vue",
       "license": "",
-      "createdAt": "2026-10-04",
-      "updatedAt": "2026-10-04",
+      "createdAt": "2023-06-12",
+      "updatedAt": "2026-09-30T07:50:12Z",
       "addedAt": "2026-10-04",
       "i18n": {
         "en": {
-          "name": "BIS Navigator (Cityu MScBIS Learning and Course Selection Guide)",
-          "description": "A Chinese guide for MSc Business Information Systems students of City University of Hong Kong, gathering MIS/FIT professional directions, course materials, course selection experiences, campus systems and learning resources, jointly maintained by students and the community.",
+          "name": "BIS Navigator (City University of Hong Kong MScBIS Study and Course Selection Guide)",
+          "description": "A Chinese guide for Master of Business Information Systems students at City University of Hong Kong, which compiles professional directions in Management Information Systems and Fintech, course materials, course selection experiences, campus systems and learning resources, and is jointly maintained by students and the community.",
           "about": "",
-          "major": "BIS",
+          "major": "Business Information System",
           "category": "Learning assistance"
         },
         "zh-CN": {
-          "name": "BIS Navigator（城大 MScBIS 学习与选课指南）",
-          "description": "面向香港城市大学 MSc Business Information Systems 学生的中文指南，汇集 MIS/FIT 专业方向、课程资料、选课经验、校园系统和学习资源，由学生与社区共同维护。",
+          "name": "BIS Navigator（香港城大 MScBIS 学习与选课指南）",
+          "description": "面向香港城市大学商业信息系统硕士学生的中文指南，汇集管理信息系统与金融科技专业方向、课程资料、选课经验、校园系统和学习资源，由学生与社区共同维护。",
           "about": "",
-          "major": "BIS",
+          "major": "商业信息系统",
           "category": "学习辅助"
         },
         "zh-TW": {
-          "name": "BIS Navigator（城大MScBIS 學習與選課指南）",
-          "description": "香港城市大學MSc Business Information Systems 學生的中文指南，匯集MIS/FIT 專業方向、課程資料、選課經驗、校園系統和學習資源，由學生與社區共同維護。",
+          "name": "BIS Navigator（香港城大 MScBIS 學習與選課指南）",
+          "description": "香港城市大學商業資訊系統碩士學生的中文指南，匯集管理資訊系統與金融科技專業方向、課程資料、選課經驗、校園系統和學習資源，由學生與社區共同維護。",
           "about": "",
-          "major": "BIS",
+          "major": "商業資訊系統",
           "category": "學習輔助"
         }
       }
@@ -673,11 +707,11 @@
       "name": "三模型路由系统",
       "author": "Quentin040507",
       "authorName": "刘全",
-      "major": "Data Science",
+      "major": "数据科学",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/300752220?v=4",
       "repo": "Quentin040507/multi-llm-router",
-      "about": "",
+      "about": "三模型分工协作的 LLM 智能路由系统：智能路由 / 圆桌会诊 / 举手表决，支持 DeepSeek · GLM · Kimi",
       "description": "多模型协作的 LLM 智能路由原型：自动路由、圆桌会诊、举手表决，一个入口用多个模型",
       "tags": [
         "llm",
@@ -686,7 +720,10 @@
         "fastapi",
         "deepseek",
         "qwen",
-        "kimi"
+        "kimi",
+        "ai-router",
+        "multi-agent",
+        "openai-api"
       ],
       "category": "AI 工具",
       "githubUrl": "https://github.com/Quentin040507/multi-llm-router",
@@ -695,31 +732,31 @@
       "stars": 0,
       "starsGained7d": null,
       "forks": 0,
-      "language": "",
-      "license": "",
-      "createdAt": "2026-09-27",
-      "updatedAt": "2026-09-27",
+      "language": "Python",
+      "license": "MIT",
+      "createdAt": "2026-09-25",
+      "updatedAt": "2026-09-27T13:58:54Z",
       "addedAt": "2026-09-27",
       "i18n": {
         "en": {
           "name": "Three-model routing system",
           "description": "Multi-model collaborative LLM intelligent routing prototype: automatic routing, round table diagnosis, raised hand voting, one entrance with multiple models",
-          "about": "",
+          "about": "LLM intelligent routing system with three models of division of labor: intelligent routing/round table diagnosis/vote by show of hands, supporting DeepSeek · GLM · Kimi",
           "major": "Data Science",
           "category": "AI tools"
         },
         "zh-CN": {
           "name": "三模型路由系统",
           "description": "多模型协作的 LLM 智能路由原型：自动路由、圆桌会诊、举手表决，一个入口用多个模型",
-          "about": "",
-          "major": "Data Science",
+          "about": "三模型分工协作的 LLM 智能路由系统：智能路由 / 圆桌会诊 / 举手表决，支持 DeepSeek · GLM · Kimi",
+          "major": "数据科学",
           "category": "AI 工具"
         },
         "zh-TW": {
           "name": "三模型路由系統",
           "description": "多模型協作的LLM 智慧路由原型：自動路由、圓桌會診、舉手錶決，一個入口用多個模型",
-          "about": "",
-          "major": "資料科學",
+          "about": "三模式分工協作的LLM 智慧路由系統：智慧路由/ 圓桌會診/ 舉手錶決，支援DeepSeek · GLM · Kimi",
+          "major": "數據科學",
           "category": "AI 工具"
         }
       }
@@ -729,11 +766,11 @@
       "name": "Study Coach",
       "author": "oneonew-gif",
       "authorName": "张思微",
-      "major": "Applied Social Sciences",
+      "major": "应用社会科学",
       "enrollmentYear": 2026,
-      "authorAvatar": "",
+      "authorAvatar": "https://avatars.githubusercontent.com/u/336055305?v=4",
       "repo": "oneonew-gif/study-coach",
-      "about": "",
+      "about": "通用 A+ 学习教练：把课件与课堂录音变成结构化复习笔记，辅导作业与论文，抽题刷题做备考冲刺，并定期巡检 Canvas 上的课件与截止日期变动。首次使用时会引导接入 Canvas 只读 API 并建立个人课程资料库。",
       "description": "把课件和课堂录音变成结构化复习笔记；辅导作业与论文；抽题刷题备考；定期巡检 Canvas 看课件与截止日期的变动。所有课程数据都存在使用者自己的机器上，不经过任何第三方。",
       "tags": [
         "study-tools",
@@ -741,40 +778,41 @@
         "ai",
         "notes",
         "canvas",
-        "cityu",
-        "study-coach"
+        "cityuhk",
+        "study-coach",
+        "shell"
       ],
       "category": "学习辅助",
       "githubUrl": "https://github.com/oneonew-gif/study-coach",
       "demoUrl": null,
       "hasRelease": false,
-      "stars": 0,
+      "stars": 3,
       "starsGained7d": null,
       "forks": 0,
-      "language": "",
+      "language": "Shell",
       "license": "",
-      "createdAt": "2026-10-02",
-      "updatedAt": "2026-10-02",
+      "createdAt": "2026-09-30",
+      "updatedAt": "2026-10-02T15:31:01Z",
       "addedAt": "2026-10-04",
       "i18n": {
         "en": {
           "name": "Study Coach",
           "description": "Transform courseware and class recordings into structured review notes; Tutoring homework and papers; Draw and practice questions to prepare for the exam; Regularly inspect the Canvas to check for changes in the courseware and deadlines. All course data is stored on the user's own machine without going through any third party.",
-          "about": "",
+          "about": "General A+ Learning Coach: Transform courseware and class recordings into structured review notes, assist with homework and papers, draw and practice questions for exam preparation, and regularly inspect the courseware and deadline changes on the Canvas. When used for the first time, it will guide you to access the Canvas read-only API and establish a personal course database.",
           "major": "Applied Social Sciences",
           "category": "Learning assistance"
         },
         "zh-CN": {
           "name": "Study Coach",
           "description": "把课件和课堂录音变成结构化复习笔记；辅导作业与论文；抽题刷题备考；定期巡检 Canvas 看课件与截止日期的变动。所有课程数据都存在使用者自己的机器上，不经过任何第三方。",
-          "about": "",
-          "major": "Applied Social Sciences",
+          "about": "通用 A+ 学习教练：把课件与课堂录音变成结构化复习笔记，辅导作业与论文，抽题刷题做备考冲刺，并定期巡检 Canvas 上的课件与截止日期变动。首次使用时会引导接入 Canvas 只读 API 并建立个人课程资料库。",
+          "major": "应用社会科学",
           "category": "学习辅助"
         },
         "zh-TW": {
           "name": "研究導師",
           "description": "將課件和課堂錄音變成結構化複習筆記；輔導作業與論文；抽題刷題備考；定期巡檢Canvas 看課件與截止日期的變動。所有課程資料都存在使用者自己的機器上，不經過任何第三方。",
-          "about": "",
+          "about": "通用A+ 學習教練：把課件與課堂錄音變成結構化複習筆記，輔導作業與論文，抽題刷題做備考衝刺，並定期巡檢Canvas 上的課件與截止日期變動。首次使用時會引導接取Canvas 只讀API 並建立個人課程資料庫。",
           "major": "應用社會科學",
           "category": "學習輔助"
         }
@@ -783,16 +821,20 @@
   ],
   "tags": [
     {
-      "name": "course",
-      "count": 4
+      "name": "cityuhk",
+      "count": 6
     },
     {
       "name": "python",
+      "count": 6
+    },
+    {
+      "name": "cityu",
       "count": 4
     },
     {
-      "name": "cityuhk",
-      "count": 3
+      "name": "course",
+      "count": 4
     },
     {
       "name": "llm",
@@ -819,7 +861,15 @@
       "count": 2
     },
     {
-      "name": "go",
+      "name": "computer-science",
+      "count": 2
+    },
+    {
+      "name": "education",
+      "count": 2
+    },
+    {
+      "name": "hong-kong",
       "count": 2
     },
     {
@@ -867,11 +917,19 @@
       "count": 1
     },
     {
+      "name": "ai-router",
+      "count": 1
+    },
+    {
       "name": "aims",
       "count": 1
     },
     {
       "name": "bilingual",
+      "count": 1
+    },
+    {
+      "name": "browser-extension",
       "count": 1
     },
     {
@@ -887,11 +945,27 @@
       "count": 1
     },
     {
+      "name": "canvas-lms",
+      "count": 1
+    },
+    {
+      "name": "chinese",
+      "count": 1
+    },
+    {
       "name": "chrome-extension",
       "count": 1
     },
     {
-      "name": "cityu",
+      "name": "cityu-cs",
+      "count": 1
+    },
+    {
+      "name": "cityucs",
+      "count": 1
+    },
+    {
+      "name": "cityuniversityofhongkong",
       "count": 1
     },
     {
@@ -904,6 +978,30 @@
     },
     {
       "name": "course-guide",
+      "count": 1
+    },
+    {
+      "name": "course-selection",
+      "count": 1
+    },
+    {
+      "name": "cs",
+      "count": 1
+    },
+    {
+      "name": "cs1302",
+      "count": 1
+    },
+    {
+      "name": "cs2115",
+      "count": 1
+    },
+    {
+      "name": "cs2204",
+      "count": 1
+    },
+    {
+      "name": "cs2310",
       "count": 1
     },
     {
@@ -931,7 +1029,7 @@
       "count": 1
     },
     {
-      "name": "education",
+      "name": "exam-prep",
       "count": 1
     },
     {
@@ -947,7 +1045,23 @@
       "count": 1
     },
     {
+      "name": "go",
+      "count": 1
+    },
+    {
+      "name": "hongkong",
+      "count": 1
+    },
+    {
+      "name": "javascript",
+      "count": 1
+    },
+    {
       "name": "jupyter",
+      "count": 1
+    },
+    {
+      "name": "jupyter notebook",
       "count": 1
     },
     {
@@ -963,11 +1077,19 @@
       "count": 1
     },
     {
+      "name": "lecture-notes",
+      "count": 1
+    },
+    {
       "name": "machine learning",
       "count": 1
     },
     {
       "name": "machine-learning",
+      "count": 1
+    },
+    {
+      "name": "manifest-v3",
       "count": 1
     },
     {
@@ -983,6 +1105,10 @@
       "count": 1
     },
     {
+      "name": "msc-computer-science",
+      "count": 1
+    },
+    {
       "name": "msc-ec",
       "count": 1
     },
@@ -991,7 +1117,15 @@
       "count": 1
     },
     {
+      "name": "multi-agent",
+      "count": 1
+    },
+    {
       "name": "obsidian",
+      "count": 1
+    },
+    {
+      "name": "openai-api",
       "count": 1
     },
     {
@@ -1023,7 +1157,15 @@
       "count": 1
     },
     {
+      "name": "shell",
+      "count": 1
+    },
+    {
       "name": "skills",
+      "count": 1
+    },
+    {
+      "name": "study",
       "count": 1
     },
     {
@@ -1051,11 +1193,19 @@
       "count": 1
     },
     {
+      "name": "tex",
+      "count": 1
+    },
+    {
       "name": "thesis",
       "count": 1
     },
     {
       "name": "translation",
+      "count": 1
+    },
+    {
+      "name": "typescript",
       "count": 1
     },
     {

@@ -1,4 +1,8 @@
 {
+  "000631f72cdf230458850ba9ba794b64e4c71b2f": {
+    "en": "Objective questions adopt a majority vote mechanism to reduce the probability of errors in a single model.\n\nIt is suitable for students and individual developers for daily Q&A, writing copy, and assisting in code writing. It is also suitable for those who want to compare the effects of large models horizontally or learn the idea of \"multi-model orchestration/agent routing\".",
+    "zh-TW": "：客觀題用多數票機制，降低單一模型出錯的機率。\n\n適合學生、個人開發者日常問答 / 寫文案 / 輔助寫程式碼，也適合想橫向對比大模型效果、或學習「多模型編排 / 智能體路由」思路的人。"
+  },
   "00b3d1e51953a71f7be83c1f9cb1222e8c01dd81": {
     "en": "It includes a built-in dictionary of approximately 1,300 AIMS terms, ensuring that the page text is not sent to any translation service.",
     "zh-TW": "：內建約1,300 篇AIMS 用語的字典，頁面文字不會傳送到任何翻譯服務"
@@ -19,6 +23,14 @@
     "en": "Transform courseware and class recordings into structured review notes; Tutoring homework and papers; Draw and practice questions to prepare for the exam; Regularly inspect the Canvas to check for changes in the courseware and deadlines.",
     "zh-TW": "將課件和課堂錄音變成結構化複習筆記；輔導作業與論文；抽題刷題備考；定期巡檢Canvas 看課件與截止日期的變動。"
   },
+  "0abb9bdb397beaa30ad17d16958fba9807b5d17a": {
+    "en": "BIS Navigator (City University of Hong Kong MScBIS Study and Course Selection Guide)",
+    "zh-TW": "BIS Navigator（香港城大 MScBIS 學習與選課指南）"
+  },
+  "0adf19e090fafc629f2e365d2d085795ffabbdcb": {
+    "en": ": CityU magenta title area, grouped menus, aligned tables and data cards, supports dark mode",
+    "zh-TW": "：香港城大洋紅色標題區、分組選單、對齊的表格與資料卡，支援深色模式"
+  },
   "0b08049e177aabcadd978a9af9470e9a8f133413": {
     "en": "Cityu features a red title area, grouped menus, aligned tables and data cards, and supports dark mode",
     "zh-TW": "：城大洋紅色標題區、分組選單、對齊的表格與資料卡，支援深色模式"
@@ -31,8 +43,16 @@
     "en": "Web window + CLI dual portal, OpenAI compatible interface",
     "zh-TW": "網頁視窗+ CLI 雙入口，OpenAI 相容接口"
   },
+  "0e413bb22d621466f2539fffdaba192769a01d46": {
+    "en": "(No authentication and quota management, interface key documentation is stored locally, no high availability/monitoring).",
+    "zh-TW": "（無鑑權與配額管理、介面金鑰明文存本地、無高可用 / 監控）。"
+  },
   "0fdf5ca47efa2f49378a8e49bfffbfc10ab6e65d": {
     "zh-TW": "電子商務"
+  },
+  "12763e1895fd2521984cd61add4e76508b825ea0": {
+    "en": "Guide for Professional Review of the China Academic Degrees and Graduate Education Development Center's Certification (City University of Hong Kong MScEC → Computer Science and Technology)",
+    "zh-TW": "留服認證專業複審攻略（香港城大 MScEC → 電腦科學與技術）"
   },
   "12e295a4ba52c4e3f0fcb15f431fd46e5eadf4aa": {
     "en": "For now, only the computer is covered",
@@ -54,9 +74,25 @@
     "en": "📂 courseware download automatically",
     "zh-TW": "📂 課件自動下載"
   },
+  "16d13b79ecb73fc5b5b8d43241979c1ba0b22cd2": {
+    "en": "Canvas Weekly Hub (City University of Hong Kong Canvas Course Assistant)",
+    "zh-TW": "Canvas Weekly Hub（香港城大 Canvas 課程助理）"
+  },
+  "1809216cdcc286ca5e77b1ea837912432420f0ec": {
+    "en": "Computer Science",
+    "zh-TW": "電腦科學"
+  },
   "187697d46fa3a238ed407093f3e9cf1f30d5248c": {
     "en": "CS5489 Machine Learning: Algorithms and Applications (2023 Fall Course Materials)",
     "zh-TW": "CS5489 機器學習：演算法與應用（23 Fall 課程資料）"
+  },
+  "1921bf57dd8629550bf7996c5b7b7b414222e122": {
+    "en": "🏹 applying for a doctoral program? One-click quick grasp of the target mentor\nMentorMatch is a desktop application for students to select supervisors: You can input your resume or research plan, choose a master's or doctoral degree, and it will pick a batch of candidate supervisors from CSRankings, calculate the matching degree one by one, and finally rank them by score, telling you who to email first.",
+    "zh-TW": "🏹 保研申博？一鍵迅速拿捏目標導師\nMentorMatch 是給同學選導師用的桌面應用：把簡歷或研究計劃丟進去，選碩士還是博士，它會從 CSRankings 撈一批候選導師逐個算匹配度，最後按分數排好，告訴你該先給誰發郵件。"
+  },
+  "19282a85dfa10ea8858dc40167e2e473d6c6e326": {
+    "en": "Selected is the Kaggle competition \"LLM - Detect AI Generated Text\", along with the project report, submitted code and presentation slides",
+    "zh-TW": "：選的是Kaggle 競賽“LLM - Detect AI Generated Text”，附專案報告、提交程式碼和展示投影片"
   },
   "1c1d91eae681c2dcc336b1ff84d98f036a10e78d": {
     "en": "Chinese and English bilingual README; the warehouse does not contain tutorial reference answers, courseware and course recordings, the content is for reference only",
@@ -76,9 +112,17 @@
     "en": "Objective questions adopt a majority vote mechanism to reduce the probability of errors in a single model.\n\nIt is suitable for students and individual developers for daily Q&A, writing copy, and assisting in code writing. It is also suitable for those who want to compare the effects of large models horizontally or learn the idea of \"multi-model orchestration/Agent routing\".",
     "zh-TW": "：客觀題用多數票機制，降低單一模型出錯的機率。\n\n適合學生、個人開發者日常問答/ 寫文案/ 輔助寫程式碼，也適合想橫向對比大模型效果、或學習「多模型編排/ Agent 路由」思路的人。"
   },
+  "243a64406f257b6899ceafc247132ac666ef3aff": {
+    "en": "How to use\n\nThree models are integrated (DeepSeek is responsible for code and mathematical reasoning, Qwen for Chinese writing, and Kimi for general dialogue and long text understanding), all of which are OpenAI-compatible interfaces. It provides dual entry points for web Windows and CLI. Just fill in the API key in the upper right corner to use.",
+    "zh-TW": "怎麼用\n\n連結三個模型（DeepSeek 負責程式碼與數學推理、Qwen 負責中文寫作、Kimi 負責通用對話與長文理解），皆為 OpenAI 相容介面。提供網頁視窗與 CLI 雙入口，右上角填入 API 金鑰即用。"
+  },
   "246161c64038b0328b015ed27fdb102d4c82c949": {
     "en": "Aims + + (CityU aims Unofficial Landscaping & Bilingual Plugin)",
     "zh-TW": "AIMS++（城大AIMS 非官方美化與雙語外掛）"
+  },
+  "262dfff841ef7747a6e11495ada07d615938441e": {
+    "en": "Notes and Project Summary of Undergraduate Computer Science Courses at City University of Hong Kong. Provide comprehensive resources for future students, including course notes, review summaries, practice questions and project examples, to help them better understand the course content and prepare for exams. The author's professional GPA is 4.17/4.3 (ranked 1/190 in the grade). He hopes to help more students achieve excellent grades by sharing his own learning experiences and resources.",
+    "zh-TW": "香港城市大學電腦科學本科課程筆記與專案摘要。為未來的學生提供全面的資源，包括課程筆記、複習總結、練習問題和專案範例，幫助他們更好地理解課程內容並為考試做好準備。作者專業GPA 4.17/4.3（年級排名1/190），希望透過分享自己的學習經驗和資源，幫助更多的同學取得優異成績。"
   },
   "26f6f9896486422efc5f953f3dbefad5c818b11d": {
     "en": "🔄 Change detection",
@@ -87,6 +131,10 @@
   "2a918ef1dcf51d4d79769b0ee915ecc008bf58a6": {
     "en": "Reference for course selection of MSc CS at City University of Hong Kong. Summarize the course evaluations in the posts and comment sections of Xiaohongshu, organize them by course number in terms of difficulty, grading, homework volume, replay and attendance, and mark the consistency between the sources to facilitate course selection in accordance with the official curriculum guidelines.",
     "zh-TW": "香港城市大學MSc CS 選課參考。總結小紅書貼文與留言區的課程評價，依課號整理難度、給分、作業量、回放與考勤，並標出來源之間的一致程度，方便對照官方課綱選課。"
+  },
+  "2b27da11fa77970b8768057a674036df101b0f59": {
+    "en": "A Chinese guide for Master of Business Information Systems students at City University of Hong Kong, which compiles professional directions in Management Information Systems and Fintech, course materials, course selection experiences, campus systems and learning resources, and is jointly maintained by students and the community.",
+    "zh-TW": "香港城市大學商業資訊系統碩士學生的中文指南，匯集管理資訊系統與金融科技專業方向、課程資料、選課經驗、校園系統和學習資源，由學生與社區共同維護。"
   },
   "2cc4b92bcf08bc5b57b428a44a5da61aef18b65a": {
     "en": "Notes and materials repository for MSc computer-related courses at City University of Hong Kong. Establish a course catalogue based on the actual course attendance records, collecting the learning content organized by the author and the materials shared in the course community for students to search and refer to by course number.",
@@ -100,6 +148,14 @@
     "en": "Common learning resources, as well as course supplements and community discussions based on GitHub Discussions.",
     "zh-TW": "常用學習資源，以及基於GitHub Discussions 的課程補充與社群討論。"
   },
+  "335ad238a14d07efe61cc419c62aa28c47ee58c7": {
+    "en": "A skill that helps students convert professors' oversimplified courseware into knowledge manuals that can be systematically and comprehensively learned. At the same time, in order to restore the content of the classroom as much as possible, this skill will not reconstruct the knowledge structure, but will retain the original courseware context and only add intelligent explanations. In order to adapt to different disciplines, there are four models that can be used, corresponding to the courses of the computational proof class/example-oriented class/application class/theoretical reasoning class.",
+    "zh-TW": "一個幫助同學將教授【過於簡略的課件】轉換為【可系統地、全方位地學習的知識手冊】的技能，同時為了盡最大可能還原課堂內容，此技能並不會重構知識結構，而會保留原有的課件脈絡，只增添智能講解。為了適應不同的學科，這裡有四個模式可使用，分別對應計算證明類/例題導向類/應用類/理論推理類的課程。"
+  },
+  "342f69412ffbbf6822c414fbedf5231bba7f1c55": {
+    "en": "A skill that helps students transform overly simplistic courseware into a knowledge manual that can be systematically and comprehensively learned. At the same time, in order to restore the classroom content as much as possible, this skill does not reconstruct the knowledge structure but retains the original courseware context, only adding intelligent explanations. To adapt to different disciplines, there are four modes available here, corresponding respectively to courses of computational proof type, example problem-oriented type, application type and theoretical reasoning type.\n\nFor cases where the uploaded materials contain pure images, this skill has added an OCR installation prompt. If recognition is not required, it will be automatically skipped.\n\nAt present, the various courses of CityUHK Computing Academy have been tested and adapted well.",
+    "zh-TW": "一個幫助同學將教授【過於簡略的課件】轉換為【可系統地、全方位地學習的知識手冊】的技能，同時為了盡最大可能還原課堂內容，此技能並不會重構知識結構，而會保留原有的課件脈絡，只增添智能講解。為了適應不同的學科，這裡有四個模式可使用，分別對應計算證明類/例題導向類/應用類/理論推理類的課程。\n\n對於上傳資料中含有純圖片的情況，本技能加了 OCR 安裝提示，若不需要辨識則會自動跳過。\n\n目前對於 CityUHK 計算學院的各個課程已測試適配良好。"
+  },
   "36531f6ae562a7faf5511257079be711fc439381": {
     "en": "Project Background and Positioning\n\nThere are obvious shortcomings in the ability of a single large model: some are good at code and mathematical reasoning, but writing Chinese copywriting is rigid; some Chinese writing is fluent, but they are prone to errors in logic and calculations.In daily use, users often have to judge for themselves which model to ask this question, switch back and forth between different platforms, and cannot directly compare or synthesize the answers of multiple models.This is what this project is trying to solve: do a \"multi-model collaboration\" routing and orchestration prototype, use one portal to use the advantages of multiple models at the same time -",
     "zh-TW": "專案背景與定位\n\n單一大模型有明顯的能力短板：有的擅長程式碼和數學推理，但寫中文文案偏生硬；有的中文寫作流暢，卻容易在邏輯、計算上出錯。在日常使用中，使用者往往要自己判斷「這個問題該問哪個模型」，在不同平台之間來回切換，還無法直接對比或綜合多個模型的回答。這個專案想解決的就是這件事：做一個「多模型協作」的路由與編排原型，用一個入口同時用到多個模型的長處——"
@@ -111,17 +167,33 @@
   "37d00694d077b4bc9a7baacb3fd3cacc526bbf80": {
     "zh-TW": "為每門課程提供詳細的筆記、複習摘要、練習和專案範例"
   },
+  "38c84c801539a70f9aa0849d9bde387217c3939f": {
+    "en": "Cyber security",
+    "zh-TW": "網路安全"
+  },
   "3c00f00f3131fac2fa43ef7a58f970cac56ed2c3": {
     "en": ": 5 sets of mid-term questions (with answers) and 2 sets of final questions (questions only)",
     "zh-TW": "：5 套期中試題（含答案）和2 套期末試題（只有題目）"
+  },
+  "3d122397639910ebd05ed89b4ee8d031df7eb49c": {
+    "en": "The course list can be searched by course number or course name, and filtered by required, elective and direction",
+    "zh-TW": "課程清單可按課號或課程名搜索，並按必修、選修與方向篩選"
   },
   "3d3ec58fd0c258a9b2a32ff958ab51f26485b876": {
     "en": "10 Tutorials",
     "zh-TW": "10 次Tutorial"
   },
+  "3dd90b5efa0456363cbd688cf61406570589916a": {
+    "en": "A collection of Learning materials for the postgraduate course CS5489 Machine Learning: Algorithms and Applications of the Department of Computer Science, City University of Hong Kong. The author took this course in the autumn semester of 2023. The warehouse contains the tutorial classes, assignments, codes and reports of group projects completed by himself (and his group members), as well as the mid-term and final exam papers from previous years, which are convenient for review. These are all the author's own assignments and not standard answers.",
+    "zh-TW": "香港城市大學電腦系研究生課程CS5489 Machine Learning: Algorithms and Applications 的學習資料集。作者在2023 年秋季學期修讀這門課，倉庫裡放的是自己（和組員）完成的輔導課、作業、小組專案的代碼與報告，另外整理了往年的期中、期末考卷，方便複習。這些都是作者自己的作業，不是標準答案。"
+  },
   "3ddf0652ddd49fcebf5ec25d8849059790f0c04d": {
     "en": "Key Note",
     "zh-TW": "關鍵注意事項"
+  },
+  "3e305c7f48c3a9d3babd3298d45dfffab65167ec": {
+    "en": "This guide is a Chinese information and experience navigation for Master of Business Information Systems students at City University of Hong Kong. It helps new students and current students understand the professional direction, consult course materials, plan course selection, and find commonly used campus and learning resources.\n\nThe project was created by Wang Guanzhang (Steve) and jointly built by students and the community. In the 2026/27 academic year, DavidYang0429 (Yang Xinrui) was responsible for the verification of course materials and daily maintenance. This site is built with Markdown and VuePress. Online reading is provided through GitHub Pages. Students are also welcome to supplement course experiences, feedback outdated information and invalid links.\n\nThis website is an unofficial guide maintained by students and the community and does not represent the official position of the school. The course pool of the training program does not equal the actual courses offered in the current period. The course offerings, teachers, quotas, assessments and school policies should be subject to the official information of the current period. The evaluations from previous students are for reference only.",
+    "zh-TW": "本指南是香港城市大學商業資訊系統碩士學生的中文資訊與經驗導航，幫助新生及就讀同學了解專業方向、查閱課程資料、規劃選課並找到常用校園與學習資源。\n\n計畫由汪冠彰（Steve）創作並由學生與社區共同建設，2026/27 學年由 DavidYang0429（楊欣睿）負責課程資料核驗與日常維護。本站採用 Markdown 與 VuePress 構建，透過 GitHub Pages 提供線上閱讀，也歡迎同學補充課程經驗、回饋過期資訊和失效連結。\n\n本站為學生與社區維護的非官方指南，不代表學校官方立場。培養方案課程池不等於當期實際開課，課程開設、教師、名額、考核與學校政策請以當期官方資訊為準；歷屆學生評鑑僅供經驗參考。"
   },
   "3ec60dae667e42432927930cadc3ee6ed9993ad2": {
     "en": ": Assignment 1 to do text classification, Assignment 2 to do audio classification, the results are submitted to the course Kaggle; each time with the final solution Notebook, the full experimental report and the csv for submission",
@@ -164,6 +236,10 @@
   "4ac993f40b6bf3a0683ab0dbed2e053e7bb3e99f": {
     "zh-TW": "香港城市大學電腦科學學士備註及代碼"
   },
+  "4e1ff3eb775957c295e7dc31e1b3ca70eda907a6": {
+    "en": "Function",
+    "zh-TW": "功能"
+  },
   "4ebacca8d441f93050d72121cfb0954cce6c4bc8": {
     "en": "Canvas Weekly Hub (Cityu Canvas Course Assistant)",
     "zh-TW": "Canvas Weekly Hub（城大Canvas 課程助理）"
@@ -171,6 +247,18 @@
   "50127724d3e2c4a5221c56aaa4e92c35e8720a33": {
     "en": "Each review retains the link of the original post for easy review of the original text",
     "zh-TW": "每條評價保留原帖鏈接，方便回看原文"
+  },
+  "50a5093e6e98eb9ada62b024820cd9d48c4f1a08": {
+    "en": "At the top right corner of each page, you can switch between English, Traditional Chinese and Simplified Chinese. After enabling bilingual, there will be a translation below each line",
+    "zh-TW": "：每頁右上角可切換英文/ 繁體/ 簡體，開啟雙語後每一行下方都有譯文"
+  },
+  "515e80e91c1319389c7eb436dd990f607bba7bae": {
+    "en": "The assessment structure for the autumn semester of 2023 is as follows: 10% for tutorial classes, 10% for each of the two assignments, 30% for group projects, 10% for mid-term exams, and 30% for the final exams. Both group projects and the final exams must achieve a score of over 30% to pass",
+    "zh-TW": "：2023 年秋季學期的考核組成（輔導課10%、兩次作業各10%、小組專案30%、期中10%、期末30%），小組專案和期末都要拿到30% 以上才能通過"
+  },
+  "528cbd6f6aa8392a03f38e68f1374f1accf34ece": {
+    "en": "10 coaching sessions",
+    "zh-TW": "10 次輔導課"
   },
   "53bfca256adebe3d8ada3a5ac004264d198af837": {
     "en": "Share the index of elective and cross-disciplinary courses, retain the classification of history courses and the description of applicable academic years.",
@@ -220,10 +308,20 @@
     "zh-TW": "CityU-CS"
   },
   "5f0099ea48c64fec07861b84913bf352ab6f7046": {
+    "zh-CN": "基于2025年1月香港城市大学PowerPoint模板的可重复使用Beamer主题。这是社区改编，不是官方认可的大学模板。",
     "zh-TW": "以2025年1月香港城市大學PowerPoint範本為基礎的可重複使用Beamer佈景主題。這是社區改編，不是官方認可的大學範本。"
   },
+  "5ffdc283cbe2e86721e5a70032b8e0f71a477298": {
+    "en": "It covers almost all subjects in the undergraduate program of computer science and is divided into professional core, professional elective, university requirements and general education courses",
+    "zh-TW": "涵蓋電腦科學本科課程中的幾乎所有科目，分為專業核心、專業選修、大學要求和通識課程"
+  },
   "60b8102bd020e99e3357c3d6079d6e1421c5ce57": {
+    "zh-CN": "计算机科学",
     "zh-TW": "電腦科學"
+  },
+  "62bafdd4606183c7bb0259af85f7fe14f3fd5cd3": {
+    "en": "CSRankings includes mentors based on top computer science conferences, so the data for visual science, natural language processing, machine learning, systems, and security is relatively comprehensive. However, the data for biochemistry, environment, materials science, and humanities and social sciences are not available for the time being",
+    "zh-TW": "：CSRankings 依電腦頂會收錄導師，所以視覺、自然語言處理、機器學習、系統、安全這些方向資料比較全，生化環材和人文社科暫時沒有"
   },
   "649704d50900fa4da4ba51e96adbfc2232cec651": {
     "en": "General A+ Learning Coach: Transform courseware and class recordings into structured review notes, assist with homework and papers, draw and practice questions for exam preparation, and regularly inspect the courseware and deadline changes on the Canvas. When used for the first time, it will guide you to access the Canvas read-only API and establish a personal course database.",
@@ -251,6 +349,10 @@
   "6d975cfb9c6eefa700a29f809f6fc955a325faa8": {
     "en": "From logging into the online service hall of the China Academic Degrees and Graduate Education Development Center, finding the review entry, to filling in the reasons, uploading materials and waiting for the results, every step should be clearly written. The result will be available approximately one week after the author submits it",
     "zh-TW": "：從登入留服網路服務大廳、找到覆核入口，到填寫理由、上傳資料、等待結果，每一步都寫清楚；作者提交後約一週出結果"
+  },
+  "6e7a1fd6e68532976982134cf1df13c1d4ec9961": {
+    "en": "Reference for the selection of courses for the Master of Computer Science at City University of Hong Kong. Summarize the course evaluation in the Xiaohongshu post and comment area, organize the difficulty, grading, assignment amount, playback and attendance according to the course number, and mark the degree of consistency between the sources, so as to facilitate the selection of courses against the official curriculum.",
+    "zh-TW": "香港城市大學計算機科學碩士選課參考。總結小紅書貼文與留言區的課程評價，依課號整理難度、給分、作業量、回放與考勤，並標出來源之間的一致程度，方便對照官方課綱選課。"
   },
   "6ea7eece9dfc8da0f496f9954c709999e0e76fee": {
     "en": "Multiple models engage in real-time debates and mutual comments. The host integrates the viewpoints of the three parties to produce a complete answer.",
@@ -296,11 +398,16 @@
     "zh-TW": "全站新設計"
   },
   "78a2080ff45c48dd74d25b19da64d3a6590b1031": {
+    "zh-CN": "cityu-beamer",
     "zh-TW": "cityu-beamer"
   },
   "7a29914b1669df790dfdf81a91c2a1d173ace749": {
     "en": "📅 calendar subscription / ⬇️ offline single file",
     "zh-TW": "📅 日曆訂閱/ ⬇️ 離線單文件"
+  },
+  "7ada4aafba36a4efeae544560ca921663b2ed85a": {
+    "en": "AIMS++ (City University of Hong Kong AIMS Unofficial beautification and bilingual Plugin)",
+    "zh-TW": "AIMS++（香港城大 AIMS 非官方美化與雙語插件）"
   },
   "7b7a8d8e9435d1064967f8ba2a43eee1f7804f5e": {
     "zh-TW": "網路安全"
@@ -316,6 +423,14 @@
   "7f841cf7ac3287d03fcf7594f9cb731afa3c6eb6": {
     "en": "BIS Navigator is a Chinese Information and experience navigation for students of the MSc Business Information Systems program at City University of Hong Kong. It helps freshmen and current students understand professional directions, consult course materials, plan course selection, and find common campus and learning resources.\n\nThe project was created by Wang Guanzhang (Steve) and jointly built by students and the community. In the 2026/27 academic year, DavidYang0429 (Yang Xinrui) was responsible for the verification of course materials and daily maintenance. This site is built with Markdown and VuePress. Online reading is provided through GitHub Pages. Students are also welcome to supplement course experiences, feedback outdated information and invalid links.\n\nThis website is an unofficial guide maintained by students and the community and does not represent the official position of the school. The course pool of the training program does not equal the actual courses offered in the current period. The course offerings, teachers, quotas, assessments and school policies should be subject to the official information of the current period. The evaluations from previous students are for reference only.",
     "zh-TW": "BIS Navigator 是香港城市大學MSc Business Information Systems 學生的中文資訊與經驗導航，幫助新生和在學同學了解專業方向、查閱課程資料、規劃選課並找到常用校園與學習資源。計畫由汪冠彰（Steve）創作並由學生與社區共同建設，2026/27 學年由DavidYang0429（楊欣睿）負責課程資料核驗與日常維護。本站採用Markdown 與VuePress 構建，透過GitHub Pages 提供線上閱讀，也歡迎同學補充課程經驗、回饋過期資訊和失效連結。本站為學生與社區維護的非官方指南，不代表學校官方立場。培養方案課程池不等於當期實際開課，課程開設、教師、名額、考核與學校政策請以當期官方資訊為準；歷屆學生評鑑僅供經驗參考。"
+  },
+  "80fe536cf9f815042feccc1974ae4b525860bc20": {
+    "en": "Business Information System",
+    "zh-TW": "商業資訊系統"
+  },
+  "828a9362e862dfd76113aafe38fc2df1ef7c97e4": {
+    "en": "🏹 applying for a doctoral program? MentorMatch is a desktop application for students to select their mentors. Just input your resume or research plan, and choose whether it's a master's or doctoral student. It will pick a batch of candidate mentors from CSRankings, calculate the matching degree one by one, and finally rank them by score, telling you who to email first.",
+    "zh-TW": "🏹 保研申博？一鍵迅速拿捏目標導師 MentorMatch 是給同學選導師用的桌面應用：把簡歷或研究計劃丟進去，選碩士還是博士，它會從 CSRankings 撈一批候選導師逐個算匹配度，最後按分數排好，告訴你該先給誰發郵件。"
   },
   "84d1979eea2e73a32e2915e511919071f36dc3e8": {
     "en": "Intelligent routing: automatically determine the problem area, choose the best model, fail to automatically demote",
@@ -341,6 +456,10 @@
     "en": "(No authentication and quota management, API key stored locally, no high availability/monitoring).",
     "zh-TW": "（無鑑權與配額管理、API key 明文存本地、無高可用/ 監控）。"
   },
+  "897f16b28b1ae47bce9084ce93d423b35573f93b": {
+    "en": ": 🌐 web version (open the url, paste the token and use, no installation required, available on mobile phone); 🤖 AI agent scheduled tasks (such as ZCode, which automatically captures and reports in Chinese every Friday night); 📦 Windows desktop Wizard (Advanced: Scheduled auto-run + courseware auto-download)",
+    "zh-TW": "：🌐 網頁版（開啟網址、貼上令牌即用，零安裝，手機可用）；🤖 AI 智慧型體定時任務（如ZCode，每週五晚間自動抓取並用中文報告）；📦 Windows 桌面精靈（進階：定時自動執行+ 課件自動下載）"
+  },
   "898ac72c49da4d8e4f8fd7a96c920516ec2b53ba": {
     "en": "Notes and Project Summary of the BSc CS Course at City University of Hong Kong. Provide comprehensive resources for future students, including course notes, review summaries, practice questions and project examples, to help them better understand the course content and prepare for exams. The author's professional GPA is 4.17/4.3 (ranked 1/190 in the grade). He hopes to help more students achieve excellent grades by sharing his own learning experiences and resources.",
     "zh-TW": "香港城市大學BSc CS 課程筆記與專案摘要。為未來的學生提供全面的資源，包括課程筆記、複習總結、練習問題和專案範例，幫助他們更好地理解課程內容並為考試做好準備。作者專業GPA 4.17/4.3（年級排名1/190），希望透過分享自己的學習經驗和資源，幫助更多的同學取得優異成績。"
@@ -349,6 +468,10 @@
     "en": "AI tools",
     "zh-TW": "AI 工具"
   },
+  "89d1868c47442ffc00e99bc2eb6253074ba2bd14": {
+    "en": "Introduction to the Management Information System and Financial Technology major direction, as well as the pool of compulsory and elective courses for the 2026/27 training program.",
+    "zh-TW": "管理資訊系統與金融科技專業方向介紹，以及 2026/27 培養方案必修與選修課程池。"
+  },
   "8a9ca26ef54e027134417a186abf687faa5faf6a": {
     "en": ": Compare the courses taken with the computer science and technology graduate training program of Nanjing University, China University of Science and Technology, and Chinese Academy of Sciences University, and attach the PDF of the training program",
     "zh-TW": "：把所修課程與南京大學、中國科技大學、中國科學院大學的電腦科學與技術研究生培養方案逐門對照，培養方案PDF 一併附上"
@@ -356,6 +479,10 @@
   "8b8ed670132b1a2742ac1826de06ca22a4cbc500": {
     "en": "⏰ countdown to to-do",
     "zh-TW": "⏰ 待倒數計時"
+  },
+  "8d793c4cff5a557265569f5f08f227a7a6d3407a": {
+    "en": "Applied Social Sciences",
+    "zh-TW": "應用社會科學"
   },
   "8e23e228fe8d91125c34cdf1fb12438f42bab6fa": {
     "en": "Intelligent Routing",
@@ -373,6 +500,10 @@
     "en": "Group Items",
     "zh-TW": "小組專案"
   },
+  "93e87d3fe443356606bd5bd645e293916e5c8f98": {
+    "en": "AIMS++ is an unofficial third-party browser plug-in (Edge / Chrome) that gives City University of Hong Kong's AIMS a simple and modern new design, and can browse various pages in English, Traditional Chinese, Simplified Chinese or bilingual. All changes are only made in your own browser, no data is sent, and no operations are performed on your behalf. This project is not produced, maintained or endorsed by City University of Hong Kong. The translation is for reference only. The original English text on AIMS shall prevail.",
+    "zh-TW": "AIMS++ 是一個非官方的第三方瀏覽器外掛程式（Edge / Chrome），為香港城市大學的 AIMS 取代簡潔、現代的新設計，並可以用英文、繁體、簡體或雙語對照瀏覽各個頁面。所有改動只在你自己的瀏覽器裡進行，不發送任何數據、不代你操作；本項目並非由香港城大製​​作、維護或認可，譯文僅供參考，一切以 AIMS 上的英文原文為準。"
+  },
   "942a6c7e2f2816a21a9a3186cfc3ae874afc29ad": {
     "en": ": Kaggle Contest LLM - Detect AI Generated Text with project report, submission code and presentation slides selected",
     "zh-TW": "：選的是Kaggle 競賽LLM - Detect AI Generated Text，附專案報告、提交程式碼和展示投影片"
@@ -388,6 +519,10 @@
   "9913449c3b973b15f8e886bb1f0aae1d2aaae4c3": {
     "en": "Privacy first: All data is local, Canvas read-only API, no content uploaded online\n\n---",
     "zh-TW": "隱私優先：資料全在本地，Canvas 只讀API，不連網上傳任何內容\n\n---"
+  },
+  "9b22b5aa1cf2c3ac5048c9f7851668179590b437": {
+    "en": "Bilingual README in Chinese and English The warehouse does not contain reference answers, courseware or course recordings for tutorial classes. The content is for reference only",
+    "zh-TW": "中英雙語README；倉庫不包含輔導課參考答案、課件和課程錄屏，內容僅供參考"
   },
   "9cbc0782ec3c2f6c6290ee5d8402037c4b65f279": {
     "zh-TW": "研究導師"
@@ -439,6 +574,10 @@
     "en": "Not recommended for direct use in a production environment",
     "zh-TW": "不建議直接用於生產環境"
   },
+  "a67caef17e6ff0306c87aacfa07c157477d722f8": {
+    "en": "QRcode4food - Navigation for Ordering Food around City University of Hong Kong",
+    "zh-TW": "QRcode4food — 香港城大周邊點餐導航"
+  },
   "a73fbda153628f307bd537e723b3ce0ccd196228": {
     "en": "Transform courseware and class recordings into structured review notes; Tutoring homework and papers; Draw and practice questions to prepare for the exam; Regularly inspect the Canvas to check for changes in the courseware and deadlines. All course data is stored on the user's own machine without going through any third party.",
     "zh-TW": "將課件和課堂錄音變成結構化複習筆記；輔導作業與論文；抽題刷題備考；定期巡檢Canvas 看課件與截止日期的變動。所有課程資料都存在使用者自己的機器上，不經過任何第三方。"
@@ -450,6 +589,14 @@
   "a8beb6e3046d17fc9a5c40ce03c48ba0de8eea53": {
     "en": "to explore routing and orchestration ideas for multi-model collaboration,",
     "zh-TW": "，用於探索多模型協作的路由與編排思路，"
+  },
+  "a936fe04b1a2fb7bbebde4c74c1f119c4a659f29": {
+    "en": "A collection of learning materials for CS5489 Machine Learning: Algorithms and Applications, a postgraduate course in computer science at the City University of Hong Kong.The author took this course in the autumn semester of 2023. The warehouse contains the codes and reports of the tutorials, assignments, and group projects completed by the author (and the team members). In addition, the mid-term and final exam papers of previous years were collated to facilitate review.These are the authors' own assignments, not standard answers.This course focuses on the practical application of machine learning, and all exercises, assignments and projects are completed with Jupyter Notebook, which is no small workload. The students who are preparing to take this class or are taking this class can first look at its content and rhythm.",
+    "zh-TW": "香港城市大學電腦系研究生課程CS5489 Machine Learning: Algorithms and Applications 的學習資料集。作者在2023 年秋季學期修讀這門課，倉庫裡放的是自己（和組員）完成的輔導課、作業、小組專案的代碼與報告，另外整理了往年的期中、期末考卷，方便複習。這些都是作者自己的作業，不是標準答案。這門課偏重機器學習的實際應用，所有練習、作業和專案都用Jupyter Notebook 完成，工作量不小。準備選這門課或正在上這門課的同學，可以先看看它的內容和節奏。"
+  },
+  "a9b2955bb4cf603b45940a6545f0877dc22113c8": {
+    "en": "A nanny-level guide for professional review of the China Academic Degrees and Graduate Education Development Center Certification. The author graduated from the Master of Science (E-commerce) program at City University of Hong Kong. After obtaining the initial certification result from the Ministry of Education's China Academic Degrees and Graduate Education Development Center, he applied for a professional field review and changed the certified major from \"E-commerce\" to \"Computer Science and Technology (E-commerce)\". The warehouse has sorted out the complete process of this review, the full set of application material templates and the preparation ideas.\n\nIn many domestic positions, especially in the recruitment of civil servants and public institutions, majors are determined by the discipline directory. If the names of overseas majors are classified too finely or do not match the descriptions in the domestic directory, they are likely to be rejected in the initial screening. This guide is mainly written for the younger students of City University of Hong Kong who are pursuing a Master's degree in E-commerce. Students from other overseas institutions who wish to add a first-level discipline to their accreditation results can also refer to it.",
+    "zh-TW": "留服認證專業複審的保母級攻略。作者畢業於香港城市大學理學碩士（電子商貿）項目，拿到教育部留學服務中心的初次認證結果後申請專業領域複核，把認證專業從「電子商貿」改成了「電腦科學與技術（電子商貿）」。倉庫整理了這次覆核的完整流程、全套申請資料範本和準備想法。\n\n國內很多職位，尤其是公務員和事業單位招聘，會依學科目錄卡專業。境外專業名稱分得太細，或和國內目錄說法對不上，就容易在初篩被刷掉。這份攻略主要寫給香港城大電子商貿碩士的學弟妹，其他境外院校想在認證結果裡補上一級學科的同學也可以參考。"
   },
   "ac0b70a5a662a0bef5521f4257c89955c2c1afae": {
     "en": "The course list can be searched by course number or course name, and filtered by required, elective and Stream",
@@ -479,12 +626,28 @@
     "en": "A collection of Learning materials for the postgraduate course CS5489 Machine Learning: Algorithms and Applications of the Department of Computer Science, City University of Hong Kong. The author took this course in the autumn semester of 2023. The warehouse contains the tutorials, assignments, codes and reports of group projects completed by himself (and his group members), as well as the mid-term and final exam papers from previous years, which is convenient for review. These are all the author's own assignments and not standard answers.",
     "zh-TW": "香港城市大學電腦系研究生課程CS5489 Machine Learning: Algorithms and Applications 的學習資料集。作者在2023 年秋季學期修讀這門課，倉庫裡放的是自己（和組員）完成的Tutorial、Assignment、小組專案的代碼與報告，另外整理了往年的期中、期末考卷，方便複習。這些都是作者自己的作業，不是標準答案。"
   },
+  "b3131ee8c831ec121e4bcc655b92e3f0b8df3dae": {
+    "en": "Schedule planning and instructions for using the CityUHK Schedule Planner.",
+    "zh-TW": "課表規劃和 CityUHK Schedule Planner 使用說明。"
+  },
   "b3aeac9bddb28fad90391677304c4315f0705b2d": {
     "zh-TW": "extend-slides"
+  },
+  "b3e0c09b7fdc4dde5ac3ff46b44d3f897323fa35": {
+    "en": "Entrepreneurship Studies",
+    "zh-TW": "創業學"
   },
   "b4123f46c0e4791e65b6ffaa98133dcf4fd87b4d": {
     "en": "A skill that helps students transform overly simplistic courseware into a knowledge manual that can be systematically and comprehensively learned. At the same time, in order to restore the classroom content as much as possible, this skill does not reconstruct the knowledge structure but retains the original courseware context, only adding intelligent explanations. To adapt to different disciplines, there are four modes available here, corresponding respectively to courses of computational proof type, example problem-oriented type, application type and theoretical reasoning type.",
     "zh-TW": "一個幫助同學將教授【過於簡略的課件】轉換為【可係統地、全方位地學習的知識手冊】的skill，同時為了盡最大可能還原課堂內容，此skill並不會重構知識結構，而會保留原有的課件脈絡，只增添智能講解。為了適應不同的學科，這裡有四個模式可使用，分別對應計算證明類/例題導向類/應用類/理論推理類的課程。"
+  },
+  "b54d682174868cfe8f62c354dbb03d0b237d2880": {
+    "en": "Deadline Information Station: Layered Kanban + Export System Calendar (Including Double-layer Reminders)",
+    "zh-TW": "截止日期情報站：分層看板 + 匯出系統日曆（含雙層提醒）"
+  },
+  "b5c98b58fb77478863c38d1b8cf3bb212b269b1f": {
+    "en": "2 Assignments",
+    "zh-TW": "2 次作業"
   },
   "b72fdbd391c791c755bae85825fe407cee40984e": {
     "zh-TW": "資料科學"
@@ -516,6 +679,10 @@
     "en": "Course Comparison Description Template",
     "zh-TW": "課程比較說明模板"
   },
+  "bd293170c388672604a9dfb309291e53bc5aaf7a": {
+    "en": ": Practice notebook for each lesson, full marks except for deducting 1 point for each of the two times",
+    "zh-TW": "：每節課配套的練習筆記本，除兩次各扣1 分外都是滿分"
+  },
   "c14f7ae2f4288ea59108d8a9fec413ebe687fb6c": {
     "en": "It provides interfaces in Simplified Chinese, Traditional Chinese and English. \"What to eat today\" can be drawn by restaurant or window.",
     "zh-TW": "提供簡體中文、繁體中文和英文介面；「今天吃什麼」可依餐廳或窗口抽籤。"
@@ -531,6 +698,10 @@
   "c22fa6f3f344313e8352e052d9fb39da698de08f": {
     "en": "Vote by show of hands: objective majority vote",
     "zh-TW": "舉手錶決：客觀題多數投票"
+  },
+  "c43b03c6b5375f931c22e881c571f261407df6f4": {
+    "en": ": Assignment 1 does the text classification, Assignment 2 does the audio classification, and the results are submitted to the course Kaggle; each time, a final protocol notebook, a complete experimental report, and a csv for submission are attached.",
+    "zh-TW": "：作業1 做文字分類，作業2 做音訊分類，結果提交到課程Kaggle；每次都附最終方案筆記本、完整實驗報告和提交用的csv"
   },
   "c57d9244afbdbd92f6098ea376c366d52f2f14b3": {
     "en": ": 🌐 web version (open the url, paste the token and use, no installation required, available on mobile phone); 🤖 AI agent scheduled tasks (such as ZCode, automatically captured and reported in Chinese every Friday night); 📦 Windows desktop Wizard (Advanced: Scheduled auto-run + courseware auto-download)",
@@ -558,9 +729,17 @@
   "cbbb6a0acf614a32311ea014347453e68584b3a2": {
     "zh-TW": "創業"
   },
+  "cc6cf88e74c4301ef432cc02e6457d90f4a5bdb0": {
+    "en": "Canvas, CityUHK Portal and on-campus Information technology service guide.",
+    "zh-TW": "Canvas、CityUHK Portal 與校內資訊科技服務指南。"
+  },
   "cc856fbbe464a108ad633a4adf74ab9478ca5077": {
     "en": "Offline Translation",
     "zh-TW": "離線翻譯"
+  },
+  "cc89db5bbc46005e3003b7cf8be428d035f9c878": {
+    "en": "Data Science",
+    "zh-TW": "數據科學"
   },
   "cd3445aded1ea01b522b9ec41dc04e161f85e95d": {
     "en": "  Submission status",
@@ -585,6 +764,10 @@
   "d867ebbc4d9d6f5d54a037e1ea73fc9900347d40": {
     "en": "Search for the ordering entrance by restaurant or window. Supports search, category filtering, collection and custom sorting within the browser.",
     "zh-TW": "依餐廳或視窗尋找點餐入口；支援搜尋、分類篩選、收藏和瀏覽器內自訂排序。"
+  },
+  "d99032a6250a2187b71115d9ba374ee35177d083": {
+    "en": "A nanny-level guide for professional review of the China Academic Degrees and Graduate Education Development Center Certification. The author graduated from the Master of Science (E-commerce) program at City University of Hong Kong. After obtaining the initial certification result from the Ministry of Education's China Academic Degrees and Graduate Education Development Center, he applied for a professional field review and changed the certified major from \"E-commerce\" to \"Computer Science and Technology (E-commerce)\". The warehouse has sorted out the complete process of this review, the full set of application material templates and the preparation ideas.\n\nIn many domestic positions, especially in the recruitment of civil servants and public institutions, majors are determined by the discipline directory. If the names of overseas majors are classified too finely or do not match the descriptions in the domestic directory, they are likely to be rejected in the initial screening. This guide is mainly written for the younger students of City University of Hong Kong who are pursuing a Master's degree in E-commerce. Students from other overseas institutions who wish to add a first-level discipline to their accreditation results can also refer to it.",
+    "zh-TW": "留服認證專業複審的保母級攻略。作者畢業於香港城市大學理學碩士（電子商貿）項目，拿到教育部留學服務中心的初次認證結果後申請專業領域複核，把認證專業從「電子商貿」改成了「電腦科學與技術（電子商貿）」。倉庫整理了這次覆核的完整流程、全套申請資料範本和準備想法。國內很多職位，尤其是公務員和事業單位招聘，會依學科目錄卡專業。境外專業名稱分得太細，或和國內目錄說法對不上，就容易在初篩被刷掉。這份攻略主要寫給城大電子商貿碩士的學弟妹，其他境外院校想在認證結果裡補上一級學科的同學也可以參考。"
   },
   "dd3559c0cbe1453bf6c99942bc76cc1cc956ab26": {
     "en": "BIS Navigator (Cityu MScBIS Learning and Course Selection Guide)",
@@ -611,6 +794,7 @@
     "zh-TW": "：自動判斷問題領域，分發給最擅長的模型；"
   },
   "e89742057bbae67f7d8aa72dad3abdbc9891e1eb": {
+    "zh-CN": "香港城市大学Beamer模板（非官方）",
     "zh-TW": "香港城市大學的Beamer模板（非官方）"
   },
   "ea6539f10bfe0497dab0998d9d02861646cdd8ac": {
@@ -641,9 +825,21 @@
     "en": ": Introduce the process of applying for a certificate from the City University Computer Department, with mail templates and proof examples",
     "zh-TW": "：介紹向城大計算機系申請開立證明的流程，附郵件範本及證明範例"
   },
+  "ef0aa39f820be4ed5e362071b9695d8a19aaf3d8": {
+    "en": "This article introduces the process of applying to the Department of Computer Science at City University of Hong Kong for a certificate, along with an email template and a sample certificate",
+    "zh-TW": "：介紹向香港城大計算機系申請開立證明的流程，附郵件範本及證明範例"
+  },
+  "ef738f8b74700a3d351f95fce64cdf5de09db5c5": {
+    "en": "E-commerce",
+    "zh-TW": "電子商務"
+  },
   "ef9636791a7528ad9f8a9354c9f237983efb7215": {
     "en": "All templates have been desensitized and are licensed under CC BY-NC 4.0. Please indicate the source when reprinting and using",
     "zh-TW": "所有模板已脫敏，採用CC BY-NC 4.0 協議，轉載使用請註明出處"
+  },
+  "f003fda73f5bd8d96982bef1415aa89cc41933ec": {
+    "en": "Notes and materials repository for master's computer-related courses at City University of Hong Kong. Establish a course catalogue based on the actual course attendance records, collecting the learning content organized by the author and the materials shared in the course community for students to search and refer to by course number.",
+    "zh-TW": "香港城市大學碩士電腦相關課程的筆記與資料倉儲。依實際修課記錄建立課程目錄，匯集作者整理的學習內容和課程社群分享的資料，供同學按課號尋找和參考。"
   },
   "f0acee377873ca9e93b3a7596eaed8ef748b5f98": {
     "en": "QRcode4food is a mobile ordering entry directory for restaurants at City University of Hong Kong and its surrounding areas. You can search for the QR codes of the restaurant and its different Windows by opening the web page. Clicking on the corresponding entry will redirect you to the merchant's ordering web page. There is no need to register or log in on this site.",

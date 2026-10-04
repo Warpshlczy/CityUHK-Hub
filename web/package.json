@@ -2,7 +2,7 @@
   "name": "cityu-hub-web",
   "private": true,
   "version": "0.0.0",
-  "description": "CityU-Hub 前端：读取解析好的静态 JSON 并渲染站点",
+  "description": "CityUHK Hub 前端：读取解析好的静态 JSON 并渲染站点",
   "type": "module",
   "scripts": {
     "parse": "node ../repos-parser/src/build-index.mjs --offline",

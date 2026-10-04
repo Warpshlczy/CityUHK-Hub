@@ -9,7 +9,7 @@ const FRONTEND_PORT = 5173
 const ALLOWED_HOSTS = ['cityu-hub.bond', '.cityu-hub.bond']
 
 export default defineConfig(({ mode }) => {
-  // 部署在子路径（例如 GitHub Pages 的 /CityU-Hub/）时设置 BASE_PATH，默认部署在域名根路径
+  // 部署在子路径（例如 GitHub Pages 的 /CityUHK-Hub/）时设置 BASE_PATH，默认部署在域名根路径
   const env = loadEnv(mode, '.', 'BASE_PATH')
 
   return {

@@ -17,13 +17,14 @@
 #   homepageUrl       项目 demo 地址，没有就留空 ''
 #   tags              最多 12 个，每个最长 16 字符（会自动转小写）
 #   category          分类，最长 80 字
+#   language          仓库母语，只能填 zh-CN、zh-TW、en 之一，默认 zh-CN；选定后以它为准自动翻译另外两种语言
 #   featured          true / false，默认 false
 #
 # 固定取值
 #   status            只能填 active、hidden、archived 之一，默认 active；hidden 的项目不展示
 #
 # 不要写上面没列出的字段，多写会校验失败；id 与 repoUrl 不能和已有项目重复
-# 正文写在 front matter 之后：介绍你的项目，`## Features` 段落可选
+# 正文写在 front matter 之后：介绍你的项目，`## 功能` 段落可选
 #
 # ── 繁體中文 ──────────────────────────────────────────────
 # 把本模板複製為 repos/你的專案名.md，刪掉註解行後填寫欄位（註解行不影響建置）
@@ -43,13 +44,14 @@
 #   homepageUrl       專案 demo 位址，沒有就留空 ''
 #   tags              最多 12 個，每個最長 16 字元（會自動轉小寫）
 #   category          分類，最長 80 字
+#   language          倉庫母語，只能填 zh-CN、zh-TW、en 之一，預設 zh-CN；選定後以它為準自動翻譯另外兩種語言
 #   featured          true / false，預設 false
 #
 # 固定取值
 #   status            只能填 active、hidden、archived 之一，預設 active；hidden 的專案不顯示
 #
 # 不要寫上面沒列出的欄位，多寫會驗證失敗；id 與 repoUrl 不能和已有專案重複
-# 正文寫在 front matter 之後：介紹你的專案，`## Features` 段落可選
+# 正文寫在 front matter 之後：介紹你的專案，`## 功能` 段落可選
 #
 # ── English ──────────────────────────────────────────────
 # Copy this template to repos/your-project.md, delete the comment lines, then fill in the fields
@@ -70,6 +72,8 @@
 #   homepageUrl       demo URL, leave it empty as '' when there is none
 #   tags              at most 12 tags, 16 characters each (lowercased automatically)
 #   category          category, at most 80 characters
+#   language          the repository's native language: one of zh-CN, zh-TW, en; defaults to zh-CN.
+#                     The other two languages are auto-translated from it.
 #   featured          true / false, defaults to false
 #
 # Fixed values
@@ -88,6 +92,7 @@ homepageUrl: ''
 tags:
   - example
 category: other
+language: zh-CN
 featured: false
 status: active
 ---

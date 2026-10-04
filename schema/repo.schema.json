@@ -17,6 +17,7 @@
     "homepageUrl": { "type": "string", "format": "uri-reference" },
     "tags": { "type": "array", "maxItems": 12, "items": { "type": "string", "maxLength": 16 } },
     "category": { "type": "string", "maxLength": 80 },
+    "language": { "type": "string", "enum": ["zh-CN", "zh-TW", "en"] },
     "featured": { "type": "boolean" },
     "status": { "type": "string", "enum": ["active", "hidden", "archived"] }
   }

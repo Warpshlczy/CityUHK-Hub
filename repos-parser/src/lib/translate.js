@@ -1,11 +1,12 @@
 /**
  * 构建期翻译：为每个项目补出 en / zh-CN / zh-TW 三语文本，结果落盘缓存。
+ * - 源语言（repos/*.md 的 language 字段）直接用原文，另两语才送去翻译。
  * - 离线（--offline / parse）只读缓存，缺了就回退原文，绝不出网。
  * - 在线（parse:online，Vercel 构建）补齐缺失条目并写回缓存。
  * 任何网络错误都不抛出，只告警并回退原文，避免中断构建。
  *
  * ponytail: 免费接口不稳定（Youdao 会 411 限流、MyMemory 有匿名日配额且单请求约 500 字节），
- * 繁体只有 MyMemory 真支持，因此缓存是必须的；失败即回退原文，不追求一次成功。
+ * Google gtx 免 key 但属非官方端点，随时可能失效；因此缓存是必须的，失败即回退原文，不追求一次成功。
  */
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
@@ -70,6 +71,21 @@ async function youdaoTranslate(text, from, to, fetchImpl, delayMs) {
     }
     return translated;
   }, delayMs);
+}
+
+/** MyMemory 配额耗尽时兜底：Google 公开 gtx 端点，免 key、支持 zh-TW，按 URL 长度分段 */
+async function googleOnce(text, from, to, fetchImpl) {
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${from}&tl=${to}&dt=t&q=${encodeURIComponent(text)}`;
+  const response = await fetchImpl(url, { signal: AbortSignal.timeout(20000) });
+  if (!response.ok) return null;
+  const data = await response.json();
+  if (!Array.isArray(data?.[0])) return null;
+  const translated = data[0].map((segment) => (Array.isArray(segment) ? segment[0] : '')).filter(Boolean).join('');
+  return translated || null;
+}
+
+async function googleTranslate(text, from, to, fetchImpl, delayMs) {
+  return translateChunks(text, 900, (s) => s.length, (chunk) => googleOnce(chunk, from, to, fetchImpl), delayMs);
 }
 
 /** MyMemory：支持 zh-CN|zh-TW 真繁体，但单请求约 500 字节上限，必须分段后拼接 */
@@ -161,10 +177,10 @@ export async function createTranslator({
   const cache = await readCache(cachePath);
   let dirty = false;
 
-  async function translateRaw(text, target) {
+  async function translateRaw(text, target, source) {
     const src = String(text ?? '');
-    // zh-CN 即原文本身，直接复制；纯符号/数字也不必翻译
-    if (!src.trim() || target === 'zh-CN' || !LETTER_RE.test(src)) return src;
+    // 源语言即原文本身，直接复制；纯符号/数字也不必翻译
+    if (!src.trim() || target === source || !LETTER_RE.test(src)) return src;
     const chinese = CJK_RE.test(src);
     if (target === 'en' && !chinese) return src; // 本来就是英文，无需翻译
 
@@ -174,7 +190,7 @@ export async function createTranslator({
     // 离线只认缓存；缺了就原样返回，不联网也不告警（dev/CI 会大面积缺）
     if (offline || typeof fetchImpl !== 'function') return src;
 
-    const translated = await translateByProviders(src, target, { fetchImpl, delayMs });
+    const translated = await translateByProviders(src, source, target, { fetchImpl, delayMs });
     if (translated === null) {
       console.warn(`[translate] ${target} 翻译失败，回退原文：${src.slice(0, 40)}…`);
       return src;
@@ -184,9 +200,9 @@ export async function createTranslator({
     return translated;
   }
 
-  async function translate(text, target) {
+  async function translate(text, target, source = 'zh-CN') {
     try {
-      return await translateRaw(text, target);
+      return await translateRaw(text, target, source);
     } catch (error) {
       console.warn(`[translate] 意外错误，回退原文：${error.message}`);
       return String(text ?? '');
@@ -194,9 +210,9 @@ export async function createTranslator({
   }
 
   /** 翻译 README 正文：切出受保护片段原样保留，只翻自然语言，再按原顺序拼回 */
-  async function translateMarkdown(markdown, target) {
+  async function translateMarkdown(markdown, target, source = 'zh-CN') {
     const src = String(markdown ?? '');
-    if (target === 'zh-CN' || !src) return src;
+    if (target === source || !src) return src;
     const parts = src.split(PROTECT_RE);
     let result = '';
     for (let i = 0; i < parts.length; i += 1) {
@@ -207,7 +223,7 @@ export async function createTranslator({
       }
       const lead = part.match(/^\s*/)[0];
       const trail = part.match(/\s*$/)[0];
-      result += lead + (await translate(part.slice(lead.length, part.length - trail.length), target)) + trail;
+      result += lead + (await translate(part.slice(lead.length, part.length - trail.length), target, source)) + trail;
     }
     return result;
   }
@@ -226,16 +242,24 @@ export async function createTranslator({
   return { translate, translateMarkdown, flush };
 }
 
-/** provider 链：中文→英优先 Youdao，失败退 MyMemory；繁体只有 MyMemory */
-async function translateByProviders(text, target, { fetchImpl, delayMs }) {
-  const chinese = CJK_RE.test(text);
-  if (target === 'en') {
-    const viaYoudao = await youdaoTranslate(text, 'zh-CHS', 'en', fetchImpl, delayMs);
-    if (viaYoudao !== null) return viaYoudao;
-    return myMemoryTranslate(text, 'zh-CN', 'en', fetchImpl, delayMs);
+/**
+ * provider 链，按「源语言 → 目标语言」选路：
+ * - 简中 ↔ 英：优先 Youdao（质量更稳），失败退 Google，再退 MyMemory；
+ * - 其余语向（含所有繁体、英→繁、繁→简、繁→英）：Google 优先，MyMemory 兜底。
+ */
+const YOUDAO_PAIRS = {
+  'zh-CN|en': ['zh-CHS', 'en'],
+  'en|zh-CN': ['en', 'zh-CHS'],
+};
+
+async function translateByProviders(text, source, target, { fetchImpl, delayMs }) {
+  const viaYoudao = YOUDAO_PAIRS[`${source}|${target}`];
+  if (viaYoudao) {
+    const [from, to] = viaYoudao;
+    const translated = await youdaoTranslate(text, from, to, fetchImpl, delayMs);
+    if (translated !== null) return translated;
   }
-  if (target === 'zh-TW') {
-    return myMemoryTranslate(text, chinese ? 'zh-CN' : 'en', 'zh-TW', fetchImpl, delayMs);
-  }
-  return null;
+  const viaGoogle = await googleTranslate(text, source, target, fetchImpl, delayMs);
+  if (viaGoogle !== null) return viaGoogle;
+  return myMemoryTranslate(text, source, target, fetchImpl, delayMs);
 }

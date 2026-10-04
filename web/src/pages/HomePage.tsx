@@ -45,6 +45,11 @@ export function HomePage() {
 
   const sort = toSortKey(sortParam);
 
+  // 搜索规则面板里 category: 的示例值，取当前语言下的真实分类名
+  const categoryExample = data?.categories?.length
+    ? categoryLabel(data.categories[0].name, lang, data.categoryLabels)
+    : undefined;
+
   const selectedTags = useMemo(
     () => (tagsParam ? tagsParam.split(',').filter(Boolean) : []),
     [tagsParam],
@@ -198,7 +203,9 @@ export function HomePage() {
   return (
     <div className="relative z-10 flex min-h-screen flex-col">
       <Header
-        searchSlot={<SearchBar value={query} onChange={setQuery} />}
+        searchSlot={
+          <SearchBar value={query} onChange={setQuery} categoryExample={categoryExample} />
+        }
         onOpenSidebar={() => setDrawerOpen(true)}
       />
 

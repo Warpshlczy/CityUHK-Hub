@@ -70,10 +70,13 @@ const ALLOWED_FIELDS = [
   'homepageUrl',
   'tags',
   'category',
+  'language',
   'featured',
   'status',
 ];
 const STATUSES = ['active', 'hidden', 'archived'];
+/** 仓库母语：决定翻译的源语言槽位（源语言用原文，另两语才送去翻译） */
+const LANGUAGES = ['zh-CN', 'zh-TW', 'en'];
 const FRONTMATTER_RE = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n|$)/;
 
 export function parseFrontmatterDocument(content, fileName = 'document.md') {
@@ -108,6 +111,8 @@ export function parseFrontmatterDocument(content, fileName = 'document.md') {
     homepageUrl: optionalHttpUrl(data.homepageUrl, 'homepageUrl') ?? '',
     tags: normalizeTags(data.tags, 'tags') ?? [],
     category: optionalString(data.category, 'category', 80) ?? 'other',
+    // 仓库母语；默认简中，老文档不写也能照常构建
+    language: optionalEnum(data.language, LANGUAGES, 'language') ?? 'zh-CN',
     featured: requireBoolean(data.featured, 'featured') ?? false,
     status: optionalEnum(data.status, STATUSES, 'status') ?? 'active',
   };

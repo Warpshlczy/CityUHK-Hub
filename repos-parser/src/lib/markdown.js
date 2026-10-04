@@ -156,7 +156,8 @@ export function analyzeReadme(markdown) {
   };
 }
 
-const FEATURES_HEADING = /^\s{0,3}##\s+Features\s*#*\s*$/im;
+// 「功能 / 特点」等中文小标题与英文 Features 等价：简中仓库正文不写英文标题
+const FEATURES_HEADING = /^\s{0,3}##\s+(?:Features|功能|特点|特點)\s*#*\s*$/im;
 const NEXT_HEADING = /^\s{0,3}#{1,6}\s+/;
 
 function featuresSectionBody(text, heading) {

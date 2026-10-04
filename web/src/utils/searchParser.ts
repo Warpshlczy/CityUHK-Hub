@@ -17,18 +17,21 @@ export interface ParsedQuery {
   freeText: string;
 }
 
-// 值允许为空，用户还在输入 tag: 时不至于把结果清空
-const TOKEN_PATTERN = /(\w+):(\S*)/g;
+// 值允许为空，用户还在输入 tag: 时不至于把结果清空；
+// 值里含空格时用引号包起来，例如 category:"Learning assistance"
+const TOKEN_PATTERN = /(\w+):("[^"]*"|\S*)/g;
 
 function isQualifierKey(key: string): key is QualifierKey {
   return (QUALIFIER_KEYS as readonly string[]).includes(key);
 }
 
 function decodeValue(value: string): string {
+  // 去掉用于包裹多词值的引号，再尝试 percent-decode
+  const raw = value.replace(/^"|"$/g, '');
   try {
-    return decodeURIComponent(value);
+    return decodeURIComponent(raw);
   } catch {
-    return value;
+    return raw;
   }
 }
 

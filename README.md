@@ -217,7 +217,7 @@ npm run build   # 型別檢查 + 打包必須通過
 
 ### 收錄原則
 
-本項目本着**自願和開源互助**的目的，歡迎所有城大創作者。我們的理念與互聯網的開源精神、以及學校精神保持一致，旨在促進學習交流、打破壁壘。
+本項目本着**自願和開源互助**的目的，歡迎所有香港城大創作者。我們的理念與互聯網的開源精神、以及學校精神保持一致，旨在促進學習交流、打破壁壘。
 
 若出現不遵守互聯網普遍共識的開源規定與契約、脫離原有技術內容，或借開源之名行破壞開源社區和氛圍的行為，倉庫所有者有權不予收錄或下架相關倉庫。
 
@@ -407,7 +407,7 @@ npm run build   # 类型检查 + 打包必须通过
 
 ### 收录原则
 
-本项目本着**自愿和开源互助**的目的，欢迎所有城大创作者。我们的理念与互联网的开源精神、以及学校精神保持一致，旨在促进学习交流、打破壁垒。
+本项目本着**自愿和开源互助**的目的，欢迎所有香港城大创作者。我们的理念与互联网的开源精神、以及学校精神保持一致，旨在促进学习交流、打破壁垒。
 
 若出现不遵守互联网普遍共识的开源规定与契约、脱离原有技术内容，或借开源之名行破坏开源社区和氛围的行为，仓库所有者有权不予收录或下架相关仓库。
 
@@ -449,7 +449,7 @@ The three problems it solves:
 | Project detail | Renders the repository README, the author's real name, major and enrollment year, plus demo and GitHub links |
 | Shareable URLs | Query, filters, category, sort and theme are all synced to the URL, so refresh and sharing keep the exact view |
 | Theme | Light / dark toggle injected before first paint, with no flash |
-| Useful links | The 🔗 drawer in the header collects AIMS / Canvas / CityU website / CityUHK Portal |
+| Useful links | The 🔗 drawer in the header collects AIMS / Canvas / CityUHK website / CityUHK Portal |
 
 ### Tech stack
 
