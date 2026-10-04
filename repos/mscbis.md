@@ -12,6 +12,7 @@ tags:
   - site
   - information
   - vue
+category: 学习辅助
 summary: "BIS Navigator 是面向香港城市大学 MSc Business Information Systems 学生的中文信息与经验导航"
 featured: false
 status: active
