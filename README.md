@@ -13,7 +13,7 @@
 
 **香港城市大學學生項目和開源自助檢索平台 · 香港城大开源自助导航 · Discover what CityUHK students are building**
 
-**[繁體中文](#繁體中文) · [简体中文](#简体中文) · [English](#english)**
+**[English](#english) · [简体中文](#简体中文) · [繁體中文](#繁體中文)**
 
 </div>
 
@@ -46,192 +46,192 @@
 
 ---
 
-## 繁體中文
+## English
 
-### 這是什麼
+### What is this
 
-CityUHK Hub 是一個面向**香港城市大學（CityUHK）學生開源項目**的展示與檢索網站。同學們把自己寫的小工具、課程項目、研究程式碼提交進來，其他人在同一個頁面就能按**分類 / 標籤 / 語言 / 作者**篩選，搜尋並直接跳到 GitHub 儲存庫。
+CityUHK Hub is a showcase and search site for **open-source projects built by students of City University of Hong Kong (CityUHK)**. Students submit their tools, course projects and research code; everyone else can filter by **category / tag / language / author**, search, and jump straight to the GitHub repository from a single page.
 
-網站解決的三個問題：
+The three problems it solves:
 
-- **散**：校內項目散落在聊天群組、課程群組和個人主頁裡，沒有統一入口。
-- **找不到**：想找「有沒有人做過 NLP 相關的東西」時，沒有任何可檢索的索引。
-- **認不出作者**：看得到儲存庫，卻不知道是哪個主修、哪一屆的同學。
+- **Fragmentation** — campus projects are scattered across group chats, course channels and personal pages, with no single entry point.
+- **No index** — there is no way to answer "has anyone here worked on NLP?" without asking around.
+- **Unknown authors** — you can see a repository but not the major or enrollment year behind it.
 
-### 網站內容與功能
+### Content & features
 
-| 功能 | 說明 |
+| Feature | Description |
 | --- | --- |
-| 項目瀏覽 | 卡片流展示項目名、摘要、標籤、語言色塊、Star 數與最近更新時間 |
-| 搜尋語法 | `author:alice`、`tag:NLP`、`lang:Python`、`category:機器學習`，可疊加 `author:alice lang:Python`；不帶冒號的字詞走全文模糊搜尋 |
-| 篩選與排序 | 分類頁籤、標籤 chips、作者榜一鍵篩選；支援按最近更新 / Star / 名稱排序 |
-| 項目詳情 | 渲染儲存庫 README、作者真實姓名與主修年級、Demo 與 GitHub 外部連結 |
-| 可分享連結 | 搜尋詞、篩選、分類、排序、主題全部同步到 URL，重新整理或分享後狀態不丟 |
-| 主題 | 亮 / 暗雙主題切換，首屏前注入、無閃爍 |
-| 常用入口 | 右上角 🔗 抽屜內建 AIMS / Canvas / 學校官網 / CityUHK Portal |
+| Project browsing | Cards show name, summary, tags, language colour, stars and last update |
+| Search syntax | `author:alice`, `tag:NLP`, `lang:Python`, `category:Machine Learning`, combinable as `author:alice lang:Python`; plain words fall back to fuzzy full-text search |
+| Filters & sorting | Category tabs, tag chips and an author board for one-click filtering; sort by recently updated / stars / name |
+| Project detail | Renders the repository README, the author's real name, major and enrollment year, plus demo and GitHub links |
+| Shareable URLs | Query, filters, category, sort and theme are all synced to the URL, so refresh and sharing keep the exact view |
+| Theme | Light / dark toggle injected before first paint, with no flash |
+| Useful links | The 🔗 drawer in the header collects AIMS / Canvas / CityUHK website / CityUHK Portal |
 
-### 技術棧
+### Tech stack
 
-**前端**：React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4（CSS-first）· React Router 7（HashRouter）· lucide-react
-**解析器**：Node.js ≥ 20.6 · marked（Markdown → HTML）· ajv（JSON Schema 驗證）· js-yaml（front matter 解析）
+**Front end**: React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4 (CSS-first) · React Router 7 (HashRouter) · lucide-react
+**Parser**: Node.js ≥ 20.6 · marked (Markdown → HTML) · ajv (JSON Schema validation) · js-yaml (front matter parsing)
 
-### 項目結構
+### Project structure
 
 ```text
 CityUHK-Hub/
-├── repos/                      # 項目條目：每個項目一個 Markdown（front matter + 正文）
-│   ├── _template.md            # 提交模板，複製它開始寫自己的項目
-│   └── *.md                    # 各項目條目
+├── repos/                      # One Markdown file per project (front matter + body)
+│   ├── _template.md            # Submission template — copy it to get started
+│   └── *.md                    # Your project entries
 ├── schema/
-│   └── repo.schema.json        # front matter 的 JSON Schema，CI 用它把關
-├── repos-parser/               # 解析器：repos/*.md → web/public/data/*.json
-│   ├── src/build-index.mjs     # 產生列表、聚合與項目詳情（含渲染好的 README HTML）
-│   ├── src/validate-repos.mjs  # 按 schema 驗證、項目 ID / 儲存庫網址檢查重複
-│   └── src/lib/                # front matter、Markdown、GitHub、聚合等純函式
-├── web/                        # 前端網站（一條 npm 指令完成解析 + 打包）
-│   ├── public/data/            # 解析產物，已 gitignore，每次建構重新產生
+│   └── repo.schema.json        # JSON Schema for the front matter, enforced by CI
+├── repos-parser/               # Parser: repos/*.md → web/public/data/*.json
+│   ├── src/build-index.mjs     # Builds the list, aggregates and details (README pre-rendered)
+│   ├── src/validate-repos.mjs  # Schema validation, duplicate id / repoUrl detection
+│   └── src/lib/                # Front matter, Markdown, GitHub and aggregation helpers
+├── web/                        # The website (one npm command parses + bundles)
+│   ├── public/data/            # Parser output, gitignored and regenerated on every build
 │   └── src/
-│       ├── api/                # 讀靜態 JSON，並在執行時用 GitHub 補齊缺失欄位
-│       ├── components/         # 卡片、搜尋列、側欄、篩選與排序等
-│       ├── hooks/              # useProjects、useSearch、useUrlState
-│       ├── pages/              # 首頁、項目詳情頁
-│       └── utils/              # 搜尋語法解析、格式化、slug
-├── api/                        # Vercel 函式：track（埋點）/ stats（讀聚合）
-├── lib/                        # 函式與腳本共用的工具（Upstash REST 客戶端）
+│       ├── api/                # Reads static JSON, fills gaps from GitHub at runtime
+│       ├── components/         # Cards, search bar, sidebar, filters and sorting
+│       ├── hooks/              # useProjects, useSearch, useUrlState
+│       ├── pages/              # Home, project detail
+│       └── utils/              # Search parser, formatting, slug helpers
+├── api/                        # Vercel functions: track (beacon) / stats (read)
+├── lib/                        # Helpers shared by functions and scripts (Upstash REST client)
 ├── scripts/
-│   ├── prerender.mjs           # 建構後產出靜態頁、sitemap.xml、robots.txt 與徽章 SVG
-│   ├── sync-and-build.sh       # 目標機器拉取最新程式碼並重建網站
-│   └── update-contributors.mjs # 刷新貢獻者面板（頭像牆 + 名單）
-├── tests/                      # 用記憶體版 Redis 直接跑 /api 函式的測試
-└── .github/workflows/          # ci（驗證+建構）/ deploy（自架重建）/ feature-to-main（項目 PR 合入後同步 main）/ main-sync（刷新貢獻者名單 + 同步 feature）
+│   ├── prerender.mjs           # After the build: static pages, sitemap.xml, robots.txt, badge SVGs
+│   ├── sync-and-build.sh       # Pull the latest code on a target machine and rebuild
+│   └── update-contributors.mjs # Refresh the contributor panel (avatars + list)
+├── tests/                      # Runs the /api functions against an in-memory Redis
+└── .github/workflows/          # ci (validate + build) / deploy (self-hosted rebuild) / feature-to-main (promote a project PR) / main-sync (refresh contributors + sync feature)
 ```
 
-`repos-parser` 與 `web` 透過根目錄的 **npm workspaces** 串起來，`npm install` 一次裝好兩邊依賴。
+`repos-parser` and `web` are wired together with **npm workspaces**, so a single `npm install` covers both.
 
-### 資料流
+### Data flow
 
 ```text
 repos/*.md ─► npm run validate ─► repos-parser ─► web/public/data/*.json ─► vite build ─► web/dist
                                                       ▲
-                                    GitHub API 補 stars / 語言 / 頭像（可選）
+                                    GitHub API fills stars / language / avatar (optional)
 ```
 
-解析器直接產出前端契約的 JSON，沒有中間介面層：
+The parser emits the front-end contract directly, with no API layer in between:
 
-- `data/projects.json`：項目列表 + 標籤 / 作者 / 分類聚合
-- `data/projects/<id>.json`：單個項目詳情，`readmeHtml` 已渲染好，前端直接插入
+- `data/projects.json` — project list plus tag / author / category aggregates
+- `data/projects/<id>.json` — one project, with `readmeHtml` already rendered for the detail page
 
-`npm run build` 離線解析，產物完全可重現；`npm run build:online` 會額外呼叫 GitHub API 補齊 stars、語言與倉庫 About（需要 `GITHUB_TOKEN`，見 `repos-parser/.env.example`）。**線上 Vercel 建構用的就是 `build:online`**，請在 Vercel 專案的環境變數裡設定 `GITHUB_TOKEN`；未設定或 token 失效時建構不會失敗，但這三項會留空，由前端執行時補（頭像不依賴 API，直接用 `github.com/<使用者名稱>.png`）。
+`npm run build` parses offline, so artefacts are fully reproducible. `npm run build:online` additionally calls the GitHub API to fill in stars, language and the repository About (needs `GITHUB_TOKEN`, see `repos-parser/.env.example`). **The production build on Vercel uses `build:online`**, so set `GITHUB_TOKEN` in the Vercel project's environment variables. A missing or expired token will not fail the build — those three fields are just left empty and filled by the front end at runtime (avatars never hit the API: they use `github.com/<username>.png`).
 
-打包完成後 `scripts/prerender.mjs` 還會為每個路由產生一份帶 Meta 與 JSON-LD 的靜態 HTML，並產出 `sitemap.xml`、`robots.txt` 與 `badge/<id>.svg` 徽章 —— 搜尋引擎拿到的是已渲染的內容，不依賴 JS。
+After bundling, `scripts/prerender.mjs` writes a static HTML snapshot per route with Meta tags and JSON-LD, plus `sitemap.xml`, `robots.txt` and the `badge/<id>.svg` badges — crawlers get rendered content without running JS.
 
-站內統計（全站 UV、卡片瀏覽與外連點擊）走 `api/track` 與 `api/stats` 兩個函式，資料放在 Upstash Redis，前端據此計算卡片熱力值。在 Vercel 環境變數裡設定 `KV_REST_API_URL` / `KV_REST_API_TOKEN`（Upstash 整合預設注入這兩個名字，也相容 `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`）。**未設定時埋點靜默失效**，頁面照常渲染，熱力值只按 GitHub 資料計算。
+Site analytics (total UV, card views, outbound clicks) run through the `api/track` and `api/stats` functions with data kept in Upstash Redis; the front end turns that into each card's heat score. Set `KV_REST_API_URL` / `KV_REST_API_TOKEN` in the Vercel environment variables (the Upstash integration injects those two names by default; `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` also work). **Without them the beacons fail silently**, pages render as usual, and heat scores fall back to GitHub data only.
 
-網站上的「我也要提交項目」表單採用 **fork 引導** 流程：填好欄位提交前，前端會依你填寫的 GitHub 使用者名稱查一次公開 API，確認你是否已 fork 本站倉庫並拉好 `feature` 分支（登入態無法在靜態前端確認，以表單內填的名字為準）。未 fork 時前端會給出指引（Fork 本站 → 切到 `feature` → 回到頁面重新偵測），偵測通過後把預填內容帶到你 fork 的 `feature` 分支新建檔案，提交即開 PR 回本站。站內不再持有寫端 token，也沒有「本站代開 PR」的介面。
+The "我也要提交项目" form on the site follows a **fork-guide** flow: before submitting, the front end queries the GitHub public API with the username you entered to confirm you have forked the repo and pulled the `feature` branch (a static front end cannot verify login state, so it trusts the username typed into the form). If you have not forked, it shows a guide (Fork this repo → switch to `feature` → re-check on the page); once the check passes, it opens your prefilled file on your fork's `feature` branch, and committing opens a PR back to this repo. The site no longer holds a write-side token and has no "open-PR-for-you" endpoint.
 
-### 本機執行
+### Local development
 
 ```bash
-npm install     # 根目錄一次裝好 repos-parser 與 web 的依賴
-npm run dev     # 先解析 repos/*.md，再啟動 http://localhost:5173
+npm install     # installs both workspaces from the repo root
+npm run dev     # parses repos/*.md, then serves http://localhost:5173
 ```
 
-常用指令：
+Useful commands:
 
 ```bash
-npm run build        # 解析 + 型別檢查 + 打包，產物在 web/dist
-npm run build:online # 同上，但連網補齊 stars / 語言 / 頭像
-npm run preview      # 本機預覽建構產物
-npm run validate     # 驗證 repos/*.md 的 front matter、Schema 與重複項
-npm test             # 解析器與 /api 函式測試
+npm run build        # parse + type-check + bundle, output in web/dist
+npm run build:online # same, but fills stars / language / avatars from GitHub
+npm run preview      # preview the production build locally
+npm run validate     # check front matter, schema and duplicate entries in repos/*.md
+npm test             # parser + /api function tests
 ```
 
-### 一鍵入口
+### One-click entry points
 
-不想翻文件就直接點，表格裡的徽章已帶好標籤與目標分支：
+Skip the docs and click straight through — the badges in the table already carry the right label and target branch:
 
-| 想做的事 | 一鍵喚起 | 說明 |
+| What you want | One-click action | Notes |
 | --- | --- | --- |
-| 提交自己的項目 | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | 打開 GitHub 檔案編輯器，沒權限會自動 fork，檔案建在 `feature` 分支，提交即開 PR |
-| 報告 Bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | 已預填標題 `[Bug]` 與 `bug` 標籤 |
-| 提功能建議 / 提問 | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | 已預填標題 `[Feature]` 與 `enhancement` 標籤 |
-| 看別人提了什麼 | [瀏覽全部 Issue](https://github.com/Warpshlczy/CityUHK-Hub/issues) | 先搜一下，避免重複 |
+| Submit your project | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | Opens the GitHub file editor; without write access it forks for you, creates the file on `feature`, and committing opens the PR |
+| Report a bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | Title `[Bug]` and the `bug` label are pre-filled |
+| Request a feature / ask a question | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | Title `[Feature]` and the `enhancement` label are pre-filled |
+| See what's already reported | [Browse all issues](https://github.com/Warpshlczy/CityUHK-Hub/issues) | Search first to avoid duplicates |
 
-### 分支模型
+### Branch model
 
-倉庫只有三條長期分支，預設分支是 `main`；舊分支 `master` 已刪除，請統一使用 `main`：
+The repository keeps only three long-lived branches; the default branch is `main`, and the old `master` branch has been deleted — use `main` everywhere:
 
-| 分支 | 用途 | 收哪類 PR |
+| Branch | Purpose | PRs merged into it |
 | --- | --- | --- |
-| `main` | 穩定發佈分支，線上的正式版本以它為準 | 只接受 `feature` / `dev` 的合併，不直接往上提交 |
-| `feature` | 只丟 Markdown 文件：`repos/*.md` | 項目作者的「提交我的項目」PR |
-| `dev` | 網站改動與新功能：`web/`、`repos-parser/`、`scripts/`、workflow、文件 | 前端 / 解析器 / 文件類 PR |
+| `main` | Stable release branch, the source of truth for production | Only merges from `feature` / `dev`; never commit directly |
+| `feature` | Markdown files only: `repos/*.md` | "Submit my project" PRs from project authors |
+| `dev` | Site changes and new features: `web/`, `repos-parser/`, `scripts/`, workflows, docs | Front end / parser / docs PRs |
 
 ```text
-項目提交 PR ─► feature ─┐
-                        ├─► main ─► 正式發佈（自架機器重建）
-網站改動 PR ─► dev ─────┘
+project submission PR ─► feature ─┐
+                                  ├─► main ─► production release (self-hosted rebuild)
+site change PR ────────► dev ─────┘
 ```
 
-- **提項目**：從 `feature` 開分支（例如 `feat/add-my-project`），PR 的目標分支選 **`feature`**。
-- **改網站**：從 `dev` 開分支（例如 `feat/search-syntax`），PR 的目標分支選 **`dev`**。
-- `feature` 上的項目 PR 合併後，由 [`feature-to-main.yml`](.github/workflows/feature-to-main.yml) 自動合入 `main`；`dev` 由維護者定期合併回 `main`。**只有合併到 `main` 才會觸發正式發佈**。
-- `main` 每次推送後由 [`main-sync.yml`](.github/workflows/main-sync.yml) 自動同步回 `feature`，並刷新下面的貢獻者名單。
-- PR 一打開就會跑 CI（驗證 front matter、單元測試、整站建構），與目標分支無關。
+- **Submitting a project**: branch off `feature` (e.g. `feat/add-my-project`) and target the PR at **`feature`**.
+- **Changing the site**: branch off `dev` (e.g. `feat/search-syntax`) and target the PR at **`dev`**.
+- Merging a project PR into `feature` promotes it to `main` automatically via [`feature-to-main.yml`](.github/workflows/feature-to-main.yml); `dev` is merged back into `main` by maintainers. **Only a merge into `main` triggers a production release**.
+- Every push to `main` is synced back into `feature` by [`main-sync.yml`](.github/workflows/main-sync.yml), which also refreshes the contributor list below.
+- CI (front matter validation, unit tests, full site build) runs as soon as a PR is opened, regardless of the target branch.
 
-### 成為貢獻者
+### Become a contributor
 
-**非常歡迎你參與 CityUHK Hub！** 無論你是想把自己的項目放上來、修一個前端小 bug、補一段文件，還是只提一個想法，都是這個項目需要的貢獻。
+**You are very welcome to contribute to CityUHK Hub!** Adding your own project, fixing a small front-end bug, improving docs or just sharing an idea — all of it moves this project forward.
 
-#### 方式一：提交你的項目（最主要）
+#### Option 1: Submit your project (the main path)
 
-1. **Fork** 本儲存庫並 clone 到本機，從 `feature` 開一個分支，例如 `feat/add-my-project`。也可以直接點上面的[一鍵新建項目檔案](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md)在網頁上填。
-2. 複製 `repos/_template.md` 為 `repos/你的項目名.md`，填寫 front matter 與正文。
-3. 必填欄位：`title`、`author`（GitHub 使用者名稱）、`authorName`（真實姓名）、`major`（主修）、`enrollmentYear`（入學年份，四位數字）、`repoUrl`（必須是公開的 `https://github.com/...` 位址）。可選：`id`、`summary`、`homepageUrl`、`tags`（最多 12 個小寫短標籤）、`category`、`featured`、`status`（`active` / `hidden` / `archived`）。**schema 不允許出現未定義的欄位。**
-4. 正文寫在 front matter 之後：`summary` 用來當卡片摘要，開頭寫項目介紹，`## Features` 段落完全由作者自行決定——寫了才展示，**留空或整段不寫都不會出現 Features**，也不會用 GitHub 儲存庫簡介去補齊；把項目介紹留空則回退到展示儲存庫 README。
-5. 本機自我檢查（務必先跑通）：
+1. **Fork** this repository, clone it, and branch off `feature`, e.g. `feat/add-my-project`. You can also use the [one-click new project file](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) link and fill it in right in the browser.
+2. Copy `repos/_template.md` to `repos/your-project.md` and fill in the front matter and the body.
+3. Required fields: `title`, `author` (GitHub username), `authorName`, `major`, `enrollmentYear` (four digits), `repoUrl` (must be a public `https://github.com/...` URL). Optional: `id`, `summary`, `homepageUrl`, `tags` (max 12 short lowercase tags), `category`, `featured`, `status` (`active` / `hidden` / `archived`). **The schema rejects any undefined field.**
+4. Put your description after the front matter: `summary` becomes the card text. The `## Features` section is entirely up to you — write it and it renders, **leave it empty or omit it and no Features block appears**, and the repository description is never used as a substitute. Leave the intro empty to fall back to your repository README.
+5. Verify locally before opening the PR:
    ```bash
    npm install
-   npm run validate   # front matter 是否符合 schema、ID 與儲存庫網址是否重複
-   npm test           # 解析器與 /api 函式測試
-   npm run build      # 確認能正常解析並建構出網站
+   npm run validate   # schema conformance, duplicate id / repoUrl
+   npm test           # parser + /api function tests
+   npm run build      # make sure the site parses and builds
    ```
-6. 提交 Pull Request 到 `feature` 分支。CI 會自動跑 `validate`、測試與整站建構；通過後由維護者 review 合併。合併進 `main` 後託管平台會自動重新建構發佈，網站隨即更新。
+6. Open a Pull Request against `feature`. CI runs `validate`, the test suite and a full site build; a maintainer reviews and merges. Once the change reaches `main`, the hosting platform rebuilds and publishes automatically, and the site updates.
 
-> 目錄、欄位名稱、列舉值的完整約定見 [`CONTRIBUTING.md`](CONTRIBUTING.md) 與 [`schema/repo.schema.json`](schema/repo.schema.json)。
+> Full conventions for files, field names and enum values live in [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`schema/repo.schema.json`](schema/repo.schema.json).
 
-#### 方式二：改進網站本身
+#### Option 2: Improve the site itself
 
-前端 / 解析器 / workflow 的 PR 同樣歡迎，請把 PR 提到 **`dev`** 分支。動手前請先開一個 issue 說清楚你想做什麼，避免重複勞動；提交前請確認：
+PRs for the front end, the parser and the workflows are welcome — target the **`dev`** branch. Please open an issue first so we can avoid duplicated effort, and make sure these pass:
 
 ```bash
-npm test        # 測試（解析器 + /api 函式）必須通過
-npm run build   # 型別檢查 + 打包必須通過
+npm test        # all tests (parser + /api functions) must succeed
+npm run build   # type-check + bundle must succeed
 ```
 
-#### 方式三：文件、翻譯與回饋
+#### Option 3: Docs, translation and feedback
 
-發現錯別字、想補英文翻譯、有更好的介面建議，都可以直接開 issue 或提 PR——這類貢獻和程式碼同等重要。
+Typos, English translations, UI suggestions — open an issue or send a PR. These contributions matter as much as code.
 
-**期待在貢獻者名單裡看到你。**
+**We look forward to seeing your name among the contributors.**
 
-### 收錄原則
+### Inclusion policy
 
-本項目本着**自願和開源互助**的目的，歡迎所有香港城大創作者。我們的理念與互聯網的開源精神、以及學校精神保持一致，旨在促進學習交流、打破壁壘。
+This project runs on a **voluntary, open-source, mutual-aid** basis, and all CityUHK creators are welcome. Our values align with the spirit of open source and the spirit of the University: to encourage learning and exchange, and to break down barriers.
 
-若出現不遵守互聯網普遍共識的開源規定與契約、脫離原有技術內容，或借開源之名行破壞開源社區和氛圍的行為，倉庫所有者有權不予收錄或下架相關倉庫。
+Should anyone fail to follow the open-source rules and contracts recognised across the internet, drift away from the original technical content, or act in the name of open source while damaging the open-source community and its atmosphere, the repository owner reserves the right to decline or remove the relevant repositories.
 
-### 授權條款
+### License
 
-本項目基於 [MIT License](LICENSE) 開源，版權歸 **CityUHK Hub contributors** 所有。
+Released under the [MIT License](LICENSE), copyright © **CityUHK Hub contributors**.
 
-你可以自由使用、複製、修改、合併、發佈、分發、再授權及/或銷售本軟體的副本，只需在副本或實質性部分中保留上述版權聲明與授權聲明。本軟體按「原樣」提供，不附帶任何形式的明示或默示擔保。
+You are free to use, copy, modify, merge, publish, distribute, sublicense and/or sell copies of the software, as long as the copyright and permission notices are kept in all copies or substantial portions. The software is provided "as is", without warranty of any kind, express or implied.
 
-這意味著：**你提交到 `repos/` 的項目條目仍然歸你所有**，MIT 只覆蓋 CityUHK Hub 自身的網站與解析器程式碼。
+In practice: **the project entries you submit under `repos/` remain yours** — MIT covers the CityUHK Hub site and parser code only.
 
-### 聯絡我們
+### Contact
 
-想投稿項目、回報問題、提建議，或只是想聊聊？歡迎隨時寄信，我們都會看：
+Want to submit a project, report a problem, suggest an idea, or just say hi? Drop us an email any time — we read everything:
 
 [![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:contact.cityu-hub@proton.me)
 
@@ -427,192 +427,192 @@ npm run build   # 类型检查 + 打包必须通过
 
 ---
 
-## English
+## 繁體中文
 
-### What is this
+### 這是什麼
 
-CityUHK Hub is a showcase and search site for **open-source projects built by students of City University of Hong Kong (CityUHK)**. Students submit their tools, course projects and research code; everyone else can filter by **category / tag / language / author**, search, and jump straight to the GitHub repository from a single page.
+CityUHK Hub 是一個面向**香港城市大學（CityUHK）學生開源項目**的展示與檢索網站。同學們把自己寫的小工具、課程項目、研究程式碼提交進來，其他人在同一個頁面就能按**分類 / 標籤 / 語言 / 作者**篩選，搜尋並直接跳到 GitHub 儲存庫。
 
-The three problems it solves:
+網站解決的三個問題：
 
-- **Fragmentation** — campus projects are scattered across group chats, course channels and personal pages, with no single entry point.
-- **No index** — there is no way to answer "has anyone here worked on NLP?" without asking around.
-- **Unknown authors** — you can see a repository but not the major or enrollment year behind it.
+- **散**：校內項目散落在聊天群組、課程群組和個人主頁裡，沒有統一入口。
+- **找不到**：想找「有沒有人做過 NLP 相關的東西」時，沒有任何可檢索的索引。
+- **認不出作者**：看得到儲存庫，卻不知道是哪個主修、哪一屆的同學。
 
-### Content & features
+### 網站內容與功能
 
-| Feature | Description |
+| 功能 | 說明 |
 | --- | --- |
-| Project browsing | Cards show name, summary, tags, language colour, stars and last update |
-| Search syntax | `author:alice`, `tag:NLP`, `lang:Python`, `category:Machine Learning`, combinable as `author:alice lang:Python`; plain words fall back to fuzzy full-text search |
-| Filters & sorting | Category tabs, tag chips and an author board for one-click filtering; sort by recently updated / stars / name |
-| Project detail | Renders the repository README, the author's real name, major and enrollment year, plus demo and GitHub links |
-| Shareable URLs | Query, filters, category, sort and theme are all synced to the URL, so refresh and sharing keep the exact view |
-| Theme | Light / dark toggle injected before first paint, with no flash |
-| Useful links | The 🔗 drawer in the header collects AIMS / Canvas / CityUHK website / CityUHK Portal |
+| 項目瀏覽 | 卡片流展示項目名、摘要、標籤、語言色塊、Star 數與最近更新時間 |
+| 搜尋語法 | `author:alice`、`tag:NLP`、`lang:Python`、`category:機器學習`，可疊加 `author:alice lang:Python`；不帶冒號的字詞走全文模糊搜尋 |
+| 篩選與排序 | 分類頁籤、標籤 chips、作者榜一鍵篩選；支援按最近更新 / Star / 名稱排序 |
+| 項目詳情 | 渲染儲存庫 README、作者真實姓名與主修年級、Demo 與 GitHub 外部連結 |
+| 可分享連結 | 搜尋詞、篩選、分類、排序、主題全部同步到 URL，重新整理或分享後狀態不丟 |
+| 主題 | 亮 / 暗雙主題切換，首屏前注入、無閃爍 |
+| 常用入口 | 右上角 🔗 抽屜內建 AIMS / Canvas / 學校官網 / CityUHK Portal |
 
-### Tech stack
+### 技術棧
 
-**Front end**: React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4 (CSS-first) · React Router 7 (HashRouter) · lucide-react
-**Parser**: Node.js ≥ 20.6 · marked (Markdown → HTML) · ajv (JSON Schema validation) · js-yaml (front matter parsing)
+**前端**：React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4（CSS-first）· React Router 7（HashRouter）· lucide-react
+**解析器**：Node.js ≥ 20.6 · marked（Markdown → HTML）· ajv（JSON Schema 驗證）· js-yaml（front matter 解析）
 
-### Project structure
+### 項目結構
 
 ```text
 CityUHK-Hub/
-├── repos/                      # One Markdown file per project (front matter + body)
-│   ├── _template.md            # Submission template — copy it to get started
-│   └── *.md                    # Your project entries
+├── repos/                      # 項目條目：每個項目一個 Markdown（front matter + 正文）
+│   ├── _template.md            # 提交模板，複製它開始寫自己的項目
+│   └── *.md                    # 各項目條目
 ├── schema/
-│   └── repo.schema.json        # JSON Schema for the front matter, enforced by CI
-├── repos-parser/               # Parser: repos/*.md → web/public/data/*.json
-│   ├── src/build-index.mjs     # Builds the list, aggregates and details (README pre-rendered)
-│   ├── src/validate-repos.mjs  # Schema validation, duplicate id / repoUrl detection
-│   └── src/lib/                # Front matter, Markdown, GitHub and aggregation helpers
-├── web/                        # The website (one npm command parses + bundles)
-│   ├── public/data/            # Parser output, gitignored and regenerated on every build
+│   └── repo.schema.json        # front matter 的 JSON Schema，CI 用它把關
+├── repos-parser/               # 解析器：repos/*.md → web/public/data/*.json
+│   ├── src/build-index.mjs     # 產生列表、聚合與項目詳情（含渲染好的 README HTML）
+│   ├── src/validate-repos.mjs  # 按 schema 驗證、項目 ID / 儲存庫網址檢查重複
+│   └── src/lib/                # front matter、Markdown、GitHub、聚合等純函式
+├── web/                        # 前端網站（一條 npm 指令完成解析 + 打包）
+│   ├── public/data/            # 解析產物，已 gitignore，每次建構重新產生
 │   └── src/
-│       ├── api/                # Reads static JSON, fills gaps from GitHub at runtime
-│       ├── components/         # Cards, search bar, sidebar, filters and sorting
-│       ├── hooks/              # useProjects, useSearch, useUrlState
-│       ├── pages/              # Home, project detail
-│       └── utils/              # Search parser, formatting, slug helpers
-├── api/                        # Vercel functions: track (beacon) / stats (read)
-├── lib/                        # Helpers shared by functions and scripts (Upstash REST client)
+│       ├── api/                # 讀靜態 JSON，並在執行時用 GitHub 補齊缺失欄位
+│       ├── components/         # 卡片、搜尋列、側欄、篩選與排序等
+│       ├── hooks/              # useProjects、useSearch、useUrlState
+│       ├── pages/              # 首頁、項目詳情頁
+│       └── utils/              # 搜尋語法解析、格式化、slug
+├── api/                        # Vercel 函式：track（埋點）/ stats（讀聚合）
+├── lib/                        # 函式與腳本共用的工具（Upstash REST 客戶端）
 ├── scripts/
-│   ├── prerender.mjs           # After the build: static pages, sitemap.xml, robots.txt, badge SVGs
-│   ├── sync-and-build.sh       # Pull the latest code on a target machine and rebuild
-│   └── update-contributors.mjs # Refresh the contributor panel (avatars + list)
-├── tests/                      # Runs the /api functions against an in-memory Redis
-└── .github/workflows/          # ci (validate + build) / deploy (self-hosted rebuild) / feature-to-main (promote a project PR) / main-sync (refresh contributors + sync feature)
+│   ├── prerender.mjs           # 建構後產出靜態頁、sitemap.xml、robots.txt 與徽章 SVG
+│   ├── sync-and-build.sh       # 目標機器拉取最新程式碼並重建網站
+│   └── update-contributors.mjs # 刷新貢獻者面板（頭像牆 + 名單）
+├── tests/                      # 用記憶體版 Redis 直接跑 /api 函式的測試
+└── .github/workflows/          # ci（驗證+建構）/ deploy（自架重建）/ feature-to-main（項目 PR 合入後同步 main）/ main-sync（刷新貢獻者名單 + 同步 feature）
 ```
 
-`repos-parser` and `web` are wired together with **npm workspaces**, so a single `npm install` covers both.
+`repos-parser` 與 `web` 透過根目錄的 **npm workspaces** 串起來，`npm install` 一次裝好兩邊依賴。
 
-### Data flow
+### 資料流
 
 ```text
 repos/*.md ─► npm run validate ─► repos-parser ─► web/public/data/*.json ─► vite build ─► web/dist
                                                       ▲
-                                    GitHub API fills stars / language / avatar (optional)
+                                    GitHub API 補 stars / 語言 / 頭像（可選）
 ```
 
-The parser emits the front-end contract directly, with no API layer in between:
+解析器直接產出前端契約的 JSON，沒有中間介面層：
 
-- `data/projects.json` — project list plus tag / author / category aggregates
-- `data/projects/<id>.json` — one project, with `readmeHtml` already rendered for the detail page
+- `data/projects.json`：項目列表 + 標籤 / 作者 / 分類聚合
+- `data/projects/<id>.json`：單個項目詳情，`readmeHtml` 已渲染好，前端直接插入
 
-`npm run build` parses offline, so artefacts are fully reproducible. `npm run build:online` additionally calls the GitHub API to fill in stars, language and the repository About (needs `GITHUB_TOKEN`, see `repos-parser/.env.example`). **The production build on Vercel uses `build:online`**, so set `GITHUB_TOKEN` in the Vercel project's environment variables. A missing or expired token will not fail the build — those three fields are just left empty and filled by the front end at runtime (avatars never hit the API: they use `github.com/<username>.png`).
+`npm run build` 離線解析，產物完全可重現；`npm run build:online` 會額外呼叫 GitHub API 補齊 stars、語言與倉庫 About（需要 `GITHUB_TOKEN`，見 `repos-parser/.env.example`）。**線上 Vercel 建構用的就是 `build:online`**，請在 Vercel 專案的環境變數裡設定 `GITHUB_TOKEN`；未設定或 token 失效時建構不會失敗，但這三項會留空，由前端執行時補（頭像不依賴 API，直接用 `github.com/<使用者名稱>.png`）。
 
-After bundling, `scripts/prerender.mjs` writes a static HTML snapshot per route with Meta tags and JSON-LD, plus `sitemap.xml`, `robots.txt` and the `badge/<id>.svg` badges — crawlers get rendered content without running JS.
+打包完成後 `scripts/prerender.mjs` 還會為每個路由產生一份帶 Meta 與 JSON-LD 的靜態 HTML，並產出 `sitemap.xml`、`robots.txt` 與 `badge/<id>.svg` 徽章 —— 搜尋引擎拿到的是已渲染的內容，不依賴 JS。
 
-Site analytics (total UV, card views, outbound clicks) run through the `api/track` and `api/stats` functions with data kept in Upstash Redis; the front end turns that into each card's heat score. Set `KV_REST_API_URL` / `KV_REST_API_TOKEN` in the Vercel environment variables (the Upstash integration injects those two names by default; `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` also work). **Without them the beacons fail silently**, pages render as usual, and heat scores fall back to GitHub data only.
+站內統計（全站 UV、卡片瀏覽與外連點擊）走 `api/track` 與 `api/stats` 兩個函式，資料放在 Upstash Redis，前端據此計算卡片熱力值。在 Vercel 環境變數裡設定 `KV_REST_API_URL` / `KV_REST_API_TOKEN`（Upstash 整合預設注入這兩個名字，也相容 `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`）。**未設定時埋點靜默失效**，頁面照常渲染，熱力值只按 GitHub 資料計算。
 
-The "我也要提交项目" form on the site follows a **fork-guide** flow: before submitting, the front end queries the GitHub public API with the username you entered to confirm you have forked the repo and pulled the `feature` branch (a static front end cannot verify login state, so it trusts the username typed into the form). If you have not forked, it shows a guide (Fork this repo → switch to `feature` → re-check on the page); once the check passes, it opens your prefilled file on your fork's `feature` branch, and committing opens a PR back to this repo. The site no longer holds a write-side token and has no "open-PR-for-you" endpoint.
+網站上的「我也要提交項目」表單採用 **fork 引導** 流程：填好欄位提交前，前端會依你填寫的 GitHub 使用者名稱查一次公開 API，確認你是否已 fork 本站倉庫並拉好 `feature` 分支（登入態無法在靜態前端確認，以表單內填的名字為準）。未 fork 時前端會給出指引（Fork 本站 → 切到 `feature` → 回到頁面重新偵測），偵測通過後把預填內容帶到你 fork 的 `feature` 分支新建檔案，提交即開 PR 回本站。站內不再持有寫端 token，也沒有「本站代開 PR」的介面。
 
-### Local development
+### 本機執行
 
 ```bash
-npm install     # installs both workspaces from the repo root
-npm run dev     # parses repos/*.md, then serves http://localhost:5173
+npm install     # 根目錄一次裝好 repos-parser 與 web 的依賴
+npm run dev     # 先解析 repos/*.md，再啟動 http://localhost:5173
 ```
 
-Useful commands:
+常用指令：
 
 ```bash
-npm run build        # parse + type-check + bundle, output in web/dist
-npm run build:online # same, but fills stars / language / avatars from GitHub
-npm run preview      # preview the production build locally
-npm run validate     # check front matter, schema and duplicate entries in repos/*.md
-npm test             # parser + /api function tests
+npm run build        # 解析 + 型別檢查 + 打包，產物在 web/dist
+npm run build:online # 同上，但連網補齊 stars / 語言 / 頭像
+npm run preview      # 本機預覽建構產物
+npm run validate     # 驗證 repos/*.md 的 front matter、Schema 與重複項
+npm test             # 解析器與 /api 函式測試
 ```
 
-### One-click entry points
+### 一鍵入口
 
-Skip the docs and click straight through — the badges in the table already carry the right label and target branch:
+不想翻文件就直接點，表格裡的徽章已帶好標籤與目標分支：
 
-| What you want | One-click action | Notes |
+| 想做的事 | 一鍵喚起 | 說明 |
 | --- | --- | --- |
-| Submit your project | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | Opens the GitHub file editor; without write access it forks for you, creates the file on `feature`, and committing opens the PR |
-| Report a bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | Title `[Bug]` and the `bug` label are pre-filled |
-| Request a feature / ask a question | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | Title `[Feature]` and the `enhancement` label are pre-filled |
-| See what's already reported | [Browse all issues](https://github.com/Warpshlczy/CityUHK-Hub/issues) | Search first to avoid duplicates |
+| 提交自己的項目 | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | 打開 GitHub 檔案編輯器，沒權限會自動 fork，檔案建在 `feature` 分支，提交即開 PR |
+| 報告 Bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | 已預填標題 `[Bug]` 與 `bug` 標籤 |
+| 提功能建議 / 提問 | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | 已預填標題 `[Feature]` 與 `enhancement` 標籤 |
+| 看別人提了什麼 | [瀏覽全部 Issue](https://github.com/Warpshlczy/CityUHK-Hub/issues) | 先搜一下，避免重複 |
 
-### Branch model
+### 分支模型
 
-The repository keeps only three long-lived branches; the default branch is `main`, and the old `master` branch has been deleted — use `main` everywhere:
+倉庫只有三條長期分支，預設分支是 `main`；舊分支 `master` 已刪除，請統一使用 `main`：
 
-| Branch | Purpose | PRs merged into it |
+| 分支 | 用途 | 收哪類 PR |
 | --- | --- | --- |
-| `main` | Stable release branch, the source of truth for production | Only merges from `feature` / `dev`; never commit directly |
-| `feature` | Markdown files only: `repos/*.md` | "Submit my project" PRs from project authors |
-| `dev` | Site changes and new features: `web/`, `repos-parser/`, `scripts/`, workflows, docs | Front end / parser / docs PRs |
+| `main` | 穩定發佈分支，線上的正式版本以它為準 | 只接受 `feature` / `dev` 的合併，不直接往上提交 |
+| `feature` | 只丟 Markdown 文件：`repos/*.md` | 項目作者的「提交我的項目」PR |
+| `dev` | 網站改動與新功能：`web/`、`repos-parser/`、`scripts/`、workflow、文件 | 前端 / 解析器 / 文件類 PR |
 
 ```text
-project submission PR ─► feature ─┐
-                                  ├─► main ─► production release (self-hosted rebuild)
-site change PR ────────► dev ─────┘
+項目提交 PR ─► feature ─┐
+                        ├─► main ─► 正式發佈（自架機器重建）
+網站改動 PR ─► dev ─────┘
 ```
 
-- **Submitting a project**: branch off `feature` (e.g. `feat/add-my-project`) and target the PR at **`feature`**.
-- **Changing the site**: branch off `dev` (e.g. `feat/search-syntax`) and target the PR at **`dev`**.
-- Merging a project PR into `feature` promotes it to `main` automatically via [`feature-to-main.yml`](.github/workflows/feature-to-main.yml); `dev` is merged back into `main` by maintainers. **Only a merge into `main` triggers a production release**.
-- Every push to `main` is synced back into `feature` by [`main-sync.yml`](.github/workflows/main-sync.yml), which also refreshes the contributor list below.
-- CI (front matter validation, unit tests, full site build) runs as soon as a PR is opened, regardless of the target branch.
+- **提項目**：從 `feature` 開分支（例如 `feat/add-my-project`），PR 的目標分支選 **`feature`**。
+- **改網站**：從 `dev` 開分支（例如 `feat/search-syntax`），PR 的目標分支選 **`dev`**。
+- `feature` 上的項目 PR 合併後，由 [`feature-to-main.yml`](.github/workflows/feature-to-main.yml) 自動合入 `main`；`dev` 由維護者定期合併回 `main`。**只有合併到 `main` 才會觸發正式發佈**。
+- `main` 每次推送後由 [`main-sync.yml`](.github/workflows/main-sync.yml) 自動同步回 `feature`，並刷新下面的貢獻者名單。
+- PR 一打開就會跑 CI（驗證 front matter、單元測試、整站建構），與目標分支無關。
 
-### Become a contributor
+### 成為貢獻者
 
-**You are very welcome to contribute to CityUHK Hub!** Adding your own project, fixing a small front-end bug, improving docs or just sharing an idea — all of it moves this project forward.
+**非常歡迎你參與 CityUHK Hub！** 無論你是想把自己的項目放上來、修一個前端小 bug、補一段文件，還是只提一個想法，都是這個項目需要的貢獻。
 
-#### Option 1: Submit your project (the main path)
+#### 方式一：提交你的項目（最主要）
 
-1. **Fork** this repository, clone it, and branch off `feature`, e.g. `feat/add-my-project`. You can also use the [one-click new project file](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) link and fill it in right in the browser.
-2. Copy `repos/_template.md` to `repos/your-project.md` and fill in the front matter and the body.
-3. Required fields: `title`, `author` (GitHub username), `authorName`, `major`, `enrollmentYear` (four digits), `repoUrl` (must be a public `https://github.com/...` URL). Optional: `id`, `summary`, `homepageUrl`, `tags` (max 12 short lowercase tags), `category`, `featured`, `status` (`active` / `hidden` / `archived`). **The schema rejects any undefined field.**
-4. Put your description after the front matter: `summary` becomes the card text. The `## Features` section is entirely up to you — write it and it renders, **leave it empty or omit it and no Features block appears**, and the repository description is never used as a substitute. Leave the intro empty to fall back to your repository README.
-5. Verify locally before opening the PR:
+1. **Fork** 本儲存庫並 clone 到本機，從 `feature` 開一個分支，例如 `feat/add-my-project`。也可以直接點上面的[一鍵新建項目檔案](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md)在網頁上填。
+2. 複製 `repos/_template.md` 為 `repos/你的項目名.md`，填寫 front matter 與正文。
+3. 必填欄位：`title`、`author`（GitHub 使用者名稱）、`authorName`（真實姓名）、`major`（主修）、`enrollmentYear`（入學年份，四位數字）、`repoUrl`（必須是公開的 `https://github.com/...` 位址）。可選：`id`、`summary`、`homepageUrl`、`tags`（最多 12 個小寫短標籤）、`category`、`featured`、`status`（`active` / `hidden` / `archived`）。**schema 不允許出現未定義的欄位。**
+4. 正文寫在 front matter 之後：`summary` 用來當卡片摘要，開頭寫項目介紹，`## Features` 段落完全由作者自行決定——寫了才展示，**留空或整段不寫都不會出現 Features**，也不會用 GitHub 儲存庫簡介去補齊；把項目介紹留空則回退到展示儲存庫 README。
+5. 本機自我檢查（務必先跑通）：
    ```bash
    npm install
-   npm run validate   # schema conformance, duplicate id / repoUrl
-   npm test           # parser + /api function tests
-   npm run build      # make sure the site parses and builds
+   npm run validate   # front matter 是否符合 schema、ID 與儲存庫網址是否重複
+   npm test           # 解析器與 /api 函式測試
+   npm run build      # 確認能正常解析並建構出網站
    ```
-6. Open a Pull Request against `feature`. CI runs `validate`, the test suite and a full site build; a maintainer reviews and merges. Once the change reaches `main`, the hosting platform rebuilds and publishes automatically, and the site updates.
+6. 提交 Pull Request 到 `feature` 分支。CI 會自動跑 `validate`、測試與整站建構；通過後由維護者 review 合併。合併進 `main` 後託管平台會自動重新建構發佈，網站隨即更新。
 
-> Full conventions for files, field names and enum values live in [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`schema/repo.schema.json`](schema/repo.schema.json).
+> 目錄、欄位名稱、列舉值的完整約定見 [`CONTRIBUTING.md`](CONTRIBUTING.md) 與 [`schema/repo.schema.json`](schema/repo.schema.json)。
 
-#### Option 2: Improve the site itself
+#### 方式二：改進網站本身
 
-PRs for the front end, the parser and the workflows are welcome — target the **`dev`** branch. Please open an issue first so we can avoid duplicated effort, and make sure these pass:
+前端 / 解析器 / workflow 的 PR 同樣歡迎，請把 PR 提到 **`dev`** 分支。動手前請先開一個 issue 說清楚你想做什麼，避免重複勞動；提交前請確認：
 
 ```bash
-npm test        # all tests (parser + /api functions) must succeed
-npm run build   # type-check + bundle must succeed
+npm test        # 測試（解析器 + /api 函式）必須通過
+npm run build   # 型別檢查 + 打包必須通過
 ```
 
-#### Option 3: Docs, translation and feedback
+#### 方式三：文件、翻譯與回饋
 
-Typos, English translations, UI suggestions — open an issue or send a PR. These contributions matter as much as code.
+發現錯別字、想補英文翻譯、有更好的介面建議，都可以直接開 issue 或提 PR——這類貢獻和程式碼同等重要。
 
-**We look forward to seeing your name among the contributors.**
+**期待在貢獻者名單裡看到你。**
 
-### Inclusion policy
+### 收錄原則
 
-This project runs on a **voluntary, open-source, mutual-aid** basis, and all CityUHK creators are welcome. Our values align with the spirit of open source and the spirit of the University: to encourage learning and exchange, and to break down barriers.
+本項目本着**自願和開源互助**的目的，歡迎所有香港城大創作者。我們的理念與互聯網的開源精神、以及學校精神保持一致，旨在促進學習交流、打破壁壘。
 
-Should anyone fail to follow the open-source rules and contracts recognised across the internet, drift away from the original technical content, or act in the name of open source while damaging the open-source community and its atmosphere, the repository owner reserves the right to decline or remove the relevant repositories.
+若出現不遵守互聯網普遍共識的開源規定與契約、脫離原有技術內容，或借開源之名行破壞開源社區和氛圍的行為，倉庫所有者有權不予收錄或下架相關倉庫。
 
-### License
+### 授權條款
 
-Released under the [MIT License](LICENSE), copyright © **CityUHK Hub contributors**.
+本項目基於 [MIT License](LICENSE) 開源，版權歸 **CityUHK Hub contributors** 所有。
 
-You are free to use, copy, modify, merge, publish, distribute, sublicense and/or sell copies of the software, as long as the copyright and permission notices are kept in all copies or substantial portions. The software is provided "as is", without warranty of any kind, express or implied.
+你可以自由使用、複製、修改、合併、發佈、分發、再授權及/或銷售本軟體的副本，只需在副本或實質性部分中保留上述版權聲明與授權聲明。本軟體按「原樣」提供，不附帶任何形式的明示或默示擔保。
 
-In practice: **the project entries you submit under `repos/` remain yours** — MIT covers the CityUHK Hub site and parser code only.
+這意味著：**你提交到 `repos/` 的項目條目仍然歸你所有**，MIT 只覆蓋 CityUHK Hub 自身的網站與解析器程式碼。
 
-### Contact
+### 聯絡我們
 
-Want to submit a project, report a problem, suggest an idea, or just say hi? Drop us an email any time — we read everything:
+想投稿項目、回報問題、提建議，或只是想聊聊？歡迎隨時寄信，我們都會看：
 
 [![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:contact.cityu-hub@proton.me)
 
