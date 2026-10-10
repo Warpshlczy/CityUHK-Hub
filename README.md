@@ -1,61 +1,14 @@
   
-  
 <div align="center">
 
-![CI](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/ci.yml?branch=main\&style=flat-square\&logo=githubactions\&logoColor=white\&label=CI)
+![CI](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/ci.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white&label=CI) ![Sync & rebuild](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/deploy.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white&label=Sync%20%26%20rebuild) ![GitHub stars](https://img.shields.io/github/stars/Warpshlczy/CityUHK-Hub?style=flat-square&logo=github&label=stars&color=f47c94) ![License: MIT](https://img.shields.io/badge/license-MIT-f47c94?style=flat-square&logo=opensourceinitiative&logoColor=white) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-f47c94?style=flat-square&logo=github&logoColor=white) ![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant%202.1-f47c94?style=flat-square&logo=opensourceinitiative&logoColor=white)
 
-![Sync & rebuild](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/deploy.yml?branch=main\&style=flat-square\&logo=githubactions\&logoColor=white\&label=Sync%20%26%20rebuild)
+![React](https://img.shields.io/badge/react-19-61DAFB?style=flat-square&logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/typescript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/vite-6-646CFF?style=flat-square&logo=vite&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/tailwindcss-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white) ![React Router](https://img.shields.io/badge/react%20router-7-CA4245?style=flat-square&logo=reactrouter&logoColor=white) ![lucide-react](https://img.shields.io/badge/lucide--react-1-F56565?style=flat-square&logo=lucide&logoColor=white) ![Vercel](https://img.shields.io/badge/deploy-vercel-000000?style=flat-square&logo=vercel&logoColor=white) ![Contributors](https://img.shields.io/github/contributors/Warpshlczy/CityUHK-Hub?style=flat-square&logo=github&label=contributors&color=f47c94)
 
-![GitHub stars](https://img.shields.io/github/stars/Warpshlczy/CityUHK-Hub?style=flat-square\&logo=github\&label=stars\&color=f47c94)
+![Node.js](https://img.shields.io/badge/node-%E2%89%A520.6-339933?style=flat-square&logo=node.js&logoColor=white) ![marked](https://img.shields.io/badge/marked-15-111111?style=flat-square&logo=markdown&logoColor=white) ![ajv](https://img.shields.io/badge/ajv-8-23C8D2?style=flat-square) ![js-yaml](https://img.shields.io/badge/js--yaml-4-CB171E?style=flat-square&logo=yaml&logoColor=white) ![node --test](https://img.shields.io/badge/test-node%20--test-3C873A?style=flat-square&logo=nodedotjs&logoColor=white) ![npm workspaces](https://img.shields.io/badge/npm%20workspaces-2-CB3837?style=flat-square&logo=npm&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-2088FF?style=flat-square&logo=githubactions&logoColor=white) ![Upstash Redis](https://img.shields.io/badge/upstash-redis-00E9A3?style=flat-square&logo=redis&logoColor=white)
 
-![License: MIT](https://img.shields.io/badge/license-MIT-f47c94?style=flat-square\&logo=opensourceinitiative\&logoColor=white)
-
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-f47c94?style=flat-square\&logo=github\&logoColor=white)
-
-![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant%202.1-f47c94?style=flat-square\&logo=opensourceinitiative\&logoColor=white)
-
-  
-
-
-![React](https://img.shields.io/badge/react-19-61DAFB?style=flat-square\&logo=react\&logoColor=black)
-
-![TypeScript](https://img.shields.io/badge/typescript-5.9-3178C6?style=flat-square\&logo=typescript\&logoColor=white)
-
-![Vite](https://img.shields.io/badge/vite-6-646CFF?style=flat-square\&logo=vite\&logoColor=white)
-
-![Tailwind CSS](https://img.shields.io/badge/tailwindcss-4-06B6D4?style=flat-square\&logo=tailwindcss\&logoColor=white)
-
-![React Router](https://img.shields.io/badge/react%20router-7-CA4245?style=flat-square\&logo=reactrouter\&logoColor=white)
-
-![lucide-react](https://img.shields.io/badge/lucide--react-1-F56565?style=flat-square\&logo=lucide\&logoColor=white)
-
-![Vercel](https://img.shields.io/badge/deploy-vercel-000000?style=flat-square\&logo=vercel\&logoColor=white)
-
-![Contributors](https://img.shields.io/github/contributors/Warpshlczy/CityUHK-Hub?style=flat-square\&logo=github\&label=contributors\&color=f47c94)
-
-  
-
-
-![Node.js](https://img.shields.io/badge/node-%E2%89%A520.6-339933?style=flat-square\&logo=node.js\&logoColor=white)
-
-![marked](https://img.shields.io/badge/marked-15-111111?style=flat-square\&logo=markdown\&logoColor=white)
-
-![ajv](https://img.shields.io/badge/ajv-8-23C8D2?style=flat-square)
-
-![js-yaml](https://img.shields.io/badge/js--yaml-4-CB171E?style=flat-square\&logo=yaml\&logoColor=white)
-
-![node --test](https://img.shields.io/badge/test-node%20--test-3C873A?style=flat-square\&logo=nodedotjs\&logoColor=white)
-
-![npm workspaces](https://img.shields.io/badge/npm%20workspaces-2-CB3837?style=flat-square\&logo=npm\&logoColor=white)
-
-![GitHub Actions](https://img.shields.io/badge/github%20actions-2088FF?style=flat-square\&logo=githubactions\&logoColor=white)
-
-![Upstash Redis](https://img.shields.io/badge/upstash-redis-00E9A3?style=flat-square\&logo=redis\&logoColor=white)
-
-  
-
-
-![CityUHK Hub logo](web/public/cityu.jpg)
+<!-- 显式宽高让两侧留白收敛，避免图片被撑满、把下面的标题挤变形 -->
+<img src="web/public/cityu.jpg" alt="CityUHK Hub logo" width="240" height="240" />
 
 # CityUHK Hub
 
@@ -74,7 +27,7 @@
 **站点一览 · Homepage at a glance**
 
 <a href="https://cityu-hub.bond">  
-  <img src="https://img.shields.io/badge/%E7%AB%8B%E5%8D%B3%E8%AE%BF%E9%97%AE%E7%BD%91%E7%AB%99-cityu--hub.bond-f47c94?style=for-the-badge\&logo=vercel\&logoColor=white" alt="立即访问网站 / visit site" />  
+  <img src="https://img.shields.io/badge/%E7%AB%8B%E5%8D%B3%E8%AE%BF%E9%97%AE%E7%BD%91%E7%AB%99-cityu--hub.bond-f47c94?style=for-the-badge&logo=vercel&logoColor=white" alt="立即访问网站 / visit site" />  
 </a>
 
 </div>  
@@ -82,10 +35,12 @@
   
 <div align="center">
 
-<table border="1" cellspacing="0" cellpadding="14" align="center">  
-<tr><td align="center"><a href="https://github.com/Warpshlczy" title="Warpshlczy"><img src="https://avatars.githubusercontent.com/u/119655279?v=4\&s=200" width="80" height="80" alt="Warpshlczy" /></a>\&nbsp; <a href="https://github.com/L01nki1" title="L01nki1"><img src="https://avatars.githubusercontent.com/u/146166781?v=4\&s=200" width="80" height="80" alt="L01nki1" /></a>\&nbsp; <a href="https://github.com/Quentin040507" title="Quentin040507"><img src="https://avatars.githubusercontent.com/u/300752220?v=4\&s=200" width="80" height="80" alt="Quentin040507" /></a>\&nbsp; <a href="https://github.com/YongzeYang" title="YongzeYang"><img src="https://avatars.githubusercontent.com/u/56685999?v=4\&s=200" width="80" height="80" alt="YongzeYang" /></a>\&nbsp; <a href="https://github.com/mojimoon" title="mojimoon"><img src="https://avatars.githubusercontent.com/u/109803649?v=4\&s=200" width="80" height="80" alt="mojimoon" /></a>\&nbsp; <a href="https://github.com/DavidYang0429" title="DavidYang0429"><img src="https://avatars.githubusercontent.com/u/244882210?v=4\&s=200" width="80" height="80" alt="DavidYang0429" /></a>\&nbsp; <a href="https://github.com/Famalhaut04" title="Famalhaut04"><img src="https://avatars.githubusercontent.com/u/118148765?v=4\&s=200" width="80" height="80" alt="Famalhaut04" /></a>\&nbsp; <a href="https://github.com/LENSFORGET" title="LENSFORGET"><img src="https://avatars.githubusercontent.com/u/96647716?v=4\&s=200" width="80" height="80" alt="LENSFORGET" /></a>\&nbsp; <a href="https://github.com/RoyNiu06" title="RoyNiu06"><img src="https://avatars.githubusercontent.com/u/212842150?v=4\&s=200" width="80" height="80" alt="RoyNiu06" /></a>\&nbsp; <a href="https://github.com/lavine888" title="lavine888"><img src="https://avatars.githubusercontent.com/u/187631406?v=4\&s=200" width="80" height="80" alt="lavine888" /></a>\&nbsp; <a href="https://github.com/null1024-ws" title="null1024-ws"><img src="https://avatars.githubusercontent.com/u/79917102?v=4\&s=200" width="80" height="80" alt="null1024-ws" /></a>\&nbsp; <a href="https://github.com/oneonew-gif" title="oneonew-gif"><img src="https://avatars.githubusercontent.com/u/336055305?v=4\&s=200" width="80" height="80" alt="oneonew-gif" /></a></td></tr>  
-</table>  
+<!-- contributors:start -->
+<table border="1" cellspacing="0" cellpadding="14" align="center">
+<tr><td align="center"><a href="https://github.com/Warpshlczy" title="Warpshlczy"><img src="https://avatars.githubusercontent.com/u/119655279?v=4&s=200" width="80" height="80" alt="Warpshlczy" /></a>&nbsp; <a href="https://github.com/L01nki1" title="L01nki1"><img src="https://avatars.githubusercontent.com/u/146166781?v=4&s=200" width="80" height="80" alt="L01nki1" /></a>&nbsp; <a href="https://github.com/Quentin040507" title="Quentin040507"><img src="https://avatars.githubusercontent.com/u/300752220?v=4&s=200" width="80" height="80" alt="Quentin040507" /></a>&nbsp; <a href="https://github.com/YongzeYang" title="YongzeYang"><img src="https://avatars.githubusercontent.com/u/56685999?v=4&s=200" width="80" height="80" alt="YongzeYang" /></a>&nbsp; <a href="https://github.com/mojimoon" title="mojimoon"><img src="https://avatars.githubusercontent.com/u/109803649?v=4&s=200" width="80" height="80" alt="mojimoon" /></a>&nbsp; <a href="https://github.com/DavidYang0429" title="DavidYang0429"><img src="https://avatars.githubusercontent.com/u/244882210?v=4&s=200" width="80" height="80" alt="DavidYang0429" /></a>&nbsp; <a href="https://github.com/Famalhaut04" title="Famalhaut04"><img src="https://avatars.githubusercontent.com/u/118148765?v=4&s=200" width="80" height="80" alt="Famalhaut04" /></a>&nbsp; <a href="https://github.com/LENSFORGET" title="LENSFORGET"><img src="https://avatars.githubusercontent.com/u/96647716?v=4&s=200" width="80" height="80" alt="LENSFORGET" /></a>&nbsp; <a href="https://github.com/RoyNiu06" title="RoyNiu06"><img src="https://avatars.githubusercontent.com/u/212842150?v=4&s=200" width="80" height="80" alt="RoyNiu06" /></a>&nbsp; <a href="https://github.com/lavine888" title="lavine888"><img src="https://avatars.githubusercontent.com/u/187631406?v=4&s=200" width="80" height="80" alt="lavine888" /></a>&nbsp; <a href="https://github.com/null1024-ws" title="null1024-ws"><img src="https://avatars.githubusercontent.com/u/79917102?v=4&s=200" width="80" height="80" alt="null1024-ws" /></a>&nbsp; <a href="https://github.com/oneonew-gif" title="oneonew-gif"><img src="https://avatars.githubusercontent.com/u/336055305?v=4&s=200" width="80" height="80" alt="oneonew-gif" /></a></td></tr>
+</table>
 ✨Thank you all for your contributions to this repository✨
+<!-- contributors:end -->
 
 </div>
 
@@ -279,7 +234,7 @@ In practice: **the project entries you submit under `repos/` remain yours** — 
 
 Want to submit a project, report a problem, suggest an idea, or just say hi? Drop us an email any time — we read everything:
 
-![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge\&logo=protonmail\&logoColor=white)
+![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)
 
 ---
 
@@ -470,7 +425,7 @@ npm run build   # 类型检查 + 打包必须通过
 
 想投稿项目、反馈问题、提建议，或者只是想聊聊？欢迎随时发邮件，我们都会看：
 
-![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge\&logo=protonmail\&logoColor=white)
+![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)
 
 ---
 
@@ -662,7 +617,7 @@ npm run build   # 型別檢查 + 打包必須通過
 
 想投稿項目、回報問題、提建議，或只是想聊聊？歡迎隨時寄信，我們都會看：
 
-![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge\&logo=protonmail\&logoColor=white)
+![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)
 
 ---
 

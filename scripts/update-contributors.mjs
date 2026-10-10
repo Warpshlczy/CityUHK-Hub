@@ -18,8 +18,9 @@ const README_PATH = process.env.README_PATH ?? 'README.md';
 const START = '<!-- contributors:start -->';
 const END = '<!-- contributors:end -->';
 const PER_PAGE = 100;
-/** 展示尺寸 / 取图尺寸（取图放大，高分屏不糊） */
+/** 展示尺寸 / 取图尺寸（取图放大，高分屏不糊）；显式写上 width × height，1:1 不会被拉变形 */
 const AVATAR_WIDTH = 80;
+const AVATAR_HEIGHT = 80;
 const AVATAR_FILE_SIZE = 200;
 /** 头像之间的间隙：&nbsp; 撑开约 9px，其后的空格提供换行机会，便于自动换行 */
 const AVATAR_GAP_HTML = '&nbsp; ';
@@ -59,7 +60,7 @@ function renderAvatars(contributors) {
     .map(
       (item) =>
         `<a href="${item.html_url}" title="${item.login}">` +
-        `<img src="${avatarUrl(item)}" width="${AVATAR_WIDTH}" height="${AVATAR_WIDTH}" alt="${item.login}" /></a>`,
+        `<img src="${avatarUrl(item)}" width="${AVATAR_WIDTH}" height="${AVATAR_HEIGHT}" alt="${item.login}" /></a>`,
     )
     .join(AVATAR_GAP_HTML);
 }
@@ -74,14 +75,16 @@ function renderPanel(contributors) {
 }
 
 const readme = await fs.readFile(README_PATH, 'utf8');
-const pattern = new RegExp(`${START}[\\s\\S]*?${END}`, 'g');
+// 只替换 start / end 之间的内容，标记本身原样保留。\n
+// （若把标记一起吃掉再补写，一旦不匹配就会越滚越多份，之前正是这么踩的坑。）
+const pattern = new RegExp(`(${START})([\\s\\S]*?)(${END})`, 'g');
 const blocks = readme.match(pattern) ?? [];
 if (blocks.length === 0) {
   throw new Error(`${README_PATH} 里没有找到 ${START} / ${END} 标记区块`);
 }
 
 const contributors = await fetchContributors();
-const next = readme.replace(pattern, `${START}\n${renderPanel(contributors)}\n${END}`);
+const next = readme.replace(pattern, `$1\n${renderPanel(contributors)}\n$3`);
 
 if (next === readme) {
   console.log(`贡献者头像墙无变化（${contributors.length} 位）`);
