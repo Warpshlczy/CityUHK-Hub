@@ -1,13 +1,61 @@
-<br />
+  
+  
 <div align="center">
 
-[![CI](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/ci.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white&label=CI)](https://github.com/Warpshlczy/CityUHK-Hub/actions/workflows/ci.yml)[![Sync & rebuild](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/deploy.yml?branch=main&style=flat-square&logo=githubactions&logoColor=white&label=Sync%20%26%20rebuild)](https://github.com/Warpshlczy/CityUHK-Hub/actions/workflows/deploy.yml)[![GitHub stars](https://img.shields.io/github/stars/Warpshlczy/CityUHK-Hub?style=flat-square&logo=github&label=stars&color=f47c94)](https://github.com/Warpshlczy/CityUHK-Hub/stargazers)[![License: MIT](https://img.shields.io/badge/license-MIT-f47c94?style=flat-square&logo=opensourceinitiative&logoColor=white)](LICENSE)[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-f47c94?style=flat-square&logo=github&logoColor=white)](CONTRIBUTING.md)[![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant%202.1-f47c94?style=flat-square&logo=opensourceinitiative&logoColor=white)](CODE_OF_CONDUCT.md)<br>
-[![React](https://img.shields.io/badge/react-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)[![TypeScript](https://img.shields.io/badge/typescript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)[![Vite](https://img.shields.io/badge/vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev)[![Tailwind CSS](https://img.shields.io/badge/tailwindcss-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)[![React Router](https://img.shields.io/badge/react%20router-7-CA4245?style=flat-square&logo=reactrouter&logoColor=white)](https://reactrouter.com)[![lucide-react](https://img.shields.io/badge/lucide--react-1-F56565?style=flat-square&logo=lucide&logoColor=white)](https://lucide.dev)[![Vercel](https://img.shields.io/badge/deploy-vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://vercel.com)[![Contributors](https://img.shields.io/github/contributors/Warpshlczy/CityUHK-Hub?style=flat-square&logo=github&label=contributors&color=f47c94)](https://github.com/Warpshlczy/CityUHK-Hub/graphs/contributors)<br>
-[![Node.js](https://img.shields.io/badge/node-%E2%89%A520.6-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)[![marked](https://img.shields.io/badge/marked-15-111111?style=flat-square&logo=markdown&logoColor=white)](https://marked.js.org)[![ajv](https://img.shields.io/badge/ajv-8-23C8D2?style=flat-square)](https://ajv.js.org)[![js-yaml](https://img.shields.io/badge/js--yaml-4-CB171E?style=flat-square&logo=yaml&logoColor=white)](https://github.com/nodeca/js-yaml)[![node --test](https://img.shields.io/badge/test-node%20--test-3C873A?style=flat-square&logo=nodedotjs&logoColor=white)](https://nodejs.org/api/test.html)[![npm workspaces](https://img.shields.io/badge/npm%20workspaces-2-CB3837?style=flat-square&logo=npm&logoColor=white)](https://docs.npmjs.com/cli/v10/using-npm/workspaces)[![GitHub Actions](https://img.shields.io/badge/github%20actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/actions)[![Upstash Redis](https://img.shields.io/badge/upstash-redis-00E9A3?style=flat-square&logo=redis&logoColor=white)](https://upstash.com)
+![CI](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/ci.yml?branch=main\&style=flat-square\&logo=githubactions\&logoColor=white\&label=CI)
 
-<br />
+![Sync & rebuild](https://img.shields.io/github/actions/workflow/status/Warpshlczy/CityUHK-Hub/deploy.yml?branch=main\&style=flat-square\&logo=githubactions\&logoColor=white\&label=Sync%20%26%20rebuild)
 
-<img src="web/public/cityu.jpg" alt="CityUHK Hub logo" width="280" />
+![GitHub stars](https://img.shields.io/github/stars/Warpshlczy/CityUHK-Hub?style=flat-square\&logo=github\&label=stars\&color=f47c94)
+
+![License: MIT](https://img.shields.io/badge/license-MIT-f47c94?style=flat-square\&logo=opensourceinitiative\&logoColor=white)
+
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-f47c94?style=flat-square\&logo=github\&logoColor=white)
+
+![Code of Conduct](https://img.shields.io/badge/code%20of%20conduct-Contributor%20Covenant%202.1-f47c94?style=flat-square\&logo=opensourceinitiative\&logoColor=white)
+
+  
+
+
+![React](https://img.shields.io/badge/react-19-61DAFB?style=flat-square\&logo=react\&logoColor=black)
+
+![TypeScript](https://img.shields.io/badge/typescript-5.9-3178C6?style=flat-square\&logo=typescript\&logoColor=white)
+
+![Vite](https://img.shields.io/badge/vite-6-646CFF?style=flat-square\&logo=vite\&logoColor=white)
+
+![Tailwind CSS](https://img.shields.io/badge/tailwindcss-4-06B6D4?style=flat-square\&logo=tailwindcss\&logoColor=white)
+
+![React Router](https://img.shields.io/badge/react%20router-7-CA4245?style=flat-square\&logo=reactrouter\&logoColor=white)
+
+![lucide-react](https://img.shields.io/badge/lucide--react-1-F56565?style=flat-square\&logo=lucide\&logoColor=white)
+
+![Vercel](https://img.shields.io/badge/deploy-vercel-000000?style=flat-square\&logo=vercel\&logoColor=white)
+
+![Contributors](https://img.shields.io/github/contributors/Warpshlczy/CityUHK-Hub?style=flat-square\&logo=github\&label=contributors\&color=f47c94)
+
+  
+
+
+![Node.js](https://img.shields.io/badge/node-%E2%89%A520.6-339933?style=flat-square\&logo=node.js\&logoColor=white)
+
+![marked](https://img.shields.io/badge/marked-15-111111?style=flat-square\&logo=markdown\&logoColor=white)
+
+![ajv](https://img.shields.io/badge/ajv-8-23C8D2?style=flat-square)
+
+![js-yaml](https://img.shields.io/badge/js--yaml-4-CB171E?style=flat-square\&logo=yaml\&logoColor=white)
+
+![node --test](https://img.shields.io/badge/test-node%20--test-3C873A?style=flat-square\&logo=nodedotjs\&logoColor=white)
+
+![npm workspaces](https://img.shields.io/badge/npm%20workspaces-2-CB3837?style=flat-square\&logo=npm\&logoColor=white)
+
+![GitHub Actions](https://img.shields.io/badge/github%20actions-2088FF?style=flat-square\&logo=githubactions\&logoColor=white)
+
+![Upstash Redis](https://img.shields.io/badge/upstash-redis-00E9A3?style=flat-square\&logo=redis\&logoColor=white)
+
+  
+
+
+![CityUHK Hub logo](web/public/cityu.jpg)
 
 # CityUHK Hub
 
@@ -19,28 +67,25 @@
 
 <div align="center">
 
-<!-- screenshot:start -->
-<img src="web/public/screenshot.png" alt="CityUHK Hub 首页截图 / homepage screenshot" width="920" />
+![CityUHK Hub 首页截图 / homepage screenshot](web/public/screenshot.png)
 
 <sub>截图时间 / 截圖時間 / captured at: 2026-10-05 15:41 (UTC+8) · 截图者 / 截圖者 / by: @github-actions[bot]</sub>
 
 **站点一览 · Homepage at a glance**
-<!-- screenshot:end -->
 
-<a href="https://cityu-hub.bond">
-  <img src="https://img.shields.io/badge/%E7%AB%8B%E5%8D%B3%E8%AE%BF%E9%97%AE%E7%BD%91%E7%AB%99-cityu--hub.bond-f47c94?style=for-the-badge&logo=vercel&logoColor=white" alt="立即访问网站 / visit site" />
+<a href="https://cityu-hub.bond">  
+  <img src="https://img.shields.io/badge/%E7%AB%8B%E5%8D%B3%E8%AE%BF%E9%97%AE%E7%BD%91%E7%AB%99-cityu--hub.bond-f47c94?style=for-the-badge\&logo=vercel\&logoColor=white" alt="立即访问网站 / visit site" />  
 </a>
 
-</div>
-<br />
+</div>  
+  
+  
 <div align="center">
 
-<!-- contributors:start -->
-<table border="1" cellspacing="0" cellpadding="14" align="center">
-<tr><td align="center"><a href="https://github.com/Warpshlczy" title="Warpshlczy"><img src="https://avatars.githubusercontent.com/u/119655279?v=4&s=200" width="80" height="80" alt="Warpshlczy" /></a>&nbsp; <a href="https://github.com/L01nki1" title="L01nki1"><img src="https://avatars.githubusercontent.com/u/146166781?v=4&s=200" width="80" height="80" alt="L01nki1" /></a>&nbsp; <a href="https://github.com/Quentin040507" title="Quentin040507"><img src="https://avatars.githubusercontent.com/u/300752220?v=4&s=200" width="80" height="80" alt="Quentin040507" /></a>&nbsp; <a href="https://github.com/YongzeYang" title="YongzeYang"><img src="https://avatars.githubusercontent.com/u/56685999?v=4&s=200" width="80" height="80" alt="YongzeYang" /></a>&nbsp; <a href="https://github.com/mojimoon" title="mojimoon"><img src="https://avatars.githubusercontent.com/u/109803649?v=4&s=200" width="80" height="80" alt="mojimoon" /></a>&nbsp; <a href="https://github.com/DavidYang0429" title="DavidYang0429"><img src="https://avatars.githubusercontent.com/u/244882210?v=4&s=200" width="80" height="80" alt="DavidYang0429" /></a>&nbsp; <a href="https://github.com/Famalhaut04" title="Famalhaut04"><img src="https://avatars.githubusercontent.com/u/118148765?v=4&s=200" width="80" height="80" alt="Famalhaut04" /></a>&nbsp; <a href="https://github.com/LENSFORGET" title="LENSFORGET"><img src="https://avatars.githubusercontent.com/u/96647716?v=4&s=200" width="80" height="80" alt="LENSFORGET" /></a>&nbsp; <a href="https://github.com/RoyNiu06" title="RoyNiu06"><img src="https://avatars.githubusercontent.com/u/212842150?v=4&s=200" width="80" height="80" alt="RoyNiu06" /></a>&nbsp; <a href="https://github.com/lavine888" title="lavine888"><img src="https://avatars.githubusercontent.com/u/187631406?v=4&s=200" width="80" height="80" alt="lavine888" /></a>&nbsp; <a href="https://github.com/null1024-ws" title="null1024-ws"><img src="https://avatars.githubusercontent.com/u/79917102?v=4&s=200" width="80" height="80" alt="null1024-ws" /></a>&nbsp; <a href="https://github.com/oneonew-gif" title="oneonew-gif"><img src="https://avatars.githubusercontent.com/u/336055305?v=4&s=200" width="80" height="80" alt="oneonew-gif" /></a></td></tr>
-</table>
+<table border="1" cellspacing="0" cellpadding="14" align="center">  
+<tr><td align="center"><a href="https://github.com/Warpshlczy" title="Warpshlczy"><img src="https://avatars.githubusercontent.com/u/119655279?v=4\&s=200" width="80" height="80" alt="Warpshlczy" /></a>\&nbsp; <a href="https://github.com/L01nki1" title="L01nki1"><img src="https://avatars.githubusercontent.com/u/146166781?v=4\&s=200" width="80" height="80" alt="L01nki1" /></a>\&nbsp; <a href="https://github.com/Quentin040507" title="Quentin040507"><img src="https://avatars.githubusercontent.com/u/300752220?v=4\&s=200" width="80" height="80" alt="Quentin040507" /></a>\&nbsp; <a href="https://github.com/YongzeYang" title="YongzeYang"><img src="https://avatars.githubusercontent.com/u/56685999?v=4\&s=200" width="80" height="80" alt="YongzeYang" /></a>\&nbsp; <a href="https://github.com/mojimoon" title="mojimoon"><img src="https://avatars.githubusercontent.com/u/109803649?v=4\&s=200" width="80" height="80" alt="mojimoon" /></a>\&nbsp; <a href="https://github.com/DavidYang0429" title="DavidYang0429"><img src="https://avatars.githubusercontent.com/u/244882210?v=4\&s=200" width="80" height="80" alt="DavidYang0429" /></a>\&nbsp; <a href="https://github.com/Famalhaut04" title="Famalhaut04"><img src="https://avatars.githubusercontent.com/u/118148765?v=4\&s=200" width="80" height="80" alt="Famalhaut04" /></a>\&nbsp; <a href="https://github.com/LENSFORGET" title="LENSFORGET"><img src="https://avatars.githubusercontent.com/u/96647716?v=4\&s=200" width="80" height="80" alt="LENSFORGET" /></a>\&nbsp; <a href="https://github.com/RoyNiu06" title="RoyNiu06"><img src="https://avatars.githubusercontent.com/u/212842150?v=4\&s=200" width="80" height="80" alt="RoyNiu06" /></a>\&nbsp; <a href="https://github.com/lavine888" title="lavine888"><img src="https://avatars.githubusercontent.com/u/187631406?v=4\&s=200" width="80" height="80" alt="lavine888" /></a>\&nbsp; <a href="https://github.com/null1024-ws" title="null1024-ws"><img src="https://avatars.githubusercontent.com/u/79917102?v=4\&s=200" width="80" height="80" alt="null1024-ws" /></a>\&nbsp; <a href="https://github.com/oneonew-gif" title="oneonew-gif"><img src="https://avatars.githubusercontent.com/u/336055305?v=4\&s=200" width="80" height="80" alt="oneonew-gif" /></a></td></tr>  
+</table>  
 ✨Thank you all for your contributions to this repository✨
-<!-- contributors:end -->
 
 </div>
 
@@ -60,19 +105,19 @@ The three problems it solves:
 
 ### Content & features
 
-| Feature | Description |
-| --- | --- |
-| Project browsing | Cards show name, summary, tags, language colour, stars and last update |
-| Search syntax | `author:alice`, `tag:NLP`, `lang:Python`, `category:Machine Learning`, combinable as `author:alice lang:Python`; plain words fall back to fuzzy full-text search |
-| Filters & sorting | Category tabs, tag chips and an author board for one-click filtering; sort by recently updated / stars / name |
-| Project detail | Renders the repository README, the author's real name, major and enrollment year, plus demo and GitHub links |
-| Shareable URLs | Query, filters, category, sort and theme are all synced to the URL, so refresh and sharing keep the exact view |
-| Theme | Light / dark toggle injected before first paint, with no flash |
-| Useful links | The 🔗 drawer in the header collects AIMS / Canvas / CityUHK website / CityUHK Portal |
+| Feature           | Description                                                                                                                                                      |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Project browsing  | Cards show name, summary, tags, language colour, stars and last update                                                                                           |
+| Search syntax     | `author:alice`, `tag:NLP`, `lang:Python`, `category:Machine Learning`, combinable as `author:alice lang:Python`; plain words fall back to fuzzy full-text search |
+| Filters & sorting | Category tabs, tag chips and an author board for one-click filtering; sort by recently updated / stars / name                                                    |
+| Project detail    | Renders the repository README, the author's real name, major and enrollment year, plus demo and GitHub links                                                     |
+| Shareable URLs    | Query, filters, category, sort and theme are all synced to the URL, so refresh and sharing keep the exact view                                                   |
+| Theme             | Light / dark toggle injected before first paint, with no flash                                                                                                   |
+| Useful links      | The 🔗 drawer in the header collects AIMS / Canvas / CityUHK website / CityUHK Portal                                                                            |
 
 ### Tech stack
 
-**Front end**: React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4 (CSS-first) · React Router 7 (HashRouter) · lucide-react
+**Front end**: React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4 (CSS-first) · React Router 7 (HashRouter) · lucide-react  
 **Parser**: Node.js ≥ 20.6 · marked (Markdown → HTML) · ajv (JSON Schema validation) · js-yaml (front matter parsing)
 
 ### Project structure
@@ -105,6 +150,7 @@ CityUHK-Hub/
 ├── tests/                      # Runs the /api functions against an in-memory Redis
 └── .github/workflows/          # ci (validate + build) / deploy (self-hosted rebuild) / feature-to-main (promote a project PR) / main-sync (refresh contributors + sync feature)
 ```
+
 
 `repos-parser` and `web` are wired together with **npm workspaces**, so a single `npm install` covers both.
 
@@ -150,22 +196,22 @@ npm test             # parser + /api function tests
 
 Skip the docs and click straight through — the badges in the table already carry the right label and target branch:
 
-| What you want | One-click action | Notes |
-| --- | --- | --- |
-| Submit your project | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | Opens the GitHub file editor; without write access it forks for you, creates the file on `feature`, and committing opens the PR |
-| Report a bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | Title `[Bug]` and the `bug` label are pre-filled |
-| Request a feature / ask a question | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | Title `[Feature]` and the `enhancement` label are pre-filled |
-| See what's already reported | [Browse all issues](https://github.com/Warpshlczy/CityUHK-Hub/issues) | Search first to avoid duplicates |
+| What you want                      | One-click action                                                      | Notes                                                                                                                           |
+| ---------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Submit your project                | Submit a project                                                      | Opens the GitHub file editor; without write access it forks for you, creates the file on `feature`, and committing opens the PR |
+| Report a bug                       | Report a bug                                                          | Title `[Bug]` and the `bug` label are pre-filled                                                                                |
+| Request a feature / ask a question | Request a feature                                                     | Title `[Feature]` and the `enhancement` label are pre-filled                                                                    |
+| See what's already reported        | [Browse all issues](https://github.com/Warpshlczy/CityUHK-Hub/issues) | Search first to avoid duplicates                                                                                                |
 
 ### Branch model
 
 The repository keeps only three long-lived branches; the default branch is `main`, and the old `master` branch has been deleted — use `main` everywhere:
 
-| Branch | Purpose | PRs merged into it |
-| --- | --- | --- |
-| `main` | Stable release branch, the source of truth for production | Only merges from `feature` / `dev`; never commit directly |
-| `feature` | Markdown files only: `repos/*.md` | "Submit my project" PRs from project authors |
-| `dev` | Site changes and new features: `web/`, `repos-parser/`, `scripts/`, workflows, docs | Front end / parser / docs PRs |
+| Branch    | Purpose                                                                             | PRs merged into it                                        |
+| --------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `main`    | Stable release branch, the source of truth for production                           | Only merges from `feature` / `dev`; never commit directly |
+| `feature` | Markdown files only: `repos/*.md`                                                   | "Submit my project" PRs from project authors              |
+| `dev`     | Site changes and new features: `web/`, `repos-parser/`, `scripts/`, workflows, docs | Front end / parser / docs PRs                             |
 
 ```text
 project submission PR ─► feature ─┐
@@ -233,7 +279,7 @@ In practice: **the project entries you submit under `repos/` remain yours** — 
 
 Want to submit a project, report a problem, suggest an idea, or just say hi? Drop us an email any time — we read everything:
 
-[![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:contact.cityu-hub@proton.me)
+![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge\&logo=protonmail\&logoColor=white)
 
 ---
 
@@ -249,20 +295,21 @@ CityUHK Hub 是一个面向**香港城市大学（CityUHK）学生开源项目**
 - **找不到**：想找「有没有人做过 NLP 相关的东西」时，没有任何可检索的索引。
 - **认不出作者**：看得到仓库，却不知道是哪个专业、哪一届的同学。
 
+
 ### 网站内容与功能
 
-| 功能 | 说明 |
-| --- | --- |
-| 项目浏览 | 卡片流展示项目名、摘要、标签、语言色块、Star 数与最近更新时间 |
-| 搜索语法 | `author:alice`、`tag:NLP`、`lang:Python`、`category:机器学习`，可叠加 `author:alice lang:Python`；不带冒号的词走全文模糊匹配 |
-| 筛选与排序 | 分类页签、标签 chips、作者榜一键筛选；支持按最近更新 / Star / 名称排序 |
-| 项目详情 | 渲染仓库 README、作者实名与专业年级、Demo 与 GitHub 外链 |
-| 可分享链接 | 搜索词、筛选、分类、排序、主题全部同步到 URL，刷新/分享后状态不丢 |
-| 常用入口 | 右上角 🔗 抽屉内置 AIMS / Canvas / 学校官网 / CityUHK Portal |
+| 功能    | 说明                                                                                                  |
+| ----- | --------------------------------------------------------------------------------------------------- |
+| 项目浏览  | 卡片流展示项目名、摘要、标签、语言色块、Star 数与最近更新时间                                                                   |
+| 搜索语法  | `author:alice`、`tag:NLP`、`lang:Python`、`category:机器学习`，可叠加 `author:alice lang:Python`；不带冒号的词走全文模糊匹配 |
+| 筛选与排序 | 分类页签、标签 chips、作者榜一键筛选；支持按最近更新 / Star / 名称排序                                                         |
+| 项目详情  | 渲染仓库 README、作者实名与专业年级、Demo 与 GitHub 外链                                                              |
+| 可分享链接 | 搜索词、筛选、分类、排序、主题全部同步到 URL，刷新/分享后状态不丢                                                                 |
+| 常用入口  | 右上角 🔗 抽屉内置 AIMS / Canvas / 学校官网 / CityUHK Portal                                                   |
 
 ### 技术栈
 
-**前端**：React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4（CSS-first）· React Router 7（HashRouter）· lucide-react
+**前端**：React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4（CSS-first）· React Router 7（HashRouter）· lucide-react  
 **解析器**：Node.js ≥ 20.6 · marked（Markdown → HTML）· ajv（JSON Schema 校验）· js-yaml（front matter 解析）
 
 ### 项目结构
@@ -340,22 +387,22 @@ npm test             # 解析器与 /api 函数测试
 
 不想翻文档就直接点，表格里的徽章已经带好标签与目标分支：
 
-| 想做的事 | 一键唤起 | 说明 |
-| --- | --- | --- |
-| 提交自己的项目 | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | 打开 GitHub 文件编辑器，没权限会自动 fork，文件建在 `feature` 分支，提交即开 PR |
-| 报告 Bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | 已预填标题 `[Bug]` 与 `bug` 标签 |
-| 提功能建议 / 提问 | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | 已预填标题 `[Feature]` 与 `enhancement` 标签 |
-| 看别人提了什么 | [浏览全部 Issue](https://github.com/Warpshlczy/CityUHK-Hub/issues) | 先搜一下，避免重复 |
+| 想做的事       | 一键唤起                                                           | 说明                                                    |
+| ---------- | -------------------------------------------------------------- | ----------------------------------------------------- |
+| 提交自己的项目    | Submit a project                                               | 打开 GitHub 文件编辑器，没权限会自动 fork，文件建在 `feature` 分支，提交即开 PR |
+| 报告 Bug     | Report a bug                                                   | 已预填标题 `[Bug]` 与 `bug` 标签                              |
+| 提功能建议 / 提问 | Request a feature                                              | 已预填标题 `[Feature]` 与 `enhancement` 标签                  |
+| 看别人提了什么    | [浏览全部 Issue](https://github.com/Warpshlczy/CityUHK-Hub/issues) | 先搜一下，避免重复                                             |
 
 ### 分支模型
 
 仓库只有三条长期分支，默认分支是 `main`；旧分支 `master` 已删除，请统一用 `main`：
 
-| 分支 | 用途 | 收哪类 PR |
-| --- | --- | --- |
-| `main` | 稳定发布分支，线上的正式版本以它为准 | 只接受 `feature` / `dev` 的合并，不直接往上提交 |
-| `feature` | 只丢 Markdown 文件：`repos/*.md` | 项目作者的「提交我的项目」PR |
-| `dev` | 网站改动与新功能：`web/`、`repos-parser/`、`scripts/`、工作流、文档 | 前端 / 解析器 / 文档类 PR |
+| 分支        | 用途                                                | 收哪类 PR                            |
+| --------- | ------------------------------------------------- | --------------------------------- |
+| `main`    | 稳定发布分支，线上的正式版本以它为准                                | 只接受 `feature` / `dev` 的合并，不直接往上提交 |
+| `feature` | 只丢 Markdown 文件：`repos/*.md`                       | 项目作者的「提交我的项目」PR                   |
+| `dev`     | 网站改动与新功能：`web/`、`repos-parser/`、`scripts/`、工作流、文档 | 前端 / 解析器 / 文档类 PR                 |
 
 ```text
 项目提交 PR ─► feature ─┐
@@ -423,7 +470,7 @@ npm run build   # 类型检查 + 打包必须通过
 
 想投稿项目、反馈问题、提建议，或者只是想聊聊？欢迎随时发邮件，我们都会看：
 
-[![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:contact.cityu-hub@proton.me)
+![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge\&logo=protonmail\&logoColor=white)
 
 ---
 
@@ -441,19 +488,19 @@ CityUHK Hub 是一個面向**香港城市大學（CityUHK）學生開源項目**
 
 ### 網站內容與功能
 
-| 功能 | 說明 |
-| --- | --- |
-| 項目瀏覽 | 卡片流展示項目名、摘要、標籤、語言色塊、Star 數與最近更新時間 |
-| 搜尋語法 | `author:alice`、`tag:NLP`、`lang:Python`、`category:機器學習`，可疊加 `author:alice lang:Python`；不帶冒號的字詞走全文模糊搜尋 |
-| 篩選與排序 | 分類頁籤、標籤 chips、作者榜一鍵篩選；支援按最近更新 / Star / 名稱排序 |
-| 項目詳情 | 渲染儲存庫 README、作者真實姓名與主修年級、Demo 與 GitHub 外部連結 |
-| 可分享連結 | 搜尋詞、篩選、分類、排序、主題全部同步到 URL，重新整理或分享後狀態不丟 |
-| 主題 | 亮 / 暗雙主題切換，首屏前注入、無閃爍 |
-| 常用入口 | 右上角 🔗 抽屜內建 AIMS / Canvas / 學校官網 / CityUHK Portal |
+| 功能    | 說明                                                                                                   |
+| ----- | ---------------------------------------------------------------------------------------------------- |
+| 項目瀏覽  | 卡片流展示項目名、摘要、標籤、語言色塊、Star 數與最近更新時間                                                                    |
+| 搜尋語法  | `author:alice`、`tag:NLP`、`lang:Python`、`category:機器學習`，可疊加 `author:alice lang:Python`；不帶冒號的字詞走全文模糊搜尋 |
+| 篩選與排序 | 分類頁籤、標籤 chips、作者榜一鍵篩選；支援按最近更新 / Star / 名稱排序                                                          |
+| 項目詳情  | 渲染儲存庫 README、作者真實姓名與主修年級、Demo 與 GitHub 外部連結                                                          |
+| 可分享連結 | 搜尋詞、篩選、分類、排序、主題全部同步到 URL，重新整理或分享後狀態不丟                                                                |
+| 主題    | 亮 / 暗雙主題切換，首屏前注入、無閃爍                                                                                 |
+| 常用入口  | 右上角 🔗 抽屜內建 AIMS / Canvas / 學校官網 / CityUHK Portal                                                    |
 
 ### 技術棧
 
-**前端**：React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4（CSS-first）· React Router 7（HashRouter）· lucide-react
+**前端**：React 19 · TypeScript 5.9 · Vite 6 · Tailwind CSS v4（CSS-first）· React Router 7（HashRouter）· lucide-react  
 **解析器**：Node.js ≥ 20.6 · marked（Markdown → HTML）· ajv（JSON Schema 驗證）· js-yaml（front matter 解析）
 
 ### 項目結構
@@ -486,6 +533,7 @@ CityUHK-Hub/
 ├── tests/                      # 用記憶體版 Redis 直接跑 /api 函式的測試
 └── .github/workflows/          # ci（驗證+建構）/ deploy（自架重建）/ feature-to-main（項目 PR 合入後同步 main）/ main-sync（刷新貢獻者名單 + 同步 feature）
 ```
+
 
 `repos-parser` 與 `web` 透過根目錄的 **npm workspaces** 串起來，`npm install` 一次裝好兩邊依賴。
 
@@ -531,22 +579,22 @@ npm test             # 解析器與 /api 函式測試
 
 不想翻文件就直接點，表格裡的徽章已帶好標籤與目標分支：
 
-| 想做的事 | 一鍵喚起 | 說明 |
-| --- | --- | --- |
-| 提交自己的項目 | [![Submit a project](https://img.shields.io/badge/submit%20a%20project-PR%20to%20feature-22c55e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/new/feature?filename=repos/my-project.md) | 打開 GitHub 檔案編輯器，沒權限會自動 fork，檔案建在 `feature` 分支，提交即開 PR |
-| 報告 Bug | [![Report a bug](https://img.shields.io/badge/report%20a%20bug-issue-dc2626?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=bug&title=%5BBug%5D%20) | 已預填標題 `[Bug]` 與 `bug` 標籤 |
-| 提功能建議 / 提問 | [![Request a feature](https://img.shields.io/badge/request%20a%20feature-issue-a855f7?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Warpshlczy/CityUHK-Hub/issues/new?labels=enhancement&title=%5BFeature%5D%20) | 已預填標題 `[Feature]` 與 `enhancement` 標籤 |
-| 看別人提了什麼 | [瀏覽全部 Issue](https://github.com/Warpshlczy/CityUHK-Hub/issues) | 先搜一下，避免重複 |
+| 想做的事       | 一鍵喚起                                                           | 說明                                                    |
+| ---------- | -------------------------------------------------------------- | ----------------------------------------------------- |
+| 提交自己的項目    | Submit a project                                               | 打開 GitHub 檔案編輯器，沒權限會自動 fork，檔案建在 `feature` 分支，提交即開 PR |
+| 報告 Bug     | Report a bug                                                   | 已預填標題 `[Bug]` 與 `bug` 標籤                              |
+| 提功能建議 / 提問 | Request a feature                                              | 已預填標題 `[Feature]` 與 `enhancement` 標籤                  |
+| 看別人提了什麼    | [瀏覽全部 Issue](https://github.com/Warpshlczy/CityUHK-Hub/issues) | 先搜一下，避免重複                                             |
 
 ### 分支模型
 
 倉庫只有三條長期分支，預設分支是 `main`；舊分支 `master` 已刪除，請統一使用 `main`：
 
-| 分支 | 用途 | 收哪類 PR |
-| --- | --- | --- |
-| `main` | 穩定發佈分支，線上的正式版本以它為準 | 只接受 `feature` / `dev` 的合併，不直接往上提交 |
-| `feature` | 只丟 Markdown 文件：`repos/*.md` | 項目作者的「提交我的項目」PR |
-| `dev` | 網站改動與新功能：`web/`、`repos-parser/`、`scripts/`、workflow、文件 | 前端 / 解析器 / 文件類 PR |
+| 分支        | 用途                                                     | 收哪類 PR                            |
+| --------- | ------------------------------------------------------ | --------------------------------- |
+| `main`    | 穩定發佈分支，線上的正式版本以它為準                                     | 只接受 `feature` / `dev` 的合併，不直接往上提交 |
+| `feature` | 只丟 Markdown 文件：`repos/*.md`                            | 項目作者的「提交我的項目」PR                   |
+| `dev`     | 網站改動與新功能：`web/`、`repos-parser/`、`scripts/`、workflow、文件 | 前端 / 解析器 / 文件類 PR                 |
 
 ```text
 項目提交 PR ─► feature ─┐
@@ -614,7 +662,7 @@ npm run build   # 型別檢查 + 打包必須通過
 
 想投稿項目、回報問題、提建議，或只是想聊聊？歡迎隨時寄信，我們都會看：
 
-[![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge&logo=protonmail&logoColor=white)](mailto:contact.cityu-hub@proton.me)
+![Email](https://img.shields.io/badge/email-contact.cityu--hub@proton.me-f47c94?style=for-the-badge\&logo=protonmail\&logoColor=white)
 
 ---
 
