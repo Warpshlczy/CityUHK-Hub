@@ -1,6 +1,6 @@
 ---
 id: paperbridge
-title: "论文译读 · PaperBridge｜保留公式排版的论文翻译与对照阅读工具，支持图片文字识别、表格翻译与四种预览，默认免费、可接 DeepSeek/GLM，Windows 安装即用"
+title: "论文译读 · PaperBridge｜保留公式排版的论文翻译与对照阅读工具"
 author: "zhang-yutong123"
 authorName: "张宇同"
 major: "Computer Science"
@@ -8,14 +8,14 @@ enrollmentYear: 2026
 repoUrl: "https://github.com/zhang-yutong123/PaperBridge-PDF-Translate-Preserve-Formula-Layout-OCR-Tables-4Way-Compare-Free-DeepSeek-GLM-Windows"
 homepageUrl: ''
 summary: "论文译读 · PaperBridge 是基于 PDFMathTranslate 的社区 Windows 论文翻译与对照阅读工具。保留原生公式字形和结构，将正文翻译、四种应用内预览、本地 OCR 与表格处理整合到同一阅读流程；默认可用免费 Bing，也支持自备 DeepSeek、GLM API Key。提供包含运行环境的 Windows 安装包，无需安装 Python。"
-tags: [pdf, translation, windows, python, ocr, academic]
+tags: [pdf, translation, windows, python, ocr, academic, paper]
 category: "科研工具"
 language: zh-CN
 featured: false
 status: active
 ---
 
-论文译读 · PaperBridge 是一款保留公式排版的论文翻译与对照阅读工具，面向需要阅读英文论文、课程讲义和技术资料的学生与研究者。项目基于开源 PDFMathTranslate（PDF2ZH）进行社区增强，将翻译、预览、对照阅读和导出整合为 Windows 桌面使用流程。
+论文译读 · PaperBridge 是一款保留公式排版的论文翻译与对照阅读工具，面向需要阅读英文论文、课程讲义和技术资料的学生与研究者。项目基于开源 PDFMathTranslate（PDF2ZH）进行社区增强，将翻译、预览、对照阅读和导出整合为 Windows 桌面使用流程。支持图片文字识别、表格翻译与四种预览，默认免费、可接 DeepSeek/GLM。
 
 ## Features
 
