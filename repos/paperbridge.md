@@ -3,7 +3,7 @@ id: paperbridge
 title: "论文译读 · PaperBridge｜保留公式排版的论文翻译与对照阅读工具，支持图片文字识别、表格翻译与四种预览，默认免费、可接 DeepSeek/GLM，Windows 安装即用"
 author: "zhang-yutong123"
 authorName: "张宇同"
-major: "Computer Science PhD"
+major: "Computer Science"
 enrollmentYear: 2026
 repoUrl: "https://github.com/zhang-yutong123/PaperBridge-PDF-Translate-Preserve-Formula-Layout-OCR-Tables-4Way-Compare-Free-DeepSeek-GLM-Windows"
 homepageUrl: ''
