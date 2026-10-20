@@ -751,11 +751,6 @@ export const MESSAGES: Record<string, MessageEntry> = {
   },
 
   // ── CityU Playground（连点黑猫三次解锁） ──────────────────────
-  'home.catHint': {
-    en: 'Click the black cat 3 times for a surprise',
-    'zh-CN': '点击黑猫三下有惊喜',
-    'zh-TW': '點擊黑貓三次有驚喜',
-  },
   'playground.tab': { en: 'PLAYGROUND', 'zh-CN': '城大神秘黄色次元', 'zh-TW': '城大神祕黃色次元' },
   'playground.brand': { en: 'CITYU PLAYGROUND', 'zh-CN': 'CITYU PLAYGROUND', 'zh-TW': 'CITYU PLAYGROUND' },
   'playground.tagline': {

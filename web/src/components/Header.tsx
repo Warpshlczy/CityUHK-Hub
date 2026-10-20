@@ -1,13 +1,24 @@
-import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { type MouseEvent, type ReactNode } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { useI18n } from '../i18n';
+import { usePlayground } from '../playground/PlaygroundContext';
 import { LanguageToggle } from './LanguageToggle';
 import { SubmitProject } from './SubmitProject';
 import { ThemeToggle } from './ThemeToggle';
 import { UsefulLinks } from './UsefulLinks';
 
 const cityuLogo = `${import.meta.env.BASE_URL}cityu2.jpg`;
+
+/** 移动端三连点 logo 的判定窗口 */
+const LOGO_TAP_MS = 700;
+
+/** 触屏设备没有黑猫可点，改成连点 logo 进彩蛋页 */
+const isTouchDevice = () =>
+  typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
+// 计数放模块作用域：点前两下会顺带跳回首页，Header 重挂载时组件内的 ref 会被清零
+const logoTap = { count: 0, at: 0 };
 
 interface HeaderProps {
   searchSlot?: ReactNode;
@@ -16,6 +27,23 @@ interface HeaderProps {
 
 export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
   const { t } = useI18n();
+  const navigate = useNavigate();
+  const { unlock } = usePlayground();
+
+  /** 触屏端：连点 logo 三次直接进彩蛋页，不必先解锁再走首页入口页签 */
+  const handleLogoClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!isTouchDevice()) return;
+    const now = Date.now();
+    if (now - logoTap.at > LOGO_TAP_MS) logoTap.count = 0;
+    logoTap.count += 1;
+    logoTap.at = now;
+    if (logoTap.count < 3) return;
+    logoTap.count = 0;
+    // 第三下接管跳转：先解锁，PlaygroundPage 才不会把这次访问重定向回首页
+    event.preventDefault();
+    unlock();
+    navigate('/playground');
+  };
 
   return (
     <header className="sticky top-0 z-40 border-b-[3px] border-line bg-canvas">
@@ -32,7 +60,11 @@ export function Header({ searchSlot, onOpenSidebar }: HeaderProps) {
           </button>
         )}
 
-        <Link to="/" className="flex shrink-0 items-center gap-2 focus-visible:outline-none sm:gap-3">
+        <Link
+          to="/"
+          onClick={handleLogoClick}
+          className="flex shrink-0 items-center gap-2 focus-visible:outline-none sm:gap-3"
+        >
           {/* 原图 882×557，靠 w-auto 保持比例不裁切 */}
           <img
             src={cityuLogo}

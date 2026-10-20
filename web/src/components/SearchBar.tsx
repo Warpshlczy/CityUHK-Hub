@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { HelpCircle, Search, X } from 'lucide-react';
 import { useI18n } from '../i18n';
-import { usePlayground } from '../playground/PlaygroundContext';
 import { parseQuery, removeQualifier, toQualifierChips } from '../utils/searchParser';
 
 interface SearchBarProps {
@@ -28,7 +27,6 @@ const TIP_KEYS = ['search.tip.combine', 'search.tip.stack', 'search.tip.free'];
 
 export function SearchBar({ value, onChange, placeholder, categoryExample }: SearchBarProps) {
   const { t } = useI18n();
-  const { unlocked } = usePlayground();
   const [text, setText] = useState(value);
   const [helpOpen, setHelpOpen] = useState(false);
   const committed = useRef(value);
@@ -147,13 +145,6 @@ export function SearchBar({ value, onChange, placeholder, categoryExample }: Sea
           </div>
         )}
       </div>
-
-      {/* 问号下的一行小字：解锁后黑猫已经变成奶蛙，这句就不必再提了 */}
-      {!unlocked && (
-        <p className="mono mt-1 text-right text-[10px] leading-4 text-muted">
-          ✦ {t('home.catHint')}
-        </p>
-      )}
 
       {(qualifierChips.length > 0 || freeText) && (
         <div className="mt-2 flex flex-wrap items-center gap-1.5">
