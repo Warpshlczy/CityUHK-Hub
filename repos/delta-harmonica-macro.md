@@ -8,7 +8,7 @@ repoUrl: "https://github.com/JikoSchnee/delta-harmonica-macro"
 homepageUrl: "https://jiko-official.top/delta/"
 summary: "面向《三角洲行动》口琴演奏的浏览器工具：将数字简谱或 MIDI 转为鼠标宏，支持曲谱编辑、钢琴与口琴试听、曲库和谱子分享。"
 tags: ["music", "harmonica", "midi", "javascript", "browser", "delta-force"]
-category: "生活工具"
+category: "NAILONG"
 featured: false
 status: active
 ---
