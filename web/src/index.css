@@ -1024,13 +1024,38 @@ html.cursor-hidden * {
 /* 奶龙项目的详情页：只借彩蛋页的调色板，不铺底图与满屏像素层
    （详情页内容密，动效和底纹会抢注意力）。根节点同时带 .playground-scope。 */
 .pg-detail {
-  /* 通用按钮与 brand 工具类里写死的粉紫，在这里换成黄 / 黄绿 */
-  --color-brand: var(--c-line);
-  --color-accent: var(--pg-accent);
   /* glitch 标题的错位描边（见 @keyframes glitch） */
   --glitch-a: var(--c-line);
   --glitch-b: var(--pg-accent);
   background-image: none;
+}
+
+/* @theme inline 会把 brand/accent 的值直接写进工具类，改变量不管用，
+   只能在 .pg-detail 里按类名覆盖（自定义样式在 tailwind 之后，同权重后者胜） */
+.pg-detail .text-brand,
+.pg-detail .hover\:text-brand:hover {
+  color: var(--c-line);
+}
+
+.pg-detail .bg-brand {
+  background-color: var(--c-line);
+}
+
+.pg-detail .border-brand,
+.pg-detail .hover\:border-brand:hover {
+  border-color: var(--c-line);
+}
+
+.pg-detail .text-accent {
+  color: var(--pg-accent);
+}
+
+.pg-detail .bg-accent {
+  background-color: var(--pg-accent);
+}
+
+.pg-detail .border-accent {
+  border-color: var(--pg-accent);
 }
 
 .pg-detail::before,
