@@ -64,7 +64,6 @@ export function PlaygroundPage() {
 
       <main className="pg-main">
         <h1 className="pg-title">{t('playground.heading')}</h1>
-        <p className="pg-intro mono">{t('playground.intro')}</p>
 
         {count > 0 ? (
           <div className="pg-grid">

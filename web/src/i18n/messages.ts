@@ -765,11 +765,6 @@ export const MESSAGES: Record<string, MessageEntry> = {
     'zh-CN': 'CITYU PLAYGROUND',
     'zh-TW': 'CITYU PLAYGROUND',
   },
-  'playground.intro': {
-    en: 'You poked the cat three times. The cat is gone. Only nailong remains.',
-    'zh-CN': '你戳了黑猫三下。黑猫跑了，这里只剩下奶龙。',
-    'zh-TW': '你戳了黑貓三下。黑貓跑了，這裡只剩下奶龍。',
-  },
   'playground.count': {
     en: '{count} nailong repos hidden here',
     'zh-CN': '藏在这里的奶龙仓库：{count} 个',
@@ -786,9 +781,9 @@ export const MESSAGES: Record<string, MessageEntry> = {
     'zh-TW': '在倉庫檔案裡寫上 `category: NAILONG`，它就會被挪到這裡，從 Hub 上消失。',
   },
   'playground.footer': {
-    en: 'You found the easter egg. Nothing here is indexed.',
-    'zh-CN': '你找到了彩蛋。这里的一切都不会被收录。',
-    'zh-TW': '你找到了彩蛋。這裡的一切都不會被收錄。',
+    en: 'You found nailong’s secret hideout. These are the projects it loves. Nothing here is indexed.',
+    'zh-CN': '你发现了奶龙的秘密空间，这里的项目是它非常喜欢的。这里的一切都不会被收录。',
+    'zh-TW': '你發現了奶龍的祕密空間，這裡的項目是牠非常喜歡的。這裡的一切都不會被收錄。',
   },
   'playground.meta.title': {
     en: 'CityU Playground',

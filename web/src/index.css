@@ -1217,13 +1217,6 @@ html.cursor-hidden * {
   }
 }
 
-.pg-intro {
-  max-width: 42rem;
-  margin-top: 0.75rem;
-  font-size: 13px;
-  color: var(--c-muted);
-}
-
 .pg-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
