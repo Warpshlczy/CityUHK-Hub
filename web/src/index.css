@@ -698,6 +698,34 @@ html.cursor-hidden * {
   opacity: 0;
 }
 
+/* 解锁后的奶蛙。24×26 一帧、6 列 × 6 行，background-position 由 PixelPet 的
+   paint() 每帧直接推（行看姿态、列按时间），不走 CSS 动画，免得两套节奏打架。
+   贴底对齐：让奶蛙的脚和黑猫踩在同一条线上 */
+.pet-sprite {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 24px;
+  height: 26px;
+  margin-left: -12px;
+  background-repeat: no-repeat;
+  background-size: 144px 156px;
+  background-position: 0 0;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+/* 变身后黑猫那三帧就不显示了，但节点得留着：paint() 仍在按索引切它们的 opacity */
+.pet-unlocked .pet-frame {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pet-sprite {
+    background-position: 0 0 !important;
+  }
+}
+
 @keyframes pet-bob {
   0%,
   100% {
@@ -915,4 +943,426 @@ html.cursor-hidden * {
   background-color: var(--c-elevated);
   color: var(--c-muted);
 }
+
+/* ── CityU Playground：连点黑猫三次解锁的彩蛋页 ───────────────────────
+   Tailwind v4 的 @theme inline 把 --color-* 内联成 var(--c-*)，所以只要在
+   .playground-scope 这一层覆写 --c-*，整页（含所有 tailwind 工具类）就换了皮，
+   完全不用碰 :root / .dark 那套。 */
+.playground-scope {
+  /* 奶蛙本体是 #fcca1c 的亮黄 + 黄绿眼睛，这里就按这个取色：
+     黄色当主色（描边/标题/页签），黄绿 #a3e635 只做第二层点缀 */
+  --c-canvas: #171004;
+  --c-surface: #241a06;
+  --c-elevated: #33240a;
+  --c-line: #fcca1c;
+  --c-line-dim: rgba(252, 202, 28, 0.35);
+  --c-ink: #fff6d6;
+  --c-muted: #c9ad63;
+  --c-shadow: #7a5405;
+  --on-brand: #171004;
+  --glow-brand: rgba(252, 202, 28, 0.65);
+  --glow-accent: rgba(163, 230, 53, 0.55);
+  --scanline: rgba(255, 246, 214, 0.05);
+  --grid-line: rgba(252, 202, 28, 0.09);
+  /* 第二配色：奶蛙眼睛那抹黄绿，只用在 hover / 描边点缀上 */
+  --pg-accent: #a3e635;
+  color-scheme: dark;
+  color: var(--c-ink);
+  /* 奶龙背景图压到几乎看不见：叠一层 90%+ 的深黄褐遮罩，只在边缘透出一点轮廓。
+     图片地址由 PlaygroundPage 通过 --pg-photo 注入（要走 BASE_URL，部署子路径才不会断） */
+  background-color: var(--c-canvas);
+  background-image: linear-gradient(rgba(23, 16, 4, 0.9), rgba(23, 16, 4, 0.96)),
+    var(--pg-photo, none);
+  background-size: cover, cover;
+  background-position: center, center 32%;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, no-repeat;
+}
+
+/* 整页铺满黄色像素块：两层错位的棋盘格（主黄 + 黄绿），叠在雾光上缓慢平移 */
+.playground-scope::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-conic-gradient(
+      rgba(252, 202, 28, 0.14) 0% 25%,
+      transparent 0% 50%
+    ),
+    repeating-conic-gradient(rgba(163, 230, 53, 0.07) 0% 25%, transparent 0% 50%),
+    radial-gradient(circle at 16% 10%, rgba(252, 202, 28, 0.2), transparent 46%),
+    radial-gradient(circle at 86% 82%, rgba(163, 230, 53, 0.13), transparent 44%);
+  background-size: 18px 18px, 42px 42px, auto, auto;
+  background-position: 0 0, 9px 9px, 0 0, 0 0;
+  animation: pg-pixels 9s linear infinite;
+}
+
+/* 像素雨。ponytail: body::before/::after 是全局 fixed 层，作用域内改不了，
+   只能再加一层；细条纹只做很淡的亮度变化，避免和 body::after 的扫描线打架 */
+.playground-scope::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: repeating-linear-gradient(
+      to bottom,
+      rgba(252, 202, 28, 0.1) 0 3px,
+      transparent 3px 14px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(163, 230, 53, 0.06) 0 2px,
+      transparent 2px 22px
+    );
+  background-size: 100% 28px, 100% 44px;
+  animation: pg-rain 1.8s linear infinite;
+}
+
+@keyframes pg-pixels {
+  from {
+    background-position: 0 0, 9px 9px, 0 0, 0 0;
+  }
+  to {
+    background-position: 18px 18px, 27px 27px, 0 0, 0 0;
+  }
+}
+
+@keyframes pg-rain {
+  from {
+    background-position-y: 0, 0;
+  }
+  to {
+    background-position-y: 28px, 44px;
+  }
+}
+
+/* 标题的黄色流光：渐变本身够长，靠背景位移动画让它一直往右流 */
+@keyframes pg-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes pg-float {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+@keyframes pg-wobble {
+  0%,
+  100% {
+    transform: rotate(0deg) translate(-4px, -4px);
+  }
+  25% {
+    transform: rotate(-1.8deg) translate(-4px, -4px);
+  }
+  75% {
+    transform: rotate(1.8deg) translate(-4px, -4px);
+  }
+}
+
+@keyframes pg-tab-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(252, 202, 28, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 24px rgba(252, 202, 28, 0.9), 0 0 0 3px rgba(163, 230, 53, 0.35);
+  }
+}
+
+.pg-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 3px solid var(--c-line);
+  background-color: var(--c-canvas);
+}
+
+.pg-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+}
+
+.pg-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--c-ink);
+  text-decoration: none;
+}
+
+.pg-logo {
+  height: 44px;
+  width: auto;
+  border: 3px solid var(--c-line);
+  background-color: var(--c-elevated);
+  box-shadow: 0 0 20px var(--glow-brand);
+  animation: pg-float 3.2s ease-in-out infinite;
+}
+
+.pg-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+  padding: 0.5rem 0.75rem;
+  border: 3px solid var(--c-line);
+  background-color: var(--c-surface);
+  font-family: var(--font-pixel);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--c-ink);
+  text-decoration: none;
+  transition: transform 0.1s step-end, box-shadow 0.1s step-end, color 0.1s step-end,
+    border-color 0.1s step-end;
+}
+
+.pg-back:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--pg-accent);
+  color: var(--pg-accent);
+  box-shadow: 4px 4px 0 var(--c-shadow), 0 0 22px var(--glow-brand);
+}
+
+.pg-marquee {
+  overflow: hidden;
+  background-color: var(--c-line);
+  border-bottom: 3px solid var(--pg-accent);
+  color: var(--on-brand);
+  user-select: none;
+  pointer-events: none;
+}
+
+.pg-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  padding: 8px 0;
+  animation: marquee 26s linear infinite;
+}
+
+.pg-main {
+  position: relative;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 1rem;
+}
+
+/* 黄色流光标题。文字本身透明，靠 background-clip:text 把流动的渐变透出来；
+   drop-shadow 只管外发光，不受文字透明影响 */
+.pg-title {
+  font-family: var(--font-pixel);
+  font-size: clamp(20px, 4.2vw, 42px);
+  line-height: 1.5;
+  word-spacing: -0.4em;
+  background-image: linear-gradient(
+    100deg,
+    #8a5a06 0%,
+    #fcca1c 12%,
+    #fff8c9 24%,
+    #fcca1c 38%,
+    #a3e635 52%,
+    #fcca1c 66%,
+    #fff0a0 80%,
+    #8a5a06 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 14px rgba(252, 202, 28, 0.45));
+  animation: pg-flow 3.6s linear infinite;
+}
+
+/* 页头品牌名也用同一套流光，字号小一点、流得慢一点 */
+.pg-brand-title {
+  background-image: linear-gradient(
+    100deg,
+    #fcca1c 0%,
+    #fff8c9 22%,
+    #fcca1c 42%,
+    #a3e635 64%,
+    #fcca1c 84%,
+    #fff0a0 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: pg-flow 4.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg-title,
+  .pg-brand-title {
+    animation: none;
+    background-position: 50% 50%;
+  }
+}
+
+.pg-intro {
+  max-width: 42rem;
+  margin-top: 0.75rem;
+  font-size: 13px;
+  color: var(--c-muted);
+}
+
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+/* 彩蛋卡片：歪着、彩虹描边、悬停时抽一下 —— 刻意和首页 card-brutal 不同 */
+.nailong-card {
+  position: relative;
+  padding: 1.25rem;
+  border: 3px solid var(--c-line);
+  background-color: var(--c-surface);
+  transform: rotate(var(--tilt, 0deg));
+  box-shadow: 6px 6px 0 var(--c-shadow);
+  animation: fade-in-up 0.4s step-end both;
+  transition: transform 0.15s step-end, box-shadow 0.15s step-end, border-color 0.15s step-end;
+}
+
+.nailong-card:hover {
+  border-color: var(--pg-accent);
+  box-shadow: 10px 10px 0 var(--c-shadow), 0 0 30px var(--glow-brand);
+  animation: pg-wobble 0.5s step-end 2;
+}
+
+/* 左上角那颗凸眼，呼应奶蛙 */
+.nailong-eyed {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border: 3px solid var(--c-line);
+  border-radius: 50%;
+  background-color: var(--c-line);
+  color: var(--on-brand);
+}
+
+.nailong-eyed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nailong-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--c-muted);
+}
+
+.nailong-title {
+  margin-top: 1rem;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.35;
+  color: var(--c-ink);
+}
+
+.nailong-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nailong-title a:hover {
+  color: var(--pg-accent);
+}
+
+.nailong-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--c-muted);
+}
+
+.nailong-tags {
+  margin-top: 0.9rem;
+}
+
+.nailong-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  padding-top: 0.75rem;
+  border-top: 3px solid var(--c-line-dim);
+  font-size: 11px;
+  color: var(--c-muted);
+}
+
+.nailong-star {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  padding: 0.2rem 0.5rem;
+  border: 2px solid var(--c-line);
+  color: var(--c-ink);
+  text-decoration: none;
+}
+
+.nailong-star:hover {
+  border-color: var(--pg-accent);
+  color: var(--pg-accent);
+}
+
+.pg-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  border-top: 3px solid var(--c-line-dim);
+  color: var(--c-muted);
+}
+
+/* 首页页签上的彩蛋入口。它在 .playground-scope 之外，所以颜色得写死 */
+.playground-tab {
+  border-color: #fcca1c;
+  background-color: #241a06;
+  color: #fff6d6;
+  animation: pg-tab-glow 1.6s steps(2, end) infinite alternate;
+}
+
+.playground-tab:hover {
+  transform: translate(-2px, -2px);
+  border-color: #a3e635;
+  color: #a3e635;
+  box-shadow: 4px 4px 0 var(--c-shadow);
+}
+
 

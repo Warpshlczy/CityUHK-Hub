@@ -173,6 +173,9 @@ if (!list) {
 }
 
 const projects = list.projects ?? [];
+// 彩蛋仓库（category 为 NAILONG，见 web/src/constants/playground.ts）在站点里是隐藏的：
+// 不进爬虫正文、不生成详情页、不进 sitemap。计数文案仍用 projects.length（需求：隐藏但计入总数）。
+const listedProjects = projects.filter((project) => project.category !== 'NAILONG');
 const urls = [];
 
 {
@@ -195,7 +198,7 @@ const urls = [];
     },
   });
 
-  const items = projects
+  const items = listedProjects
     .slice(0, 30)
     .map((project) => {
       const en = pickEn(project);
@@ -216,7 +219,7 @@ const urls = [];
   urls.push({ loc: `${SITE_ORIGIN}/`, lastmod: (list.generatedAt ?? '').slice(0, 10), priority: '1.0' });
 }
 
-for (const project of projects) {
+for (const project of listedProjects) {
   const detail =
     (await readJson(path.join(dataDir, 'projects', `${project.id}.json`))) ?? project;
   const en = pickEn(detail);

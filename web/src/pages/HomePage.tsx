@@ -10,11 +10,17 @@ import { ProjectGrid } from '../components/ProjectGrid';
 import { SearchBar } from '../components/SearchBar';
 import { Sidebar } from '../components/Sidebar';
 import { TagChips } from '../components/TagChips';
+import {
+  filterOutPlayground,
+  isPlaygroundCategory,
+  isPlaygroundProject,
+} from '../constants/playground';
 import { REPO_URL } from '../constants/repo';
 import { useProjects } from '../hooks/useProjects';
 import { useSearch } from '../hooks/useSearch';
 import { useUrlState } from '../hooks/useUrlState';
 import { categoryLabel, localizeProject, useI18n } from '../i18n';
+import { usePlayground } from '../playground/PlaygroundContext';
 import type { AuthorItem, SortKey } from '../types';
 import { avatarUrl } from '../utils/avatar';
 import { formatDateTime } from '../utils/formatNumber';
@@ -44,10 +50,36 @@ export function HomePage() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const sort = toSortKey(sortParam);
+  const { unlocked } = usePlayground();
+
+  // 奶龙（NAILONG）分类整体从常规展示里抽走：分类页签、侧栏、数据条都不再出现它，
+  // 但 data.categories 里仍保留 —— 仓库数与作者数照常计入总数（需求「隐藏但计数」）
+  const visibleCategories = useMemo(
+    () => (data?.categories ?? []).filter((item) => !isPlaygroundCategory(item.name)),
+    [data],
+  );
+
+  /** 被藏进 Playground 的仓库数：解锁后页签上的计数 */
+  const playgroundCount = useMemo(
+    () => (data?.projects ?? []).filter((project) => isPlaygroundProject(project)).length,
+    [data],
+  );
+
+  // 标签统计同样来自全量项目，得按可见项目重算一遍，
+  // 否则奶龙仓库的 tag 会以标签 chip 的形式在首页露出来（点了还搜不到东西）
+  const visibleTags = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const project of filterOutPlayground(data?.projects ?? [])) {
+      for (const tag of project.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+    return [...counts.entries()]
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  }, [data]);
 
   // 搜索规则面板里 category: 的示例值，取当前语言下的真实分类名
-  const categoryExample = data?.categories?.length
-    ? categoryLabel(data.categories[0].name, lang, data.categoryLabels)
+  const categoryExample = visibleCategories.length
+    ? categoryLabel(visibleCategories[0].name, lang, data?.categoryLabels)
     : undefined;
 
   const selectedTags = useMemo(
@@ -113,7 +145,8 @@ export function HomePage() {
 
   // 分类 / 标签筛选（useMemo 缓存，搜索在 useSearch 内基于结果再做过滤）
   const scoped = useMemo(() => {
-    const projects = data?.projects ?? [];
+    // 奶龙仓库先整体剔除，搜索与排序自然不会碰到它们
+    const projects = filterOutPlayground(data?.projects ?? []);
     return projects.filter((project) => {
       if (category && project.category !== category) return false;
       if (
@@ -152,7 +185,7 @@ export function HomePage() {
   /** 近 7 天被收录的项目 */
   const newest = useMemo(() => {
     const since = Date.now() - 7 * 86_400_000;
-    return (data?.projects ?? [])
+    return filterOutPlayground(data?.projects ?? [])
       .filter((project) => project.addedAt && Date.parse(`${project.addedAt}T00:00:00Z`) >= since)
       .sort((a, b) => (b.addedAt ?? '').localeCompare(a.addedAt ?? ''))
       .slice(0, 6);
@@ -178,8 +211,8 @@ export function HomePage() {
 
   const sidebar = (
     <Sidebar
-      categories={data?.categories ?? []}
-      tags={data?.tags ?? []}
+      categories={visibleCategories}
+      tags={visibleTags}
       authors={authorList}
       total={data?.total ?? 0}
       activeCategory={category}
@@ -196,7 +229,7 @@ export function HomePage() {
     t('home.marquee.slogan'),
     t('home.marquee.projects', { count: data?.total ?? 0 }),
     t('home.marquee.contributors', { count: data?.authors.length ?? 0 }),
-    t('home.marquee.categories', { count: data?.categories.length ?? 0 }),
+    t('home.marquee.categories', { count: visibleCategories.length }),
     t('home.marquee.launch'),
   ].join('   ✦   ');
 
@@ -227,7 +260,11 @@ export function HomePage() {
               active={category === ''}
               onClick={() => selectCategory('')}
             />
-            {(data?.categories ?? []).map((item) => (
+            {unlocked && (
+              // 连点黑猫解锁后才冒出来的彩蛋入口
+              <PlaygroundTab label={t('playground.tab')} count={playgroundCount} />
+            )}
+            {visibleCategories.map((item) => (
               <CategoryTab
                 key={item.name}
                 label={categoryLabel(item.name, lang, data?.categoryLabels)}
@@ -240,10 +277,10 @@ export function HomePage() {
 
           <div className="edge-fade no-scrollbar overflow-x-auto">
             <TagChips
-              items={(data?.tags ?? []).map((tag) => tag.name)}
+              items={visibleTags.map((tag) => tag.name)}
               selected={selectedTags}
               onToggle={toggleTag}
-              counts={data?.tags ?? []}
+              counts={visibleTags}
               max={60}
               size="sm"
               nowrap
@@ -256,8 +293,8 @@ export function HomePage() {
         {/* 共享边框数据条 */}
         <div className="grid grid-cols-2 gap-[3px] border-[3px] border-line bg-line sm:grid-cols-5">
           <StatCell label={t('home.stat.projects')} value={data?.total ?? 0} />
-          <StatCell label={t('home.stat.categories')} value={data?.categories.length ?? 0} />
-          <StatCell label={t('home.stat.tags')} value={data?.tags.length ?? 0} />
+          <StatCell label={t('home.stat.categories')} value={visibleCategories.length} />
+          <StatCell label={t('home.stat.tags')} value={visibleTags.length} />
           <StatCell label={t('home.stat.authors')} value={data?.authors.length ?? 0} />
           {/* 独立访客数：要配了 Upstash 才有值，拿不到时给 0 */}
           <StatCell label={t('home.stat.visits')} value={stats?.uv ?? 0} />
@@ -437,6 +474,9 @@ interface CategoryTabProps {
   onClick: () => void;
 }
 
+const CATEGORY_TAB_CLASS =
+  'mono flex shrink-0 items-center gap-2 border-[3px] px-3 py-1.5 text-xs transition-all duration-100 [transition-timing-function:step-end]';
+
 function CategoryTab({ label, count, active, onClick }: CategoryTabProps) {
   return (
     <button
@@ -444,7 +484,7 @@ function CategoryTab({ label, count, active, onClick }: CategoryTabProps) {
       onClick={onClick}
       aria-pressed={active}
       className={[
-        'mono flex shrink-0 items-center gap-2 border-[3px] px-3 py-1.5 text-xs transition-all duration-100 [transition-timing-function:step-end]',
+        CATEGORY_TAB_CLASS,
         active
           ? 'border-brand bg-brand font-bold text-[#180a0f] shadow-[0_0_18px_var(--glow-brand)]'
           : 'border-line bg-surface text-muted hover:-translate-x-0.5 hover:-translate-y-0.5 hover:border-brand hover:text-brand',
@@ -453,5 +493,16 @@ function CategoryTab({ label, count, active, onClick }: CategoryTabProps) {
       {label}
       <span className="text-[10px] tabular-nums opacity-70">[{count}]</span>
     </button>
+  );
+}
+
+/** 彩蛋页签：只在解锁后出现，外形同分类页签，靠 .playground-tab 加彩虹描边与抖动 */
+function PlaygroundTab({ label, count }: { label: string; count: number }) {
+  return (
+    <Link to="/playground" className={`${CATEGORY_TAB_CLASS} playground-tab`}>
+      <span aria-hidden>✦</span>
+      {label}
+      <span className="text-[10px] tabular-nums opacity-70">[{count}]</span>
+    </Link>
   );
 }

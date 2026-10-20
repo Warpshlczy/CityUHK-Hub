@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { UNLOCK_CLICKS } from '../constants/playground';
 import { useI18n } from '../i18n';
+import { usePlayground } from '../playground/PlaygroundContext';
 
 const CELL = 4;
 const PET_W = 20;
@@ -11,7 +13,13 @@ const RUN_SPEED = 168;
 const ACCEL = 520;
 const CURSOR_NOTICE_RANGE = 190;
 const CURSOR_COOLDOWN = 7000;
+// 变身后的奶蛙精灵图（web/public/naiwa-sprite.webp）：每帧 24×26，6 列 × 6 行。
+// 这几个数必须和 index.css 里 .pet-sprite 的 width / height / background-size 对上
+const SPRITE_W = 24;
+const SPRITE_H = 26;
+const SPRITE_COLS = 6;
 
+// 黑猫只用 B/W 两色
 const PIXEL_COLORS: Record<string, string> = {
   B: '#000000',
   W: '#ffffff',
@@ -57,7 +65,21 @@ const CAT_SIT = [
 ];
 
 const CAT_FRAMES = [CAT_WALK_A, CAT_WALK_B, CAT_SIT];
+
+/** 解锁后的奶蛙用 petdex 图集（web/public/naiwa-sprite.webp）：
+ *  每帧 24×26，6 列 × 6 行，行是动作、列是帧。
+ *  这几行是人肉核对过的语义，改图集时对应关系要一起改。 */
+const FROG_ROWS: Record<Pose, number> = {
+  idle: 0, // 站立抱手
+  walk: 3, // 站立迈步
+  run: 1, // 趴下快跑
+  jump: 4, // 张嘴欢呼
+};
+
 const SPEECH = ['MIAO~', 'ニャー', 'PURR~', 'MEOW!', 'POKE!', 'PET ME!'];
+const FROG_SPEECH = ['RIBBIT~', 'CROAK!', '呱！', 'NAILONG!', 'ケロケロ'];
+/** 变身那一下的专属台词 */
+const UNLOCK_SPEECH = '呱！NAILONG！';
 type Pose = 'idle' | 'walk' | 'run' | 'jump';
 type Mode = 'idle' | 'wander' | 'chase-cursor' | 'poke' | 'flee' | 'stuck';
 interface NavGrid {
@@ -123,6 +145,8 @@ const rect = el.getBoundingClientRect();
 if (rect.width < 8 || rect.height < 8) return false;
 if (rect.bottom < TOP_PADDING || rect.top > window.innerHeight) return false;
 if (rect.right < 0 || rect.left > window.innerWidth) return false;
+// 铺满整屏的容器（比如彩蛋页那层换肤根节点）只是背景板，挡住它的应该是里面那些小块
+if (rect.width >= window.innerWidth - 4 && rect.height >= window.innerHeight - 4) return false;
 const style = window.getComputedStyle(el);
 if (style.visibility === 'hidden' || style.display === 'none' || style.opacity === '0') {
 return false;
@@ -276,7 +300,7 @@ y: Math.floor(cell / cols) * CELL + CELL / 2,
   }));
 return points.length > 1 ? points.slice(1) : points;
 }
-function CatSprite({ map }: { map: string[] }) {
+function PetSprite({ map }: { map: string[] }) {
 return (
 <svg
 viewBox={`0 0 ${map[0].length} ${map.length}`}
@@ -301,8 +325,16 @@ const { t } = useI18n();
 const rootRef = useRef<HTMLDivElement>(null);
 const faceRef = useRef<HTMLDivElement>(null);
 const frameRefs = useRef<Array<HTMLDivElement | null>>([]);
+/** 解锁后才挂上的奶蛙精灵图；paint() 每帧读 current，所以不依赖 effect 重跑 */
+const spriteRef = useRef<HTMLDivElement>(null);
 const clickRef = useRef<() => void>(() => {});
-const [pose, setPose] = useState<Pose>('idle');
+  const { unlocked, unlock } = usePlayground();
+  // 动画 effect 依赖只有 [isMobile]，挂载后不再重跑，闭包里读不到最新的 unlocked，用 ref 同步
+  const unlockedRef = useRef(unlocked);
+  unlockedRef.current = unlocked;
+  /** 已连点次数，攒够 UNLOCK_CLICKS 就解锁彩蛋 */
+  const clicksRef = useRef(0);
+  const [pose, setPose] = useState<Pose>('idle');
 const [bubble, setBubble] = useState<string | null>(null);
 const isMobile = useMemo(() => {
 if (typeof window === 'undefined') return true;
@@ -357,6 +389,9 @@ pet.y = window.innerHeight / 2;
     }
 let poseCache: Pose = 'idle';
 let frameCache = 2;
+/** 精灵图当前的行/帧，避免每帧都写一次 background-position */
+let spriteRowCache = -1;
+let spriteFrameCache = -1;
 let bubbleTimer = 0;
 let rafId = 0;
 let lastFrame = started;
@@ -366,6 +401,11 @@ const say = (text: string, duration = 1600) => {
 setBubble(text);
 window.clearTimeout(bubbleTimer);
 bubbleTimer = window.setTimeout(() => setBubble(null), duration);
+    };
+    /** 解锁后就换成奶蛙的叫声，免得变身后还在喵喵叫 */
+    const pickSpeech = () => {
+const pool = unlockedRef.current ? FROG_SPEECH : SPEECH;
+return pool[Math.floor(Math.random() * pool.length)];
     };
 const canStand = (x: number, y: number) => isFree(grid, toCol(x), toRow(y));
 /** 直线可达就不必沿格子走，减少抖动 */
@@ -446,7 +486,7 @@ return;
         }
       }
 rest(now);
-if (Math.random() < 0.3) say(SPEECH[Math.floor(Math.random() * SPEECH.length)], 1200);
+if (Math.random() < 0.3) say(pickSpeech(), 1200);
     };
 const startFlee = (now: number) => {
 const angle = Math.atan2(pet.y - pet.mouseY, pet.x - pet.mouseX) || 0;
@@ -459,14 +499,27 @@ pet.running = true;
 clickRef.current = () => {
 const now = performance.now();
 pet.jumping = true;
-say(SPEECH[Math.floor(Math.random() * SPEECH.length)], 1200);
+const count = clicksRef.current + 1;
+clicksRef.current = count;
+// 攒够 UNLOCK_CLICKS 次就变身：解锁彩蛋入口并换成奶蛙
+const unlockNow = count >= UNLOCK_CLICKS;
+if (unlockNow) {
+clicksRef.current = 0;
+// 立刻置位：本闭包捕获的是挂载时那次 render 的 state，读不到新的 unlocked
+unlockedRef.current = true;
+unlock();
+say(UNLOCK_SPEECH, 2200);
+      } else {
+say(pickSpeech(), 1200);
+      }
 window.setTimeout(() => {
 pet.jumping = false;
-      }, 460);
-startFlee(now);
+      }, unlockNow ? 900 : 460);
+// 前两次不逃跑，否则连点三次时宠物早弹开了，根本点不到
+if (unlockNow) startFlee(now);
     };
 const poke = (el: HTMLElement | null) => {
-say(SPEECH[Math.floor(Math.random() * SPEECH.length)]);
+say(pickSpeech());
 if (!el) return;
 el.classList.add('pet-poked');
 window.setTimeout(() => el.classList.remove('pet-poked'), 480);
@@ -537,7 +590,7 @@ if (pet.mode === 'poke') {
 poke(pet.pokeEl);
 rest(performance.now(), 1200, 1200);
           } else if (pet.mode === 'wander') {
-if (Math.random() < 0.25) say(SPEECH[Math.floor(Math.random() * SPEECH.length)], 1200);
+if (Math.random() < 0.25) say(pickSpeech(), 1200);
 rest(performance.now(), 800, 2000);
           } else {
 rest(performance.now(), 500, 900);
@@ -606,6 +659,18 @@ if (nextPose !== poseCache) {
 poseCache = nextPose;
 setPose(nextPose);
       }
+// 变身后的奶蛙：行跟着姿态走，列按时间在原图集里逐帧翻。
+// idle 时也让它轻微地动，不然站着像一张贴纸
+const sprite = spriteRef.current;
+if (sprite) {
+const step = reducedMotion ? 0 : Math.floor(now / (pet.running ? 90 : 160)) % SPRITE_COLS;
+const row = FROG_ROWS[poseCache];
+if (row !== spriteRowCache || step !== spriteFrameCache) {
+spriteRowCache = row;
+spriteFrameCache = step;
+sprite.style.backgroundPosition = `${-step * SPRITE_W}px ${-row * SPRITE_H}px`;
+        }
+      }
     };
 const rebuildGrid = () => {
 grid = buildNavGrid();
@@ -666,6 +731,8 @@ document.querySelectorAll('.pet-poked').forEach((el) => el.classList.remove('pet
     };
   }, [isMobile]);
 if (isMobile) return null;
+// 解锁后换成奶蛙精灵图：黑猫的三帧仍留在 DOM 里（paint() 还在按索引切 opacity），
+// 只是被 .pet-unlocked 隐藏掉，变身的瞬间不重建节点
 const poseClass =
 pose === 'run'
 ? 'pet-bob-fast'
@@ -675,11 +742,11 @@ pose === 'run'
 ? 'pet-jump'
 : 'pet-breathe';
 return (
-<div ref={rootRef} className="pet-root" aria-hidden>
+<div ref={rootRef} className={`pet-root${unlocked ? ' pet-unlocked' : ''}`} aria-hidden>
 <div ref={faceRef} className="pet-face">
 <div
 className={`pet-body ${poseClass}`}
-title={t('pet.title')}
+title={unlocked ? t('pet.titleFrog') : t('pet.title')}
 onClick={() => clickRef.current()}
 >
 {CAT_FRAMES.map((map, index) => (
@@ -690,9 +757,16 @@ frameRefs.current[index] = el;
               }}
 className="pet-frame"
 >
-<CatSprite map={map} />
+<PetSprite map={map} />
 </div>
           ))}
+{unlocked && (
+<div
+ref={spriteRef}
+className="pet-sprite"
+style={{ backgroundImage: `url(${import.meta.env.BASE_URL}naiwa-sprite.webp)` }}
+            />
+          )}
 </div>
 </div>
 {bubble && <span className="pet-bubble pixel text-[9px]">{bubble}</span>}

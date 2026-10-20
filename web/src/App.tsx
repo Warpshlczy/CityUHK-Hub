@@ -7,8 +7,10 @@ import { WelcomeDialog } from './components/WelcomeDialog';
 import { I18nProvider } from './i18n';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { PlaygroundPage } from './pages/PlaygroundPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { SubmitPage } from './pages/SubmitPage';
+import { PlaygroundProvider } from './playground/PlaygroundContext';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -46,19 +48,24 @@ export default function App() {
     <BrowserRouter>
       {/* Provider 用 useUrlState(?lang=)，必须在 Router 内层 */}
       <I18nProvider>
-        <ScrollToTop />
-        <SiteAnalytics />
-        <LegacyHashRedirect />
-        <TargetCursor targetSelector="a, button, .cursor-target" />
-        <PixelPet />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/project/:id" element={<ProjectDetailPage />} />
-          <Route path="/submit" element={<SubmitPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        {/* 放在路由之外：直接落在详情页分享链接时也要能弹出来 */}
-        <WelcomeDialog />
+        {/* 彩蛋解锁态必须包住 PixelPet：黑猫挂在 Routes 之外，要能调 unlock() */}
+        <PlaygroundProvider>
+          <ScrollToTop />
+          <SiteAnalytics />
+          <LegacyHashRedirect />
+          <TargetCursor targetSelector="a, button, .cursor-target" />
+          <PixelPet />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            {/* 彩蛋页：未解锁时内部重定向回首页 */}
+            <Route path="/playground" element={<PlaygroundPage />} />
+            <Route path="/project/:id" element={<ProjectDetailPage />} />
+            <Route path="/submit" element={<SubmitPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+          {/* 放在路由之外：直接落在详情页分享链接时也要能弹出来 */}
+          <WelcomeDialog />
+        </PlaygroundProvider>
       </I18nProvider>
     </BrowserRouter>
   );

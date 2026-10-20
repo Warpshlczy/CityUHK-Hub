@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-10-04T11:51:31.260Z",
-  "total": 14,
+  "total": 15,
   "projects": [
     {
       "id": "yongzeyang-cscse-certification-review-cityu-ec-to-cs",
@@ -758,6 +758,58 @@
           "about": "三模式分工協作的LLM 智慧路由系統：智慧路由/ 圓桌會診/ 舉手錶決，支援DeepSeek · GLM · Kimi",
           "major": "數據科學",
           "category": "AI 工具"
+        }
+      }
+    },
+    {
+      "id": "inscripoem-nailong-playground",
+      "name": "nailong-playground",
+      "author": "inscripoem",
+      "authorName": "Brandon",
+      "major": "Computer Science",
+      "enrollmentYear": 2026,
+      "authorAvatar": "",
+      "repo": "inscripoem/nailong-playground",
+      "about": "",
+      "description": "一个占位用的奶龙仓库，用来验证 CityU Playground 彩蛋：打上 NAILONG 分类后它会从首页消失，只在连点黑猫三次后解锁的彩蛋页里出现。",
+      "tags": [
+        "nailong",
+        "easter-egg",
+        "go"
+      ],
+      "category": "NAILONG",
+      "githubUrl": "https://github.com/inscripoem/nailong-playground",
+      "demoUrl": null,
+      "hasRelease": false,
+      "stars": 0,
+      "starsGained7d": null,
+      "forks": 0,
+      "language": "",
+      "license": "",
+      "createdAt": "2026-10-20",
+      "updatedAt": "2026-10-20",
+      "addedAt": "2026-10-20",
+      "i18n": {
+        "en": {
+          "name": "nailong-playground",
+          "description": "一个占位用的奶龙仓库，用来验证 CityU Playground 彩蛋：打上 NAILONG 分类后它会从首页消失，只在连点黑猫三次后解锁的彩蛋页里出现。",
+          "about": "",
+          "major": "Computer Science",
+          "category": "NAILONG"
+        },
+        "zh-CN": {
+          "name": "nailong-playground",
+          "description": "一个占位用的奶龙仓库，用来验证 CityU Playground 彩蛋：打上 NAILONG 分类后它会从首页消失，只在连点黑猫三次后解锁的彩蛋页里出现。",
+          "about": "",
+          "major": "Computer Science",
+          "category": "NAILONG"
+        },
+        "zh-TW": {
+          "name": "nailong-playground",
+          "description": "一个占位用的奶龙仓库，用来验证 CityU Playground 彩蛋：打上 NAILONG 分类后它会从首页消失，只在连点黑猫三次后解锁的彩蛋页里出现。",
+          "about": "",
+          "major": "電腦科學",
+          "category": "NAILONG"
         }
       }
     },

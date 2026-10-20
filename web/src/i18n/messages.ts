@@ -744,6 +744,62 @@ export const MESSAGES: Record<string, MessageEntry> = {
     'zh-CN': '像素猫咪：点一下试试',
     'zh-TW': '像素貓咪：點一下試試',
   },
+  'pet.titleFrog': {
+    en: 'Nailong frog: ripple it',
+    'zh-CN': '奶蛙：戳一下它',
+    'zh-TW': '奶蛙：戳一下牠',
+  },
+
+  // ── CityU Playground（连点黑猫解锁的隐藏彩蛋） ─────────────────
+  'playground.tab': { en: 'PLAYGROUND', 'zh-CN': '彩蛋区', 'zh-TW': '彩蛋區' },
+  'playground.brand': { en: 'CITYU PLAYGROUND', 'zh-CN': 'CITYU PLAYGROUND', 'zh-TW': 'CITYU PLAYGROUND' },
+  'playground.tagline': {
+    en: 'The Secret Zone of CityUHK & Funny Tools & Projects Workshop',
+    'zh-CN': 'The Secret Zone of CityUHK & Funny Tools & Projects Workshop',
+    'zh-TW': 'The Secret Zone of CityUHK & Funny Tools & Projects Workshop',
+  },
+  'playground.back': { en: 'Back to Hub', 'zh-CN': '返回 Hub', 'zh-TW': '返回 Hub' },
+  'playground.logoAlt': { en: 'CityU Playground logo', 'zh-CN': 'CityU Playground 标志', 'zh-TW': 'CityU Playground 標誌' },
+  'playground.heading': {
+    en: 'CITYU PLAYGROUND',
+    'zh-CN': 'CITYU PLAYGROUND',
+    'zh-TW': 'CITYU PLAYGROUND',
+  },
+  'playground.intro': {
+    en: 'You poked the cat three times. The cat is gone. Only nailong remains.',
+    'zh-CN': '你戳了黑猫三下。黑猫跑了，这里只剩下奶龙。',
+    'zh-TW': '你戳了黑貓三下。黑貓跑了，這裡只剩下奶龍。',
+  },
+  'playground.count': {
+    en: '{count} nailong repos hidden here',
+    'zh-CN': '藏在这里的奶龙仓库：{count} 个',
+    'zh-TW': '藏在這裡的奶龍倉庫：{count} 個',
+  },
+  'playground.empty.title': {
+    en: 'No nailong yet',
+    'zh-CN': '还没有奶龙',
+    'zh-TW': '還沒有奶龍',
+  },
+  'playground.empty.description': {
+    en: 'Add `category: NAILONG` to a repo file and it will move here, hidden from the Hub.',
+    'zh-CN': '在仓库文件里写上 `category: NAILONG`，它就会被挪到这里，从 Hub 上消失。',
+    'zh-TW': '在倉庫檔案裡寫上 `category: NAILONG`，它就會被挪到這裡，從 Hub 上消失。',
+  },
+  'playground.footer': {
+    en: 'You found the easter egg. Nothing here is indexed.',
+    'zh-CN': '你找到了彩蛋。这里的一切都不会被收录。',
+    'zh-TW': '你找到了彩蛋。這裡的一切都不會被收錄。',
+  },
+  'playground.meta.title': {
+    en: 'CityU Playground',
+    'zh-CN': 'CityU Playground',
+    'zh-TW': 'CityU Playground',
+  },
+  'playground.meta.description': {
+    en: 'Hidden hideout for CityUHK nailong repos.',
+    'zh-CN': 'CityUHK 奶龙仓库的隐藏据点。',
+    'zh-TW': 'CityUHK 奶龍倉庫的隱藏據點。',
+  },
 
   // <<< EXTENSION: common >>>
   // <<< EXTENSION: home >>>
