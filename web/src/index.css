@@ -968,10 +968,10 @@ html.cursor-hidden * {
   --pg-accent: #a3e635;
   color-scheme: dark;
   color: var(--c-ink);
-  /* 奶龙背景图压到几乎看不见：叠一层 90%+ 的深黄褐遮罩，只在边缘透出一点轮廓。
+  /* 奶龙背景图要看得见，但只做底纹：遮罩降到 6 成上下，图片透出轮廓又不抢正文。
      图片地址由 PlaygroundPage 通过 --pg-photo 注入（要走 BASE_URL，部署子路径才不会断） */
   background-color: var(--c-canvas);
-  background-image: linear-gradient(rgba(23, 16, 4, 0.9), rgba(23, 16, 4, 0.96)),
+  background-image: linear-gradient(rgba(23, 16, 4, 0.62), rgba(23, 16, 4, 0.8)),
     var(--pg-photo, none);
   background-size: cover, cover;
   background-position: center, center 32%;

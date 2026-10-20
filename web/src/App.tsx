@@ -42,6 +42,19 @@ function LegacyHashRedirect() {
   return null;
 }
 
+/** 彩蛋页整页走黄色皮肤，光标也跟着换色，免得粉紫两色落在黄底上突兀 */
+function SiteCursor() {
+  const { pathname } = useLocation();
+  const onPlayground = pathname === '/playground';
+  return (
+    <TargetCursor
+      targetSelector="a, button, .cursor-target"
+      cursorColor={onPlayground ? '#fcca1c' : '#f47c94'}
+      cursorColorOnTarget={onPlayground ? '#a3e635' : '#a855f7'}
+    />
+  );
+}
+
 export default function App() {
   return (
     // 每个项目要有独立真实 URL 才利于爬虫分别收录；深链接刷新由 Vercel rewrite 兜底（见 vercel.json）
@@ -53,7 +66,7 @@ export default function App() {
           <ScrollToTop />
           <SiteAnalytics />
           <LegacyHashRedirect />
-          <TargetCursor targetSelector="a, button, .cursor-target" />
+          <SiteCursor />
           <PixelPet />
           <Routes>
             <Route path="/" element={<HomePage />} />
