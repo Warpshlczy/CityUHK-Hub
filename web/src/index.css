@@ -1021,6 +1021,37 @@ html.cursor-hidden * {
   animation: pg-rain 1.8s linear infinite;
 }
 
+/* 奶龙项目的详情页：只借彩蛋页的调色板，不铺底图与满屏像素层
+   （详情页内容密，动效和底纹会抢注意力）。根节点同时带 .playground-scope。 */
+.pg-detail {
+  /* 通用按钮与 brand 工具类里写死的粉紫，在这里换成黄 / 黄绿 */
+  --color-brand: var(--c-line);
+  --color-accent: var(--pg-accent);
+  background-image: none;
+}
+
+.pg-detail::before,
+.pg-detail::after {
+  display: none;
+}
+
+.pg-detail .btn-brutal-primary {
+  background-color: var(--c-line);
+  border-color: var(--c-line);
+  color: var(--on-brand);
+}
+
+.pg-detail .btn-brutal-primary:hover {
+  background-color: var(--c-canvas);
+  border-color: var(--c-line);
+  color: var(--c-line);
+}
+
+.pg-detail .btn-brutal-secondary:hover {
+  border-color: var(--pg-accent);
+  color: var(--pg-accent);
+}
+
 @keyframes pg-pixels {
   from {
     background-position: 0 0, 9px 9px, 0 0, 0 0;

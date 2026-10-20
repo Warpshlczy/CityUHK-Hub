@@ -10,6 +10,7 @@ import { HeatPanel } from '../components/HeatPanel';
 import { RelatedProjects } from '../components/RelatedProjects';
 import { SkeletonCard } from '../components/SkeletonCard';
 import { TagChips } from '../components/TagChips';
+import { isPlaygroundProject } from '../constants/playground';
 import { useProject } from '../hooks/useProjects';
 import { localizeProject, useI18n } from '../i18n';
 import { avatarUrl } from '../utils/avatar';
@@ -48,6 +49,8 @@ export function ProjectDetailPage() {
   };
 
   const avatar = avatarUrl(project?.authorAvatar, project?.repo);
+  // 奶龙仓库的详情页照常展示，只是整页换成彩蛋页的黄色调色板（见 index.css 的 .pg-detail）
+  const themed = Boolean(project && isPlaygroundProject(project));
 
   // 站内统计：浏览埋点 + 该项目的聚合数据（用于热力拆解）
   const [stats, setStats] = useState<SiteStats | null>(null);
@@ -66,7 +69,9 @@ export function ProjectDetailPage() {
   }, [project]);
 
   return (
-    <div className="relative z-10 flex min-h-screen flex-col">
+    <div
+      className={`relative z-10 flex min-h-screen flex-col${themed ? ' playground-scope pg-detail' : ''}`}
+    >
       <Header />
 
       <main className="mx-auto w-full max-w-4xl flex-1 px-4 py-6 sm:px-6">
