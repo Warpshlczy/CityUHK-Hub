@@ -781,9 +781,9 @@ export const MESSAGES: Record<string, MessageEntry> = {
     'zh-TW': '在倉庫檔案裡寫上 `category: NAILONG`，它就會被挪到這裡，從 Hub 上消失。',
   },
   'playground.footer': {
-    en: 'You found nailong’s secret hideout. These are the projects it loves. Nothing here is indexed.',
-    'zh-CN': '你发现了奶龙的秘密空间，这里的项目是它非常喜欢的。这里的一切都不会被收录。',
-    'zh-TW': '你發現了奶龍的祕密空間，這裡的項目是牠非常喜歡的。這裡的一切都不會被收錄。',
+    en: 'You found nailong’s secret hideout. These are the projects it loves.',
+    'zh-CN': '你发现了奶龙的秘密空间，这里的项目是它非常喜欢的。',
+    'zh-TW': '你發現了奶龍的祕密空間，這裡的項目是牠非常喜歡的。',
   },
   'playground.meta.title': {
     en: 'CityU Playground',
