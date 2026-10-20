@@ -22,6 +22,8 @@ const SITE_ORIGIN = process.env.SITE_ORIGIN ?? 'https://cityu-hub.bond';
 /** 部署在子路径时才需要改（默认部署在域名根路径） */
 const BASE_PATH = (process.env.BASE_PATH ?? '/').replace(/\/+$/, '');
 const SITE_NAME = 'CityUHK Hub';
+// 彩蛋仓库（NAILONG）的徽章改用这个名字，但仓库本身仍不进爬虫正文与 sitemap
+const PLAYGROUND_SITE_NAME = 'CityU Playground';
 
 const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
@@ -277,20 +279,28 @@ for (const project of listedProjects) {
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(path.join(outDir, 'index.html'), injectCrawlBody(html, body), 'utf8');
 
-  // 徽章贴到作者仓库 README，既是被收录标记，也带来一条反向链接与点击回流
-  const badgeDir = path.join(distDir, 'badge');
-  await fs.mkdir(badgeDir, { recursive: true });
-  await fs.writeFile(
-    path.join(badgeDir, `${project.id}.svg`),
-    badgeSvg({ label: SITE_NAME, message: `listed ★ ${detail.stars ?? 0}` }),
-    'utf8',
-  );
-
   urls.push({
     loc: url,
     lastmod: detail.updatedAt ?? '',
     priority: '0.8',
   });
+}
+
+// 徽章贴到作者仓库 README，既是被收录标记，也带来一条反向链接与点击回流。
+// 彩蛋仓库也要生成，只是署名换成 CityU Playground（徽章本身不暴露仓库内容）。
+{
+  const badgeDir = path.join(distDir, 'badge');
+  await fs.mkdir(badgeDir, { recursive: true });
+  for (const project of projects) {
+    const detail =
+      (await readJson(path.join(dataDir, 'projects', `${project.id}.json`))) ?? project;
+    const label = project.category === 'NAILONG' ? PLAYGROUND_SITE_NAME : SITE_NAME;
+    await fs.writeFile(
+      path.join(badgeDir, `${project.id}.svg`),
+      badgeSvg({ label, message: `listed ★ ${detail.stars ?? 0}` }),
+      'utf8',
+    );
+  }
 }
 
 {

@@ -1,5 +1,5 @@
-import { memo, type CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { memo, type CSSProperties, type KeyboardEvent, type MouseEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Clock, Star } from 'lucide-react';
 import type { Project } from '../types';
 import { localizeProject, useI18n } from '../i18n';
@@ -19,14 +19,30 @@ interface NailongCardProps {
  */
 export const NailongCard = memo(function NailongCard({ project, index }: NailongCardProps) {
   const { lang, t } = useI18n();
+  const navigate = useNavigate();
   const text = localizeProject(project, lang);
   const detailUrl = `/project/${project.id}`;
   const avatar = avatarUrl(project.authorAvatar, project.repo);
   // 左右交替歪一点，纯手抖感；写进 CSS 变量由样式消费
   const tilt = `${(index % 2 === 0 ? -1 : 1) * 1.4}deg`;
 
+  // 整张卡片可点：标题、STAR 这些真链接自己处理跳转，别抢它们的点击
+  const openDetail = (event: MouseEvent<HTMLElement>) => {
+    if ((event.target as HTMLElement).closest('a')) return;
+    navigate(detailUrl);
+  };
+  const openDetailOnKey = (event: KeyboardEvent<HTMLElement>) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    navigate(detailUrl);
+  };
+
   return (
     <article
+      onClick={openDetail}
+      onKeyDown={openDetailOnKey}
+      role="link"
+      tabIndex={0}
       style={{ '--tilt': tilt, animationDelay: `${Math.min(index * 70, 560)}ms` } as CSSProperties}
       className="nailong-card"
     >

@@ -299,7 +299,7 @@ export function ProjectDetailPage() {
 
             <RelatedProjects current={project} />
 
-            <BadgeSnippet id={project.id} />
+            <BadgeSnippet id={project.id} label={themed ? 'CityU Playground' : 'CityUHK Hub'} />
           </>
         )}
       </main>

@@ -3,11 +3,12 @@ import { Check, Copy } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { SITE_ORIGIN } from '../utils/seo';
 
-/** 给作者贴到仓库 README 的徽章片段，兼作指向项目页的外链。 */
-export function BadgeSnippet({ id }: { id: string }) {
+/** 给作者贴到仓库 README 的徽章片段，兼作指向项目页的外链。
+ *  彩蛋仓库（奶龙空间）的徽章署名换成 CityU Playground，见 scripts/prerender.mjs。 */
+export function BadgeSnippet({ id, label = 'CityUHK Hub' }: { id: string; label?: string }) {
   const { t } = useI18n();
   const [copied, setCopied] = useState(false);
-  const snippet = `[![CityUHK Hub](${SITE_ORIGIN}/badge/${id}.svg)](${SITE_ORIGIN}/project/${id})`;
+  const snippet = `[![${label}](${SITE_ORIGIN}/badge/${id}.svg)](${SITE_ORIGIN}/project/${id})`;
 
   const copy = async () => {
     try {

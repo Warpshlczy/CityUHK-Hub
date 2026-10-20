@@ -467,13 +467,13 @@ body::after {
     text-shadow: none;
   }
   94% {
-    text-shadow: 3px 0 0 #f47c94, -3px 0 0 #a855f7;
+    text-shadow: 3px 0 0 var(--glitch-a, #f47c94), -3px 0 0 var(--glitch-b, #a855f7);
   }
   96% {
-    text-shadow: -3px 2px 0 #a855f7, 3px -2px 0 #f47c94;
+    text-shadow: -3px 2px 0 var(--glitch-b, #a855f7), 3px -2px 0 var(--glitch-a, #f47c94);
   }
   98% {
-    text-shadow: 2px -2px 0 #f47c94, -2px 2px 0 #a855f7;
+    text-shadow: 2px -2px 0 var(--glitch-a, #f47c94), -2px 2px 0 var(--glitch-b, #a855f7);
   }
 }
 
@@ -1027,6 +1027,9 @@ html.cursor-hidden * {
   /* 通用按钮与 brand 工具类里写死的粉紫，在这里换成黄 / 黄绿 */
   --color-brand: var(--c-line);
   --color-accent: var(--pg-accent);
+  /* glitch 标题的错位描边（见 @keyframes glitch） */
+  --glitch-a: var(--c-line);
+  --glitch-b: var(--pg-accent);
   background-image: none;
 }
 
@@ -1035,6 +1038,20 @@ html.cursor-hidden * {
   display: none;
 }
 
+/* 选中的文字也走黄色，别在黄页面上留一抹粉 */
+html:has(.playground-scope) ::selection {
+  background: #fcca1c;
+  color: #171004;
+}
+
+/* 通用光标颜色写死在内联样式里（TargetCursor），用变量让彩蛋页与奶龙详情页一起变黄；
+   光标是 portal 到 body 的，取不到 .playground-scope 上的变量，所以挂在 html 上 */
+html:has(.playground-scope) {
+  --cursor-brand: #fcca1c;
+  --cursor-accent: #a3e635;
+}
+
+/* DEMO（紫流动边框）与 RELEASE（绿流动边框）保持原样，其余 hover/选中态全部换黄绿 */
 .pg-detail .btn-brutal-primary {
   background-color: var(--c-line);
   border-color: var(--c-line);
@@ -1050,6 +1067,41 @@ html.cursor-hidden * {
 .pg-detail .btn-brutal-secondary:hover {
   border-color: var(--pg-accent);
   color: var(--pg-accent);
+}
+
+.pg-detail .card-brutal:hover {
+  border-color: var(--pg-accent);
+  box-shadow: 6px 6px 0 var(--c-shadow), 0 0 26px var(--glow-brand);
+}
+
+.pg-detail .chip-brutal:hover {
+  border-color: var(--pg-accent);
+  color: var(--pg-accent);
+  box-shadow: 0 0 16px var(--glow-accent);
+}
+
+.pg-detail .prose-readme h2 {
+  border-left-color: var(--c-line);
+}
+
+.pg-detail .prose-readme h3 {
+  color: var(--pg-accent);
+}
+
+.pg-detail .prose-readme ul li::before {
+  color: var(--c-line);
+}
+
+.pg-detail .prose-readme a {
+  color: var(--c-line);
+}
+
+.pg-detail .prose-readme a:hover {
+  color: var(--pg-accent);
+}
+
+.pg-detail .prose-readme blockquote {
+  border-left-color: var(--pg-accent);
 }
 
 @keyframes pg-pixels {
@@ -1263,6 +1315,8 @@ html.cursor-hidden * {
   background-color: var(--c-surface);
   transform: rotate(var(--tilt, 0deg));
   box-shadow: 6px 6px 0 var(--c-shadow);
+  /* 整张卡片可点（NailongCard 上绑了 onClick / role="link"） */
+  cursor: pointer;
   animation: fade-in-up 0.4s step-end both;
   transition: transform 0.15s step-end, box-shadow 0.15s step-end, border-color 0.15s step-end;
 }

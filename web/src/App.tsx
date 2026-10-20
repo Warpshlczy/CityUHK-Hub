@@ -42,15 +42,14 @@ function LegacyHashRedirect() {
   return null;
 }
 
-/** 彩蛋页整页走黄色皮肤，光标也跟着换色，免得粉紫两色落在黄底上突兀 */
+/** 彩蛋页与奶龙详情页整页走黄色皮肤，光标也跟着换色，免得粉紫两色落在黄底上突兀。
+ *  颜色走 CSS 变量（index.css 的 html:has(.playground-scope)），光标 portal 到 body 也能取到。 */
 function SiteCursor() {
-  const { pathname } = useLocation();
-  const onPlayground = pathname === '/playground';
   return (
     <TargetCursor
       targetSelector="a, button, .cursor-target"
-      cursorColor={onPlayground ? '#fcca1c' : '#f47c94'}
-      cursorColorOnTarget={onPlayground ? '#a3e635' : '#a855f7'}
+      cursorColor="var(--cursor-brand, #f47c94)"
+      cursorColorOnTarget="var(--cursor-accent, #a855f7)"
     />
   );
 }
