@@ -2,16 +2,6 @@
   "version": 1,
   "snapshots": [
     {
-      "date": "2026-09-26",
-      "stars": {
-        "Famalhaut04/canvas-weekly-hub": 9,
-        "inscripoem/cityu-beamer": 29,
-        "null1024-ws/CityU-CS-Guide": 19,
-        "RoyNiu06/QRcode4food": 4,
-        "L01nki1/extend-slides": 9
-      }
-    },
-    {
       "date": "2026-09-27",
       "stars": {
         "Famalhaut04/canvas-weekly-hub": 9,
@@ -541,6 +531,28 @@
         "RoyNiu06/QRcode4food": 4,
         "LENSFORGET/aims-plus-plus": 1,
         "JikoSchnee/delta-harmonica-macro": 186,
+        "L01nki1/extend-slides": 16,
+        "Warpshlczy/mentors-auto-match": 2,
+        "AvalonC/MScBIS": 5,
+        "Quentin040507/multi-llm-router": 0,
+        "pai233/NaiwaUHK": 14,
+        "zhang-yutong123/PaperBridge-PDF-Translate-Preserve-Formula-Layout-OCR-Tables-4Way-Compare-Free-DeepSeek-GLM-Windows": 1,
+        "oneonew-gif/study-coach": 7
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "stars": {
+        "YongzeYang/CSCSE-Certification-Review-CityU-EC-to-CS": 81,
+        "Famalhaut04/canvas-weekly-hub": 18,
+        "inscripoem/cityu-beamer": 31,
+        "null1024-ws/CityU-CS-Guide": 21,
+        "lavine888/CityU-CS-Notes": 40,
+        "mojimoon/CityU-CS": 95,
+        "YongzeYang/CityU-CS5489-Machine-Learning-Algorithms-and-Applications-23fall": 65,
+        "RoyNiu06/QRcode4food": 4,
+        "LENSFORGET/aims-plus-plus": 1,
+        "JikoSchnee/delta-harmonica-macro": 189,
         "L01nki1/extend-slides": 16,
         "Warpshlczy/mentors-auto-match": 2,
         "AvalonC/MScBIS": 5,
