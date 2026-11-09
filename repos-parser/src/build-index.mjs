@@ -54,19 +54,23 @@ function toIso(value, fallback) {
 }
 
 /**
- * 读取上次产物的 addedAt 沿承下来。被本站收录的日期 GitHub 上没有，
- * 只能自己记，否则每天重建都会把老项目算成今天新增；首次构建读不到就返回空表。
+ * 读取上次产物里「只能自己记」的字段：addedAt（收录日期）与 updatedAt。
+ * 联网补齐失败的构建里，文件 mtime 是 CI 检出时间，会把所有项目的时间刷成同一天，
+ * 所以优先沿用上一次的真实值。首次构建读不到就返回空表。
  */
-async function readPreviousAddedAt(outputPath) {
+async function readPreviousIndex(outputPath) {
   try {
     const raw = await fs.readFile(path.join(outputPath, 'projects.json'), 'utf8');
     const parsed = JSON.parse(raw);
-    const entries = (parsed.projects ?? [])
-      .map((project) => [project.id, project.addedAt])
-      .filter(([, addedAt]) => typeof addedAt === 'string' && addedAt);
-    return new Map(entries);
+    const pick = (key) =>
+      new Map(
+        (parsed.projects ?? [])
+          .filter((project) => typeof project[key] === 'string' && project[key])
+          .map((project) => [project.id, project[key]]),
+      );
+    return { addedAt: pick('addedAt'), updatedAt: pick('updatedAt') };
   } catch {
-    return new Map();
+    return { addedAt: new Map(), updatedAt: new Map() };
   }
 }
 
@@ -74,7 +78,7 @@ async function readPreviousAddedAt(outputPath) {
  * 把一个 repos/<id>.md 解析成前端契约（web/src/types/index.ts 里的 Project）。
  * 联网补齐（限流 / 404 / 断网）失败只告警不抛出，缺的字段由 md 正文和前端兜底。
  */
-async function buildProject(meta, content, fileName, github, useOffline, fileDate, resolveAddedAt, resolveStarsGained7d) {
+async function buildProject(meta, content, fileName, github, useOffline, fileDate, resolveAddedAt, resolveUpdatedAt, resolveStarsGained7d) {
   const ref = parseRepoUrl(meta.repoUrl);
   if (!ref) throw new Error(`${fileName}: repoUrl 不是可识别的 GitHub 仓库地址`);
 
@@ -144,7 +148,7 @@ async function buildProject(meta, content, fileName, github, useOffline, fileDat
     language: githubMeta?.language ?? '',
     license: githubMeta?.license ?? '',
     createdAt: toDate(githubMeta?.createdAt, fileDate),
-    updatedAt: toIso(githubMeta?.pushedAt, fileDate),
+    updatedAt: toIso(githubMeta?.pushedAt, resolveUpdatedAt(id, fileDate)),
     /** 被本站收录的日期；GitHub 上没有这个概念，靠上一次的产物沿承 */
     addedAt: resolveAddedAt(id),
     status: meta.status,
@@ -208,8 +212,9 @@ export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, 
   const projects = [];
   const ids = new Map();
   const repoUrls = new Map();
-  // 上一次的产物：把 addedAt 沿承下来（GitHub 上没有「什么时候被本站收录」这个信息）
-  const previousAddedAt = await readPreviousAddedAt(outputPath);
+  // 上一次的产物：把 addedAt / updatedAt 沿承下来（GitHub 上没有「什么时候被本站收录」，
+  // 而已有真值的时间不该被这次的检出时间覆盖）
+  const previous = await readPreviousIndex(outputPath);
   // 近 7 天涨星靠自建快照算；离线构建拿不到 star 数，读了也没用
   const starHistory = useOffline ? [] : await readStarHistory(starHistoryPath());
   const today = new Date().toISOString().slice(0, 10);
@@ -227,7 +232,8 @@ export async function buildIndex({ inputDir = reposDir, outputPath = outputDir, 
       github,
       useOffline,
       fileDate,
-      (projectId) => previousAddedAt.get(projectId) ?? today,
+      (projectId) => previous.addedAt.get(projectId) ?? today,
+      (projectId, fallback) => previous.updatedAt.get(projectId) ?? fallback,
       (repo, stars) => computeStarsGained7d(starHistory, repo, stars, today),
     );
 

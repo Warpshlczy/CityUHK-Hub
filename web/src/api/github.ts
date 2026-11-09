@@ -10,10 +10,12 @@ interface GithubRepoMeta {
   avatar: string;
   /** 仓库 About，用于卡片与详情页的简介 */
   description: string;
+  /** 最后一次推送时间，卡片上的「更新于」以它为准 */
+  pushedAt: string;
 }
 
 /** 缓存键带版本号，字段有增减时自动失效旧缓存 */
-const CACHE_KEY = 'cityu-hub:github-meta:v3';
+const CACHE_KEY = 'cityu-hub:github-meta:v4';
 /** 缓存 6 小时，避免反复打 GitHub 匿名接口（每小时 60 次） */
 const CACHE_TTL = 6 * 60 * 60 * 1000;
 /** 单次最多补这么多仓库，其余等下次访问 */
@@ -60,6 +62,7 @@ async function fetchRepoMeta(slug: string, signal?: AbortSignal): Promise<Github
     forks_count?: number;
     description?: string | null;
     owner?: { avatar_url?: string };
+    pushed_at?: string;
   };
   return {
     language: data.language ?? '',
@@ -67,7 +70,16 @@ async function fetchRepoMeta(slug: string, signal?: AbortSignal): Promise<Github
     forks: data.forks_count ?? 0,
     avatar: data.owner?.avatar_url ?? '',
     description: data.description ?? '',
+    pushedAt: data.pushed_at ?? '',
   };
+}
+
+/**
+ * 构建期拿不到 GitHub 数据时，updatedAt 只有日期（YYYY-MM-DD），
+ * 是文件时间兜底，不代表仓库真的那天更新过；这种条目也要重新补一次。
+ */
+function hasTimePart(value: string): boolean {
+  return /T\d{2}:\d{2}/.test(value ?? '');
 }
 
 /**
@@ -94,8 +106,16 @@ export async function enrichProjectsWithGithub(
         metas.set(slug, cached.meta);
         continue;
       }
-      // 语言、stars、头像、仓库 About 都齐了就不用再请求
-      if (project.language && project.stars > 0 && project.authorAvatar && project.about) continue;
+      // 语言、stars、头像、仓库 About 都齐了、更新时间也是完整时间戳，就不用再请求
+      if (
+        project.language &&
+        project.stars > 0 &&
+        project.authorAvatar &&
+        project.about &&
+        hasTimePart(project.updatedAt)
+      ) {
+        continue;
+      }
       if (queue.length >= MAX_REQUESTS || queue.some((item) => item.slug === slug)) continue;
       queue.push({ slug });
     }
@@ -135,17 +155,20 @@ export async function enrichProjectsWithGithub(
       const forks = meta.forks || project.forks;
       const authorAvatar = project.authorAvatar || meta.avatar;
       const about = project.about || meta.description;
+      // GitHub 的 pushed_at 是权威值，优先于构建期兜底的日期
+      const updatedAt = meta.pushedAt || project.updatedAt;
       if (
         language === project.language &&
         stars === project.stars &&
         forks === project.forks &&
         authorAvatar === project.authorAvatar &&
-        about === project.about
+        about === project.about &&
+        updatedAt === project.updatedAt
       ) {
         return project;
       }
       changed = true;
-      return { ...project, language, stars, forks, authorAvatar, about };
+      return { ...project, language, stars, forks, authorAvatar, about, updatedAt };
     });
 
     return changed ? merged : null;
